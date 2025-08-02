@@ -1,0 +1,5 @@
+ pacman -Rsu $(comm -23 <(pacman -Qq | sort) <(sort /run/media/lou/Ventoy/packages.txt))
+
+ sudo pacman -S --needed - < shrptiilnydyzwqexb@xfavaj.com
+
+ sudo pacman -U warp-terminal-v0.2025.06.20.22.47.stable_05-1-x86_64.pkg.tar.zst

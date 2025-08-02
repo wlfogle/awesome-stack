@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OriginPC Control Suite - Eon17-X</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" src="/src/main.ts" defer></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-content">
+          <h1 class="title">🔥 OriginPC Control Suite</h1>
+          <p class="subtitle">Eon17-X Beast Mode</p>
+        </div>
+      </header>
+
+      <!-- Navigation Tabs -->
+      <nav class="nav-tabs">
+        <button class="tab-button active" data-tab="rgb-fan-control">
+          🌈 RGB/Fan Control
+        </button>
+        <button class="tab-button" data-tab="backup-restore">
+          🔄 Backup/Restore
+        </button>
+        <button class="tab-button" data-tab="software-management">
+          📦 Software Management
+        </button>
+        <button class="tab-button" data-tab="kernel-tools">
+          🔧 Kernel Tools
+        </button>
+        <button class="tab-button" data-tab="ai-assistant">
+          🤖 AI Assistant
+        </button>
+        <button class="tab-button" data-tab="proxmox-vm">
+          🖥️ ProxMox/VM Control
+        </button>
+        <button class="tab-button" data-tab="settings">
+          ⚙️ Settings
+        </button>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- RGB/Fan Control Tab -->
+        <div id="rgb-fan-control" class="tab-content active">
+          <div class="sub-tabs">
+            <button class="sub-tab-button active" data-subtab="keyboard">
+              ⌨️ Keyboard
+            </button>
+            <button class="sub-tab-button" data-subtab="fans">
+              🌀 Fans
+            </button>
+          </div>
+
+          <div class="subtab-content">
+            <!-- Keyboard Tab -->
+            <div id="keyboard" class="subtab-panel active">
+              <div class="card">
+                <h3>🌈 RGB Keyboard Control</h3>
+                <p class="status">RGB Mode: Rainbow Wave (Active)</p>
+                <p class="current-state">Current: Blue static (after OS boot)</p>
+                
+                <div class="control-group">
+                  <label>RGB Mode:</label>
+                  <div class="button-group">
+                    <button class="control-btn">Static</button>
+                    <button class="control-btn rainbow active">Rainbow</button>
+                    <button class="control-btn">Breathing</button>
+                    <button class="control-btn">Wave</button>
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label for="brightness">Brightness: <span id="brightness-value">75%</span></label>
+                  <input type="range" id="brightness" min="0" max="100" value="75" class="slider">
+                </div>
+
+                <button class="apply-btn">Apply RGB Settings</button>
+              </div>
+            </div>
+
+            <!-- Fans Tab -->
+            <div id="fans" class="subtab-panel">
+              <div class="card">
+                <h3>🌀 Fan Control</h3>
+                <p class="status">Clevo Fan Management</p>
+                
+                <div class="control-group">
+                  <label for="fan-speed">Fan Speed: <span id="fan-speed-value">50%</span></label>
+                  <input type="range" id="fan-speed" min="0" max="100" value="50" class="slider">
+                </div>
+
+                <button class="apply-btn">Apply Fan Settings</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ProxMox/VM Control Tab -->
+        <div id="proxmox-vm" class="tab-content">
+          <div class="card">
+            <h3>🖥️ ProxMox/VM Control</h3>
+            <p>Beast Mode VM Management</p>
+            <div class="vm-controls">
+              <button class="vm-btn gaming">🎮 Gaming Mode</button>
+              <button class="vm-btn hosting">🏠 Self-Hosting Mode</button>
+              <button class="vm-btn hybrid">🔥 Hybrid Mode</button>
+              <button class="vm-btn stop">🛑 Stop All VMs</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Other tabs (stubs) -->
+        <div id="backup-restore" class="tab-content">
+          <div class="card">
+            <h3>🔄 Clean Install Backup/Restore</h3>
+            <p>Manage system backups and restoration</p>
+          </div>
+        </div>
+
+        <div id="software-management" class="tab-content">
+          <div class="card">
+            <h3>📦 Software Management</h3>
+            <p>Package management and software installation</p>
+          </div>
+        </div>
+
+        <div id="kernel-tools" class="tab-content">
+          <div class="card">
+            <h3>🔧 Kernel Tools</h3>
+            <p>Kernel management and compilation tools</p>
+          </div>
+        </div>
+
+        <div id="ai-assistant" class="tab-content">
+          <div class="card">
+            <h3>🤖 AI Assistant</h3>
+            <p>AI-powered system assistance and recommendations</p>
+          </div>
+        </div>
+
+        <div id="settings" class="tab-content">
+          <div class="card">
+            <h3>⚙️ Settings</h3>
+            <p>Application settings and information</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

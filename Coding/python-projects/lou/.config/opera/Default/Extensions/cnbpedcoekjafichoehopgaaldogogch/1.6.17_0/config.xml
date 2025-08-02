@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget xmlns="http://www.w3.org/ns/widgets" id="extensions:translator" defaultlocale="en" version="1.6.17">
+	<name>Translator</name>
+	<description xml:lang="en">Translate selected or entered text</description>
+	<description xml:lang="ru">Перевод выделенного или введенного текстов</description>
+	<description xml:lang="it">Traduci il testo selezionato o inserito</description>
+	<description xml:lang="de">Übersetze ausgewählten oder eingegebenen Text</description>
+	<description xml:lang="uk">Переклад виділеного або введеного тексту</description>
+	<description xml:lang="pl">Przetłumacz wybrany lub zaznaczony tekst</description>
+	<description xml:lang="pt-br">Traduz texto selecionado ou inserido</description>
+	<description xml:lang="sr">Превод изабраног или унетог текста</description>
+	<description xml:lang="cs">Přeloží vybraný nebo vložený text</description>
+	<description xml:lang="tr">Seçili veya girilen metni çevir</description>
+	<description xml:lang="be">Пераклад вылучанага ці ўведзенага тэксту</description>
+	<author href="http://my.opera.com/SailorMax/about/">SailorMax</author>
+	<icon src="icons/icon-64.png" />
+	<!-- Source: http://www.microsofttranslator.com/ -->
+	<content src="index.html" encoding="utf-8" type="text/html" />
+	<license href="https://addons.opera.com/en/developer/license/hosting/">Opera Hosting License</license>
+
+	<feature name="opera:share-cookies" required="false" />
+	<feature name="opera:contextmenus" required="false" />
+
+	<access origin="http://translate.google.com" />
+	<access origin="http://translate.google.com.hk" />
+	<access origin="https://translate.google.com" />
+	<access origin="https://translate.google.com.hk" />
+	<access origin="https://translate.googleapis.com" />
+	<access origin="https://translate.googleapis.com.hk" />
+	<access origin="http://ajax.googleapis.com" />
+	<access origin="http://api.microsofttranslator.com" />
+	<access origin="https://api.microsofttranslator.com" />
+	<access origin="http://labs.microsofttranslator.com" />
+	<access origin="https://datamarket.accesscontrol.windows.net" />
+<!--	<access origin="http://slovari.yandex.ru" /> -->
+	<access origin="https://translate.yandex.com" />
+	<access origin="https://translate.yandex.net" />
+	<access origin="https://dictionary.yandex.net" />
+	<access origin="http://www.translate.ru" />
+	<access origin="https://www.translate.ru" />
+	<access origin="http://online.translate.ua" />
+	<access origin="http://addon.translate.ua" />
+	<access origin="https://addon.translate.ua" />
+	<access origin="http://translate.ua" />
+<!--	<access origin="http://.translate.ua" /> -->
+	<access origin="https://translator.sailormax.net" />
+	<access origin="http://translation.babylon.com" />
+	<access origin="https://glosbe.com" />
+	<access origin="http://info.babylon.com" />
+	<access origin="https://api.lingvolive.com" />
+	<access origin="http://m.urbandictionary.com" />
+	<access origin="http://api.urbandictionary.com" />
+	<access origin="https://lingvanex.com" />
+	<access origin="https://api-b2b.backenster.com" />
+
+	<access origin="https://www.bing.com" />
+	<access origin="https://fanyi.baidu.com" />
+	<access origin="https://papago.naver.com" />
+	<access origin="https://fanyi.sogou.com" />
+	<access origin="https://www.microsofttranslator.com" />
+	<access origin="http://translation.babylon-software.com" />
+	<access origin="http://dictionary.babylon-software.com" />
+	<access origin="https://www2.deepl.com" />
+	<access origin="http://www.online-translator.com" />
+	<access origin="http://www.translate.ua" />
+	<access origin="http://dictionary.babylon.com" />
+	<access origin="http://www.lingvolive.com" />
+	<access origin="https://www.urbandictionary.com" />
+	<access origin="https://www.deepl.com" />
+	<access origin="http://s3.amazonaws.com" />
+	<access origin="https://s3.amazonaws.com" />
+
+	<access origin="https://www.paypalobjects.com" />
+<!--
+	<access origin="https://paypal.com" />
+	<access origin="https://www.paypalobjects.com" />
+	<access origin="https://2o7.net" subdomains="true" />
+-->
+<!--
+	// Now we setup default preferences in code, because of special format
+	<preference name="buttonPosition" value="right" />
+	<preference name="maxStoreLangPairs" value="3" />
+	<preference name="useSelMarker" value="true" />
+	<preference name="useExtensionButton" value="true" />
+-->
+</widget>

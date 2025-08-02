@@ -1,0 +1,43 @@
+{
+   "action": {
+   },
+   "background": {
+      "service_worker": "worker.js"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "data/inject.js" ],
+      "match_about_blank": true,
+      "matches": [ "\u003Call_urls>" ],
+      "run_at": "document_start"
+   } ],
+   "default_locale": "en",
+   "description": "__MSG_description__",
+   "developer": {
+      "name": "andy-portmen"
+   },
+   "homepage_url": "https://add0n.com/open-in.html?from=edge",
+   "icons": {
+      "128": "data/icons/128.png",
+      "16": "data/icons/16.png",
+      "256": "data/icons/256.png",
+      "32": "data/icons/32.png",
+      "48": "data/icons/48.png",
+      "512": "data/icons/512.png",
+      "64": "data/icons/64.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA28Gk2lQu/z6gfFYJN2Ehr0WIh9R+Ud4V0gJhMZNL1chTfINfGbuyVTuAOSJnH/fRF/RnqOEpTijcMeCPKFsngPMFzXZVQgD5xstG1ZL8bKfzaj3u0AEop4P+lrdQ7noaGy4IdXhWSuk2QH9In8VyboeziG4kdTCou6qA1cL3ZeXh7441gkCjnLjtYTrSbOZm1rHNQSstXaMo2yyhvuwnjEvuYCMg3ipj5YhIKhZjRqP3zm4Nxv3SSX0FyrQRS51jteebywIjMn4Tn3TViI9IZSgmlJ52EVYZ2SnV/849uZe+TvZ2JBbLeAyks0KbjHSQ5mQ5s5CCqfzKqYr29xY3eQIDAQAB",
+   "manifest_version": 3,
+   "name": "Open in MS Edge™",
+   "optional_permissions": [ "tabs", "downloads" ],
+   "options_ui": {
+      "open_in_tab": true,
+      "page": "data/options/index.html"
+   },
+   "permissions": [ "activeTab", "storage", "contextMenus", "nativeMessaging" ],
+   "storage": {
+      "managed_schema": "edge-schema.json"
+   },
+   "update_url": "https://extension-updates.opera.com/api/omaha/update/",
+   "version": "0.3.2"
+}

@@ -1,0 +1,289 @@
+[
+    {
+        "Id": "0b34c73f5d9cbe0977957bd4541ec15279786236478bad726a02c1ca21627d36",
+        "Created": "2025-07-17T16:17:52.113904319Z",
+        "Path": "docker-entrypoint.sh",
+        "Args": [
+            "node",
+            "./build/server/index.js"
+        ],
+        "State": {
+            "Status": "restarting",
+            "Running": true,
+            "Paused": false,
+            "Restarting": true,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 1,
+            "Error": "",
+            "StartedAt": "2025-07-19T22:34:18.636286922Z",
+            "FinishedAt": "2025-07-19T22:34:19.178394278Z"
+        },
+        "Image": "sha256:1ee2acfc61efb2a60913a0f07885a775ef8685ced678da001e7c59bfb623c734",
+        "ResolvConfPath": "/var/lib/docker/containers/0b34c73f5d9cbe0977957bd4541ec15279786236478bad726a02c1ca21627d36/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/0b34c73f5d9cbe0977957bd4541ec15279786236478bad726a02c1ca21627d36/hostname",
+        "HostsPath": "/var/lib/docker/containers/0b34c73f5d9cbe0977957bd4541ec15279786236478bad726a02c1ca21627d36/hosts",
+        "LogPath": "/var/lib/docker/containers/0b34c73f5d9cbe0977957bd4541ec15279786236478bad726a02c1ca21627d36/0b34c73f5d9cbe0977957bd4541ec15279786236478bad726a02c1ca21627d36-json.log",
+        "Name": "/mediastack_headplane",
+        "RestartCount": 81,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/mnt/sda1/config/headplane/config:/etc/headplane:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "config_mediastack",
+            "PortBindings": {
+                "4567/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "4567"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "unless-stopped",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap",
+                "/sys/devices/system/cpu/cpu0/thermal_throttle",
+                "/sys/devices/system/cpu/cpu1/thermal_throttle",
+                "/sys/devices/system/cpu/cpu2/thermal_throttle",
+                "/sys/devices/system/cpu/cpu3/thermal_throttle",
+                "/sys/devices/system/cpu/cpu4/thermal_throttle",
+                "/sys/devices/system/cpu/cpu5/thermal_throttle",
+                "/sys/devices/system/cpu/cpu6/thermal_throttle",
+                "/sys/devices/system/cpu/cpu7/thermal_throttle",
+                "/sys/devices/system/cpu/cpu8/thermal_throttle",
+                "/sys/devices/system/cpu/cpu9/thermal_throttle",
+                "/sys/devices/system/cpu/cpu10/thermal_throttle",
+                "/sys/devices/system/cpu/cpu11/thermal_throttle",
+                "/sys/devices/system/cpu/cpu12/thermal_throttle",
+                "/sys/devices/system/cpu/cpu13/thermal_throttle",
+                "/sys/devices/system/cpu/cpu14/thermal_throttle",
+                "/sys/devices/system/cpu/cpu15/thermal_throttle",
+                "/sys/devices/system/cpu/cpu16/thermal_throttle",
+                "/sys/devices/system/cpu/cpu17/thermal_throttle",
+                "/sys/devices/system/cpu/cpu18/thermal_throttle",
+                "/sys/devices/system/cpu/cpu19/thermal_throttle",
+                "/sys/devices/system/cpu/cpu20/thermal_throttle",
+                "/sys/devices/system/cpu/cpu21/thermal_throttle",
+                "/sys/devices/system/cpu/cpu22/thermal_throttle",
+                "/sys/devices/system/cpu/cpu23/thermal_throttle",
+                "/sys/devices/system/cpu/cpu24/thermal_throttle",
+                "/sys/devices/system/cpu/cpu25/thermal_throttle",
+                "/sys/devices/system/cpu/cpu26/thermal_throttle",
+                "/sys/devices/system/cpu/cpu27/thermal_throttle",
+                "/sys/devices/system/cpu/cpu28/thermal_throttle",
+                "/sys/devices/system/cpu/cpu29/thermal_throttle",
+                "/sys/devices/system/cpu/cpu30/thermal_throttle",
+                "/sys/devices/system/cpu/cpu31/thermal_throttle"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "0b34c73f5d9cbe0977957bd4541ec15279786236478bad726a02c1ca21627d36",
+                "LowerDir": "/var/lib/docker/overlay2/37922a0d075e34c18e48447a61edc21252ec63ba3b693e02161a7993de131155-init/diff:/var/lib/docker/overlay2/c779d0c84c87f8b7344488f547b1296b4c1c4840030856eb23d165840999c007/diff:/var/lib/docker/overlay2/c4c676bd0d55966c6e93a6863f25f08b9b4c89edbd8fd2ea81f17134f03a5e2b/diff:/var/lib/docker/overlay2/764015e7ad89fd0c9132a260cdb09c65386013119b74db36a9f02205f5de2074/diff:/var/lib/docker/overlay2/6811ed0bc899e26da2bcb51ab97ec0fd454848aa9ef66cce6f18d8721ec29a5d/diff:/var/lib/docker/overlay2/64a3fd5f162a0f2111736568a6fbace7d32133b32909187e43da2f6a8a35137f/diff:/var/lib/docker/overlay2/539a6abae1b7d25eab768da008bfbf1a204c6efbad5851bff6e9ec2086f94a8a/diff:/var/lib/docker/overlay2/c9176f7302346cc0755ee56130b096699decd3433cb27c1dc31cbb7d3d1f971f/diff:/var/lib/docker/overlay2/6dc637a3926ba5b05b5e75d2171c29efa759e9f1e8683df0f3f07bcd52f57e8f/diff:/var/lib/docker/overlay2/d027a6c52c4c9c2304ccba0b0192b76c2261527994395a586f292f0465bf2d8a/diff:/var/lib/docker/overlay2/340063c675e8886e58bbcc0910e97ee0a1a314f4370307a290613cafce14c591/diff:/var/lib/docker/overlay2/4c9873add189d8085d7672d7cb2f4b399176734105c1157c371a0f146200f90d/diff:/var/lib/docker/overlay2/525cad6b6a810bfb0ae3eef0f8887565421887545d6ad6ded212fd6474ed48de/diff",
+                "MergedDir": "/var/lib/docker/overlay2/37922a0d075e34c18e48447a61edc21252ec63ba3b693e02161a7993de131155/merged",
+                "UpperDir": "/var/lib/docker/overlay2/37922a0d075e34c18e48447a61edc21252ec63ba3b693e02161a7993de131155/diff",
+                "WorkDir": "/var/lib/docker/overlay2/37922a0d075e34c18e48447a61edc21252ec63ba3b693e02161a7993de131155/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/mnt/sda1/config/headplane/config",
+                "Destination": "/etc/headplane",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "0b34c73f5d9c",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "4567/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PUID=1000",
+                "PGID=1000",
+                "TZ=America/New_York",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NODE_VERSION=22.16.0",
+                "YARN_VERSION=1.22.22"
+            ],
+            "Cmd": [
+                "node",
+                "./build/server/index.js"
+            ],
+            "Image": "ghcr.io/tale/headplane:latest",
+            "Volumes": null,
+            "WorkingDir": "/app",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "4544ca530b68ba0e2b7b14bec96cab994490499383a2dd3c0350089544e2150a",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:1ee2acfc61efb2a60913a0f07885a775ef8685ced678da001e7c59bfb623c734",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "config",
+                "com.docker.compose.project.config_files": "/home/lou/mediastack-new/config/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/home/lou/mediastack-new/config",
+                "com.docker.compose.service": "headplane",
+                "com.docker.compose.version": "2.38.2",
+                "org.opencontainers.image.created": "2025-05-25T15:08:14.669Z",
+                "org.opencontainers.image.description": "A feature-complete Web UI for Headscale",
+                "org.opencontainers.image.licenses": "MIT",
+                "org.opencontainers.image.revision": "0866ced767fdc7e0c3a21b3eb451813fbab718b7",
+                "org.opencontainers.image.source": "https://github.com/tale/headplane",
+                "org.opencontainers.image.title": "headplane",
+                "org.opencontainers.image.url": "https://github.com/tale/headplane",
+                "org.opencontainers.image.version": "0.6.0"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "",
+            "SandboxKey": "",
+            "Ports": {},
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "config_mediastack": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "mediastack_headplane",
+                        "headplane"
+                    ],
+                    "MacAddress": "",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "475ece92575a4af78e9b3a51deb5b559680383eba9ad48dbd3530f2b9e52b2ce",
+                    "EndpointID": "",
+                    "Gateway": "",
+                    "IPAddress": "",
+                    "IPPrefixLen": 0,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "mediastack_headplane",
+                        "headplane",
+                        "0b34c73f5d9c"
+                    ]
+                }
+            }
+        }
+    }
+]

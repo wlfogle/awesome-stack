@@ -1,0 +1,16 @@
+[
+    {
+        "CreatedAt": "2025-07-12T12:55:45-04:00",
+        "Driver": "local",
+        "Labels": {
+            "com.docker.compose.config-hash": "da01fb4eb2ffca09dca546f3dd77b2f9c3aedc09c9a614e2070eabe31b47054e",
+            "com.docker.compose.project": "mediastack_new",
+            "com.docker.compose.version": "2.38.2",
+            "com.docker.compose.volume": "postgres_data"
+        },
+        "Mountpoint": "/var/lib/docker/volumes/mediastack_new_postgres_data/_data",
+        "Name": "mediastack_new_postgres_data",
+        "Options": null,
+        "Scope": "local"
+    }
+]

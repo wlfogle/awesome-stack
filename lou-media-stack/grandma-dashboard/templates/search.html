@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Movies & Shows - Grandma's Media Center</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #4a5568;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 300px;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            border: 3px solid #e2e8f0;
+            border-radius: 15px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-btn {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .home-btn {
+            padding: 12px 25px;
+            font-size: 1rem;
+            background: #48bb78;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .home-btn:hover {
+            background: #38a169;
+            transform: translateY(-2px);
+        }
+
+        .results-section {
+            margin-top: 30px;
+        }
+
+        .results-header {
+            font-size: 1.5rem;
+            color: #4a5568;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            background: #f7fafc;
+            border-radius: 15px;
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-color: #667eea;
+        }
+
+        .result-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        .result-type {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .result-type.movie {
+            background: #e53e3e;
+        }
+
+        .result-type.tv {
+            background: #38a169;
+        }
+
+        .result-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .result-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .meta-item {
+            background: #edf2f7;
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #4a5568;
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .watch-btn {
+            background: #48bb78;
+            color: white;
+        }
+
+        .watch-btn:hover {
+            background: #38a169;
+        }
+
+        .info-btn {
+            background: #4299e1;
+            color: white;
+        }
+
+        .info-btn:hover {
+            background: #3182ce;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .search-form {
+                flex-direction: column;
+            }
+            
+            .search-input {
+                min-width: auto;
+                width: 100%;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 Find Movies & Shows</h1>
+            <p>Ask me anything about your media collection!</p>
+        </div>
+
+        <form class="search-form" method="GET">
+            <input 
+                type="text" 
+                name="q" 
+                class="search-input" 
+                placeholder="What would you like to watch? (e.g., 'action movies with Tom Cruise')"
+                value="{{ query }}"
+                autofocus
+            >
+            <button type="submit" class="search-btn">🔍 Search</button>
+            <a href="/" class="home-btn">🏠 Home</a>
+        </form>
+
+        {% if query %}
+        <div class="results-section">
+            <div class="results-header">
+                {% if results %}
+                    Found {{ results|length }} result{{ 's' if results|length != 1 else '' }} for "{{ query }}"
+                {% else %}
+                    No results found for "{{ query }}"
+                {% endif %}
+            </div>
+
+            {% if results %}
+            <div class="results-grid">
+                {% for result in results %}
+                <div class="result-card">
+                    <div class="result-type {{ result.type|lower }}">
+                        {{ '🎬 Movie' if result.type == 'movie' else '📺 TV Show' }}
+                    </div>
+                    
+                    <div class="result-title">{{ result.title }}</div>
+                    
+                    {% if result.description %}
+                    <div class="result-description">
+                        {{ result.description[:200] }}{{ '...' if result.description|length > 200 else '' }}
+                    </div>
+                    {% endif %}
+
+                    <div class="result-meta">
+                        {% if result.year %}
+                        <span class="meta-item">📅 {{ result.year }}</span>
+                        {% endif %}
+                        {% if result.rating %}
+                        <span class="meta-item">⭐ {{ result.rating }}/10</span>
+                        {% endif %}
+                        {% if result.genre %}
+                        <span class="meta-item">🎭 {{ result.genre }}</span>
+                        {% endif %}
+                        {% if result.duration %}
+                        <span class="meta-item">⏱️ {{ result.duration }}</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="result-actions">
+                        {% if result.watch_url %}
+                        <a href="{{ result.watch_url }}" class="action-btn watch-btn" target="_blank">
+                            ▶️ Watch Now
+                        </a>
+                        {% endif %}
+                        {% if result.info_url %}
+                        <a href="{{ result.info_url }}" class="action-btn info-btn" target="_blank">
+                            ℹ️ More Info
+                        </a>
+                        {% endif %}
+                        {% if result.service %}
+                        <span class="meta-item">📡 Available on {{ result.service }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="no-results">
+                <p>🤔 Hmm, I couldn't find anything matching "{{ query }}"</p>
+                <p style="margin-top: 10px;">Try searching for:</p>
+                <ul style="text-align: left; margin-top: 15px; max-width: 400px; margin-left: auto; margin-right: auto;">
+                    <li>Movie or TV show titles</li>
+                    <li>Actor names (e.g., "Tom Hanks movies")</li>
+                    <li>Genres (e.g., "comedy shows")</li>
+                    <li>Specific requests (e.g., "Christmas movies")</li>
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+        {% else %}
+        <div class="results-section">
+            <div class="no-results">
+                <p>💡 Enter a search above to find movies and TV shows!</p>
+                <p style="margin-top: 15px;">You can search by:</p>
+                <ul style="text-align: left; margin-top: 15px; max-width: 400px; margin-left: auto; margin-right: auto;">
+                    <li>Movie or show titles</li>
+                    <li>Actor or director names</li>
+                    <li>Genres or categories</li>
+                    <li>Natural language queries</li>
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        // Auto-focus search input
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('.search-input');
+            if (searchInput && !searchInput.value) {
+                searchInput.focus();
+            }
+        });
+
+        // Add loading state during search
+        document.querySelector('.search-form').addEventListener('submit', function() {
+            const button = document.querySelector('.search-btn');
+            button.innerHTML = '⏳ Searching...';
+            button.disabled = true;
+        });
+    </script>
+</body>
+</html>

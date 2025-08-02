@@ -1,0 +1,401 @@
+[
+    {
+        "Id": "76536794d0d2e42ba1c9bf5cf2008e4661e51b787d8c156e9e0d9667760f1175",
+        "Created": "2025-07-18T20:13:17.806297764Z",
+        "Path": "/init",
+        "Args": [],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 1416351,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2025-07-18T20:13:29.47106118Z",
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "Health": {
+                "Status": "healthy",
+                "FailingStreak": 0,
+                "Log": [
+                    {
+                        "Start": "2025-07-19T18:34:16.128105422-04:00",
+                        "End": "2025-07-19T18:34:16.171157022-04:00",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2025-07-19T18:34:21.171640914-04:00",
+                        "End": "2025-07-19T18:34:21.214875867-04:00",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2025-07-19T18:34:26.215756497-04:00",
+                        "End": "2025-07-19T18:34:26.254718079-04:00",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2025-07-19T18:34:31.255555073-04:00",
+                        "End": "2025-07-19T18:34:31.299760925-04:00",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2025-07-19T18:34:36.30026233-04:00",
+                        "End": "2025-07-19T18:34:36.343421151-04:00",
+                        "ExitCode": 0,
+                        "Output": ""
+                    }
+                ]
+            }
+        },
+        "Image": "sha256:0431bd2e4c2e2de5f2405df023b2a3acb7fdc6a39d55527ea963b41490578db5",
+        "ResolvConfPath": "/var/lib/docker/containers/76536794d0d2e42ba1c9bf5cf2008e4661e51b787d8c156e9e0d9667760f1175/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/76536794d0d2e42ba1c9bf5cf2008e4661e51b787d8c156e9e0d9667760f1175/hostname",
+        "HostsPath": "/var/lib/docker/containers/76536794d0d2e42ba1c9bf5cf2008e4661e51b787d8c156e9e0d9667760f1175/hosts",
+        "LogPath": "/var/lib/docker/containers/76536794d0d2e42ba1c9bf5cf2008e4661e51b787d8c156e9e0d9667760f1175/76536794d0d2e42ba1c9bf5cf2008e4661e51b787d8c156e9e0d9667760f1175-json.log",
+        "Name": "/mediastack-plex",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/home/lou/media/tv:/media/tv:ro",
+                "/home/lou/media/music:/media/music:ro",
+                "/home/lou/media/audiobooks:/media/audiobooks:ro",
+                "lou-media-stack_plex_transcode:/transcode:rw",
+                "lou-media-stack_plex_config:/config:rw",
+                "/home/lou/media/movies:/media/movies:ro"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "lou-media-stack_mediastack",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "unless-stopped",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap",
+                "/sys/devices/system/cpu/cpu0/thermal_throttle",
+                "/sys/devices/system/cpu/cpu1/thermal_throttle",
+                "/sys/devices/system/cpu/cpu2/thermal_throttle",
+                "/sys/devices/system/cpu/cpu3/thermal_throttle",
+                "/sys/devices/system/cpu/cpu4/thermal_throttle",
+                "/sys/devices/system/cpu/cpu5/thermal_throttle",
+                "/sys/devices/system/cpu/cpu6/thermal_throttle",
+                "/sys/devices/system/cpu/cpu7/thermal_throttle",
+                "/sys/devices/system/cpu/cpu8/thermal_throttle",
+                "/sys/devices/system/cpu/cpu9/thermal_throttle",
+                "/sys/devices/system/cpu/cpu10/thermal_throttle",
+                "/sys/devices/system/cpu/cpu11/thermal_throttle",
+                "/sys/devices/system/cpu/cpu12/thermal_throttle",
+                "/sys/devices/system/cpu/cpu13/thermal_throttle",
+                "/sys/devices/system/cpu/cpu14/thermal_throttle",
+                "/sys/devices/system/cpu/cpu15/thermal_throttle",
+                "/sys/devices/system/cpu/cpu16/thermal_throttle",
+                "/sys/devices/system/cpu/cpu17/thermal_throttle",
+                "/sys/devices/system/cpu/cpu18/thermal_throttle",
+                "/sys/devices/system/cpu/cpu19/thermal_throttle",
+                "/sys/devices/system/cpu/cpu20/thermal_throttle",
+                "/sys/devices/system/cpu/cpu21/thermal_throttle",
+                "/sys/devices/system/cpu/cpu22/thermal_throttle",
+                "/sys/devices/system/cpu/cpu23/thermal_throttle",
+                "/sys/devices/system/cpu/cpu24/thermal_throttle",
+                "/sys/devices/system/cpu/cpu25/thermal_throttle",
+                "/sys/devices/system/cpu/cpu26/thermal_throttle",
+                "/sys/devices/system/cpu/cpu27/thermal_throttle",
+                "/sys/devices/system/cpu/cpu28/thermal_throttle",
+                "/sys/devices/system/cpu/cpu29/thermal_throttle",
+                "/sys/devices/system/cpu/cpu30/thermal_throttle",
+                "/sys/devices/system/cpu/cpu31/thermal_throttle"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "76536794d0d2e42ba1c9bf5cf2008e4661e51b787d8c156e9e0d9667760f1175",
+                "LowerDir": "/var/lib/docker/overlay2/d2df3318b6d09e20932735e958d53d6f3a77ca10c681b347491c8c60d407827e-init/diff:/var/lib/docker/overlay2/0d162191b2c3462f298090e4c8831760dfa4e10436a82a2266431203eafe6181/diff:/var/lib/docker/overlay2/99a842fc80cddbe4d28511e31576d9a8ebe16899b4ef065a3f92356c3c536651/diff:/var/lib/docker/overlay2/77ba15092c32ed795f7bd243c00e581111dc4b928d61835942a6095e3e5aac58/diff:/var/lib/docker/overlay2/f5bf12bddc4c12f92c2cdd06930a92bdac3f0c1296d329ca9d67b2fb4c45b949/diff:/var/lib/docker/overlay2/69b85b278c5409dad9164822aa567bb9526ccc0c4ada6299b6151f8f6e17b80f/diff:/var/lib/docker/overlay2/8dc8bc9cde35e1c5f75b98c182cf561924676ca652c1f8bf44acd87b4ab26cd4/diff",
+                "MergedDir": "/var/lib/docker/overlay2/d2df3318b6d09e20932735e958d53d6f3a77ca10c681b347491c8c60d407827e/merged",
+                "UpperDir": "/var/lib/docker/overlay2/d2df3318b6d09e20932735e958d53d6f3a77ca10c681b347491c8c60d407827e/diff",
+                "WorkDir": "/var/lib/docker/overlay2/d2df3318b6d09e20932735e958d53d6f3a77ca10c681b347491c8c60d407827e/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/home/lou/media/movies",
+                "Destination": "/media/movies",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/home/lou/media/tv",
+                "Destination": "/media/tv",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/home/lou/media/music",
+                "Destination": "/media/music",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/home/lou/media/audiobooks",
+                "Destination": "/media/audiobooks",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "volume",
+                "Name": "lou-media-stack_plex_transcode",
+                "Source": "/var/lib/docker/volumes/lou-media-stack_plex_transcode/_data",
+                "Destination": "/transcode",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            },
+            {
+                "Type": "volume",
+                "Name": "lou-media-stack_plex_config",
+                "Source": "/var/lib/docker/volumes/lou-media-stack_plex_config/_data",
+                "Destination": "/config",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "76536794d0d2",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "1900/udp": {},
+                "32400/tcp": {},
+                "32410/udp": {},
+                "32412/udp": {},
+                "32413/udp": {},
+                "32414/udp": {},
+                "32469/tcp": {},
+                "8324/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PLEX_UID=1000",
+                "PLEX_GID=1000",
+                "TZ=America/New_York",
+                "PLEX_CLAIM=claim-yJoUSZ4XTRsJU7pUUzJe",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "TERM=xterm",
+                "LANG=C.UTF-8",
+                "LC_ALL=C.UTF-8",
+                "CHANGE_CONFIG_DIR_OWNERSHIP=true",
+                "HOME=/config"
+            ],
+            "Cmd": null,
+            "Healthcheck": {
+                "Test": [
+                    "CMD-SHELL",
+                    "/healthcheck.sh || exit 1"
+                ],
+                "Interval": 5000000000,
+                "Timeout": 2000000000,
+                "Retries": 20
+            },
+            "Image": "plexinc/pms-docker",
+            "Volumes": {
+                "/config": {},
+                "/transcode": {}
+            },
+            "WorkingDir": "",
+            "Entrypoint": [
+                "/init"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "c98f2a51c0b0bddece72d886f2f2a8206e74e550ffb9be3feddbaecc019a95a8",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:0431bd2e4c2e2de5f2405df023b2a3acb7fdc6a39d55527ea963b41490578db5",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "lou-media-stack",
+                "com.docker.compose.project.config_files": "/home/lou/lou-media-stack/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/home/lou/lou-media-stack",
+                "com.docker.compose.replace": "e85140d2c23b23d5487eebea910c0eb2fe033ca5694e014127628f02fa87cc50",
+                "com.docker.compose.service": "plex",
+                "com.docker.compose.version": "2.38.2",
+                "org.opencontainers.image.created": "2025-07-03T09:54:50.566Z",
+                "org.opencontainers.image.description": "\"The Plex Media Server\"",
+                "org.opencontainers.image.licenses": "NOASSERTION",
+                "org.opencontainers.image.ref.name": "ubuntu",
+                "org.opencontainers.image.revision": "c15cb5d9bc43b1a46cd323bf2017d1f151d677d1",
+                "org.opencontainers.image.source": "https://github.com/plexinc/pms-docker",
+                "org.opencontainers.image.title": "Plex Media Server",
+                "org.opencontainers.image.url": "https://github.com/plexinc/plex-media-server",
+                "org.opencontainers.image.vendor": "Plex, GmbH",
+                "org.opencontainers.image.version": "1.41.9.9961-46083195d",
+                "traefik.enable": "true",
+                "traefik.http.routers.plex.rule": "Host(`plex.mediastack.local`)",
+                "traefik.http.routers.plex.tls": "true",
+                "traefik.http.routers.plex.tls.certresolver": "letsencrypt",
+                "traefik.http.services.plex.loadbalancer.server.port": "32400"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "8205f0ca1636ea9a268eeda1749a39883f99995a5a0632460e7e9bfcb722d701",
+            "SandboxKey": "/var/run/docker/netns/8205f0ca1636",
+            "Ports": {
+                "1900/udp": null,
+                "32400/tcp": null,
+                "32410/udp": null,
+                "32412/udp": null,
+                "32413/udp": null,
+                "32414/udp": null,
+                "32469/tcp": null,
+                "8324/tcp": null
+            },
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "lou-media-stack_mediastack": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "mediastack-plex",
+                        "plex"
+                    ],
+                    "MacAddress": "e6:ae:7a:21:5c:ba",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "b3fb64607c143030bcd11a51704e837e93e971335d48bfc90770116fa304af44",
+                    "EndpointID": "6cf937ba854370279facf0df0b4fb1e901a1386dc8105a6d5dd3ac606cdd4661",
+                    "Gateway": "172.21.0.1",
+                    "IPAddress": "172.21.0.24",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "mediastack-plex",
+                        "plex",
+                        "76536794d0d2"
+                    ]
+                }
+            }
+        }
+    }
+]

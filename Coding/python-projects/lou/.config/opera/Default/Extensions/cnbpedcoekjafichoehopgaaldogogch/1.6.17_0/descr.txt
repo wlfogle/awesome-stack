@@ -1,0 +1,43 @@
+Translate selected or entered text
+
+Automatically translate foreign texts and pages.
+
+Help to translate typed text, selected text, the active page.
+This extension uses Google Translate, Bing Translator, Yandex Translate, Promt Translator, Pragma Translator, Baidu Translator, Naver Translator, Sogou Translator, Urban Dictionary or Babylon Translator and Dictionaries (optional).
+
+How to translate text:
+1. select required text on any web page and press on extension's button.
+2. press on extension's button, enter required text in upper field and press "Translate"
+
+How to translate web page:
+1. load required web page, press on extension's button and click on "Translate active page '...'"
+2. open preferences (right click on extension's button), choose "Default target language" and "Use Translate Toolbar" => each foreign web page will have hint to translate it.
+
+How to open Translator in separate window:
+1. Click on bottom right corner icon;
+2. Hold Alt-key and click on bottom right corner icon. This method allow to setup shortcut on Desktop: Menu / More tools / Create shortcut ...
+
+You can translate UI on your language. Download list of all words ( https://docs.google.com/spreadsheets/d/1n1VMnBtj4g1hInMFWSu--Dx_KFvwappoj4xxJpdmQwY/edit?usp=sharing ) and send to me ( sailormax@inbox.lv ) edited version.
+
+
+=== rus ===
+Перевод выделенного или введенного текстов
+
+Автоматический перевод иностранного текста или страниц.
+
+Помощь в переводе введённого текста, выделенного текста, активной страницы.
+Это расширение использует Google Перевод, Bing Переводчик, Яндекс.Перевод, Promt Переводчик, Pragma Переводчик, Baidu Переводчик, Naver Переводчик, Sogou Переводчик, Urban Словарь или Переводчик и Словари от Babylon (на выбор).
+
+Как перевести текст:
+1. выделите необходимый текст на интернет странице и нажмите на кнопку расширения.
+2. нажмите кнопку расширения, введите необходимый текст в верхнем поле ввода и нажмите на кнопку "Перевести".
+
+Как перевести интернет страницу:
+1. загрузите необходимую страницу, нажмите на кнопку расширение и щелкните на "Перевести активную страницу '...'"
+2. откройте настройки расширения (правая кнопка на кнопки расширения), выберите "Язык по-умолчанию, с которого будет переводиться текст" и "Использовать панель переводчика на каждой HTTP-странице" => на каждой иностранной странице будет предложено перевести её.
+
+Как открыть переводчик в отдельном окне:
+1. нажать на иконку в нижнем правом углу переводчика;
+2. удерживая клавишу Alt, нажать на иконку в нижнем правом углу переводчика. Этот метод позволяет поставить значёк переводчика на рабочем столе: Menu / More tools / Create shortcut ...
+
+Вы можете перевести расширение на свой язык. Для этого скачайте список всех слов расширения ( https://docs.google.com/spreadsheets/d/1n1VMnBtj4g1hInMFWSu--Dx_KFvwappoj4xxJpdmQwY/edit?usp=sharing ) и отправьте мне ( sailormax@inbox.lv ) изменённую версию.

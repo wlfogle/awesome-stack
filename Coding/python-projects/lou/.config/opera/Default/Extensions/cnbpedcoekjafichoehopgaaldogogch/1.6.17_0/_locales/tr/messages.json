@@ -1,0 +1,14 @@
+{
+   "description": {
+      "message": "Seçili veya girilen metni çevir"
+   },
+   "description_hotkey": {
+      "message": "Seçili metni çevirme"
+   },
+   "description_sidebar": {
+      "message": "Girilen metni çevir"
+   },
+   "locale": {
+      "message": "tr"
+   }
+}

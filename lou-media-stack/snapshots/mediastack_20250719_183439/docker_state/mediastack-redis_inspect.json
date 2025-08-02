@@ -1,0 +1,280 @@
+[
+    {
+        "Id": "4e5105b7e1546ac092e239aeb5d90e51b089a01607d162a382f3764888fed147",
+        "Created": "2025-07-18T20:13:17.803560234Z",
+        "Path": "docker-entrypoint.sh",
+        "Args": [
+            "redis-server",
+            "--requirepass",
+            "mediastack_redis_secure_2024!"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 1414695,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2025-07-18T20:13:28.526283648Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:a87c94cbea0bb6080d2f5372884225555b7d9c0ea785c1a10edebb18b32db1ba",
+        "ResolvConfPath": "/var/lib/docker/containers/4e5105b7e1546ac092e239aeb5d90e51b089a01607d162a382f3764888fed147/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/4e5105b7e1546ac092e239aeb5d90e51b089a01607d162a382f3764888fed147/hostname",
+        "HostsPath": "/var/lib/docker/containers/4e5105b7e1546ac092e239aeb5d90e51b089a01607d162a382f3764888fed147/hosts",
+        "LogPath": "/var/lib/docker/containers/4e5105b7e1546ac092e239aeb5d90e51b089a01607d162a382f3764888fed147/4e5105b7e1546ac092e239aeb5d90e51b089a01607d162a382f3764888fed147-json.log",
+        "Name": "/mediastack-redis",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "lou-media-stack_redis_data:/data:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "lou-media-stack_mediastack",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "unless-stopped",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap",
+                "/sys/devices/system/cpu/cpu0/thermal_throttle",
+                "/sys/devices/system/cpu/cpu1/thermal_throttle",
+                "/sys/devices/system/cpu/cpu2/thermal_throttle",
+                "/sys/devices/system/cpu/cpu3/thermal_throttle",
+                "/sys/devices/system/cpu/cpu4/thermal_throttle",
+                "/sys/devices/system/cpu/cpu5/thermal_throttle",
+                "/sys/devices/system/cpu/cpu6/thermal_throttle",
+                "/sys/devices/system/cpu/cpu7/thermal_throttle",
+                "/sys/devices/system/cpu/cpu8/thermal_throttle",
+                "/sys/devices/system/cpu/cpu9/thermal_throttle",
+                "/sys/devices/system/cpu/cpu10/thermal_throttle",
+                "/sys/devices/system/cpu/cpu11/thermal_throttle",
+                "/sys/devices/system/cpu/cpu12/thermal_throttle",
+                "/sys/devices/system/cpu/cpu13/thermal_throttle",
+                "/sys/devices/system/cpu/cpu14/thermal_throttle",
+                "/sys/devices/system/cpu/cpu15/thermal_throttle",
+                "/sys/devices/system/cpu/cpu16/thermal_throttle",
+                "/sys/devices/system/cpu/cpu17/thermal_throttle",
+                "/sys/devices/system/cpu/cpu18/thermal_throttle",
+                "/sys/devices/system/cpu/cpu19/thermal_throttle",
+                "/sys/devices/system/cpu/cpu20/thermal_throttle",
+                "/sys/devices/system/cpu/cpu21/thermal_throttle",
+                "/sys/devices/system/cpu/cpu22/thermal_throttle",
+                "/sys/devices/system/cpu/cpu23/thermal_throttle",
+                "/sys/devices/system/cpu/cpu24/thermal_throttle",
+                "/sys/devices/system/cpu/cpu25/thermal_throttle",
+                "/sys/devices/system/cpu/cpu26/thermal_throttle",
+                "/sys/devices/system/cpu/cpu27/thermal_throttle",
+                "/sys/devices/system/cpu/cpu28/thermal_throttle",
+                "/sys/devices/system/cpu/cpu29/thermal_throttle",
+                "/sys/devices/system/cpu/cpu30/thermal_throttle",
+                "/sys/devices/system/cpu/cpu31/thermal_throttle"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "4e5105b7e1546ac092e239aeb5d90e51b089a01607d162a382f3764888fed147",
+                "LowerDir": "/var/lib/docker/overlay2/d4000e3516b8fac2ecd88a1716069c44271d1bf95aa5053167354ff87f147fdc-init/diff:/var/lib/docker/overlay2/ce1211914e2eb3b4abbc8c0ef5ba1480a9735584615e30a20772122b1ec58d40/diff:/var/lib/docker/overlay2/eabe7b5f39b05cb893f4345daf53721f376c4a890efe9b5ad24d883967a92a9e/diff:/var/lib/docker/overlay2/ec4a9243b4ad6a874975ad5c76491d49a59d68949de37ebbab088e6b0901c67a/diff:/var/lib/docker/overlay2/6a5e0dc54182e436803aaa4608990bc497d0e8bc0093918d12a42d09b06a2e90/diff:/var/lib/docker/overlay2/7ce28628f0e99dca68b619cbbf69b53379157c276780de67e2da7b77e01b26a3/diff:/var/lib/docker/overlay2/1e2b33c3c4cd732f6d403bb6468f2a17f13de228fba42fb20ec1d25ca40f0550/diff:/var/lib/docker/overlay2/8f29504e964bff5d722cf3de874d6080889f44813500d2f478cfaec0ce03b277/diff",
+                "MergedDir": "/var/lib/docker/overlay2/d4000e3516b8fac2ecd88a1716069c44271d1bf95aa5053167354ff87f147fdc/merged",
+                "UpperDir": "/var/lib/docker/overlay2/d4000e3516b8fac2ecd88a1716069c44271d1bf95aa5053167354ff87f147fdc/diff",
+                "WorkDir": "/var/lib/docker/overlay2/d4000e3516b8fac2ecd88a1716069c44271d1bf95aa5053167354ff87f147fdc/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "lou-media-stack_redis_data",
+                "Source": "/var/lib/docker/volumes/lou-media-stack_redis_data/_data",
+                "Destination": "/data",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "4e5105b7e154",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "6379/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "REDIS_DOWNLOAD_URL=https://github.com/redis/redis/archive/refs/tags/8.0.3.tar.gz",
+                "REDIS_DOWNLOAD_SHA=2467b9608ecbcc2c0d27397c0c2406b499b6f68bc08ac9f6380b1faf2113ae6f"
+            ],
+            "Cmd": [
+                "redis-server",
+                "--requirepass",
+                "mediastack_redis_secure_2024!"
+            ],
+            "Image": "redis:alpine",
+            "Volumes": {
+                "/data": {}
+            },
+            "WorkingDir": "/data",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "37e8e0031d558e2fff8eedbfea132e05ed5352b4a49374f7bb44d0a7c15917cf",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:a87c94cbea0bb6080d2f5372884225555b7d9c0ea785c1a10edebb18b32db1ba",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "lou-media-stack",
+                "com.docker.compose.project.config_files": "/home/lou/lou-media-stack/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/home/lou/lou-media-stack",
+                "com.docker.compose.replace": "d0777d7cf47a33b32981c5565de27af39c8b95301f33670e5cbd8f21c865ac2f",
+                "com.docker.compose.service": "redis",
+                "com.docker.compose.version": "2.38.2"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "a90f5de10f9f465c2a09c362c81b73d9731d897d1c28c95433a3e47e8b34c4d3",
+            "SandboxKey": "/var/run/docker/netns/a90f5de10f9f",
+            "Ports": {
+                "6379/tcp": null
+            },
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "lou-media-stack_mediastack": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "mediastack-redis",
+                        "redis"
+                    ],
+                    "MacAddress": "f2:4e:c2:79:46:89",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "b3fb64607c143030bcd11a51704e837e93e971335d48bfc90770116fa304af44",
+                    "EndpointID": "639f5f45b06c5b8b887fdc28fb8ecf7fcbd18cbf543cab52ecd9c97d72ab23d9",
+                    "Gateway": "172.21.0.1",
+                    "IPAddress": "172.21.0.4",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "mediastack-redis",
+                        "redis",
+                        "4e5105b7e154"
+                    ]
+                }
+            }
+        }
+    }
+]

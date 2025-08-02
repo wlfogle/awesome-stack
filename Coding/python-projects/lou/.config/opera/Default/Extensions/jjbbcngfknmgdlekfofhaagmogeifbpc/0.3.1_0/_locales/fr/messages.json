@@ -1,0 +1,5 @@
+{
+   "description": {
+      "message": "Intégration du navigateur avec JDownloader, soit en interrompant le gestionnaire de téléchargement intégré, soit à partir du menu contextuel du clic droit."
+   }
+}

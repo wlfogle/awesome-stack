@@ -1,0 +1,122 @@
+---
+#id: gazellegames
+name: GazelleGames
+identifier: ggn
+description: GazelleGames (GGn) is a private torrent tracker for GAMES
+language: en-us
+urls:
+  - https://gazellegames.net/
+privacy: private
+protocol: torrent
+supports:
+  - irc
+  - rss
+  - api
+# source: gazelle
+settings:
+  - name: authkey
+    type: secret
+    required: true
+    label: Auth key
+    help: Right click DL on a torrent and get the authkey.
+
+  - name: torrent_pass
+    type: secret
+    required: true
+    label: Torrent pass
+    help: Right click DL on a torrent and get the torrent_pass.
+
+  - name: api_key
+    type: secret
+    required: true
+    label: API Key
+    help: Username -> Edit / Settings -> API Keys
+
+# api:
+#   url: https://gazellegames.net/api.php
+#   type: json
+#   limits:
+#     max: 5
+#     per: 10 seconds
+#   settings:
+#     - name: api_key
+#       type: secret
+#       label: API Key
+#       help: Username -> Edit / Settings -> API Keys
+
+irc:
+  network: GGn
+  server: irc.gazellegames.net
+  port: 7000
+  tls: true
+  channels:
+    - "#GGn-Announce"
+  announcers:
+    - Vertigo
+  settings:
+    - name: nick
+      type: text
+      required: true
+      label: Nick
+      help: Bot nick. Eg. user|bot
+
+    - name: auth.account
+      type: text
+      required: true
+      label: NickServ Account
+      help: NickServ account. Make sure to group your user and bot.
+
+    - name: auth.password
+      type: secret
+      required: true
+      label: NickServ Password
+      help: NickServ password
+
+    - name: invite_command
+      type: secret
+      default: "Vertigo ENTER #GGn-Announce USERNAME IRCKEY"
+      required: true
+      label: Invite command
+      help: Invite auth with Vertigo. Replace USERNAME and IRCKEY.
+
+  parse:
+    type: single
+    lines:
+      - tests:
+        - line: 'Uploader :-: Nintendo 3DS :-: Cool.Game.KOR.3DS-BigBlueBox in Cool Game [2013] ::Korean, Multi-Region, Scene:: https://gazellegames.net/torrents.php?torrentid=00000 - adventure, role_playing_game, nintendo;'
+          expect:
+            uploader: Uploader
+            category: Nintendo 3DS
+            torrentName: Cool.Game.KOR.3DS-BigBlueBox in Cool Game
+            year: "2013"
+            releaseTags: Korean, Multi-Region, Scene
+            freeleech: ""
+            baseUrl: https://gazellegames.net/
+            torrentId: "00000"
+            tags: adventure, role_playing_game, nintendo
+        - line: 'Uploader :-: Windows :-: Other.Game-HI2U in Other Game [2016] ::English, Scene:: FREELEECH! :: https://gazellegames.net/torrents.php?torrentid=00000 - action, adventure, casual, indie, role.playing.game;'
+          expect:
+            uploader: Uploader
+            category: Windows
+            torrentName: Other.Game-HI2U in Other Game
+            year: "2016"
+            releaseTags: English, Scene
+            freeleech: FREELEECH
+            baseUrl: https://gazellegames.net/
+            torrentId: "00000"
+            tags: action, adventure, casual, indie, role.playing.game
+        pattern: '^(.+) :-: (.+) :-: (.+) \[(\d+)?\] ::(.+?)?:: ?(.+?)?(?:! ::)? (https?:\/\/[^\/]+\/)torrents.php\?torrentid=(\d+)(?: - )?([a-zA-Z0-9, _\.]+)?;?(?:[ :]*(?:[NSFW]*)?[! :]*)?$'
+        vars:
+          - uploader
+          - category
+          - torrentName
+          - year
+          - releaseTags
+          - freeleech
+          - baseUrl
+          - torrentId
+          - tags
+
+    match:
+      infourl: "/torrents.php?torrentid={{ .torrentId }}"
+      torrenturl: "/torrents.php?action=download&id={{ .torrentId }}&authkey={{ .authkey }}&torrent_pass={{ .torrent_pass }}"

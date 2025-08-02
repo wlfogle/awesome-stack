@@ -1,0 +1,113 @@
+# 🚀 EXPANDED VOICE COMMANDS FOR COMPLETE MEDIA STACK
+# =====================================================
+# Contains Alexa scripts for interacting or querying media stack
+
+# ===============================
+# DOWNLOAD MANAGEMENT COMMANDS
+# ===============================
+check_downloads:
+  alias: "Check Download Status"
+  sequence:
+    - service: notify.alexa_notifications
+      data:
+        title: "📥 Download Stack Status"
+        message:  >
+          Sonarr: {{ states('sensor.sonarr_status') }} | Radarr: {{ states('sensor.radarr_status') }}
+
+pause_downloads:
+  alias: "Pause All Downloads"
+  sequence:
+    - service: rest_command.qbittorrent_pause
+    - service: rest_command.deluge_pause
+    - service: notify.alexa_notifications
+      data:
+        title: "⏸️ Downloads Paused"
+        message: "qBittorrent and Deluge downloads have been paused."
+
+resume_downloads:
+  alias: "Resume All Downloads"
+  sequence:
+    - service: rest_command.qbittorrent_resume
+    - service: rest_command.deluge_resume
+    - service: notify.alexa_notifications
+      data:
+        title: "▶️ Downloads Resumed"
+        message: "qBittorrent and Deluge downloads have been resumed."
+
+check_arr_apps:
+  alias: "Check Arr App Status"
+  sequence:
+    - service: notify.alexa_notifications
+      data:
+        title: "🛰️ Arr App Status"
+        message:  >
+          Sonarr: {{ states('sensor.sonarr_status') }}
+          Radarr: {{ states('sensor.radarr_status') }}
+
+# ===============================
+# MEDIA SERVER CONTROL COMMANDS
+# ===============================
+restart_plex:
+  alias: "Restart Plex Server"
+  sequence:
+    - service: rest_command.restart_plex_container
+    - service: notify.alexa_notifications
+      data:
+        title: "🔄 Restarting Plex"
+        message: "Plex container is restarting... please wait a moment."
+
+restart_jellyfin:
+  alias: "Restart Jellyfin Server"
+  sequence:
+    - service: rest_command.restart_jellyfin_container
+    - service: notify.alexa_notifications
+      data:
+        title: "🔄 Restarting Jellyfin"
+        message: "Jellyfin container is restarting... please wait a moment."
+
+# ===============================
+# AI SERVICES COMMANDS
+# ===============================
+restart_ai_services:
+  alias: "Restart AI Services"
+  sequence:
+    - service: rest_command.restart_ai_container
+    - service: notify.alexa_notifications
+      data:
+        title: "🔄 Restarting AI Services"
+        message: "AI container is restarting..."
+
+# ===============================
+# LIFESTYLE MODE COMMANDS
+# ===============================
+gaming_mode:
+  alias: "Gaming Mode"
+  sequence:
+    - service: notify.alexa_notifications
+      data:
+        title: "🎮 Gaming Mode Activated"
+        message: "Optimizing system for gaming..."
+    - service: script.pause_all_media
+    - service: rest_command.stop_tdarr_node
+    - delay: '00:00:03'
+    - service: notify.alexa_notifications
+      data:
+        title: "✅ Gaming Mode Ready"
+        message: "System optimized for gaming. Media paused, encoding stopped."
+
+maintenance_mode:
+  alias: "Maintenance Mode"
+  sequence:
+    - service: notify.alexa_notifications
+      data:
+        title: "🔧 Maintenance Mode"
+        message: "Stopping non-essential services..."
+    - service: rest_command.stop_all_arr_apps
+    - service: rest_command.stop_download_clients
+    - service: rest_command.stop_media_servers
+    - delay: '00:00:10'
+    - service: notify.alexa_notifications
+      data:
+        title: "✅ Maintenance Mode Active"
+        message: "Non-essential services stopped. System ready for maintenance."
+

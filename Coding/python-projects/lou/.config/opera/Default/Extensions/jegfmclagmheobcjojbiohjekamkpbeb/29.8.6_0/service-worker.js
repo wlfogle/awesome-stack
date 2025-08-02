@@ -1,0 +1,1 @@
+"use strict";!function(){self;importScripts("/scripts/alg-basics.js","/scripts/background.js")}();

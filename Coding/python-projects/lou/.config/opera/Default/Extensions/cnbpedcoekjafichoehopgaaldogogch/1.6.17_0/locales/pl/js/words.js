@@ -1,0 +1,126 @@
+// Pollish
+var EXT_LOCALE = "pl";
+
+var WORDS = {
+	// popup
+	btnTranslate:				"Przetłumacz",
+	btnClear:					"Wyczyść",
+	txtUse:						"użyj:",
+	txtBackTranslation:			"tłumaczenie powrotem",
+	txtTranslateActivePage:		"Przetłumacz aktywną stronę",
+	optAutoDetect:				"Automatycznie wykrywanie",
+	optNone:					"nic",
+	lnkSettingsPage:			"ustawienia",
+
+	txtRegistration:			"Rejestracja",
+	txtUnregisteredMode:		"**Tryb niezarejestrowany**",
+	txtUnregisteredModeDetails:	"**Tryb niezarejestrowany pomaga tłumaczyć tylko pojedyncze słowa**\nPo rejestracji będziesz miał:\n- brak tej wiadomości i ewentualne dodatkowe reklamy w wyszukiwarkach;\n- tekst-wobec-Przemówienie, w tył tłumaczenie, test japoński i Koreańczyk IME;\n- przyszłe nowe funkcje.\n\nJeśli nic z listy, czego potrzebujesz, rejestracja nie jest wymagana.",
+	txtVerify:					"Kliknij tutaj aby się zarejestrować",
+
+	cmTranslateIt:				"Przetłumacz to",
+	cmTranslatePage:			"Przetłumacz stronę",
+
+	// hints
+	hntFullExchange:			"Shift + Kliknięcie – zamiana",
+	hntTranslate:				"Ctrl + Enter – przetłumacz",
+	hntReTranslate:				"Shift + Zmiana – ponownie tłumaczyć przez wybrany serwis",
+	hntVocalize:				"artykułować",
+	hntPutInTheDictionary:		"umieść w słowniku",
+	hntRemoveFromTheDictionary:	"usuń ze słownika",
+	hntCopy:					"kopiuj",
+	hntPaste:					"wklej skopiowany tekst (Shift + Click = wklej i przetłumacz)",
+	hntMaximize:				"Alt + Kliknięcie - otwórz w nowej karcie",
+
+	// services
+	byGoogle:					"Google tłumacz",
+	byBing:						"Microsoft tłumacz",
+	byYandex:					"Yandex tłumacz",
+	byPromt:					"Promt tłumacz",
+	byPragma:					"Pragma tłumacz",
+	byBaidu:					"Baidu tłumacz",
+	byNaver:					"Naver tłumacz",
+	bySogou:					"Sogou tłumacz",
+	bySystran:					"Systran tłumacz",
+	byBabylon:					"Babylon tłumacz",
+	byBabylonDictionaries:		"Babylon słowniki",
+	byLingvo:					"Lingvo słownik",
+	byGlosbe:					"Glosbe tłumacz",
+	byUrban:					"Urban słownik",
+	byIbm:						"IBM tłumacz",
+	byApertium:					"Apertium tłumacz",
+	byDeepl:					"DeepL tłumacz",
+
+	tbByGoogle:					"przez Tłumacz Google",
+	tbByBing:					"przez Tłumacz Microsoft",
+	tbByYandex:					"przez Tłumacz Yandex",
+	tbByPromt:					"przez Tłumacz Promt",
+
+	// messages
+	msgError:					"błąd",
+	msgErrorCode:				"Kod błędu",
+	msgUnknownSourceLng:		"nieobsługiwany język źródłowy",
+	msgUnknownTargetLng:		"nieobsługiwany język docelowy",
+	msgUnknownLng:				"nie obsługiwany język",
+	msgExample:					"przykład",
+	msgExamples:				"przykłady",
+	msgAlternatives:			"alternatywy",
+
+	// dictionary
+	txtDictionary:				"słownik",
+	linkRemove:					"usunąć",
+	txtUsePersonalDictionary:	"Używaj osobistego słownika",
+	txtShow:					"pokaż",
+	txtHide:					"ukryć",
+
+	// options
+	txtOptionsTitle:			"Ustawienia tłumacza",
+	txtMadeBy:					"Stworzone przez",
+	linkFeedback:				"Raport o błędach / Opinie",
+	hdrDefaultSourceLang:		"Domyślny język źródłowy",
+	hdrDefaultTargetLang:		"Domyślny język docelowy",
+	labelAlwaysUseDefTargetLang:"zawsze używaj domyślnego języka docelowego",
+	labelDefTargetLang2:		"kiedy język źródłowy = pierwszy domyślny język docelowy",
+	hdrMaxStoredLangPairs:		"Maksymalna liczba przechowywanych par języków",
+	hdrTranslateBtnPosition:	"Pozycja przycisku \"Tłumacz\"",
+	txtAtRight:					"po prawej",
+	txtAtLeft:					"po lewej",
+	txtInvertButons:			"zamiana przycisków miejscami",
+	hdrTextareaFont:			"Czcionka Textarea",
+	hdrUITheme:					"Użyj jasnego lub ciemnego motywu",
+	optLight:					"Światło",
+	optDark:					"Ciemny",
+	optDefault:					"Domyślnie",
+	hdrIconTheme:				"Motyw ikon",
+	wrnTextareaFont:			"Konkretne czcionki można konfigurować w <a href='javascript:;'>ustawieniach</a> przeglądarki.",
+	hdrSetupPopupHotkey:		"Konfiguracja skrótu popup",
+	btnSetupPopupHotkey:		"Otwarte hotkeys konfigurator",
+	hdrUseTranslateToolbar:		"Używaj Paska Tłumaczenia na każdej stronie",
+	hdrAdditKnownLangs:			"Nie pokazuj paska narzędzi Tłumacz dla języków (oprócz domyślnego języka docelowego)",
+	hdrUseContextMenuForPages:	"Użycie menu kontekstowego dla stron",
+	hdrBingPrivateKey:			"Tłumacz Bing prywatny dostęp",
+	txtBingClientId:			"Klienta ID:",
+	txtBingClientSecret:		"Klienta Sekret:",
+	hintBingPrivateKey:			"Jeśli chcesz być niezależna od blokowalnych klucze publiczne, można ustawić własne klucze prywatne.<br />Mogą być odebrane z tutaj:",
+	optDisabled:				"Wyłączone",
+	wrnUseTranslateToolbar:		"<b>Uwaga!</b> W celu wykrycia języka strony, do tłumacz zostanie wysłany fragment źródłowy strony!<br />Wyjątki: strony z określonym językiem.",
+	hdrAllowedProviders:		"Dozwoleni dostawcy tłumaczeń",
+	hdrOtherOptions:			"Pozostałe opcje",
+	txtOpenNewTabsNextToActive:	"Otwieraj nowe karty obok aktywnej",
+	txtRememberLastTranslation:	"Zapamiętaj ostatnie tłumaczenie",
+	txtUseTextToSpeech:			"Używaj wymowy tekstu",
+	txtUseYellowMarker:			"Używaj żółtego znacznika jako ostrzeżenia o pobraniu zaznaczonego tekstu",
+	txtOutputExtensionButton:	"Pokazuj przycisk rozszerzenia na pasku narzędzi",
+	txtUseEnterToTranslate:		"Użyj \"Enter\" klucz do przetłumaczenia",
+	txtUseSelectionContextMenu:	"Użyj menu kontekstowego wyboru tekstu",
+	txtUseOldSkin:				"Użyj starego stylu wizualnego",
+	txtUseBgProcess:			"Użyj procesu w tle (wymagają ponownego uruchomienia przeglądarki)",
+
+	txtUseGoogleCn:				"Używaj google.com.hk (w przypadkach, gdy blok zapora google.com)",
+
+	txtYouCanUseMyOtherProducts:"Możesz również spróbować moich innych produktów:",
+	txtMyCalendarExensionDescr:	"rozszerzenie kalendarza dla Opery",
+	txtMyWebanketaServiceDescr:	"darmowe tworzenie ankiet, badań, testów i głosowań!",
+
+	txtPoweredByOpera:			"Wspierane przez przeglądarkę Opera"
+};
+//	translated by odie2 (Maciej Gryniuk - http://maciej-gryniuk.tk/)

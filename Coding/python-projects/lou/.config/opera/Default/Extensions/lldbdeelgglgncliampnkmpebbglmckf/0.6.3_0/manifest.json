@@ -1,0 +1,37 @@
+{
+   "action": {
+   },
+   "background": {
+      "service_worker": "worker.js"
+   },
+   "commands": {
+      "_execute_action": {
+      }
+   },
+   "default_locale": "en",
+   "description": "__MSG_description__",
+   "developer": {
+      "name": "lunu-bounir"
+   },
+   "homepage_url": "https://webextension.org/listing/allow-right-click.html",
+   "icons": {
+      "128": "/data/icons/128.png",
+      "16": "/data/icons/16.png",
+      "256": "/data/icons/256.png",
+      "32": "/data/icons/32.png",
+      "48": "/data/icons/48.png",
+      "512": "/data/icons/512.png",
+      "64": "/data/icons/64.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzqQd6Uz4rUzBkrtpa9drGLC2i2xd+a2EqfBsEvLLczNjciUnINuanuxc2Po5+IUjAsGO6cnxCs8bgocsRLeqy1kjO3rsXCn/RSu1CgGiU67a0kpqZDE2V20rNWTgV/ZJk2bDwUfKc66HlScPdAlHcJsablCLqhUR95qf1WcG/v02yTMyTsaxC6vfTzeY8/mWUAO+I5rIOUdOKmuwSuP1bf28p6TS9d91gKGZEaHjjeTcB8aIjjbPzU6Q6kN6FKKxgOq8WJBfQCYKV4i2Z7G38o2DCSWynWnA9GFIEI3PIyk+VqqnyFT+ty8NwlbMnT19jPwPG2tOOqxpOjMicZrXQwIDAQAB",
+   "manifest_version": 3,
+   "name": "Allow Right-Click",
+   "optional_host_permissions": [ "*://*/*" ],
+   "options_ui": {
+      "open_in_tab": true,
+      "page": "/data/options/index.html"
+   },
+   "permissions": [ "storage", "activeTab", "scripting", "contextMenus", "notifications" ],
+   "update_url": "https://extension-updates.opera.com/api/omaha/update/",
+   "version": "0.6.3"
+}

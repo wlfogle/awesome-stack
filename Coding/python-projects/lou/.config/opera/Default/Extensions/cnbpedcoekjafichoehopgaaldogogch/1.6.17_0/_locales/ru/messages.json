@@ -1,0 +1,14 @@
+{
+   "description": {
+      "message": "Перевод выделенного или введенного текстов"
+   },
+   "description_hotkey": {
+      "message": "Перевод выделенного текста"
+   },
+   "description_sidebar": {
+      "message": "Перевод введенного текста"
+   },
+   "locale": {
+      "message": "ru"
+   }
+}

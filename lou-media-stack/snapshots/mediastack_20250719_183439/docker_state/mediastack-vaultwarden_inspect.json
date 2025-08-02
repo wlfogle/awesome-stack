@@ -1,0 +1,352 @@
+[
+    {
+        "Id": "d4382909c5a70238eac7c9284919ca2d2aaf57799f6106f2b7363ab727a16a7c",
+        "Created": "2025-07-18T20:13:17.803927172Z",
+        "Path": "/start.sh",
+        "Args": [],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 1415320,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2025-07-18T20:13:29.094844949Z",
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "Health": {
+                "Status": "healthy",
+                "FailingStreak": 0,
+                "Log": [
+                    {
+                        "Start": "2025-07-19T18:29:40.089588001-04:00",
+                        "End": "2025-07-19T18:29:40.135023253-04:00",
+                        "ExitCode": 0,
+                        "Output": "\"2025-07-19T22:29:40.133858Z\""
+                    },
+                    {
+                        "Start": "2025-07-19T18:30:40.136731812-04:00",
+                        "End": "2025-07-19T18:30:40.184459294-04:00",
+                        "ExitCode": 0,
+                        "Output": "\"2025-07-19T22:30:40.183117Z\""
+                    },
+                    {
+                        "Start": "2025-07-19T18:31:40.184766897-04:00",
+                        "End": "2025-07-19T18:31:40.229622743-04:00",
+                        "ExitCode": 0,
+                        "Output": "\"2025-07-19T22:31:40.228134Z\""
+                    },
+                    {
+                        "Start": "2025-07-19T18:32:40.230894068-04:00",
+                        "End": "2025-07-19T18:32:40.266191654-04:00",
+                        "ExitCode": 0,
+                        "Output": "\"2025-07-19T22:32:40.265197Z\""
+                    },
+                    {
+                        "Start": "2025-07-19T18:33:40.266529525-04:00",
+                        "End": "2025-07-19T18:33:40.316339264-04:00",
+                        "ExitCode": 0,
+                        "Output": "\"2025-07-19T22:33:40.315024Z\""
+                    }
+                ]
+            }
+        },
+        "Image": "sha256:032fced6c02ed83d6a5da88a2c629de425788ce1c6cc45775766d7cfbeb9f054",
+        "ResolvConfPath": "/var/lib/docker/containers/d4382909c5a70238eac7c9284919ca2d2aaf57799f6106f2b7363ab727a16a7c/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/d4382909c5a70238eac7c9284919ca2d2aaf57799f6106f2b7363ab727a16a7c/hostname",
+        "HostsPath": "/var/lib/docker/containers/d4382909c5a70238eac7c9284919ca2d2aaf57799f6106f2b7363ab727a16a7c/hosts",
+        "LogPath": "/var/lib/docker/containers/d4382909c5a70238eac7c9284919ca2d2aaf57799f6106f2b7363ab727a16a7c/d4382909c5a70238eac7c9284919ca2d2aaf57799f6106f2b7363ab727a16a7c-json.log",
+        "Name": "/mediastack-vaultwarden",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "lou-media-stack_vaultwarden_data:/data:rw",
+                "/home/lou/lou-media-stack/Vaultwarden_Self_Host/data/ssl:/ssl:ro"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "lou-media-stack_mediastack",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "unless-stopped",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap",
+                "/sys/devices/system/cpu/cpu0/thermal_throttle",
+                "/sys/devices/system/cpu/cpu1/thermal_throttle",
+                "/sys/devices/system/cpu/cpu2/thermal_throttle",
+                "/sys/devices/system/cpu/cpu3/thermal_throttle",
+                "/sys/devices/system/cpu/cpu4/thermal_throttle",
+                "/sys/devices/system/cpu/cpu5/thermal_throttle",
+                "/sys/devices/system/cpu/cpu6/thermal_throttle",
+                "/sys/devices/system/cpu/cpu7/thermal_throttle",
+                "/sys/devices/system/cpu/cpu8/thermal_throttle",
+                "/sys/devices/system/cpu/cpu9/thermal_throttle",
+                "/sys/devices/system/cpu/cpu10/thermal_throttle",
+                "/sys/devices/system/cpu/cpu11/thermal_throttle",
+                "/sys/devices/system/cpu/cpu12/thermal_throttle",
+                "/sys/devices/system/cpu/cpu13/thermal_throttle",
+                "/sys/devices/system/cpu/cpu14/thermal_throttle",
+                "/sys/devices/system/cpu/cpu15/thermal_throttle",
+                "/sys/devices/system/cpu/cpu16/thermal_throttle",
+                "/sys/devices/system/cpu/cpu17/thermal_throttle",
+                "/sys/devices/system/cpu/cpu18/thermal_throttle",
+                "/sys/devices/system/cpu/cpu19/thermal_throttle",
+                "/sys/devices/system/cpu/cpu20/thermal_throttle",
+                "/sys/devices/system/cpu/cpu21/thermal_throttle",
+                "/sys/devices/system/cpu/cpu22/thermal_throttle",
+                "/sys/devices/system/cpu/cpu23/thermal_throttle",
+                "/sys/devices/system/cpu/cpu24/thermal_throttle",
+                "/sys/devices/system/cpu/cpu25/thermal_throttle",
+                "/sys/devices/system/cpu/cpu26/thermal_throttle",
+                "/sys/devices/system/cpu/cpu27/thermal_throttle",
+                "/sys/devices/system/cpu/cpu28/thermal_throttle",
+                "/sys/devices/system/cpu/cpu29/thermal_throttle",
+                "/sys/devices/system/cpu/cpu30/thermal_throttle",
+                "/sys/devices/system/cpu/cpu31/thermal_throttle"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "d4382909c5a70238eac7c9284919ca2d2aaf57799f6106f2b7363ab727a16a7c",
+                "LowerDir": "/var/lib/docker/overlay2/626c74a402b334bc5beee0a6896a779ebf89ae821adc2f16f04656789d4acf5e-init/diff:/var/lib/docker/overlay2/fb1efb0455e32a3cfd452fa57d5076abdb06605b14070500ae138a172f370ea6/diff:/var/lib/docker/overlay2/5f327ece0250fff70f16901691c21d94c00ffbc12cb8acca02367c450e3acf84/diff:/var/lib/docker/overlay2/1a2c8de065edf3772f781917b7fbf88467e965e20a9a7069fa3750d672e9fcdd/diff:/var/lib/docker/overlay2/71a49cbf6ecc44b06b8935e559c14a3429cbd5734c844f3cf27fc2d58f58e5bf/diff:/var/lib/docker/overlay2/3cf86278981d909e28c72ac5284b178d861ef6caa76fe46427d7d613dcf2efe7/diff",
+                "MergedDir": "/var/lib/docker/overlay2/626c74a402b334bc5beee0a6896a779ebf89ae821adc2f16f04656789d4acf5e/merged",
+                "UpperDir": "/var/lib/docker/overlay2/626c74a402b334bc5beee0a6896a779ebf89ae821adc2f16f04656789d4acf5e/diff",
+                "WorkDir": "/var/lib/docker/overlay2/626c74a402b334bc5beee0a6896a779ebf89ae821adc2f16f04656789d4acf5e/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/home/lou/lou-media-stack/Vaultwarden_Self_Host/data/ssl",
+                "Destination": "/ssl",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "volume",
+                "Name": "lou-media-stack_vaultwarden_data",
+                "Source": "/var/lib/docker/volumes/lou-media-stack_vaultwarden_data/_data",
+                "Destination": "/data",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "d4382909c5a7",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "DOMAIN=https://vaultwarden.mediastack.local",
+                "LOG_LEVEL=warn",
+                "INVITATIONS_ALLOWED=true",
+                "SHOW_PASSWORD_HINT=false",
+                "ADMIN_TOKEN=",
+                "TZ=America/New_York",
+                "SIGNUPS_ALLOWED=true",
+                "ROCKET_PORT=80",
+                "WEBSOCKET_ENABLED=true",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "ROCKET_PROFILE=release",
+                "ROCKET_ADDRESS=0.0.0.0",
+                "DEBIAN_FRONTEND=noninteractive"
+            ],
+            "Cmd": [
+                "/start.sh"
+            ],
+            "Healthcheck": {
+                "Test": [
+                    "CMD",
+                    "/healthcheck.sh"
+                ],
+                "Interval": 60000000000,
+                "Timeout": 10000000000
+            },
+            "Image": "vaultwarden/server:latest",
+            "Volumes": {
+                "/data": {}
+            },
+            "WorkingDir": "/",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "13aa21df4e1b9e0f9d8e00573dd489b93b3916c87d65e8ba47d97415bf43780a",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:032fced6c02ed83d6a5da88a2c629de425788ce1c6cc45775766d7cfbeb9f054",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "lou-media-stack",
+                "com.docker.compose.project.config_files": "/home/lou/lou-media-stack/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/home/lou/lou-media-stack",
+                "com.docker.compose.replace": "b8915d56678798edc69751f035e30f25cc1bb1cfe7ad7250b7c7049508cec666",
+                "com.docker.compose.service": "vaultwarden",
+                "com.docker.compose.version": "2.38.2",
+                "org.opencontainers.image.created": "2025-05-26T21:22:55+00:00",
+                "org.opencontainers.image.description": "Unofficial Bitwarden compatible server written in Rust - 1.34.1",
+                "org.opencontainers.image.documentation": "https://github.com/dani-garcia/vaultwarden/wiki",
+                "org.opencontainers.image.licenses": "AGPL-3.0-only",
+                "org.opencontainers.image.revision": "53f58b14d5626abfcefd52586ec9e78d067a2334",
+                "org.opencontainers.image.source": "https://github.com/dani-garcia/vaultwarden",
+                "org.opencontainers.image.url": "https://github.com/dani-garcia/vaultwarden",
+                "org.opencontainers.image.version": "1.34.1",
+                "traefik.enable": "true",
+                "traefik.http.routers.vaultwarden-websocket.rule": "Host(`vaultwarden.mediastack.local`) && Path(`/notifications/hub`)",
+                "traefik.http.routers.vaultwarden-websocket.tls": "true",
+                "traefik.http.routers.vaultwarden-websocket.tls.certresolver": "letsencrypt",
+                "traefik.http.routers.vaultwarden.rule": "Host(`vaultwarden.mediastack.local`)",
+                "traefik.http.routers.vaultwarden.tls": "true",
+                "traefik.http.routers.vaultwarden.tls.certresolver": "letsencrypt",
+                "traefik.http.services.vaultwarden-websocket.loadbalancer.server.port": "3012",
+                "traefik.http.services.vaultwarden.loadbalancer.server.port": "80"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "e0b31d57fc1cc3ea8914c1050f8033f918ee6a5f5aeaddf88f9c11465800654c",
+            "SandboxKey": "/var/run/docker/netns/e0b31d57fc1c",
+            "Ports": {
+                "80/tcp": null
+            },
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "lou-media-stack_mediastack": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "mediastack-vaultwarden",
+                        "vaultwarden"
+                    ],
+                    "MacAddress": "4a:78:98:4c:39:74",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "b3fb64607c143030bcd11a51704e837e93e971335d48bfc90770116fa304af44",
+                    "EndpointID": "9f6136f6f69c27b68c269a1cd8aeda33f7243f6c4da001d8e3861e7caf15e2d2",
+                    "Gateway": "172.21.0.1",
+                    "IPAddress": "172.21.0.10",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "mediastack-vaultwarden",
+                        "vaultwarden",
+                        "d4382909c5a7"
+                    ]
+                }
+            }
+        }
+    }
+]

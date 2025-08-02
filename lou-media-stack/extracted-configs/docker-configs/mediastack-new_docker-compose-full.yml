@@ -1,0 +1,902 @@
+networks:
+  mediastack:
+    name: mediastack
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: ${DOCKER_SUBNET:?err}
+        gateway: ${DOCKER_GATEWAY:?err}
+
+services:
+
+  # PostgreSQL - Database Server
+  postgresql:
+    image: postgres:latest
+    container_name: postgresql
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+      start_period: 20s
+      interval: 30s
+      retries: 5
+      timeout: 5s
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/postgresql:/var/lib/postgresql/data
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - POSTGRES_DB=${POSTGRES_DB:-authentik}
+      - POSTGRES_USER=${POSTGRES_USER:-authentik}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+
+  # Valkey (Redis) - High Performance Data Structure Server
+  valkey:
+    image: valkey/valkey:alpine
+    container_name: valkey
+    command: --save 60 1 --loglevel warning
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD-SHELL", "valkey-cli ping | grep PONG"]
+      start_period: 20s
+      interval: 30s
+      retries: 5
+      timeout: 3s
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/valkey:/data
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+
+  # Authentik - Authentication & Authorization
+  authentik:
+    image: ghcr.io/goauthentik/server:latest
+    container_name: authentik
+    restart: unless-stopped
+    networks:
+      - mediastack
+    command: server
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - AUTHENTIK_LOG_LEVEL=info
+      - AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY:?err}
+      - AUTHENTIK_REDIS__HOST=valkey
+      - AUTHENTIK_POSTGRESQL__HOST=postgresql
+      - AUTHENTIK_POSTGRESQL__NAME=${POSTGRES_DB:-authentik}
+      - AUTHENTIK_POSTGRESQL__USER=${POSTGRES_USER:-authentik}
+      - AUTHENTIK_POSTGRESQL__PASSWORD=${POSTGRES_PASSWORD:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/authentik/media:/media
+      - ${FOLDER_FOR_DATA:?err}/authentik/templates:/templates
+    ports:
+      - "9001:9000"
+    depends_on:
+      postgresql:
+        condition: service_healthy
+      valkey:
+        condition: service_healthy
+
+  # Authentik Worker
+  authentik-worker:
+    image: ghcr.io/goauthentik/server:latest
+    container_name: authentik-worker
+    restart: unless-stopped
+    networks:
+      - mediastack
+    command: worker
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - AUTHENTIK_LOG_LEVEL=info
+      - AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY:?err}
+      - AUTHENTIK_REDIS__HOST=valkey
+      - AUTHENTIK_POSTGRESQL__HOST=postgresql
+      - AUTHENTIK_POSTGRESQL__NAME=${POSTGRES_DB:-authentik}
+      - AUTHENTIK_POSTGRESQL__USER=${POSTGRES_USER:-authentik}
+      - AUTHENTIK_POSTGRESQL__PASSWORD=${POSTGRES_PASSWORD:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/authentik/media:/media
+      - ${FOLDER_FOR_DATA:?err}/authentik/templates:/templates
+    depends_on:
+      postgresql:
+        condition: service_healthy
+      valkey:
+        condition: service_healthy
+
+  # Gluetun - VPN Client
+  gluetun:
+    image: qmcgaw/gluetun:latest
+    container_name: gluetun
+    restart: unless-stopped
+    networks:
+      - mediastack
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    ports:
+      - "8888:8888/tcp" # HTTP proxy
+      - "8388:8388/tcp" # Shadowsocks
+      - "8388:8388/udp" # Shadowsocks
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/gluetun:/gluetun
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER:-custom}
+      - VPN_TYPE=${VPN_TYPE:-wireguard}
+      - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY:?err}
+      - WIREGUARD_ADDRESSES=${WIREGUARD_ADDRESSES:-10.64.0.1/32}
+      - WIREGUARD_ENDPOINT_IP=${WIREGUARD_ENDPOINT_IP:?err}
+      - WIREGUARD_ENDPOINT_PORT=${WIREGUARD_ENDPOINT_PORT:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+
+  # Prometheus - Monitoring System
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "9090:9090"
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/prometheus:/prometheus
+      - ${FOLDER_FOR_DATA:?err}/prometheus/config:/etc/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+
+  # Grafana - Analytics & Monitoring
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "3000:3000"
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/grafana:/var/lib/grafana
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+
+  # CrowdSec - Security
+  crowdsec:
+    image: crowdsecurity/crowdsec:latest
+    container_name: crowdsec
+    restart: unless-stopped
+    networks:
+      - mediastack
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/crowdsec/config:/etc/crowdsec
+      - ${FOLDER_FOR_DATA:?err}/crowdsec/data:/var/lib/crowdsec/data
+      - /var/log:/var/log:ro
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - COLLECTIONS=crowdsecurity/nginx crowdsecurity/base-http-scenarios
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+
+  # Heimdall - Dashboard
+  heimdall:
+    image: lscr.io/linuxserver/heimdall:latest
+    container_name: heimdall
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/heimdall:/config
+    ports:
+      - "2080:80"
+    restart: unless-stopped
+    networks:
+      - mediastack
+
+  # Jellyseerr - Request Management for Jellyfin
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/jellyseerr:/app/config
+    ports:
+      - "5055:5055"
+    restart: unless-stopped
+    networks:
+      - mediastack
+
+  # Homarr - Modern Dashboard
+  homarr:
+    image: ghcr.io/ajnart/homarr:latest
+    container_name: homarr
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/homarr:/app/data/configs
+      - ${FOLDER_FOR_DATA:?err}/homarr/icons:/app/public/icons
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "7575:7575"
+    restart: unless-stopped
+    networks:
+      - mediastack
+
+  # Readarr - Books and Audiobooks
+  readarr:
+    image: lscr.io/linuxserver/readarr:develop
+    container_name: readarr
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "8787:8787"
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/readarr:/config
+      - ${FOLDER_FOR_MEDIA:?err}:/data
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+
+  # Mylar - Comics
+  mylar:
+    image: lscr.io/linuxserver/mylar3:latest
+    container_name: mylar
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "8090:8090"
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/mylar:/config
+      - ${FOLDER_FOR_MEDIA:?err}:/data
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+
+  # Whisparr - Adult Content
+  whisparr:
+    image: ghcr.io/hotio/whisparr:latest
+    container_name: whisparr
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "6969:6969"
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/whisparr:/config
+      - ${FOLDER_FOR_MEDIA:?err}:/data
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+
+  # Portainer - Docker Management
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${FOLDER_FOR_DATA:?err}/portainer:/data
+    environment:
+      - TZ=${TIMEZONE:?err}
+
+  # Jellyfin Media Server
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "8096:8096"
+      - "8920:8920"
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/jellyfin:/config
+      - ${FOLDER_FOR_MEDIA:?err}/media:/data/media
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+
+  # Radarr - Movie Management
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "7878:7878"
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/radarr:/config
+      - ${FOLDER_FOR_MEDIA:?err}:/data
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+
+  # Sonarr - TV Series Management
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "8989:8989"
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/sonarr:/config
+      - ${FOLDER_FOR_MEDIA:?err}:/data
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+
+  # Jackett - Indexer Management
+  jackett:
+    image: lscr.io/linuxserver/jackett:latest
+    container_name: jackett
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "9117:9117"
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/jackett:/config
+      - ${FOLDER_FOR_DATA:?err}/jackett/downloads:/downloads
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - AUTO_UPDATE=true
+
+  # Deluge - Torrent Client
+  deluge:
+    image: lscr.io/linuxserver/deluge:latest
+    container_name: deluge
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "8112:8112"
+      - "6881:6881"
+      - "6881:6881/udp"
+      - "58846:58846"  # Daemon port
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/deluge:/config
+      - ${FOLDER_FOR_MEDIA:?err}:/data
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - DELUGE_LOGLEVEL=error
+
+  # Bazarr - Subtitles
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/bazarr:/config
+      - ${FOLDER_FOR_MEDIA:?err}/media/movies:/movies
+      - ${FOLDER_FOR_MEDIA:?err}/media/tv:/tv
+    ports:
+      - "6767:6767"
+    restart: unless-stopped
+    networks:
+      - mediastack
+
+  # Lidarr - Music
+  lidarr:
+    image: lscr.io/linuxserver/lidarr:latest
+    container_name: lidarr
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/lidarr:/config
+      - ${FOLDER_FOR_MEDIA:?err}/media/music:/music
+      - ${FOLDER_FOR_MEDIA:?err}/downloads:/downloads
+    ports:
+      - "8686:8686"
+    restart: unless-stopped
+    networks:
+      - mediastack
+
+  # Audiobookshelf - Audiobooks & eBooks
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    container_name: audiobookshelf
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/audiobookshelf:/config
+      - ${FOLDER_FOR_MEDIA:?err}/media/audiobooks:/audiobooks
+      - ${FOLDER_FOR_MEDIA:?err}/media/books:/books
+    ports:
+      - "13378:13378"
+    restart: unless-stopped
+    networks:
+      - mediastack
+
+  # Calibre-Web - eBook Management
+  calibre-web:
+    image: lscr.io/linuxserver/calibre-web:latest
+    container_name: calibre-web
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/calibre-web:/config
+      - ${FOLDER_FOR_MEDIA:?err}/media/books:/books
+    ports:
+      - "8083:8083"
+    restart: unless-stopped
+    networks:
+      - mediastack
+
+  # Plex - Alternative Media Server
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+      - VERSION=docker
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/plex:/config
+      - ${FOLDER_FOR_MEDIA:?err}/media:/media
+    ports:
+      - "32400:32400"
+    restart: unless-stopped
+    networks:
+      - mediastack
+
+  # Tdarr - Video Transcoding
+  tdarr:
+    image: ghcr.io/haveagitgat/tdarr:latest
+    container_name: tdarr
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+      - UMASK_SET=002
+      - serverIP=0.0.0.0
+      - serverPort=8266
+      - webUIPort=8265
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/tdarr/server:/app/server
+      - ${FOLDER_FOR_DATA:?err}/tdarr/configs:/app/configs
+      - ${FOLDER_FOR_DATA:?err}/tdarr/logs:/app/logs
+      - ${FOLDER_FOR_MEDIA:?err}/media:/media
+      - /tmp/tdarr:/temp
+    ports:
+      - "8265:8265"
+      - "8266:8266"
+    restart: unless-stopped
+    networks:
+      - mediastack
+
+  # Tdarr Node - Transcoding Worker
+  tdarr-node:
+    image: ghcr.io/haveagitgat/tdarr_node:latest
+    container_name: tdarr-node
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+      - UMASK_SET=002
+      - nodeName=MainNode
+      - serverIP=tdarr
+      - serverPort=8266
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/tdarr/configs:/app/configs
+      - ${FOLDER_FOR_DATA:?err}/tdarr/logs:/app/logs
+      - ${FOLDER_FOR_MEDIA:?err}/media:/media
+      - /tmp/tdarr:/temp
+    restart: unless-stopped
+    depends_on:
+      - tdarr
+    networks:
+      - mediastack
+
+  # FlareSolverr - CloudFlare Bypass
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "8191:8191"
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - LOG_LEVEL=info
+      - LOG_HTML=false
+      - CAPTCHA_SOLVER=none
+      - HEADLESS=true
+
+  # Unpackerr - Automatic Archive Extraction
+  unpackerr:
+    image: golift/unpackerr
+    container_name: unpackerr
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/unpackerr:/config
+      - ${FOLDER_FOR_MEDIA:?err}/downloads:/downloads
+    restart: unless-stopped
+    networks:
+      - mediastack
+
+  # FileBot - File Renaming
+  filebot:
+    image: rednoah/filebot:xpra
+    container_name: filebot
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/filebot:/data
+      - ${FOLDER_FOR_MEDIA:?err}/media:/media
+    ports:
+      - "5800:5800"
+    restart: unless-stopped
+    networks:
+      - mediastack
+
+  # Overseerr - Missing Media Finder
+  overseerr:
+    image: lscr.io/linuxserver/overseerr:latest
+    container_name: overseerr
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/overseerr:/config
+    ports:
+      - "5056:5055"
+    restart: unless-stopped
+    networks:
+      - mediastack
+
+  # Chromium - Web Browser
+  chromium:
+    image: lscr.io/linuxserver/chromium:latest
+    container_name: chromium
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "3001:3000"
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/chromium:/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    shm_size: "1gb"
+
+  # DDNS-Updater - Dynamic DNS
+  ddns-updater:
+    image: qmcgaw/ddns-updater:latest
+    container_name: ddns-updater
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "8100:8000"
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/ddns-updater:/updater/data
+
+  # Guacamole - Remote Desktop Gateway
+  guacamole:
+    image: guacamole/guacamole:latest
+    container_name: guacamole
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "8180:8080"
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+      - GUACD_HOSTNAME=guacd
+      - POSTGRES_DATABASE=${POSTGRES_DB:-authentik}
+      - POSTGRES_HOSTNAME=postgresql
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:?err}
+      - POSTGRES_USER=${POSTGRES_USER:-authentik}
+    depends_on:
+      - postgresql
+      - guacd
+
+  # Guacd - Guacamole Daemon
+  guacd:
+    image: guacamole/guacd:latest
+    container_name: guacd
+    restart: unless-stopped
+    networks:
+      - mediastack
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/guacd:/record
+
+  # Headplane - Headscale Web UI
+  headplane:
+    image: ghcr.io/tale/headplane:latest
+    container_name: headplane
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "4567:4567"
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/headplane:/etc/headplane
+
+  # Headscale - Tailscale Coordination Server
+  headscale:
+    image: headscale/headscale:latest
+    container_name: headscale
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "8001:8080"
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/headscale:/etc/headscale
+      - ${FOLDER_FOR_DATA:?err}/headscale/data:/var/lib/headscale
+    command: headscale serve
+
+  # Homepage - Alternative Dashboard
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "3002:3000"
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/homepage:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+  # Tailscale - VPN Mesh Networking
+  tailscale:
+    image: tailscale/tailscale:latest
+    container_name: tailscale
+    restart: unless-stopped
+    networks:
+      - mediastack
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+      - TS_AUTHKEY=${TAILSCALE_AUTHKEY:?err}
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_SERVE_CONFIG=/config
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/tailscale:/var/lib/tailscale
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv6.conf.all.forwarding=1
+
+  # Traefik - Reverse Proxy
+  traefik:
+    image: traefik:v2.10
+    container_name: traefik
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"  # Dashboard
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/traefik:/etc/traefik
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    command:
+      - --api.dashboard=true
+      - --api.insecure=true
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+
+  # Traefik-Certs-Dumper - Certificate Extraction
+  traefik-certs-dumper:
+    image: ldez/traefik-certs-dumper:latest
+    container_name: traefik-certs-dumper
+    restart: unless-stopped
+    networks:
+      - mediastack
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/traefik:/traefik:ro
+      - ${FOLDER_FOR_DATA:?err}/traefik-certs-dumper:/output
+    command: file --source /traefik/acme.json --dest /output --watch
+
+  # TVHeadend - OTA/IPTV Recording Server
+  tvheadend:
+    image: lscr.io/linuxserver/tvheadend:latest
+    container_name: tvheadend
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "9981:9981"
+      - "9982:9982"
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/tvheadend:/config
+      - ${FOLDER_FOR_MEDIA:?err}/tv/recordings:/recordings
+      - /run/udev:/run/udev:ro
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+    devices:
+      - /dev/dri:/dev/dri
+    privileged: true
+
+  # IPTV-Proxy - IPTV Channel Proxy
+  iptv-proxy:
+    image: ghcr.io/pierre-emmanuelj/iptv-proxy:latest
+    container_name: iptv-proxy
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "8088:8080"
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/iptv-proxy:/app/data
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+
+  # TVApp2 - Automatic M3U/XML updater for IPTV
+  tvapp2:
+    image: thebinaryninja/tvapp2:latest
+    container_name: tvapp2
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "4124:4124"
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/tvapp2:/config
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - WEB_PORT=4124
+      - WEB_ENCODING=deflate,br
+
+  # HDHomeRun Config - HDHomeRun Device Configuration
+  hdhomerun-config:
+    image: hdhomerun/hdhomerun_config_gui:latest
+    container_name: hdhomerun-config
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "5004:5004"
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/hdhomerun-config:/config
+    network_mode: host
+    privileged: true
+
+  # Channels DVR - Ultimate TV Recording
+  channels-dvr:
+    image: fancybits/channels-dvr:latest
+    container_name: channels-dvr
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "8089:8089"
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/channels-dvr:/channels-dvr
+      - ${FOLDER_FOR_MEDIA:?err}/tv/recordings:/var/lib/channels-dvr/recordings
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+
+  # EPG Station - Electronic Program Guide
+  epgstation:
+    image: slaska/epgstation:latest
+    container_name: epgstation
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - "8888:8888"
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/epgstation:/app/config
+      - ${FOLDER_FOR_MEDIA:?err}/tv/recordings:/app/recorded
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}

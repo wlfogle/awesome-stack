@@ -1,0 +1,149 @@
+# 🔍 FIXED SENSORS FOR MEDIA STACK MONITORING
+# ============================================
+# Compatible with current Home Assistant version
+
+# ===============================
+# PLEX MEDIA SERVER SENSORS
+# ===============================
+- platform: rest
+  name: "Plex Status"
+  resource: "http://192.168.122.230:32400/status/sessions"
+  headers:
+    X-Plex-Token: "82VPxMS_fCnqpV6N6jUa"
+    Accept: "application/json"
+  value_template: >
+    {% if value_json is defined and value_json.MediaContainer is defined %}
+      {{ value_json.MediaContainer.size | default(0) }} active streams
+    {% else %}
+      0 active streams
+    {% endif %}
+  scan_interval: 30
+  timeout: 10
+
+- platform: rest
+  name: "Plex Server Info"
+  resource: "http://192.168.122.230:32400/"
+  headers:
+    X-Plex-Token: "82VPxMS_fCnqpV6N6jUa"
+    Accept: "application/json"
+  value_template: >
+    {% if value_json is defined and value_json.MediaContainer is defined %}
+      Online ({{ value_json.MediaContainer.version | default('Unknown') }})
+    {% else %}
+      Offline
+    {% endif %}
+  json_attributes:
+    - "MediaContainer"
+  scan_interval: 300
+  timeout: 10
+
+# ===============================
+# JELLYFIN MEDIA SERVER SENSORS
+# ===============================
+- platform: rest
+  name: "Jellyfin Status"
+  resource: "http://192.168.122.231:8096/System/Info"
+  value_template: >
+    {% if value_json is defined and value_json.Version is defined %}
+      Online ({{ value_json.Version }})
+    {% else %}
+      Offline
+    {% endif %}
+  json_attributes:
+    - "SystemUpdateLevel"
+    - "OperatingSystem" 
+    - "ServerName"
+  scan_interval: 300
+  timeout: 10
+
+# ===============================
+# AI SERVICES SENSORS - OLLAMA
+# ===============================
+- platform: rest
+  name: "AI Service Status"
+  resource: "http://192.168.122.172:11434/api/version"
+  value_template: >
+    {% if value_json is defined and value_json.version is defined %}
+      Online (v{{ value_json.version }})
+    {% else %}
+      Offline
+    {% endif %}
+  json_attributes:
+    - "version"
+  scan_interval: 60
+  timeout: 10
+
+# ===============================
+# TRAEFIK LOAD BALANCER SENSORS
+# ===============================
+- platform: rest
+  name: "Traefik Routes"
+  resource: "http://192.168.122.103:9080/api/overview"
+  value_template: >
+    {% if value_json is defined and value_json.http is defined and value_json.http.routers is defined %}
+      {{ value_json.http.routers.total | default(0) }} routes active
+    {% else %}
+      0 routes active
+    {% endif %}
+  json_attributes:
+    - "http"
+    - "tcp"
+    - "udp"
+  scan_interval: 300
+  timeout: 10
+
+# ===============================
+# TEMPLATE SENSORS (FIXED)
+# ===============================
+- platform: template
+  sensors:
+    system_performance:
+      friendly_name: "System Performance"
+      value_template: >
+        {% set cpu = states('sensor.processor_use') | float(0) %}
+        {% set memory = states('sensor.memory_use_percent') | float(0) %}
+        {% set disk = states('sensor.disk_use_percent') | float(0) %}
+        {% if cpu < 50 and memory < 70 and disk < 80 %}
+          Excellent
+        {% elif cpu < 70 and memory < 85 and disk < 90 %}
+          Good
+        {% else %}
+          Needs Attention
+        {% endif %}
+      icon_template: >
+        {% set perf = states('sensor.system_performance') %}
+        {% if perf == 'Excellent' %}
+          mdi:speedometer
+        {% elif perf == 'Good' %}
+          mdi:speedometer-medium
+        {% else %}
+          mdi:speedometer-slow
+        {% endif %}
+
+    media_stack_health:
+      friendly_name: "Media Stack Health"
+      value_template: >
+        {% set plex_ok = states('sensor.plex_status') != 'Offline' %}
+        {% set jellyfin_ok = states('sensor.jellyfin_status') != 'Offline' %}
+        {% set ai_ok = states('sensor.ai_service_status') != 'Offline' %}
+        {% set traefik_ok = states('sensor.traefik_routes') != '0 routes active' %}
+        {% set healthy_count = [plex_ok, jellyfin_ok, ai_ok, traefik_ok] | select | list | length %}
+        {{ healthy_count }}/4 services healthy
+
+# ===============================
+# BINARY SENSORS FOR ALEXA
+# ===============================
+binary_sensor:
+  - platform: template
+    sensors:
+      plex_online:
+        friendly_name: "Plex Server Online"
+        value_template: "{{ states('sensor.plex_status') != 'Offline' }}"
+        
+      jellyfin_online:
+        friendly_name: "Jellyfin Server Online"
+        value_template: "{{ states('sensor.jellyfin_status') != 'Offline' }}"
+        
+      ai_services_online:
+        friendly_name: "AI Services Online"
+        value_template: "{{ states('sensor.ai_service_status') != 'Offline' }}"

@@ -1,0 +1,314 @@
+[
+    {
+        "Id": "fe9a456e6f223feeefd414cab45ea6d36821f3f4ba22a3110589995d116dacb0",
+        "Created": "2025-07-18T20:13:17.803485509Z",
+        "Path": "/watchtower",
+        "Args": [],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 1416027,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2025-07-18T20:13:29.391254347Z",
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "Health": {
+                "Status": "healthy",
+                "FailingStreak": 0,
+                "Log": [
+                    {
+                        "Start": "2025-07-19T18:32:38.233776997-04:00",
+                        "End": "2025-07-19T18:32:38.276149077-04:00",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2025-07-19T18:33:08.27687448-04:00",
+                        "End": "2025-07-19T18:33:08.316886272-04:00",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2025-07-19T18:33:38.317395907-04:00",
+                        "End": "2025-07-19T18:33:38.351443501-04:00",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2025-07-19T18:34:08.352231028-04:00",
+                        "End": "2025-07-19T18:34:08.403689538-04:00",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2025-07-19T18:34:38.404468747-04:00",
+                        "End": "2025-07-19T18:34:38.45574916-04:00",
+                        "ExitCode": 0,
+                        "Output": ""
+                    }
+                ]
+            }
+        },
+        "Image": "sha256:e7dd50d07b86c380dd53caeb7778da052d1a8fc2c606644a419afa35e9f5691e",
+        "ResolvConfPath": "/var/lib/docker/containers/fe9a456e6f223feeefd414cab45ea6d36821f3f4ba22a3110589995d116dacb0/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/fe9a456e6f223feeefd414cab45ea6d36821f3f4ba22a3110589995d116dacb0/hostname",
+        "HostsPath": "/var/lib/docker/containers/fe9a456e6f223feeefd414cab45ea6d36821f3f4ba22a3110589995d116dacb0/hosts",
+        "LogPath": "/var/lib/docker/containers/fe9a456e6f223feeefd414cab45ea6d36821f3f4ba22a3110589995d116dacb0/fe9a456e6f223feeefd414cab45ea6d36821f3f4ba22a3110589995d116dacb0-json.log",
+        "Name": "/mediastack-watchtower",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/var/run/docker.sock:/var/run/docker.sock:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "lou-media-stack_mediastack",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "unless-stopped",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap",
+                "/sys/devices/system/cpu/cpu0/thermal_throttle",
+                "/sys/devices/system/cpu/cpu1/thermal_throttle",
+                "/sys/devices/system/cpu/cpu2/thermal_throttle",
+                "/sys/devices/system/cpu/cpu3/thermal_throttle",
+                "/sys/devices/system/cpu/cpu4/thermal_throttle",
+                "/sys/devices/system/cpu/cpu5/thermal_throttle",
+                "/sys/devices/system/cpu/cpu6/thermal_throttle",
+                "/sys/devices/system/cpu/cpu7/thermal_throttle",
+                "/sys/devices/system/cpu/cpu8/thermal_throttle",
+                "/sys/devices/system/cpu/cpu9/thermal_throttle",
+                "/sys/devices/system/cpu/cpu10/thermal_throttle",
+                "/sys/devices/system/cpu/cpu11/thermal_throttle",
+                "/sys/devices/system/cpu/cpu12/thermal_throttle",
+                "/sys/devices/system/cpu/cpu13/thermal_throttle",
+                "/sys/devices/system/cpu/cpu14/thermal_throttle",
+                "/sys/devices/system/cpu/cpu15/thermal_throttle",
+                "/sys/devices/system/cpu/cpu16/thermal_throttle",
+                "/sys/devices/system/cpu/cpu17/thermal_throttle",
+                "/sys/devices/system/cpu/cpu18/thermal_throttle",
+                "/sys/devices/system/cpu/cpu19/thermal_throttle",
+                "/sys/devices/system/cpu/cpu20/thermal_throttle",
+                "/sys/devices/system/cpu/cpu21/thermal_throttle",
+                "/sys/devices/system/cpu/cpu22/thermal_throttle",
+                "/sys/devices/system/cpu/cpu23/thermal_throttle",
+                "/sys/devices/system/cpu/cpu24/thermal_throttle",
+                "/sys/devices/system/cpu/cpu25/thermal_throttle",
+                "/sys/devices/system/cpu/cpu26/thermal_throttle",
+                "/sys/devices/system/cpu/cpu27/thermal_throttle",
+                "/sys/devices/system/cpu/cpu28/thermal_throttle",
+                "/sys/devices/system/cpu/cpu29/thermal_throttle",
+                "/sys/devices/system/cpu/cpu30/thermal_throttle",
+                "/sys/devices/system/cpu/cpu31/thermal_throttle"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "fe9a456e6f223feeefd414cab45ea6d36821f3f4ba22a3110589995d116dacb0",
+                "LowerDir": "/var/lib/docker/overlay2/1cc3040a46e726041cdfddb82c85c8096b16084feacc6f66c7672a66d2371ef8-init/diff:/var/lib/docker/overlay2/35a1dc9708ed98400a9f17500bd70d31a86a35c75db2005c6a99e702250e7c80/diff:/var/lib/docker/overlay2/c1626a49cbf71d2ffcbcf2db219437d2c5496564aa863d7ad7116752de2cbed3/diff:/var/lib/docker/overlay2/2eeb19b0bffc8569ccc56b9edd49fc35b33a5375204f6e817e22af6ee0f919e9/diff",
+                "MergedDir": "/var/lib/docker/overlay2/1cc3040a46e726041cdfddb82c85c8096b16084feacc6f66c7672a66d2371ef8/merged",
+                "UpperDir": "/var/lib/docker/overlay2/1cc3040a46e726041cdfddb82c85c8096b16084feacc6f66c7672a66d2371ef8/diff",
+                "WorkDir": "/var/lib/docker/overlay2/1cc3040a46e726041cdfddb82c85c8096b16084feacc6f66c7672a66d2371ef8/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/var/run/docker.sock",
+                "Destination": "/var/run/docker.sock",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "fe9a456e6f22",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "8080/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "WATCHTOWER_SCHEDULE=0 0 4 * * *",
+                "WATCHTOWER_NOTIFICATIONS=shoutrrr",
+                "WATCHTOWER_NOTIFICATION_URL=",
+                "WATCHTOWER_CLEANUP=true",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Cmd": null,
+            "Healthcheck": {
+                "Test": [
+                    "CMD",
+                    "/watchtower",
+                    "--health-check"
+                ]
+            },
+            "Image": "containrrr/watchtower",
+            "Volumes": null,
+            "WorkingDir": "/",
+            "Entrypoint": [
+                "/watchtower"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "com.centurylinklabs.watchtower": "true",
+                "com.docker.compose.config-hash": "0b06aefa7cbf824b958fbc9ef22ae5b90357dac42b1c56479b0b40e98d4359b1",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:e7dd50d07b86c380dd53caeb7778da052d1a8fc2c606644a419afa35e9f5691e",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "lou-media-stack",
+                "com.docker.compose.project.config_files": "/home/lou/lou-media-stack/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/home/lou/lou-media-stack",
+                "com.docker.compose.replace": "839e9739fe79ea2f393f23d36fe3126f8a6199fb576d333b223c40d016f562c5",
+                "com.docker.compose.service": "watchtower",
+                "com.docker.compose.version": "2.38.2"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "e845e7a1366408bdd3b18cbf55b70cf31ea0de7d0bc0d4feff1c8e74cf59b43a",
+            "SandboxKey": "/var/run/docker/netns/e845e7a13664",
+            "Ports": {
+                "8080/tcp": null
+            },
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "lou-media-stack_mediastack": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "mediastack-watchtower",
+                        "watchtower"
+                    ],
+                    "MacAddress": "26:c9:8e:15:bc:ad",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "b3fb64607c143030bcd11a51704e837e93e971335d48bfc90770116fa304af44",
+                    "EndpointID": "275c8716ad32726f77b934b46a9ff074de0a750caca60fe8c71d97921aa3c783",
+                    "Gateway": "172.21.0.1",
+                    "IPAddress": "172.21.0.9",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "mediastack-watchtower",
+                        "watchtower",
+                        "fe9a456e6f22"
+                    ]
+                }
+            }
+        }
+    }
+]

@@ -1,0 +1,364 @@
+[
+    {
+        "Id": "59cc4c56c8962b59107a3ba0c00742d6e67dbdafca13bcc97c895258d95f8092",
+        "Created": "2025-07-17T16:17:52.111469921Z",
+        "Path": "docker-entrypoint.sh",
+        "Args": [
+            "--save",
+            "900",
+            "1",
+            "--save",
+            "300",
+            "10",
+            "--save",
+            "60",
+            "10000",
+            "--appendonly",
+            "yes",
+            "--appendfsync",
+            "everysec",
+            "--auto-aof-rewrite-percentage",
+            "100",
+            "--auto-aof-rewrite-min-size",
+            "64mb",
+            "--maxmemory",
+            "512mb",
+            "--maxmemory-policy",
+            "allkeys-lru",
+            "--loglevel",
+            "notice"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 1039461,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2025-07-17T16:17:52.757583079Z",
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "Health": {
+                "Status": "healthy",
+                "FailingStreak": 0,
+                "Log": [
+                    {
+                        "Start": "2025-07-19T18:32:10.710475166-04:00",
+                        "End": "2025-07-19T18:32:10.746066608-04:00",
+                        "ExitCode": 0,
+                        "Output": "PONG\n"
+                    },
+                    {
+                        "Start": "2025-07-19T18:32:40.746378015-04:00",
+                        "End": "2025-07-19T18:32:40.78551647-04:00",
+                        "ExitCode": 0,
+                        "Output": "PONG\n"
+                    },
+                    {
+                        "Start": "2025-07-19T18:33:10.785881479-04:00",
+                        "End": "2025-07-19T18:33:10.818979594-04:00",
+                        "ExitCode": 0,
+                        "Output": "PONG\n"
+                    },
+                    {
+                        "Start": "2025-07-19T18:33:40.820042686-04:00",
+                        "End": "2025-07-19T18:33:40.860169735-04:00",
+                        "ExitCode": 0,
+                        "Output": "PONG\n"
+                    },
+                    {
+                        "Start": "2025-07-19T18:34:10.860857152-04:00",
+                        "End": "2025-07-19T18:34:10.902070786-04:00",
+                        "ExitCode": 0,
+                        "Output": "PONG\n"
+                    }
+                ]
+            }
+        },
+        "Image": "sha256:d10b936dd67d5103dca93294a0190e95f62faffd86461f5c2d23c6e1042f3f86",
+        "ResolvConfPath": "/var/lib/docker/containers/59cc4c56c8962b59107a3ba0c00742d6e67dbdafca13bcc97c895258d95f8092/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/59cc4c56c8962b59107a3ba0c00742d6e67dbdafca13bcc97c895258d95f8092/hostname",
+        "HostsPath": "/var/lib/docker/containers/59cc4c56c8962b59107a3ba0c00742d6e67dbdafca13bcc97c895258d95f8092/hosts",
+        "LogPath": "/var/lib/docker/containers/59cc4c56c8962b59107a3ba0c00742d6e67dbdafca13bcc97c895258d95f8092/59cc4c56c8962b59107a3ba0c00742d6e67dbdafca13bcc97c895258d95f8092-json.log",
+        "Name": "/mediastack_valkey",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "config_valkey_data:/data:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "config_mediastack",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "unless-stopped",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 629145600,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 268435456,
+            "MemorySwap": 1258291200,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap",
+                "/sys/devices/system/cpu/cpu0/thermal_throttle",
+                "/sys/devices/system/cpu/cpu1/thermal_throttle",
+                "/sys/devices/system/cpu/cpu2/thermal_throttle",
+                "/sys/devices/system/cpu/cpu3/thermal_throttle",
+                "/sys/devices/system/cpu/cpu4/thermal_throttle",
+                "/sys/devices/system/cpu/cpu5/thermal_throttle",
+                "/sys/devices/system/cpu/cpu6/thermal_throttle",
+                "/sys/devices/system/cpu/cpu7/thermal_throttle",
+                "/sys/devices/system/cpu/cpu8/thermal_throttle",
+                "/sys/devices/system/cpu/cpu9/thermal_throttle",
+                "/sys/devices/system/cpu/cpu10/thermal_throttle",
+                "/sys/devices/system/cpu/cpu11/thermal_throttle",
+                "/sys/devices/system/cpu/cpu12/thermal_throttle",
+                "/sys/devices/system/cpu/cpu13/thermal_throttle",
+                "/sys/devices/system/cpu/cpu14/thermal_throttle",
+                "/sys/devices/system/cpu/cpu15/thermal_throttle",
+                "/sys/devices/system/cpu/cpu16/thermal_throttle",
+                "/sys/devices/system/cpu/cpu17/thermal_throttle",
+                "/sys/devices/system/cpu/cpu18/thermal_throttle",
+                "/sys/devices/system/cpu/cpu19/thermal_throttle",
+                "/sys/devices/system/cpu/cpu20/thermal_throttle",
+                "/sys/devices/system/cpu/cpu21/thermal_throttle",
+                "/sys/devices/system/cpu/cpu22/thermal_throttle",
+                "/sys/devices/system/cpu/cpu23/thermal_throttle",
+                "/sys/devices/system/cpu/cpu24/thermal_throttle",
+                "/sys/devices/system/cpu/cpu25/thermal_throttle",
+                "/sys/devices/system/cpu/cpu26/thermal_throttle",
+                "/sys/devices/system/cpu/cpu27/thermal_throttle",
+                "/sys/devices/system/cpu/cpu28/thermal_throttle",
+                "/sys/devices/system/cpu/cpu29/thermal_throttle",
+                "/sys/devices/system/cpu/cpu30/thermal_throttle",
+                "/sys/devices/system/cpu/cpu31/thermal_throttle"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "59cc4c56c8962b59107a3ba0c00742d6e67dbdafca13bcc97c895258d95f8092",
+                "LowerDir": "/var/lib/docker/overlay2/1c1549343080889a2fea3a68b26b31f97ce2d69ff1e74ac180e800ad09100b5a-init/diff:/var/lib/docker/overlay2/724b28ab73ce528763595558c4e6a83248ea90133019460454e6a64f8e17bbd7/diff:/var/lib/docker/overlay2/14e1e8fe6844ca013a8a5699fac2bff716f6380a61db820a9f439ce5faa868fb/diff:/var/lib/docker/overlay2/079ab38ff789fa2232e9c4ac64f8ba853fe66a32540dc0cb36ffc97d3d83f3bc/diff:/var/lib/docker/overlay2/35e4502986d67e24c1b41d82ade4e89cc2c414005d83e1ee43b8e0f0bb8b1c3b/diff:/var/lib/docker/overlay2/a13cb1188d82b2b1d1601252939e6ed8b6007ef37713a24ae3eae413baacce85/diff:/var/lib/docker/overlay2/2e094445dc5f8f957892b7fb206b5e001c7daaa1d33a58c837a24a83d3724c8f/diff:/var/lib/docker/overlay2/7193817e4015424bd72c241ee8079584f6a346c8497a25134e199756efd5a4ff/diff",
+                "MergedDir": "/var/lib/docker/overlay2/1c1549343080889a2fea3a68b26b31f97ce2d69ff1e74ac180e800ad09100b5a/merged",
+                "UpperDir": "/var/lib/docker/overlay2/1c1549343080889a2fea3a68b26b31f97ce2d69ff1e74ac180e800ad09100b5a/diff",
+                "WorkDir": "/var/lib/docker/overlay2/1c1549343080889a2fea3a68b26b31f97ce2d69ff1e74ac180e800ad09100b5a/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "config_valkey_data",
+                "Source": "/var/lib/docker/volumes/config_valkey_data/_data",
+                "Destination": "/data",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "59cc4c56c896",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "6379/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Cmd": [
+                "--save",
+                "900",
+                "1",
+                "--save",
+                "300",
+                "10",
+                "--save",
+                "60",
+                "10000",
+                "--appendonly",
+                "yes",
+                "--appendfsync",
+                "everysec",
+                "--auto-aof-rewrite-percentage",
+                "100",
+                "--auto-aof-rewrite-min-size",
+                "64mb",
+                "--maxmemory",
+                "512mb",
+                "--maxmemory-policy",
+                "allkeys-lru",
+                "--loglevel",
+                "notice"
+            ],
+            "Healthcheck": {
+                "Test": [
+                    "CMD",
+                    "valkey-cli",
+                    "ping"
+                ],
+                "Interval": 30000000000,
+                "Timeout": 10000000000,
+                "StartPeriod": 40000000000,
+                "Retries": 3
+            },
+            "Image": "valkey/valkey:7-alpine",
+            "Volumes": {
+                "/data": {}
+            },
+            "WorkingDir": "/data",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "de4bd6c62c9c14d7e88f2142b99d4ec735c55f732fef854cf74d58b08754f082",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:d10b936dd67d5103dca93294a0190e95f62faffd86461f5c2d23c6e1042f3f86",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "config",
+                "com.docker.compose.project.config_files": "/home/lou/mediastack-new/config/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/home/lou/mediastack-new/config",
+                "com.docker.compose.service": "valkey",
+                "com.docker.compose.version": "2.38.2"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "47601eba14e2addd7c0be1a5b81176be23eb5fa9eb936d62d0237c0f5ac5276b",
+            "SandboxKey": "/var/run/docker/netns/47601eba14e2",
+            "Ports": {
+                "6379/tcp": null
+            },
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "config_mediastack": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "mediastack_valkey",
+                        "valkey"
+                    ],
+                    "MacAddress": "7e:a8:55:2b:f6:41",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "475ece92575a4af78e9b3a51deb5b559680383eba9ad48dbd3530f2b9e52b2ce",
+                    "EndpointID": "2a2e1d3050bca8b9a98cd6c205db075a85a3d8dde48874c15ef1c3443f67397a",
+                    "Gateway": "172.20.0.1",
+                    "IPAddress": "172.20.0.7",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "mediastack_valkey",
+                        "valkey",
+                        "59cc4c56c896"
+                    ]
+                }
+            }
+        }
+    }
+]

@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /usr/share/originpc-control/src
+exec python enhanced-professional-control-center.py "$@"

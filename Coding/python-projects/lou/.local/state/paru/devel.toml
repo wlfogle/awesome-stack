@@ -1,0 +1,3 @@
+[[debhelper]]
+url = "https://salsa.debian.org/reproducible-builds/strip-nondeterminism.git"
+commit = "39dc6003dc44df005db96dc7a34bba9148b21f77"

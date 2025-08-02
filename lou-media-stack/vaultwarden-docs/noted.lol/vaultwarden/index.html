@@ -1,0 +1,2919 @@
+<!DOCTYPE html>
+<html
+	lang="en"
+	data-color-scheme="dark"
+	data-sidebar-collapsed="false"
+>
+
+<!-- Mirrored from noted.lol/vaultwarden/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Jul 2025 17:41:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Self-Host Vaultwarden Password Manager - Complete Setup Guide</title>
+
+	<script>
+	window.Aspect = { version: '1.7.2' };
+</script>
+
+	<script>
+	// Set color scheme from local storage.
+	(function() {
+		const colorScheme = localStorage.getItem('color-scheme');
+
+		if (colorScheme) {
+			document.documentElement.setAttribute('data-color-scheme', colorScheme);
+		}
+	})();
+</script>
+
+	<script>
+		// Set sidebar collapsed from local storage.
+		(function() {
+			const hasCollapsed = localStorage.getItem('sidebar-collapsed');
+
+			if (hasCollapsed !== null) {
+				document.documentElement.setAttribute('data-sidebar-collapsed', hasCollapsed);
+			}
+		})();
+	</script>
+
+	<link rel="preload" as="style" href="https://noted.lol/assets/built/index.css?v=06f3ff1cf2">
+	<link rel="preload" as="script" href="https://noted.lol/assets/vendors/pvs.min.js?v=06f3ff1cf2">
+	<link rel="preload" as="script" href="https://noted.lol/assets/built/index.js?v=06f3ff1cf2">
+
+	<link rel="preload" href="https://noted.lol/assets/vendors/Geist-Variable.woff2?v=06f3ff1cf2" as="font" type="font/woff2" crossorigin/>
+
+	<style>
+		@font-face {
+			font-family: 'Geist';
+			font-display: swap;
+			src: url(https://noted.lol/assets/vendors/Geist-Variable.woff2?v=06f3ff1cf2) format("woff2-variations");
+			font-weight: 100 900;
+		}
+
+		:root {
+			--color-dark-accent: #3f35e8;
+			--color-accent-foreground: #3f35e8;
+			--color-dark-accent-foreground: #ffffff;
+			--featured-image--aspect-ratio: 16/9;
+		}
+	</style>
+
+	<link rel="stylesheet" type="text/css" href="https://noted.lol/assets/vendors/pvs.min.css?v=06f3ff1cf2">
+
+	<link rel="stylesheet" type="text/css" href="https://noted.lol/assets/built/index.css?v=06f3ff1cf2">
+
+	<script src="https://noted.lol/assets/vendors/ivent.min.js?v=06f3ff1cf2"></script>
+
+	<script src="https://noted.lol/assets/vendors/pvs.min.js?v=06f3ff1cf2"></script>
+
+	<link rel="stylesheet" type="text/css" href="https://noted.lol/assets/vendors/swiper/swiper.min.css?v=06f3ff1cf2">
+	<link rel="stylesheet" type="text/css" href="https://noted.lol/assets/vendors/swiper/free-mode.min.css?v=06f3ff1cf2">
+	<link rel="stylesheet" type="text/css" href="https://noted.lol/assets/vendors/swiper/mousewheel.min.css?v=06f3ff1cf2">
+	<link rel="stylesheet" type="text/css" href="https://noted.lol/assets/vendors/swiper/navigation.min.css?v=06f3ff1cf2">
+
+	
+
+	<link rel="stylesheet" type="text/css" href="https://noted.lol/assets/vendors/tippy.css?v=06f3ff1cf2">
+
+	<link rel="stylesheet" type="text/css" href="https://noted.lol/assets/custom.css?v=06f3ff1cf2">
+
+	<meta name="description" content="Self-hosting Vaultwarden provides a secure and private password management solution, allowing full control over data and encryption to safeguard user credentials. 🔒">
+    <link rel="icon" href="https://noted.lol/content/images/size/w256h256/2023/08/Icon-1.2-1.png" type="image/png">
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Noted">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Self-Host Vaultwarden Password Manager - Complete Setup Guide">
+    <meta property="og:description" content="Self-hosting Vaultwarden provides a secure and private password management solution, allowing full control over data and encryption to safeguard user credentials. 🔒">
+    <meta property="og:url" content="https://noted.lol/vaultwarden/">
+    <meta property="og:image" content="https://noted.lol/content/images/2023/03/vaultwarden-self-hosted-password-manager-noted.lol.jpg">
+    <meta property="article:published_time" content="2023-03-14T12:17:18.000Z">
+    <meta property="article:modified_time" content="2023-03-14T18:31:12.000Z">
+    <meta property="article:tag" content="Self Hosted Password Managers">
+    <meta property="article:tag" content="Self Hosting">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Self-Host Vaultwarden Password Manager - Complete Setup Guide">
+    <meta name="twitter:description" content="Self-hosting Vaultwarden provides a secure and private password management solution, allowing full control over data and encryption to safeguard user credentials. 🔒">
+    <meta name="twitter:url" content="https://noted.lol/vaultwarden/">
+    <meta name="twitter:image" content="https://noted.lol/content/images/2023/03/vaultwarden-self-hosted-password-manager-noted.lol.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Jeremy">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Self Hosted Password Managers, Self Hosting">
+    <meta name="twitter:site" content="@jeremy_noted">
+    <meta name="twitter:creator" content="@jeremy_noted">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Noted",
+        "url": "https://noted.lol/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://noted.lol/content/images/2025/01/Logo-1.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Jeremy",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s=250&r=x&d=mp",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://noted.lol/author/jeremy/",
+        "sameAs": [
+            "https://noted.lol",
+            "https://x.com/jeremy_noted"
+        ]
+    },
+    "headline": "Self-Host Vaultwarden Password Manager - Complete Setup Guide",
+    "url": "https://noted.lol/vaultwarden/",
+    "datePublished": "2023-03-14T12:17:18.000Z",
+    "dateModified": "2023-03-14T18:31:12.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://noted.lol/content/images/2023/03/vaultwarden-self-hosted-password-manager-noted.lol.jpg",
+        "width": 1200,
+        "height": 675
+    },
+    "keywords": "Self Hosted Password Managers, Self Hosting",
+    "description": "Self-hosting Vaultwarden provides a secure and private password management solution, allowing full control over data and encryption to safeguard user credentials. 🔒",
+    "mainEntityOfPage": "https://noted.lol/vaultwarden/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.130">
+    <link rel="alternate" type="application/rss+xml" title="Noted" href="https://noted.lol/rss/">
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.51/umd/portal.min.js" data-i18n="true" data-ghost="https://noted.lol/" data-key="f13d2fe72ef69fe8db444cc0e7" data-api="https://noted.lol/ghost/api/content/" data-locale="en" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style><script async src="https://js.stripe.com/v3/"></script>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="f13d2fe72ef69fe8db444cc0e7" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://noted.lol/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://noted.lol/webmentions/receive/" rel="webmention">
+    <script defer src="https://noted.lol/public/cards.min.js?v=06f3ff1cf2"></script>
+    <link rel="stylesheet" type="text/css" href="https://noted.lol/public/cards.min.css?v=06f3ff1cf2">
+    <script defer src="https://noted.lol/public/comment-counts.min.js?v=06f3ff1cf2" data-ghost-comments-counts-api="https://noted.lol/members/api/comments/counts/"></script>
+    <script defer src="https://noted.lol/public/member-attribution.min.js?v=06f3ff1cf2"></script><style>:root {--ghost-accent-color: #3d74e3;}</style>
+    <script defer src="https://analytics.noted.lol/script.js" data-website-id="20a8ca5b-407e-4eae-a6b5-36b10df6c4e3"></script>
+
+<script>
+  var _paq = window._paq = window._paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="http://matomo.hosted.lol/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+<script>
+window.pvs?.addNavIcon?.(
+    'Sponsors',
+    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e10000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-hand-heart"><path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 15 6 6"/><path d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12Z"/></svg>'
+);
+window.pvs?.addNavIcon?.(
+    'About',
+    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open-text"><path d="M12 7v14"/><path d="M16 12h2"/><path d="M16 8h2"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/><path d="M6 12h2"/><path d="M6 8h2"/></svg>'
+);
+window.pvs?.addNavIcon?.(
+    'Contribute',
+    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#61ba5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-line"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/><path d="m15 5 3 3"/></svg>'
+);
+window.pvs?.addNavIcon?.(
+    'RSS',
+    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ee8511" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rss"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>'
+
+);
+window.pvs?.addNavIcon?.(
+    'Discord',
+    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8e36c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot-message-square"><path d="M12 6V2H8"/><path d="m8 18-4 4V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2Z"/><path d="M2 12h2"/><path d="M9 11v2"/><path d="M15 11v2"/><path d="M20 12h2"/></svg>'
+
+);
+window.pvs?.addNavIcon?.(
+    'Get Started',
+    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3ca7db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-start"><path d="M16 12H3"/><path d="M16 18H3"/><path d="M10 6H3"/><path d="M21 18V8a2 2 0 0 0-2-2h-5"/><path d="m16 8-2-2 2-2"/></svg>'  
+  
+);  
+  </script>
+
+
+
+<script>
+window.pvs?.initCodeHighlight?.({
+    clipboardButton: true,
+    lineNumbers: true,
+    languageBadge: true,
+});
+</script>
+</head>
+
+<body class="post-template tag-self-hosted-password-managers tag-self-hosting layout-default post-template-default post-has-sidebar">
+	<a href="#sidebar" class="button screen-reader-text">Skip to Sidebar</a>
+	<a href="#content" class="button screen-reader-text">Skip to Content</a>
+
+	<main class="main">
+		<div class="navbar">
+			<div>
+				<button
+					class="toggle-sidebar button button-icon button-transparent button-rounded"
+					aria-label="Collapse Sidebar"
+					aria-expanded="true"
+				>
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.27271 10H15.7272M4.27271 4H15.7272M4.27271 16H15.7272" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+				</button>
+
+				<button class="toggle-popup button button-icon button-transparent button-rounded" data-popup-toggle="#popup-navigation" aria-expanded="false" aria-label="Open a popup with navigation">
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.27271 10H15.7272M4.27271 4H15.7272M4.27271 16H15.7272" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+				</button>
+
+				<a class="logo" href="https://noted.lol/" aria-label="Noted">
+		<img class="logo-light" src="https://noted.lol/content/images/2025/01/Logo-1.png" alt="Noted">
+
+		<img class="logo-dark" src="https://noted.lol/content/images/2025/01/Logo-2.1.png" alt="Noted">
+</a>			</div>
+
+			<button class="search-toggle" data-ghost-search>
+				<svg class="icon icon-search" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 17.5L13.875 13.875M15.8333 9.16667C15.8333 12.8486 12.8486 15.8333 9.16667 15.8333C5.48477 15.8333 2.5 12.8486 2.5 9.16667C2.5 5.48477 5.48477 2.5 9.16667 2.5C12.8486 2.5 15.8333 5.48477 15.8333 9.16667Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+Search
+				<svg class="icon-slash" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect width="16" height="16" rx="3" fill="#808080" /> 
+					<path d="M6.33331 11.3333L9.66665 4.66667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			</button>
+
+			<nav class="navigation" aria-label="User Navigation">
+				<button class="dropdown-toggle" aria-expanded="false" aria-label="Show user navigation">
+							<span class="avatar">
+		<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.5 16.6667C4.44649 14.6022 7.08918 13.3333 10 13.3333C12.9108 13.3333 15.5535 14.6022 17.5 16.6667M13.75 6.25C13.75 8.32107 12.0711 10 10 10C7.92893 10 6.25 8.32107 6.25 6.25C6.25 4.17893 7.92893 2.5 10 2.5C12.0711 2.5 13.75 4.17893 13.75 6.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+	</span>
+				</button>
+				<div class="dropdown dropdown-user dropdown-align-left">
+					<div class="dropdown-user-head">
+							<span class="avatar">
+		<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.5 16.6667C4.44649 14.6022 7.08918 13.3333 10 13.3333C12.9108 13.3333 15.5535 14.6022 17.5 16.6667M13.75 6.25C13.75 8.32107 12.0711 10 10 10C7.92893 10 6.25 8.32107 6.25 6.25C6.25 4.17893 7.92893 2.5 10 2.5C12.0711 2.5 13.75 4.17893 13.75 6.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+	</span>
+						<span class="dropdown-user-name">Anonymous</span>
+					</div>
+					<hr>
+					<ul>
+						<li>
+							<button class="nav-link toggle-color-scheme-button" value="dark-light-system" aria-label="Toggle color scheme">
+	<svg class="icon icon-moon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.2957 10.797C17.1482 12.8098 14.9826 14.1668 12.5 14.1668C8.81808 14.1668 5.83333 11.182 5.83333 7.50007C5.83333 5.01727 7.19056 2.85146 9.20358 1.7041C4.97479 2.10506 1.66666 5.66613 1.66666 9.99983C1.66666 14.6023 5.39762 18.3332 10 18.3332C14.3335 18.3332 17.8944 15.0254 18.2957 10.797Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+	<span class="label label-light">Theme: Light</span>
+	<span class="label label-system">Theme: System</span>
+	<span class="label label-dark">Theme: Dark</span>
+	<span class="icon-wrapper"><svg class="icon icon-sun" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.9999 13.3334C11.8409 13.3334 13.3333 11.841 13.3333 10C13.3333 8.15907 11.8409 6.66669 9.9999 6.66669C8.15895 6.66669 6.66656 8.15907 6.66656 10C6.66656 11.841 8.15895 13.3334 9.9999 13.3334Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9.9999 1.66669V3.33336M9.9999 16.6666V18.3334M4.10824 4.10836L5.28324 5.28336M14.7166 14.7166L15.8916 15.8916M1.66656 10H3.33324M16.6666 10H18.3333M5.28324 14.7166L4.10824 15.8916M15.8916 4.10836L14.7166 5.28336" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<svg class="icon icon-circle-half" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8 14.6666C11.6819 14.6666 14.6667 11.6819 14.6667 7.99998C14.6667 4.31808 11.6819 1.33331 8 1.33331C4.3181 1.33331 1.33333 4.31808 1.33333 7.99998C1.33333 11.6819 4.3181 14.6666 8 14.6666Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M8 14.6666C4.3181 14.6666 1.33333 11.6819 1.33333 7.99998C1.33333 4.31808 4.3181 1.33331 8 1.33331V14.6666Z" fill="currentColor"></path>
+</svg><svg class="icon icon-moon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.2957 10.797C17.1482 12.8098 14.9826 14.1668 12.5 14.1668C8.81808 14.1668 5.83333 11.182 5.83333 7.50007C5.83333 5.01727 7.19056 2.85146 9.20358 1.7041C4.97479 2.10506 1.66666 5.66613 1.66666 9.99983C1.66666 14.6023 5.39762 18.3332 10 18.3332C14.3335 18.3332 17.8944 15.0254 18.2957 10.797Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span>
+</button>
+						</li>
+						<li>
+							<a href="https://noted.lol/signin/" class="nav-link">
+								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.5 2.5H13.5C14.9002 2.5 15.6002 2.5 16.135 2.77248C16.6054 3.01217 16.9878 3.39462 17.2275 3.86503C17.5 4.3998 17.5 5.09988 17.5 6.5V13.5C17.5 14.9002 17.5 15.6002 17.2275 16.135C16.9878 16.6054 16.6054 16.9878 16.135 17.2275C15.6002 17.5 14.9002 17.5 13.5 17.5H12.5M8.33333 5.83333L12.5 10M12.5 10L8.33333 14.1667M12.5 10H2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+								Sign in
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+
+		<aside class="sidebar" id="sidebar">
+			<nav class="navigation navigation-sidebar" aria-label="Sidebar Primary Navigation">
+				<ul>
+<li class="nav-item">
+
+						
+<a
+	href="https://noted.lol/"
+	class="nav-link nav-link-home"
+		data-tippy-content="Home"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.5 17.4999V11.3332C7.5 10.8665 7.5 10.6331 7.59082 10.4549C7.67072 10.298 7.79821 10.1706 7.95501 10.0907C8.13327 9.99988 8.36658 9.99988 8.83333 9.99988H11.1667C11.6334 9.99988 11.8668 9.99988 12.045 10.0907C12.2018 10.1706 12.3292 10.298 12.4092 10.4549C12.5 10.6331 12.5 10.8665 12.5 11.3332V17.4999M9.18142 2.30321L3.52949 6.69915C3.15168 6.993 2.96278 7.13993 2.82669 7.32393C2.70614 7.48691 2.61633 7.67053 2.56169 7.86575C2.5 8.08615 2.5 8.32546 2.5 8.80413V14.8332C2.5 15.7666 2.5 16.2333 2.68166 16.5899C2.84144 16.9035 3.09641 17.1585 3.41002 17.3182C3.76653 17.4999 4.23324 17.4999 5.16667 17.4999H14.8333C15.7667 17.4999 16.2335 17.4999 16.59 17.3182C16.9036 17.1585 17.1586 16.9035 17.3183 16.5899C17.5 16.2333 17.5 15.7666 17.5 14.8332V8.80413C17.5 8.32546 17.5 8.08615 17.4383 7.86575C17.3837 7.67053 17.2938 7.48691 17.1733 7.32393C17.0372 7.13993 16.8483 6.993 16.4705 6.69915L10.8186 2.30321C10.5258 2.0755 10.3794 1.96165 10.2177 1.91788C10.0752 1.87926 9.92483 1.87926 9.78225 1.91788C9.62058 1.96165 9.47417 2.0755 9.18142 2.30321Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+	<span class="label">Home</span>
+</a>
+						</li>
+<li class="nav-item">
+
+						
+<a
+	href="https://noted.lol/get-started-self-hosting/"
+	class="nav-link nav-link-get-started"
+		data-tippy-content="Get Started"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.6667 1.89136V5.33347C11.6667 5.80018 11.6667 6.03354 11.7575 6.2118C11.8374 6.3686 11.9648 6.49608 12.1217 6.57598C12.2999 6.66681 12.5332 6.66681 13 6.66681H16.4421M13.3333 10.8334H6.66666M13.3333 14.1667H6.66666M8.33333 7.50008H6.66666M11.6667 1.66675H7.33333C5.93319 1.66675 5.23313 1.66675 4.69835 1.93923C4.22794 2.17891 3.8455 2.56136 3.60581 3.03177C3.33333 3.56655 3.33333 4.26661 3.33333 5.66675V14.3334C3.33333 15.7336 3.33333 16.4336 3.60581 16.9684C3.8455 17.4388 4.22794 17.8212 4.69835 18.0609C5.23313 18.3334 5.93319 18.3334 7.33333 18.3334H12.6667C14.0668 18.3334 14.7668 18.3334 15.3017 18.0609C15.7721 17.8212 16.1545 17.4388 16.3942 16.9684C16.6667 16.4336 16.6667 15.7336 16.6667 14.3334V6.66675L11.6667 1.66675Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+	<span class="label">Get Started</span>
+</a>
+						</li>
+<li class="nav-item">
+
+						
+<a
+	href="https://noted.lol/tags/"
+	class="nav-link nav-link-categories"
+		data-tippy-content="Categories"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.66667 6.66675H6.675M1.66667 4.33341V8.06217C1.66667 8.46983 1.66667 8.67366 1.71272 8.8655C1.75354 9.0355 1.82088 9.19808 1.91227 9.34725C2.01533 9.51541 2.15946 9.65958 2.44772 9.94783L8.83825 16.3383C9.82825 17.3283 10.3233 17.8234 10.8941 18.0088C11.3963 18.172 11.9371 18.172 12.4392 18.0088C13.01 17.8234 13.5051 17.3283 14.4951 16.3383L16.3383 14.4952C17.3283 13.5052 17.8233 13.0101 18.0088 12.4392C18.1719 11.9372 18.1719 11.3963 18.0088 10.8942C17.8233 10.3234 17.3283 9.82833 16.3383 8.83833L9.94775 2.4478C9.6595 2.15954 9.51533 2.01541 9.34717 1.91235C9.198 1.82096 9.03542 1.75362 8.86542 1.7128C8.67358 1.66675 8.46975 1.66675 8.0621 1.66675H4.33333C3.39992 1.66675 2.9332 1.66675 2.57668 1.84841C2.26308 2.00819 2.00811 2.26316 1.84833 2.57676C1.66667 2.93328 1.66667 3.39999 1.66667 4.33341ZM7.08333 6.66675C7.08333 6.89686 6.89678 7.08341 6.66667 7.08341C6.43655 7.08341 6.25 6.89686 6.25 6.66675C6.25 6.43663 6.43655 6.25008 6.66667 6.25008C6.89678 6.25008 7.08333 6.43663 7.08333 6.66675Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+	<span class="label">Categories</span>
+</a>
+						</li>
+<li class="nav-item">
+
+						
+<a
+	href="https://noted.lol/sponsors/"
+	class="nav-link nav-link-sponsors"
+		data-tippy-content="Sponsors"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.6667 1.89136V5.33347C11.6667 5.80018 11.6667 6.03354 11.7575 6.2118C11.8374 6.3686 11.9648 6.49608 12.1217 6.57598C12.2999 6.66681 12.5332 6.66681 13 6.66681H16.4421M13.3333 10.8334H6.66666M13.3333 14.1667H6.66666M8.33333 7.50008H6.66666M11.6667 1.66675H7.33333C5.93319 1.66675 5.23313 1.66675 4.69835 1.93923C4.22794 2.17891 3.8455 2.56136 3.60581 3.03177C3.33333 3.56655 3.33333 4.26661 3.33333 5.66675V14.3334C3.33333 15.7336 3.33333 16.4336 3.60581 16.9684C3.8455 17.4388 4.22794 17.8212 4.69835 18.0609C5.23313 18.3334 5.93319 18.3334 7.33333 18.3334H12.6667C14.0668 18.3334 14.7668 18.3334 15.3017 18.0609C15.7721 17.8212 16.1545 17.4388 16.3942 16.9684C16.6667 16.4336 16.6667 15.7336 16.6667 14.3334V6.66675L11.6667 1.66675Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+	<span class="label">Sponsors</span>
+</a>
+						</li>
+<li class="nav-item">
+
+						
+<a
+	href="https://noted.lol/about/"
+	class="nav-link nav-link-about"
+		data-tippy-content="About"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.5 16.6667C4.44649 14.6022 7.08918 13.3333 10 13.3333C12.9108 13.3333 15.5535 14.6022 17.5 16.6667M13.75 6.25C13.75 8.32107 12.0711 10 10 10C7.92893 10 6.25 8.32107 6.25 6.25C6.25 4.17893 7.92893 2.5 10 2.5C12.0711 2.5 13.75 4.17893 13.75 6.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+	<span class="label">About</span>
+</a>
+						</li>
+<li class="nav-item">
+
+						
+<a
+	href="https://noted.lol/contribute/"
+	class="nav-link nav-link-contribute"
+		data-tippy-content="Contribute"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.6667 1.89136V5.33347C11.6667 5.80018 11.6667 6.03354 11.7575 6.2118C11.8374 6.3686 11.9648 6.49608 12.1217 6.57598C12.2999 6.66681 12.5332 6.66681 13 6.66681H16.4421M13.3333 10.8334H6.66666M13.3333 14.1667H6.66666M8.33333 7.50008H6.66666M11.6667 1.66675H7.33333C5.93319 1.66675 5.23313 1.66675 4.69835 1.93923C4.22794 2.17891 3.8455 2.56136 3.60581 3.03177C3.33333 3.56655 3.33333 4.26661 3.33333 5.66675V14.3334C3.33333 15.7336 3.33333 16.4336 3.60581 16.9684C3.8455 17.4388 4.22794 17.8212 4.69835 18.0609C5.23313 18.3334 5.93319 18.3334 7.33333 18.3334H12.6667C14.0668 18.3334 14.7668 18.3334 15.3017 18.0609C15.7721 17.8212 16.1545 17.4388 16.3942 16.9684C16.6667 16.4336 16.6667 15.7336 16.6667 14.3334V6.66675L11.6667 1.66675Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+	<span class="label">Contribute</span>
+</a>
+						</li>
+<li class="nav-item">
+
+						
+<a
+	href="https://noted.lol/rss-feeds/"
+	class="nav-link nav-link-rss"
+		data-tippy-content="RSS"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.6667 1.89136V5.33347C11.6667 5.80018 11.6667 6.03354 11.7575 6.2118C11.8374 6.3686 11.9648 6.49608 12.1217 6.57598C12.2999 6.66681 12.5332 6.66681 13 6.66681H16.4421M13.3333 10.8334H6.66666M13.3333 14.1667H6.66666M8.33333 7.50008H6.66666M11.6667 1.66675H7.33333C5.93319 1.66675 5.23313 1.66675 4.69835 1.93923C4.22794 2.17891 3.8455 2.56136 3.60581 3.03177C3.33333 3.56655 3.33333 4.26661 3.33333 5.66675V14.3334C3.33333 15.7336 3.33333 16.4336 3.60581 16.9684C3.8455 17.4388 4.22794 17.8212 4.69835 18.0609C5.23313 18.3334 5.93319 18.3334 7.33333 18.3334H12.6667C14.0668 18.3334 14.7668 18.3334 15.3017 18.0609C15.7721 17.8212 16.1545 17.4388 16.3942 16.9684C16.6667 16.4336 16.6667 15.7336 16.6667 14.3334V6.66675L11.6667 1.66675Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+	<span class="label">RSS</span>
+</a>
+						</li>
+<li class="nav-item">
+
+						
+<a
+	href="https://noted.lol/membership/"
+	class="nav-link nav-link-signup"
+		data-tippy-content="Signup"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.5 2.5H13.5C14.9002 2.5 15.6002 2.5 16.135 2.77248C16.6054 3.01217 16.9878 3.39462 17.2275 3.86503C17.5 4.3998 17.5 5.09988 17.5 6.5V13.5C17.5 14.9002 17.5 15.6002 17.2275 16.135C16.9878 16.6054 16.6054 16.9878 16.135 17.2275C15.6002 17.5 14.9002 17.5 13.5 17.5H12.5M8.33333 5.83333L12.5 10M12.5 10L8.33333 14.1667M12.5 10H2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+	<span class="label">Signup</span>
+</a>
+						</li>
+<li class="nav-item">
+
+						
+<a
+	href="https://discord.gg/zA9FT8qW9g"
+	class="nav-link nav-link-discord"
+		data-tippy-content="Discord"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.6667 1.89136V5.33347C11.6667 5.80018 11.6667 6.03354 11.7575 6.2118C11.8374 6.3686 11.9648 6.49608 12.1217 6.57598C12.2999 6.66681 12.5332 6.66681 13 6.66681H16.4421M13.3333 10.8334H6.66666M13.3333 14.1667H6.66666M8.33333 7.50008H6.66666M11.6667 1.66675H7.33333C5.93319 1.66675 5.23313 1.66675 4.69835 1.93923C4.22794 2.17891 3.8455 2.56136 3.60581 3.03177C3.33333 3.56655 3.33333 4.26661 3.33333 5.66675V14.3334C3.33333 15.7336 3.33333 16.4336 3.60581 16.9684C3.8455 17.4388 4.22794 17.8212 4.69835 18.0609C5.23313 18.3334 5.93319 18.3334 7.33333 18.3334H12.6667C14.0668 18.3334 14.7668 18.3334 15.3017 18.0609C15.7721 17.8212 16.1545 17.4388 16.3942 16.9684C16.6667 16.4336 16.6667 15.7336 16.6667 14.3334V6.66675L11.6667 1.66675Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+	<span class="label">Discord</span>
+</a>
+						</li>
+<li class="nav-item">
+
+				
+<a
+	href="https://noted.lol/contact-us/"
+	class="nav-link nav-link-contact"
+		data-tippy-content="Contact"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.66667 5.83325L8.47075 10.5961C9.02175 10.9818 9.29726 11.1747 9.59692 11.2493C9.86159 11.3153 10.1384 11.3153 10.4031 11.2493C10.7028 11.1747 10.9783 10.9818 11.5293 10.5961L18.3333 5.83325M5.66667 16.6666H14.3333C15.7335 16.6666 16.4335 16.6666 16.9683 16.3941C17.4388 16.1544 17.8212 15.772 18.0608 15.3016C18.3333 14.7668 18.3333 14.0668 18.3333 12.6666V7.33325C18.3333 5.93312 18.3333 5.23305 18.0608 4.69828C17.8212 4.22787 17.4388 3.84542 16.9683 3.60574C16.4335 3.33325 15.7335 3.33325 14.3333 3.33325H5.66667C4.26654 3.33325 3.56647 3.33325 3.0317 3.60574C2.56129 3.84542 2.17884 4.22787 1.93916 4.69828C1.66667 5.23305 1.66667 5.93312 1.66667 7.33325V12.6666C1.66667 14.0668 1.66667 14.7668 1.93916 15.3016C2.17884 15.772 2.56129 16.1544 3.0317 16.3941C3.56647 16.6666 4.26654 16.6666 5.66667 16.6666Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+	<span class="label">Contact</span>
+</a>
+				</li>
+</ul>
+
+			</nav>
+
+
+								<nav class="navigation navigation-sidebar navigation-tags" aria-label="Sidebar Tags Navigation">
+						<a
+		href="https://noted.lol/tags/"
+	class="nav-link nav-link-tags nav-section-link"
+		data-tippy-content="Tags"
+>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.66667 6.66675H6.675M1.66667 4.33341V8.06217C1.66667 8.46983 1.66667 8.67366 1.71272 8.8655C1.75354 9.0355 1.82088 9.19808 1.91227 9.34725C2.01533 9.51541 2.15946 9.65958 2.44772 9.94783L8.83825 16.3383C9.82825 17.3283 10.3233 17.8234 10.8941 18.0088C11.3963 18.172 11.9371 18.172 12.4392 18.0088C13.01 17.8234 13.5051 17.3283 14.4951 16.3383L16.3383 14.4952C17.3283 13.5052 17.8233 13.0101 18.0088 12.4392C18.1719 11.9372 18.1719 11.3963 18.0088 10.8942C17.8233 10.3234 17.3283 9.82833 16.3383 8.83833L9.94775 2.4478C9.6595 2.15954 9.51533 2.01541 9.34717 1.91235C9.198 1.82096 9.03542 1.75362 8.86542 1.7128C8.67358 1.66675 8.46975 1.66675 8.0621 1.66675H4.33333C3.39992 1.66675 2.9332 1.66675 2.57668 1.84841C2.26308 2.00819 2.00811 2.26316 1.84833 2.57676C1.66667 2.93328 1.66667 3.39999 1.66667 4.33341ZM7.08333 6.66675C7.08333 6.89686 6.89678 7.08341 6.66667 7.08341C6.43655 7.08341 6.25 6.89686 6.25 6.66675C6.25 6.43663 6.43655 6.25008 6.66667 6.25008C6.89678 6.25008 7.08333 6.43663 7.08333 6.66675Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+
+	<span class="label">Tags</span>
+
+			<svg class="icon icon-arrow-right" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13 6.16675L16.8333 10.0001L13 13.8334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3.16669 10H16.8333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+						<ul>
+							<li>
+								<a
+		href="https://noted.lol/tag/self-hosting/"
+	class="nav-link nav-link-self-hosting"
+>
+
+		<span
+			class="nav-link-circle"
+			style="color: #0080c0"
+		></span>
+
+	<span class="label">Self Hosting</span>
+
+</a>
+							</li>
+							<li>
+								<a
+		href="https://noted.lol/tag/home-lab/"
+	class="nav-link nav-link-home-lab"
+>
+
+		<span
+			class="nav-link-circle"
+			style="color: #ff8000"
+		></span>
+
+	<span class="label">Homelab</span>
+
+</a>
+							</li>
+							<li>
+								<a
+		href="https://noted.lol/tag/weekly-roundup/"
+	class="nav-link nav-link-weekly-roundup"
+>
+
+		<span
+			class="nav-link-circle"
+			style="color: #1cd959"
+		></span>
+
+	<span class="label">Self Hosted Roundup</span>
+
+</a>
+							</li>
+							<li>
+								<a
+		href="https://noted.lol/tag/how-to/"
+	class="nav-link nav-link-how-to"
+>
+
+		<span
+			class="nav-link-circle"
+			style="color: #f1698e"
+		></span>
+
+	<span class="label">How To</span>
+
+</a>
+							</li>
+							<li>
+								<a
+		href="https://noted.lol/tag/self-hosted-file-transfer/"
+	class="nav-link nav-link-self-hosted-file-transfer"
+>
+
+		<span
+			class="nav-link-circle"
+		></span>
+
+	<span class="label">Self Hosted File Transfer &amp; Synchronization</span>
+
+</a>
+							</li>
+						</ul>
+
+						<button
+							class="navigation-dropdown-toggle"
+							aria-expanded="false"
+							aria-controls="nav-dropdown-content-tags"
+							aria-label="Show tags navigation"
+							id="nav-dropdown-toggle-tags"
+						></button>
+						<div
+							class="navigation-dropdown navigation-dropdown-tags"
+							aria-labelledby="nav-dropdown-toggle-tags"
+							id="nav-dropdown-content-tags"
+						>
+							<ul>
+								<li>
+									<a
+		href="https://noted.lol/tag/self-hosting/"
+	class="nav-link nav-link-self-hosting"
+>
+
+		<span
+			class="nav-link-circle"
+			style="color: #0080c0"
+		></span>
+
+	<span class="label">Self Hosting</span>
+
+</a>
+								</li>
+								<li>
+									<a
+		href="https://noted.lol/tag/home-lab/"
+	class="nav-link nav-link-home-lab"
+>
+
+		<span
+			class="nav-link-circle"
+			style="color: #ff8000"
+		></span>
+
+	<span class="label">Homelab</span>
+
+</a>
+								</li>
+								<li>
+									<a
+		href="https://noted.lol/tag/weekly-roundup/"
+	class="nav-link nav-link-weekly-roundup"
+>
+
+		<span
+			class="nav-link-circle"
+			style="color: #1cd959"
+		></span>
+
+	<span class="label">Self Hosted Roundup</span>
+
+</a>
+								</li>
+								<li>
+									<a
+		href="https://noted.lol/tag/how-to/"
+	class="nav-link nav-link-how-to"
+>
+
+		<span
+			class="nav-link-circle"
+			style="color: #f1698e"
+		></span>
+
+	<span class="label">How To</span>
+
+</a>
+								</li>
+								<li>
+									<a
+		href="https://noted.lol/tag/self-hosted-file-transfer/"
+	class="nav-link nav-link-self-hosted-file-transfer"
+>
+
+		<span
+			class="nav-link-circle"
+		></span>
+
+	<span class="label">Self Hosted File Transfer &amp; Synchronization</span>
+
+</a>
+								</li>
+							</ul>
+						</div>
+					</nav>
+
+
+			<div class="footer sidebar-footer">
+	<ul class="social-links">
+  <li>
+		<a href="https://x.com/jeremy_noted" class="social-link" target="_blank" rel="noopener noreferrer">
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.2437 2.25H21.5531L14.325 10.5094L22.8281 21.75H16.1719L10.9547 14.9344L4.99216 21.75H1.6781L9.40779 12.9141L1.25623 2.25H8.08123L12.7922 8.47969L18.2437 2.25ZM17.0812 19.7719H18.914L7.08279 4.125H5.11404L17.0812 19.7719Z" fill="currentColor"/>
+</svg>
+      <span>X</span>
+		</a>
+  </li>
+</ul>
+
+
+	<div class="footer-copyright">© 2025 Noted</div>
+</div>		</aside>
+
+		<article id="content" class="content post">
+			
+
+
+
+<header class="post-header container-wide">
+	<div class="post-header-info">
+		<h1 class="post-title">Self-Host Vaultwarden Password Manager - Complete Setup Guide</h1>
+		<ul class="post-meta">
+				<li>
+	<div class="post-meta-author">
+		<a href="https://noted.lol/author/jeremy/" class="post-meta-author-image" tabindex="-1" aria-label="Jeremy" data-tooltip-custom="author">
+				<span class="avatar avatar-large" data-avatar-name="J">
+		
+
+<picture>
+	<source
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		type="image/webp"
+	>
+	<img
+		src="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s=250&amp;r=x&amp;d=mp"
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		width="1340"
+		height="530"
+		alt="Jeremy"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		loading="eager"
+	>
+</picture>
+	</span>
+		</a>
+		by <a href=https://noted.lol/author/jeremy/ data-tooltip-custom='author'>Jeremy</a>
+		<div class="tooltip-custom tooltip-custom-author" style="display:none;">
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-avatar" aria-label="Jeremy" tabindex="-1">
+			<span class="avatar avatar-large" data-avatar-name="J">
+		
+
+<picture>
+	<source
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		type="image/webp"
+	>
+	<img
+		src="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s=250&amp;r=x&amp;d=mp"
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		width="1340"
+		height="530"
+		alt="Jeremy"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		loading="eager"
+	>
+</picture>
+	</span>
+	</a>
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-title">Jeremy</a>
+	<div>Hello! I&#x27;m Jeremy, the creative force behind Noted. With a blend of self-taught expertise in homelab tech and professional experience with Docker, I&#x27;m eager to connect with fellow innovators.</div>
+	
+<ul class="social-links social-links-author">	<li>
+		<a
+			class="social-link"
+			href="https://noted.lol/"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.66666 10.0001H18.3333M1.66666 10.0001C1.66666 14.6024 5.39762 18.3334 10 18.3334M1.66666 10.0001C1.66666 5.39771 5.39762 1.66675 10 1.66675M18.3333 10.0001C18.3333 14.6024 14.6023 18.3334 10 18.3334M18.3333 10.0001C18.3333 5.39771 14.6023 1.66675 10 1.66675M10 18.3334C12.0844 16.0514 13.269 13.0901 13.3333 10.0001C13.269 6.91011 12.0844 3.94871 10 1.66675M10 18.3334C7.9156 16.0514 6.73104 13.0901 6.66666 10.0001C6.73104 6.91011 7.9156 3.94871 10 1.66675" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+			<span class="label screen-reader-text">
+				Website
+			</span>
+		</a>
+	</li>
+	<li>
+		<a
+			class="social-link"
+			href="https://x.com/jeremy_noted"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.2437 2.25H21.5531L14.325 10.5094L22.8281 21.75H16.1719L10.9547 14.9344L4.99216 21.75H1.6781L9.40779 12.9141L1.25623 2.25H8.08123L12.7922 8.47969L18.2437 2.25ZM17.0812 19.7719H18.914L7.08279 4.125H5.11404L17.0812 19.7719Z" fill="currentColor"/>
+</svg>
+			<span class="label screen-reader-text">
+				X
+			</span>
+		</a>
+	</li>
+</ul></div>	</div>
+
+</li>
+				<li class="separator">&bull;</li>
+			<li>
+				<time class="post-meta-date" datetime="2023-03-14">March 14, 2023</time>
+			</li>
+			<li class="separator">&bull;</li>
+			<li>
+				<span class="post-meta-time">5 min read</span>
+			</li>
+		</ul>
+	</div>
+
+	<div class="post-header-buttons">
+			<button
+		data-popup-toggle="#popup-comments"
+		class="button button-background-200 button-sm post-comments-button"
+		aria-expanded="false"
+	>
+		<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.4997 9.58333C17.4997 13.4953 14.3283 16.6667 10.4163 16.6667C9.519 16.6667 8.66067 16.4998 7.87065 16.1954C7.72621 16.1398 7.65398 16.112 7.59655 16.0988C7.54006 16.0858 7.49917 16.0803 7.44124 16.0781C7.38234 16.0758 7.31772 16.0825 7.18849 16.0958L2.92097 16.537C2.5141 16.579 2.31067 16.6001 2.19067 16.5268C2.08614 16.4631 2.01495 16.3566 1.996 16.2357C1.97424 16.0968 2.07146 15.9168 2.26588 15.557L3.62893 13.034C3.74118 12.8263 3.79731 12.7223 3.82273 12.6224C3.84783 12.5238 3.85391 12.4527 3.84587 12.3512C3.83774 12.2484 3.79266 12.1147 3.7025 11.8472C3.46289 11.1363 3.33302 10.375 3.33302 9.58333C3.33302 5.67132 6.50433 2.5 10.4163 2.5C14.3283 2.5 17.4997 5.67132 17.4997 9.58333Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+		<span class="label">Comments</span>
+		<span class="count"><script
+    data-ghost-comment-count="678e7d88f3bcda0001417c49"
+    data-ghost-comment-count-empty=""
+    data-ghost-comment-count-singular=""
+    data-ghost-comment-count-plural=""
+    data-ghost-comment-count-tag="span"
+    data-ghost-comment-count-class-name=""
+    data-ghost-comment-count-autowrap="true"
+>
+</script></span>
+	</button>
+		<div class="post-button-share navigation">
+	<button class="button button-background-200 button-sm dropdown-toggle" aria-expanded="false">
+		<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 10V13.5C17.5 14.9002 17.5 15.6002 17.2275 16.135C16.9878 16.6054 16.6054 16.9878 16.135 17.2275C15.6002 17.5 14.9002 17.5 13.5 17.5H6.5C5.09987 17.5 4.3998 17.5 3.86503 17.2275C3.39462 16.9878 3.01217 16.6054 2.77248 16.135C2.5 15.6002 2.5 14.9002 2.5 13.5V10M13.3333 5.83333L10 2.5M10 2.5L6.66667 5.83333M10 2.5V12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+		<span class="label">Share</span>
+	</button>
+	<div class="dropdown dropdown-share">
+		<ul><li>
+	<a class="nav-link" href="https://x.com/intent/tweet?url=https%3A%2F%2Fnoted.lol%2Fvaultwarden%2F&amp;text=Self-Host%20Vaultwarden%20Password%20Manager%20-%20Complete%20Setup%20Guide" rel="noopener" target="_blank">
+		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.2437 2.25H21.5531L14.325 10.5094L22.8281 21.75H16.1719L10.9547 14.9344L4.99216 21.75H1.6781L9.40779 12.9141L1.25623 2.25H8.08123L12.7922 8.47969L18.2437 2.25ZM17.0812 19.7719H18.914L7.08279 4.125H5.11404L17.0812 19.7719Z" fill="currentColor"/>
+</svg>
+		<span class="label">Share on X</span>
+	</a>
+</li>
+
+<li>
+	<a class="nav-link" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fnoted.lol%2Fvaultwarden%2F&amp;quote=Self-Host%20Vaultwarden%20Password%20Manager%20-%20Complete%20Setup%20Guide" rel="noopener" target="_blank">
+		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 12C24 5.37188 18.6281 0 12 0C5.37188 0 0 5.37188 0 12C0 17.625 3.87656 22.35 9.10312 23.6484V15.6656H6.62812V12H9.10312V10.4203C9.10312 6.3375 10.95 4.44375 14.9625 4.44375C15.7219 4.44375 17.0344 4.59375 17.5734 4.74375V8.0625C17.2922 8.03437 16.8 8.01562 16.1859 8.01562C14.2172 8.01562 13.4578 8.76094 13.4578 10.6969V12H17.3766L16.7016 15.6656H13.4531V23.9109C19.3969 23.1938 24 18.1359 24 12Z" fill="currentColor"/>
+</svg>
+		<span class="label">Share on Facebook</span>
+	</a>
+</li>
+
+<li>
+	<a class="nav-link" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fnoted.lol%2Fvaultwarden%2F&amp;summary=Self-Host%20Vaultwarden%20Password%20Manager%20-%20Complete%20Setup%20Guide" rel="noopener" target="_blank">
+		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 1.5H2.99531C2.17031 1.5 1.5 2.17969 1.5 3.01406V20.9859C1.5 21.8203 2.17031 22.5 2.99531 22.5H21C21.825 22.5 22.5 21.8203 22.5 20.9859V3.01406C22.5 2.17969 21.825 1.5 21 1.5ZM7.84687 19.5H4.73438V9.47812H7.85156V19.5H7.84687ZM6.29062 8.10938C5.29219 8.10938 4.48594 7.29844 4.48594 6.30469C4.48594 5.31094 5.29219 4.5 6.29062 4.5C7.28437 4.5 8.09531 5.31094 8.09531 6.30469C8.09531 7.30312 7.28906 8.10938 6.29062 8.10938ZM19.5141 19.5H16.4016V14.625C16.4016 13.4625 16.3781 11.9672 14.7844 11.9672C13.1625 11.9672 12.9141 13.2328 12.9141 14.5406V19.5H9.80156V9.47812H12.7875V10.8469H12.8297C13.2469 10.0594 14.2641 9.22969 15.7781 9.22969C18.9281 9.22969 19.5141 11.3062 19.5141 14.0062V19.5Z" fill="currentColor"/>
+</svg>		<span class="label">Share on LinkedIn</span>
+	</a>
+</li>
+
+<li>
+	<a class="nav-link" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fnoted.lol%2Fvaultwarden%2F&amp;description=Self-Host%20Vaultwarden%20Password%20Manager%20-%20Complete%20Setup%20Guide" rel="noopener" target="_blank">
+		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M23.625 12C23.625 18.4218 18.4218 23.625 12 23.625C10.8 23.625 9.64688 23.4422 8.55938 23.1047C9.03282 22.3312 9.74062 21.0655 10.0031 20.0578C10.1437 19.5141 10.725 17.2922 10.725 17.2922C11.1047 18.0141 12.2109 18.6281 13.3875 18.6281C16.8938 18.6281 19.4204 15.4032 19.4204 11.3953C19.4204 7.55625 16.2843 4.68282 12.2531 4.68282C7.2375 4.68282 4.57032 8.04843 4.57032 11.7188C4.57032 13.425 5.4797 15.5484 6.92813 16.2234C7.14845 16.3266 7.26562 16.2796 7.31719 16.0687C7.35469 15.9093 7.55157 15.1172 7.64062 14.7516C7.66875 14.6344 7.65469 14.5313 7.56094 14.4188C7.0875 13.8328 6.70312 12.7641 6.70312 11.7656C6.70312 9.20155 8.64375 6.72187 11.9531 6.72187C14.8078 6.72187 16.8094 8.66719 16.8094 11.4516C16.8094 14.5969 15.2204 16.7766 13.1531 16.7766C12.0141 16.7766 11.1563 15.8344 11.4328 14.6766C11.7609 13.2937 12.3937 11.8031 12.3937 10.8047C12.3937 9.91407 11.9156 9.16875 10.9219 9.16875C9.7547 9.16875 8.81719 10.3734 8.81719 11.9906C8.81719 13.0219 9.16407 13.7156 9.16407 13.7156C9.16407 13.7156 8.01563 18.5813 7.80468 19.4906C7.57032 20.4938 7.66407 21.9093 7.7625 22.8282C3.44063 21.1359 0.375 16.9266 0.375 12C0.375 5.57812 5.57812 0.375 12 0.375C18.4218 0.375 23.625 5.57812 23.625 12Z" fill="currentColor"/>
+</svg>
+		<span class="label">Share on Pinterest</span>
+	</a>
+</li>
+
+<li>
+	<a class="nav-link" href="https://noted.lol/cdn-cgi/l/email-protection#94abe7e1f6fef1f7e0a9c7f1f8f2b9dcfbe7e0b1a6a4c2f5e1f8e0e3f5e6f0f1fab1a6a4c4f5e7e7e3fbe6f0b1a6a4d9f5faf5f3f1e6b1a6a4b9b1a6a4d7fbf9e4f8f1e0f1b1a6a4c7f1e0e1e4b1a6a4d3e1fdf0f1b2f6fbf0eda9fce0e0e4e7b1a7d5b1a6d2b1a6d2fafbe0f1f0baf8fbf8b1a6d2e2f5e1f8e0e3f5e6f0f1fab1a6d2" rel="noopener" target="_blank">
+		<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.66667 5.83325L8.47075 10.5961C9.02175 10.9818 9.29725 11.1747 9.59692 11.2493C9.86158 11.3153 10.1384 11.3153 10.4031 11.2493C10.7028 11.1747 10.9783 10.9818 11.5293 10.5961L18.3333 5.83325M5.66667 16.6666H14.3333C15.7335 16.6666 16.4335 16.6666 16.9683 16.3941C17.4388 16.1544 17.8212 15.772 18.0608 15.3016C18.3333 14.7668 18.3333 14.0668 18.3333 12.6666V7.33325C18.3333 5.93312 18.3333 5.23305 18.0608 4.69828C17.8212 4.22787 17.4388 3.84542 16.9683 3.60574C16.4335 3.33325 15.7335 3.33325 14.3333 3.33325H5.66667C4.26653 3.33325 3.56647 3.33325 3.03169 3.60574C2.56128 3.84542 2.17883 4.22787 1.93915 4.69828C1.66667 5.23305 1.66667 5.93312 1.66667 7.33325V12.6666C1.66667 14.0668 1.66667 14.7668 1.93915 15.3016C2.17883 15.772 2.56128 16.1544 3.03169 16.3941C3.56647 16.6666 4.26653 16.6666 5.66667 16.6666Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+		<span class="label">Email</span>
+	</a>
+</li>
+
+<li>
+	<button class="nav-link" data-clipboard-text="https://noted.lol/vaultwarden/">
+		<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.33332 10.8332C8.69117 11.3117 9.14775 11.7075 9.67208 11.994C10.1964 12.2805 10.7762 12.4508 11.3722 12.4935C11.9682 12.5362 12.5663 12.4502 13.1261 12.2413C13.6859 12.0326 14.1942 11.7057 14.6167 11.2832L17.1167 8.78325C17.8757 7.99737 18.2956 6.94486 18.2862 5.85238C18.2767 4.7599 17.8384 3.71484 17.0659 2.94231C16.2933 2.16977 15.2483 1.73157 14.1558 1.72208C13.0633 1.71258 12.0108 2.13256 11.225 2.89156L9.79167 4.31656M11.6667 9.16658C11.3087 8.68808 10.8522 8.29223 10.3278 8.00577C9.8035 7.71931 9.22375 7.54896 8.62775 7.50627C8.03182 7.46359 7.43367 7.54958 6.87387 7.7584C6.31407 7.96722 5.80572 8.294 5.38332 8.71658L2.88332 11.2166C2.12433 12.0024 1.70435 13.0549 1.71385 14.1474C1.72334 15.2399 2.16154 16.2849 2.93407 17.0575C3.70661 17.83 4.75167 18.2682 5.84415 18.2777C6.93663 18.2872 7.98914 17.8672 8.775 17.1082L10.2 15.6832" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+		<span class="label">Copy link</span>
+	</button>
+</li></ul>
+	</div>
+</div>	</div>
+</header>
+
+<div class="post-featured">	<figure class="post-featured-image">
+		
+
+<picture>
+	<source
+		srcset="/content/images/size/w300/format/webp/2023/03/vaultwarden-self-hosted-password-manager-noted.lol.jpg 300w,
+		/content/images/size/w400/format/webp/2023/03/vaultwarden-self-hosted-password-manager-noted.lol.jpg 400w,
+		/content/images/size/w600/format/webp/2023/03/vaultwarden-self-hosted-password-manager-noted.lol.jpg 600w,
+		/content/images/size/w1200/format/webp/2023/03/vaultwarden-self-hosted-password-manager-noted.lol.jpg 1200w,
+		/content/images/size/w1600/format/webp/2023/03/vaultwarden-self-hosted-password-manager-noted.lol.jpg 1600w,
+		/content/images/size/w2000/format/webp/2023/03/vaultwarden-self-hosted-password-manager-noted.lol.jpg 2000w"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		type="image/webp"
+	>
+	<img
+		src="https://noted.lol/content/images/2023/03/vaultwarden-self-hosted-password-manager-noted.lol.jpg"
+		srcset="/content/images/size/w300/2023/03/vaultwarden-self-hosted-password-manager-noted.lol.jpg 300w,
+		/content/images/size/w400/2023/03/vaultwarden-self-hosted-password-manager-noted.lol.jpg 400w,
+		/content/images/size/w600/2023/03/vaultwarden-self-hosted-password-manager-noted.lol.jpg 600w,
+		/content/images/size/w1200/2023/03/vaultwarden-self-hosted-password-manager-noted.lol.jpg 1200w,
+		/content/images/size/w1600/2023/03/vaultwarden-self-hosted-password-manager-noted.lol.jpg 1600w,
+		/content/images/size/w2000/2023/03/vaultwarden-self-hosted-password-manager-noted.lol.jpg 2000w"
+		width="1340"
+		height="530"
+		alt="Self-Host Vaultwarden Password Manager - Complete Setup Guide"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		loading="eager"
+	>
+</picture>	</figure>
+</div>
+	<div class="post-content-grid">
+
+		<nav class="post-tags container" aria-label="Post Tags Navigation">
+	<ul>
+			<li>
+				<a class="post-tag" href="https://noted.lol/tag/self-hosted-password-managers/">Self Hosted Password Managers</a>
+			</li>
+			<li>
+				<a class="post-tag" href="https://noted.lol/tag/self-hosting/">Self Hosting</a>
+			</li>
+	</ul>
+</nav>
+
+		<div class="post-content-wrapper">
+
+			<div class="post-content">
+				<p>Vaultwarden is an open-source password manager that is designed to be self-hosted. Although Vaultwarden is not technically a fork of Bitwarden, it is instead a recreation of the backend using Rust.</p><p>For individuals seeking complete command over their password management system, self-hosting Bitwarden is a great alternative. With a self-hosted Bitwarden, you can store your private data, including passwords, on your own server. It guarantees you that your sensitive data is not saved on someone else's servers, giving you peace of mind. This article delves into the advantages of self-hosting Bitwarden, the installation process, and essential practices to keep your data secure.</p><figure class="kg-card kg-image-card kg-width-wide"><img src="https://noted.lol/content/images/2023/03/vaultwarden-self-hosted-vault-items-noted.lol.png" class="kg-image" alt loading="lazy" width="1920" height="937" srcset="https://noted.lol/content/images/size/w600/2023/03/vaultwarden-self-hosted-vault-items-noted.lol.png 600w, https://noted.lol/content/images/size/w1000/2023/03/vaultwarden-self-hosted-vault-items-noted.lol.png 1000w, https://noted.lol/content/images/size/w1600/2023/03/vaultwarden-self-hosted-vault-items-noted.lol.png 1600w, https://noted.lol/content/images/2023/03/vaultwarden-self-hosted-vault-items-noted.lol.png 1920w" sizes="(min-width: 1200px) 1200px"></figure><p>In this article, we will guide you through the process of self-hosting a <a href="https://github.com/dani-garcia/vaultwarden?ref=noted.lol">Vaultwarden server</a> on your own. We will cover everything from installing the necessary software to configuring your server and securing your data.</p><p>Once you have installed Vaultwarden, you can access the web interface to create an account and start storing your passwords securely. You can also use the <a href="https://bitwarden.com/download/?ref=noted.lol">Bitwarden browser extension or mobile app</a> to access your Vaultwarden instance and manage your passwords on the go.</p><h3 id="prerequisites">Prerequisites</h3><p>Before we start, there are a few things you will need:</p><ol><li>A server: You will need a server to host your Vaultwarden server. This server can be a VPS or a physical server that you have access to.</li><li>Docker: Docker is a containerization platform that allows you to run applications in isolated environments. We will be using Docker to run the Vaultwarden server.</li><li>Docker Compose: Docker Compose is a tool that allows you to define and run multi-container Docker applications. We will be using Docker Compose to manage the Vaultwarden server and its dependencies.</li><li>A domain name: You will need a domain name to access your Vaultwarden server. If you don't have a domain name, you can use a free dynamic DNS service like DuckDNS.</li></ol><h3 id="installation">Installation</h3><p>Step 1: Install Docker</p><p>The first step is to install Docker on your server. The installation process will depend on your operating system. You can find installation instructions for your operating system on the Docker website. For Debian run the following command.</p><!--kg-card-begin: markdown--><pre><code>curl -sSL https://get.docker.com | sh
+</code></pre>
+<!--kg-card-end: markdown--><p>Step 2: Install Vaultwarden using Docker Compose</p><p>Next, you will need to install Docker Compose. You can find installation instructions for your operating system on the Docker Compose website. For Debian, run the following command.</p><!--kg-card-begin: markdown--><pre><code>apt install docker-compose
+</code></pre>
+<!--kg-card-end: markdown--><p>Use the following Docker Compose to spin up your Vaultwarden server</p><!--kg-card-begin: markdown--><pre><code>version: '3.3'
+services:
+    server:
+        container_name: vaultwarden
+        volumes:
+            - '/docker/vaultwarden:/data/'
+        environment:
+            - SIGNUPS_ALLOWED=true
+            - ADMIN_TOKEN=randomPassword40characters
+        ports:
+            - '80:80'
+        image: 'vaultwarden/server:latest'
+</code></pre>
+<!--kg-card-end: markdown--><p>Now we are ready to start the Vaultwarden server. Run the following command to start the server:</p><!--kg-card-begin: markdown--><pre><code>docker-compose up -d
+</code></pre>
+<!--kg-card-end: markdown--><p>This will start the Vaultwarden server in the background. It may take a few minutes to download and start all the necessary containers.</p><p>Step 6: Access the Vaultwarden server</p><p>Once the server is up and running, you will need to asign a reverse proxy or a <a href="https://noted.lol/cloudflare-tunnel-and-zero-trust/">Cloudflare tunnel</a> to the app with a valid SSL certificate.</p><p>Navigate to the app using your domain and you should see the login screen. Register a new account then disable signups from the compose file by changing <code>SIGNUPS_ALLOWED=true</code> to <code>SIGNUPS_ALLOWED=false</code>. You can also manage signups through the web administration at https://your_domain_name/admin using the admin token in the <code>ADMIN_TOKEN=randomPassword40characters</code> environment variable.</p><figure class="kg-card kg-image-card kg-width-wide"><img src="https://noted.lol/content/images/2023/03/vaultwarden-self-hosted-login-2-noted.lol.png" class="kg-image" alt loading="lazy" width="1151" height="583" srcset="https://noted.lol/content/images/size/w600/2023/03/vaultwarden-self-hosted-login-2-noted.lol.png 600w, https://noted.lol/content/images/size/w1000/2023/03/vaultwarden-self-hosted-login-2-noted.lol.png 1000w, https://noted.lol/content/images/2023/03/vaultwarden-self-hosted-login-2-noted.lol.png 1151w"></figure><p>Congratulations! You have successfully self-hosted a Vaultwarden server.</p><p>When using Vaultwarden, there are several security considerations that you should keep in mind to ensure that your data is secure:</p><ol><li>Use strong and unique passwords: Vaultwarden is only as secure as the passwords you use. Make sure to use strong and unique passwords for your Vaultwarden account and for all the passwords stored in it.</li><li>Enable two-factor authentication (2FA): Vaultwarden supports two-factor authentication, which provides an extra layer of security. Make sure to enable 2FA for your Vaultwarden account.</li><li>Secure your Vaultwarden server: Since Vaultwarden is self-hosted, you are responsible for securing the server where it is installed. Make sure to keep the server updated with security patches and follow best practices for securing servers.</li><li>Encrypt your data: Vaultwarden encrypts your data both in transit and at rest. However, you can take additional steps to encrypt your data further by using full disk encryption and encrypting backups.</li><li>Monitor access logs: Vaultwarden logs all access to the server, including failed login attempts. Monitoring access logs can help you detect and prevent unauthorized access.</li><li>Regularly back up your data: Make sure to regularly back up your Vaultwarden data to prevent data loss in case of hardware failure or other issues.</li><li>Use trusted third-party integrations: Vaultwarden supports third-party integrations with various services. Make sure to only use trusted integrations and review their security practices.</li><li>Educate yourself and your team: Stay up-to-date on the latest security best practices and educate your team on how to use Vaultwarden securely.</li></ol><p>For the enhancement of keeping online accounts secure, users can utilize the password generation tool of Vaultwarden. This tool creates highly robust passwords that incorporate a blend of upper and lowercase alphabets, numerals, and symbols. With customizable options, users can select the length and intricacy level of their passwords. The program then stores the password in a database for future use. The password generator is an uncomplicated yet notably efficient means of enhancing online security by adopting strong passwords.</p><figure class="kg-card kg-image-card kg-width-wide"><img src="https://noted.lol/content/images/2023/03/vaultwarden-self-hosted-vault-password-generator-noted.lol.png" class="kg-image" alt loading="lazy" width="1920" height="937" srcset="https://noted.lol/content/images/size/w600/2023/03/vaultwarden-self-hosted-vault-password-generator-noted.lol.png 600w, https://noted.lol/content/images/size/w1000/2023/03/vaultwarden-self-hosted-vault-password-generator-noted.lol.png 1000w, https://noted.lol/content/images/size/w1600/2023/03/vaultwarden-self-hosted-vault-password-generator-noted.lol.png 1600w, https://noted.lol/content/images/2023/03/vaultwarden-self-hosted-vault-password-generator-noted.lol.png 1920w" sizes="(min-width: 1200px) 1200px"></figure><p>Send is an advanced and secure tool that allows users to securely send text messages of up to 1000 encrypted characters or files of up to 500 MB. The sender generates a secure link that can be shared via text, email, or any communication channel for the recipient to read. For security purposes, the link and the email do not contain any information related to the link content. Moreover, each send is encrypted end-to-end for security, and its lifespan is ephemeral, with a specified maximum date of 31 days, so the content is purged when the deletion date is reached. It offers other privacy-enhancing options such as configuring passwords or hiding the email address from recipients.</p><figure class="kg-card kg-image-card kg-width-wide"><img src="https://noted.lol/content/images/2023/03/vaultwarden-self-hosted-send-noted.lol-1.png" class="kg-image" alt loading="lazy" width="1920" height="480" srcset="https://noted.lol/content/images/size/w600/2023/03/vaultwarden-self-hosted-send-noted.lol-1.png 600w, https://noted.lol/content/images/size/w1000/2023/03/vaultwarden-self-hosted-send-noted.lol-1.png 1000w, https://noted.lol/content/images/size/w1600/2023/03/vaultwarden-self-hosted-send-noted.lol-1.png 1600w, https://noted.lol/content/images/2023/03/vaultwarden-self-hosted-send-noted.lol-1.png 1920w" sizes="(min-width: 1200px) 1200px"></figure><p>Furthermore, you can grab the <a href="https://bitwarden.com/help/getting-started-browserext/?ref=noted.lol">Bitwarden browser extension for Chrome or Firefox</a> to quickly add passwords to your vault for websites you frequent.</p><figure class="kg-card kg-image-card"><img src="https://noted.lol/content/images/2023/03/bitwarden-firefox-addon-setup.gif" class="kg-image" alt loading="lazy" width="373" height="629"></figure><p>Once installed simply click the Bitwarden addon icon on your browser, go to settings and paste the URL to your self-hosted Vaultwarden server. Then login and start using it! I highly recommend setting up 2FA to further protect your Vaultwarden server from being breached.</p><div class="kg-card kg-callout-card kg-callout-card-grey"><div class="kg-callout-emoji">👋</div><div class="kg-callout-text">Like what you see? Consider <a href="https://noted.lol/#/portal/signup">subscribing to the Noted newsletter</a>! You can always unsubscribe at any time. We also have <a href="https://discord.gg/zA9FT8qW9g?ref=noted.lol">Discord</a>!</div></div><h3 id="final-notes-and-thoughts">Final Notes and Thoughts</h3><p>Self-hosting <a href="https://github.com/dani-garcia/vaultwarden?ref=noted.lol">Vaultwarden</a> is a great option for those who value control, privacy, and security. There are other great features that I didn't cover in this article such as the Send feature. It allows you to upload files and send a generated encrypted share link. For those features and more, check out the <a href="https://github.com/dani-garcia/vaultwarden/wiki?ref=noted.lol">Vaultwarden wiki</a>!</p>
+			</div>
+
+
+			<div class="post-card-author">
+	<a href="https://noted.lol/author/jeremy/" class="post-card-author-image" aria-label="Jeremy" tabindex="-1">
+			<span class="avatar avatar-large" data-avatar-name="J">
+		
+
+<picture>
+	<source
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		type="image/webp"
+	>
+	<img
+		src="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s=250&amp;r=x&amp;d=mp"
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		width="1340"
+		height="530"
+		alt="Jeremy"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		loading="eager"
+	>
+</picture>
+	</span>
+	</a>
+
+	<a href="https://noted.lol/author/jeremy/" class="post-card-author-name">Jeremy</a>
+
+		<div class="post-card-author-bio">Hello! I&#x27;m Jeremy, the creative force behind Noted. With a blend of self-taught expertise in homelab tech and professional experience with Docker, I&#x27;m eager to connect with fellow innovators.</div>
+
+	
+<ul class="social-links social-links-author">	<li>
+		<a
+			class="social-link"
+			href="https://noted.lol/"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.66666 10.0001H18.3333M1.66666 10.0001C1.66666 14.6024 5.39762 18.3334 10 18.3334M1.66666 10.0001C1.66666 5.39771 5.39762 1.66675 10 1.66675M18.3333 10.0001C18.3333 14.6024 14.6023 18.3334 10 18.3334M18.3333 10.0001C18.3333 5.39771 14.6023 1.66675 10 1.66675M10 18.3334C12.0844 16.0514 13.269 13.0901 13.3333 10.0001C13.269 6.91011 12.0844 3.94871 10 1.66675M10 18.3334C7.9156 16.0514 6.73104 13.0901 6.66666 10.0001C6.73104 6.91011 7.9156 3.94871 10 1.66675" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+			<span class="label screen-reader-text">
+				Website
+			</span>
+		</a>
+	</li>
+	<li>
+		<a
+			class="social-link"
+			href="https://x.com/jeremy_noted"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.2437 2.25H21.5531L14.325 10.5094L22.8281 21.75H16.1719L10.9547 14.9344L4.99216 21.75H1.6781L9.40779 12.9141L1.25623 2.25H8.08123L12.7922 8.47969L18.2437 2.25ZM17.0812 19.7719H18.914L7.08279 4.125H5.11404L17.0812 19.7719Z" fill="currentColor"/>
+</svg>
+			<span class="label screen-reader-text">
+				X
+			</span>
+		</a>
+	</li>
+</ul></div>
+		</div>
+
+			<aside class="post-sidebar">
+	<div class="post-card-author">
+	<a href="https://noted.lol/author/jeremy/" class="post-card-author-image" aria-label="Jeremy" tabindex="-1">
+			<span class="avatar avatar-large" data-avatar-name="J">
+		
+
+<picture>
+	<source
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		type="image/webp"
+	>
+	<img
+		src="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s=250&amp;r=x&amp;d=mp"
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		width="1340"
+		height="530"
+		alt="Jeremy"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		loading="eager"
+	>
+</picture>
+	</span>
+	</a>
+
+	<a href="https://noted.lol/author/jeremy/" class="post-card-author-name">Jeremy</a>
+
+		<div class="post-card-author-bio">Hello! I&#x27;m Jeremy, the creative force behind Noted. With a blend of self-taught expertise in homelab tech and professional experience with Docker, I&#x27;m eager to connect with fellow innovators.</div>
+
+	
+<ul class="social-links social-links-author">	<li>
+		<a
+			class="social-link"
+			href="https://noted.lol/"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.66666 10.0001H18.3333M1.66666 10.0001C1.66666 14.6024 5.39762 18.3334 10 18.3334M1.66666 10.0001C1.66666 5.39771 5.39762 1.66675 10 1.66675M18.3333 10.0001C18.3333 14.6024 14.6023 18.3334 10 18.3334M18.3333 10.0001C18.3333 5.39771 14.6023 1.66675 10 1.66675M10 18.3334C12.0844 16.0514 13.269 13.0901 13.3333 10.0001C13.269 6.91011 12.0844 3.94871 10 1.66675M10 18.3334C7.9156 16.0514 6.73104 13.0901 6.66666 10.0001C6.73104 6.91011 7.9156 3.94871 10 1.66675" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+			<span class="label screen-reader-text">
+				Website
+			</span>
+		</a>
+	</li>
+	<li>
+		<a
+			class="social-link"
+			href="https://x.com/jeremy_noted"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.2437 2.25H21.5531L14.325 10.5094L22.8281 21.75H16.1719L10.9547 14.9344L4.99216 21.75H1.6781L9.40779 12.9141L1.25623 2.25H8.08123L12.7922 8.47969L18.2437 2.25ZM17.0812 19.7719H18.914L7.08279 4.125H5.11404L17.0812 19.7719Z" fill="currentColor"/>
+</svg>
+			<span class="label screen-reader-text">
+				X
+			</span>
+		</a>
+	</li>
+</ul></div>
+
+	<div class="post-sidebar-sticky toc-scroll">
+			<div class="toc toc-hidden">
+	<button class="toc-button button button-sm button-icon button-transparent button-rounded" aria-expanded="false" aria-label="Collapse table of contents">
+		<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="1.25" y1="4.25" x2="10.75" y2="4.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></line><line x1="3.25" y1="8.25" x2="12.75" y2="8.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></line><line x1="5.25" y1="12.25" x2="14.75" y2="12.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></line></svg>
+	</button>
+	<div class="toc-title">
+		<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="1.25" y1="4.25" x2="10.75" y2="4.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></line><line x1="3.25" y1="8.25" x2="12.75" y2="8.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></line><line x1="5.25" y1="12.25" x2="14.75" y2="12.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></line></svg>
+
+		On this page
+	</div>
+	<div class="toc-unlock-link" style="display: none;">
+		<a href="#post-upgrade-cta">
+			<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 11.3333C8.36819 11.3333 8.66667 11.0349 8.66667 10.6667C8.66667 10.2985 8.36819 10 8 10C7.63181 10 7.33333 10.2985 7.33333 10.6667C7.33333 11.0349 7.63181 11.3333 8 11.3333Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.6667 6.66667H3.33333C2.59695 6.66667 2 7.26362 2 8V13.3333C2 14.0697 2.59695 14.6667 3.33333 14.6667H12.6667C13.403 14.6667 14 14.0697 14 13.3333V8C14 7.26362 13.403 6.66667 12.6667 6.66667Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.66667 6.66667V4.66667C4.6667 3.93291 4.90884 3.21967 5.35553 2.63756C5.80222 2.05544 6.42851 1.63698 7.13726 1.44706C7.84601 1.25715 8.59762 1.3064 9.27553 1.58718C9.95344 1.86796 10.5198 2.36457 10.8867 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+			Unlock full content
+		</a>
+	</div>
+</div>
+					<form class="form-subscribe" data-members-form="subscribe">
+					<label for="subscribe-email">Subscribe to Noted</label>
+				<div>
+					<input type="email" id="subscribe-email" placeholder="Type your email..." required data-members-email>
+					<button class="button" type="submit">
+							<span class="label hide-when-loading hide-when-success">Subscribe</span>
+						<span class="label loading">Sending<svg class="icon icon-loader" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path opacity="0.1" d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 14.1421 5.85786 17.5 10 17.5Z" stroke="currentColor" stroke-width="1.5"/>
+<path d="M17.5 10C17.5 14.1421 14.1421 17.5 10 17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+</span>
+						<span class="label success">Sent<svg class="icon icon-check" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.6667 5L7.5 14.1667L3.33334 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span>
+					</button>
+				</div>
+				<span class="form-alert">
+					<span class="success">Please check your inbox and click the confirmation link.</span>
+					<span class="error" data-members-error></span>
+				</span>
+			</form>
+	</div>
+</aside>
+
+	</div>
+
+	<section class="section section-read-next">
+		<h2 class="section-head">Read Next</h2>
+
+		
+				<div class="swiper slider-cards slider-posts">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide">
+							
+
+
+
+
+
+
+
+<article class="card card-post card-post-classic-simple card-has-image card-has-author">
+			<div class="card-post-image">
+		<a class="card-post-image-link" aria-label="Karakeep - The Ultimate All-In-One Bookmark and Note Taking App" href="https://noted.lol/hoarder/"></a>
+
+			
+
+<picture>
+	<source
+		srcset="/content/images/size/w300/format/webp/2024/07/hoarder-self-hosted-noted.lol.jpg 300w,
+		/content/images/size/w400/format/webp/2024/07/hoarder-self-hosted-noted.lol.jpg 400w,
+		/content/images/size/w600/format/webp/2024/07/hoarder-self-hosted-noted.lol.jpg 600w
+"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		type="image/webp"
+	>
+	<img
+		src="https://noted.lol/content/images/2024/07/hoarder-self-hosted-noted.lol.jpg"
+		srcset="/content/images/size/w300/2024/07/hoarder-self-hosted-noted.lol.jpg 300w,
+		/content/images/size/w400/2024/07/hoarder-self-hosted-noted.lol.jpg 400w,
+		/content/images/size/w600/2024/07/hoarder-self-hosted-noted.lol.jpg 600w
+"
+		width="370"
+		height="210"
+		alt="Karakeep - The Ultimate All-In-One Bookmark and Note Taking App"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		loading="lazy"
+	>
+</picture>
+		<span class="card-post-image-badge">
+				<span class="card-post-time">5 min read</span>
+
+
+
+		</span>
+	</div>
+	
+	<div class="card-post-content">
+				<h3 class="card-post-title"><a href="https://noted.lol/hoarder/">Karakeep - The Ultimate All-In-One Bookmark and Note Taking App</a></h3>
+
+			<div class="card-post-meta">
+						<div class="card-post-author">
+			<a href="https://noted.lol/author/jeremy/" class="card-post-author-name" data-tooltip-custom="author">
+				Jeremy
+			</a>
+			<div class="tooltip-custom tooltip-custom-author" style="display:none;">
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-avatar" aria-label="Jeremy" tabindex="-1">
+			<span class="avatar avatar-large" data-avatar-name="J">
+		
+
+<picture>
+	<source
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		type="image/webp"
+	>
+	<img
+		src="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s=250&amp;r=x&amp;d=mp"
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		width="1340"
+		height="530"
+		alt="Jeremy"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		loading="eager"
+	>
+</picture>
+	</span>
+	</a>
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-title">Jeremy</a>
+	<div>Hello! I&#x27;m Jeremy, the creative force behind Noted. With a blend of self-taught expertise in homelab tech and professional experience with Docker, I&#x27;m eager to connect with fellow innovators.</div>
+	
+<ul class="social-links social-links-author">	<li>
+		<a
+			class="social-link"
+			href="https://noted.lol/"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.66666 10.0001H18.3333M1.66666 10.0001C1.66666 14.6024 5.39762 18.3334 10 18.3334M1.66666 10.0001C1.66666 5.39771 5.39762 1.66675 10 1.66675M18.3333 10.0001C18.3333 14.6024 14.6023 18.3334 10 18.3334M18.3333 10.0001C18.3333 5.39771 14.6023 1.66675 10 1.66675M10 18.3334C12.0844 16.0514 13.269 13.0901 13.3333 10.0001C13.269 6.91011 12.0844 3.94871 10 1.66675M10 18.3334C7.9156 16.0514 6.73104 13.0901 6.66666 10.0001C6.73104 6.91011 7.9156 3.94871 10 1.66675" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+			<span class="label screen-reader-text">
+				Website
+			</span>
+		</a>
+	</li>
+	<li>
+		<a
+			class="social-link"
+			href="https://x.com/jeremy_noted"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.2437 2.25H21.5531L14.325 10.5094L22.8281 21.75H16.1719L10.9547 14.9344L4.99216 21.75H1.6781L9.40779 12.9141L1.25623 2.25H8.08123L12.7922 8.47969L18.2437 2.25ZM17.0812 19.7719H18.914L7.08279 4.125H5.11404L17.0812 19.7719Z" fill="currentColor"/>
+</svg>
+			<span class="label screen-reader-text">
+				X
+			</span>
+		</a>
+	</li>
+</ul></div>
+		</div>
+
+			<span class="card-post-meta-divider">&bull;</span>
+					<time class="card-post-date" datetime="2025-04-21">Apr 21, 2025</time>
+							<span class="card-post-meta-divider">&bull;</span>
+		<a class="card-post-primary-tag" href="https://noted.lol/tag/self-hosted-note-taking-apps/">Self Hosted Note-taking &amp; Editors</a>
+			</div>
+
+	</div>
+</article>
+		</div>
+		<div class="swiper-slide">
+							
+
+
+
+
+
+
+
+<article class="card card-post card-post-classic-simple card-has-image card-has-author">
+			<div class="card-post-image">
+		<a class="card-post-image-link" aria-label="Diskover: Search Files and Analyze Their Storage Usage" href="https://noted.lol/diskover/"></a>
+
+			
+
+<picture>
+	<source
+		srcset="/content/images/size/w300/format/webp/2025/04/diskover-self-hosted-noted.jpg 300w,
+		/content/images/size/w400/format/webp/2025/04/diskover-self-hosted-noted.jpg 400w,
+		/content/images/size/w600/format/webp/2025/04/diskover-self-hosted-noted.jpg 600w
+"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		type="image/webp"
+	>
+	<img
+		src="https://noted.lol/content/images/2025/04/diskover-self-hosted-noted.jpg"
+		srcset="/content/images/size/w300/2025/04/diskover-self-hosted-noted.jpg 300w,
+		/content/images/size/w400/2025/04/diskover-self-hosted-noted.jpg 400w,
+		/content/images/size/w600/2025/04/diskover-self-hosted-noted.jpg 600w
+"
+		width="370"
+		height="210"
+		alt="Diskover: Search Files and Analyze Their Storage Usage"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		loading="lazy"
+	>
+</picture>
+		<span class="card-post-image-badge">
+				<span class="card-post-time">6 min read</span>
+
+
+
+		</span>
+	</div>
+	
+	<div class="card-post-content">
+				<h3 class="card-post-title"><a href="https://noted.lol/diskover/">Diskover: Search Files and Analyze Their Storage Usage</a></h3>
+
+			<div class="card-post-meta">
+						<div class="card-post-author">
+			<a href="https://noted.lol/author/jeremy/" class="card-post-author-name" data-tooltip-custom="author">
+				Jeremy
+			</a>
+			<div class="tooltip-custom tooltip-custom-author" style="display:none;">
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-avatar" aria-label="Jeremy" tabindex="-1">
+			<span class="avatar avatar-large" data-avatar-name="J">
+		
+
+<picture>
+	<source
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		type="image/webp"
+	>
+	<img
+		src="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s=250&amp;r=x&amp;d=mp"
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		width="1340"
+		height="530"
+		alt="Jeremy"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		loading="eager"
+	>
+</picture>
+	</span>
+	</a>
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-title">Jeremy</a>
+	<div>Hello! I&#x27;m Jeremy, the creative force behind Noted. With a blend of self-taught expertise in homelab tech and professional experience with Docker, I&#x27;m eager to connect with fellow innovators.</div>
+	
+<ul class="social-links social-links-author">	<li>
+		<a
+			class="social-link"
+			href="https://noted.lol/"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.66666 10.0001H18.3333M1.66666 10.0001C1.66666 14.6024 5.39762 18.3334 10 18.3334M1.66666 10.0001C1.66666 5.39771 5.39762 1.66675 10 1.66675M18.3333 10.0001C18.3333 14.6024 14.6023 18.3334 10 18.3334M18.3333 10.0001C18.3333 5.39771 14.6023 1.66675 10 1.66675M10 18.3334C12.0844 16.0514 13.269 13.0901 13.3333 10.0001C13.269 6.91011 12.0844 3.94871 10 1.66675M10 18.3334C7.9156 16.0514 6.73104 13.0901 6.66666 10.0001C6.73104 6.91011 7.9156 3.94871 10 1.66675" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+			<span class="label screen-reader-text">
+				Website
+			</span>
+		</a>
+	</li>
+	<li>
+		<a
+			class="social-link"
+			href="https://x.com/jeremy_noted"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.2437 2.25H21.5531L14.325 10.5094L22.8281 21.75H16.1719L10.9547 14.9344L4.99216 21.75H1.6781L9.40779 12.9141L1.25623 2.25H8.08123L12.7922 8.47969L18.2437 2.25ZM17.0812 19.7719H18.914L7.08279 4.125H5.11404L17.0812 19.7719Z" fill="currentColor"/>
+</svg>
+			<span class="label screen-reader-text">
+				X
+			</span>
+		</a>
+	</li>
+</ul></div>
+		</div>
+
+			<span class="card-post-meta-divider">&bull;</span>
+					<time class="card-post-date" datetime="2025-04-07">Apr 7, 2025</time>
+							</div>
+
+	</div>
+</article>
+		</div>
+		<div class="swiper-slide">
+							
+
+
+
+
+
+
+
+<article class="card card-post card-post-classic-simple card-has-image card-has-author">
+			<div class="card-post-image">
+		<a class="card-post-image-link" aria-label="Index and Search Every File on Your Homelab Server using Sist2" href="https://noted.lol/sist2/"></a>
+
+			
+
+<picture>
+	<source
+		srcset="/content/images/size/w300/format/webp/2025/04/sist2-self-hosted-search-noted.jpg 300w,
+		/content/images/size/w400/format/webp/2025/04/sist2-self-hosted-search-noted.jpg 400w,
+		/content/images/size/w600/format/webp/2025/04/sist2-self-hosted-search-noted.jpg 600w
+"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		type="image/webp"
+	>
+	<img
+		src="https://noted.lol/content/images/2025/04/sist2-self-hosted-search-noted.jpg"
+		srcset="/content/images/size/w300/2025/04/sist2-self-hosted-search-noted.jpg 300w,
+		/content/images/size/w400/2025/04/sist2-self-hosted-search-noted.jpg 400w,
+		/content/images/size/w600/2025/04/sist2-self-hosted-search-noted.jpg 600w
+"
+		width="370"
+		height="210"
+		alt="Index and Search Every File on Your Homelab Server using Sist2"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		loading="lazy"
+	>
+</picture>
+		<span class="card-post-image-badge">
+				<span class="card-post-time">5 min read</span>
+
+
+
+		</span>
+	</div>
+	
+	<div class="card-post-content">
+				<h3 class="card-post-title"><a href="https://noted.lol/sist2/">Index and Search Every File on Your Homelab Server using Sist2</a></h3>
+
+			<div class="card-post-meta">
+						<div class="card-post-author">
+			<a href="https://noted.lol/author/jeremy/" class="card-post-author-name" data-tooltip-custom="author">
+				Jeremy
+			</a>
+			<div class="tooltip-custom tooltip-custom-author" style="display:none;">
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-avatar" aria-label="Jeremy" tabindex="-1">
+			<span class="avatar avatar-large" data-avatar-name="J">
+		
+
+<picture>
+	<source
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		type="image/webp"
+	>
+	<img
+		src="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s=250&amp;r=x&amp;d=mp"
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		width="1340"
+		height="530"
+		alt="Jeremy"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		loading="eager"
+	>
+</picture>
+	</span>
+	</a>
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-title">Jeremy</a>
+	<div>Hello! I&#x27;m Jeremy, the creative force behind Noted. With a blend of self-taught expertise in homelab tech and professional experience with Docker, I&#x27;m eager to connect with fellow innovators.</div>
+	
+<ul class="social-links social-links-author">	<li>
+		<a
+			class="social-link"
+			href="https://noted.lol/"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.66666 10.0001H18.3333M1.66666 10.0001C1.66666 14.6024 5.39762 18.3334 10 18.3334M1.66666 10.0001C1.66666 5.39771 5.39762 1.66675 10 1.66675M18.3333 10.0001C18.3333 14.6024 14.6023 18.3334 10 18.3334M18.3333 10.0001C18.3333 5.39771 14.6023 1.66675 10 1.66675M10 18.3334C12.0844 16.0514 13.269 13.0901 13.3333 10.0001C13.269 6.91011 12.0844 3.94871 10 1.66675M10 18.3334C7.9156 16.0514 6.73104 13.0901 6.66666 10.0001C6.73104 6.91011 7.9156 3.94871 10 1.66675" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+			<span class="label screen-reader-text">
+				Website
+			</span>
+		</a>
+	</li>
+	<li>
+		<a
+			class="social-link"
+			href="https://x.com/jeremy_noted"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.2437 2.25H21.5531L14.325 10.5094L22.8281 21.75H16.1719L10.9547 14.9344L4.99216 21.75H1.6781L9.40779 12.9141L1.25623 2.25H8.08123L12.7922 8.47969L18.2437 2.25ZM17.0812 19.7719H18.914L7.08279 4.125H5.11404L17.0812 19.7719Z" fill="currentColor"/>
+</svg>
+			<span class="label screen-reader-text">
+				X
+			</span>
+		</a>
+	</li>
+</ul></div>
+		</div>
+
+			<span class="card-post-meta-divider">&bull;</span>
+					<time class="card-post-date" datetime="2025-04-03">Apr 3, 2025</time>
+							<span class="card-post-meta-divider">&bull;</span>
+		<a class="card-post-primary-tag" href="https://noted.lol/tag/self-hosted-file-indexing-and-searching/">Self Hosted File Indexing and Searching</a>
+			</div>
+
+	</div>
+</article>
+		</div>
+		<div class="swiper-slide">
+							
+
+
+
+
+
+
+
+<article class="card card-post card-post-classic-simple card-has-image card-has-author">
+			<div class="card-post-image">
+		<a class="card-post-image-link" aria-label="WiFi Mesh System Woes: Finding the Right System for our New Home" href="https://noted.lol/wifi-mesh-systems/"></a>
+
+			
+
+<picture>
+	<source
+		srcset="/content/images/size/w300/format/webp/2025/03/wifi-mesh-systems-noted.jpg 300w,
+		/content/images/size/w400/format/webp/2025/03/wifi-mesh-systems-noted.jpg 400w,
+		/content/images/size/w600/format/webp/2025/03/wifi-mesh-systems-noted.jpg 600w
+"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		type="image/webp"
+	>
+	<img
+		src="https://noted.lol/content/images/2025/03/wifi-mesh-systems-noted.jpg"
+		srcset="/content/images/size/w300/2025/03/wifi-mesh-systems-noted.jpg 300w,
+		/content/images/size/w400/2025/03/wifi-mesh-systems-noted.jpg 400w,
+		/content/images/size/w600/2025/03/wifi-mesh-systems-noted.jpg 600w
+"
+		width="370"
+		height="210"
+		alt="WiFi Mesh System Woes: Finding the Right System for our New Home"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		loading="lazy"
+	>
+</picture>
+		<span class="card-post-image-badge">
+				<span class="card-post-time">4 min read</span>
+
+
+
+		</span>
+	</div>
+	
+	<div class="card-post-content">
+				<h3 class="card-post-title"><a href="https://noted.lol/wifi-mesh-systems/">WiFi Mesh System Woes: Finding the Right System for our New Home</a></h3>
+
+			<div class="card-post-meta">
+						<div class="card-post-author">
+			<a href="https://noted.lol/author/jeremy/" class="card-post-author-name" data-tooltip-custom="author">
+				Jeremy
+			</a>
+			<div class="tooltip-custom tooltip-custom-author" style="display:none;">
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-avatar" aria-label="Jeremy" tabindex="-1">
+			<span class="avatar avatar-large" data-avatar-name="J">
+		
+
+<picture>
+	<source
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		type="image/webp"
+	>
+	<img
+		src="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s=250&amp;r=x&amp;d=mp"
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		width="1340"
+		height="530"
+		alt="Jeremy"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		loading="eager"
+	>
+</picture>
+	</span>
+	</a>
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-title">Jeremy</a>
+	<div>Hello! I&#x27;m Jeremy, the creative force behind Noted. With a blend of self-taught expertise in homelab tech and professional experience with Docker, I&#x27;m eager to connect with fellow innovators.</div>
+	
+<ul class="social-links social-links-author">	<li>
+		<a
+			class="social-link"
+			href="https://noted.lol/"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.66666 10.0001H18.3333M1.66666 10.0001C1.66666 14.6024 5.39762 18.3334 10 18.3334M1.66666 10.0001C1.66666 5.39771 5.39762 1.66675 10 1.66675M18.3333 10.0001C18.3333 14.6024 14.6023 18.3334 10 18.3334M18.3333 10.0001C18.3333 5.39771 14.6023 1.66675 10 1.66675M10 18.3334C12.0844 16.0514 13.269 13.0901 13.3333 10.0001C13.269 6.91011 12.0844 3.94871 10 1.66675M10 18.3334C7.9156 16.0514 6.73104 13.0901 6.66666 10.0001C6.73104 6.91011 7.9156 3.94871 10 1.66675" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+			<span class="label screen-reader-text">
+				Website
+			</span>
+		</a>
+	</li>
+	<li>
+		<a
+			class="social-link"
+			href="https://x.com/jeremy_noted"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.2437 2.25H21.5531L14.325 10.5094L22.8281 21.75H16.1719L10.9547 14.9344L4.99216 21.75H1.6781L9.40779 12.9141L1.25623 2.25H8.08123L12.7922 8.47969L18.2437 2.25ZM17.0812 19.7719H18.914L7.08279 4.125H5.11404L17.0812 19.7719Z" fill="currentColor"/>
+</svg>
+			<span class="label screen-reader-text">
+				X
+			</span>
+		</a>
+	</li>
+</ul></div>
+		</div>
+
+			<span class="card-post-meta-divider">&bull;</span>
+					<time class="card-post-date" datetime="2025-03-29">Mar 29, 2025</time>
+							<span class="card-post-meta-divider">&bull;</span>
+		<a class="card-post-primary-tag" href="https://noted.lol/tag/home-lab/">Homelab</a>
+			</div>
+
+	</div>
+</article>
+		</div>
+		<div class="swiper-slide">
+							
+
+
+
+
+
+
+
+<article class="card card-post card-post-classic-simple card-has-image card-has-author">
+			<div class="card-post-image">
+		<a class="card-post-image-link" aria-label="AliasVault: Self Hosted Password Manager with Built-In Email Server" href="https://noted.lol/aliasvault/"></a>
+
+			
+
+<picture>
+	<source
+		srcset="/content/images/size/w300/format/webp/2025/03/aliasvaultp-selfhosted-noted.jpg 300w,
+		/content/images/size/w400/format/webp/2025/03/aliasvaultp-selfhosted-noted.jpg 400w,
+		/content/images/size/w600/format/webp/2025/03/aliasvaultp-selfhosted-noted.jpg 600w
+"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		type="image/webp"
+	>
+	<img
+		src="https://noted.lol/content/images/2025/03/aliasvaultp-selfhosted-noted.jpg"
+		srcset="/content/images/size/w300/2025/03/aliasvaultp-selfhosted-noted.jpg 300w,
+		/content/images/size/w400/2025/03/aliasvaultp-selfhosted-noted.jpg 400w,
+		/content/images/size/w600/2025/03/aliasvaultp-selfhosted-noted.jpg 600w
+"
+		width="370"
+		height="210"
+		alt="AliasVault: Self Hosted Password Manager with Built-In Email Server"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		loading="lazy"
+	>
+</picture>
+		<span class="card-post-image-badge">
+				<span class="card-post-time">3 min read</span>
+
+
+
+		</span>
+	</div>
+	
+	<div class="card-post-content">
+				<h3 class="card-post-title"><a href="https://noted.lol/aliasvault/">AliasVault: Self Hosted Password Manager with Built-In Email Server</a></h3>
+
+			<div class="card-post-meta">
+						<div class="card-post-author">
+			<a href="https://noted.lol/author/lanedirt/" class="card-post-author-name" data-tooltip-custom="author">
+				Leendert de Borst
+			</a>
+			<div class="tooltip-custom tooltip-custom-author" style="display:none;">
+	<a href="https://noted.lol/author/lanedirt/" class="tooltip-avatar" aria-label="Leendert de Borst" tabindex="-1">
+			<span class="avatar avatar-large" data-avatar-name="L">
+		
+
+<picture>
+	<source
+		srcset="https://www.gravatar.com/avatar/94c0d6d387a80db61f28cbde050a03e9?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/94c0d6d387a80db61f28cbde050a03e9?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/94c0d6d387a80db61f28cbde050a03e9?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/94c0d6d387a80db61f28cbde050a03e9?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/94c0d6d387a80db61f28cbde050a03e9?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/94c0d6d387a80db61f28cbde050a03e9?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		type="image/webp"
+	>
+	<img
+		src="https://www.gravatar.com/avatar/94c0d6d387a80db61f28cbde050a03e9?s=250&amp;r=x&amp;d=mp"
+		srcset="https://www.gravatar.com/avatar/94c0d6d387a80db61f28cbde050a03e9?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/94c0d6d387a80db61f28cbde050a03e9?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/94c0d6d387a80db61f28cbde050a03e9?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/94c0d6d387a80db61f28cbde050a03e9?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/94c0d6d387a80db61f28cbde050a03e9?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/94c0d6d387a80db61f28cbde050a03e9?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		width="1340"
+		height="530"
+		alt="Leendert de Borst"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		loading="eager"
+	>
+</picture>
+	</span>
+	</a>
+	<a href="https://noted.lol/author/lanedirt/" class="tooltip-title">Leendert de Borst</a>
+	<div>I&#x27;m a freelance software developer passionate about creating open-source software that protects your privacy.</div>
+	
+<ul class="social-links social-links-author">	<li>
+		<a
+			class="social-link"
+			href="https://www.aliasvault.net/"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.66666 10.0001H18.3333M1.66666 10.0001C1.66666 14.6024 5.39762 18.3334 10 18.3334M1.66666 10.0001C1.66666 5.39771 5.39762 1.66675 10 1.66675M18.3333 10.0001C18.3333 14.6024 14.6023 18.3334 10 18.3334M18.3333 10.0001C18.3333 5.39771 14.6023 1.66675 10 1.66675M10 18.3334C12.0844 16.0514 13.269 13.0901 13.3333 10.0001C13.269 6.91011 12.0844 3.94871 10 1.66675M10 18.3334C7.9156 16.0514 6.73104 13.0901 6.66666 10.0001C6.73104 6.91011 7.9156 3.94871 10 1.66675" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+			<span class="label screen-reader-text">
+				Website
+			</span>
+		</a>
+	</li>
+	<li>
+		<a
+			class="social-link"
+			href="https://x.com/lanedirt_tech"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.2437 2.25H21.5531L14.325 10.5094L22.8281 21.75H16.1719L10.9547 14.9344L4.99216 21.75H1.6781L9.40779 12.9141L1.25623 2.25H8.08123L12.7922 8.47969L18.2437 2.25ZM17.0812 19.7719H18.914L7.08279 4.125H5.11404L17.0812 19.7719Z" fill="currentColor"/>
+</svg>
+			<span class="label screen-reader-text">
+				X
+			</span>
+		</a>
+	</li>
+</ul></div>
+		</div>
+
+			<span class="card-post-meta-divider">&bull;</span>
+					<time class="card-post-date" datetime="2025-03-23">Mar 23, 2025</time>
+							<span class="card-post-meta-divider">&bull;</span>
+		<a class="card-post-primary-tag" href="https://noted.lol/tag/self-hosted-password-managers/">Self Hosted Password Managers</a>
+			</div>
+
+	</div>
+</article>
+		</div>
+		<div class="swiper-slide">
+							
+
+
+
+
+
+
+
+<article class="card card-post card-post-classic-simple card-has-image card-has-author">
+			<div class="card-post-image">
+		<a class="card-post-image-link" aria-label="OpenReader: Web EPUB and PDF Text to Speech Document Reader" href="https://noted.lol/openreader-webui/"></a>
+
+			
+
+<picture>
+	<source
+		srcset="/content/images/size/w300/format/webp/2025/03/openreader-main-noted.jpg 300w,
+		/content/images/size/w400/format/webp/2025/03/openreader-main-noted.jpg 400w,
+		/content/images/size/w600/format/webp/2025/03/openreader-main-noted.jpg 600w
+"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		type="image/webp"
+	>
+	<img
+		src="https://noted.lol/content/images/2025/03/openreader-main-noted.jpg"
+		srcset="/content/images/size/w300/2025/03/openreader-main-noted.jpg 300w,
+		/content/images/size/w400/2025/03/openreader-main-noted.jpg 400w,
+		/content/images/size/w600/2025/03/openreader-main-noted.jpg 600w
+"
+		width="370"
+		height="210"
+		alt="OpenReader: Web EPUB and PDF Text to Speech Document Reader"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		loading="lazy"
+	>
+</picture>
+		<span class="card-post-image-badge">
+				<span class="card-post-time">3 min read</span>
+
+
+
+		</span>
+	</div>
+	
+	<div class="card-post-content">
+				<h3 class="card-post-title"><a href="https://noted.lol/openreader-webui/">OpenReader: Web EPUB and PDF Text to Speech Document Reader</a></h3>
+
+			<div class="card-post-meta">
+						<div class="card-post-author">
+			<a href="https://noted.lol/author/jeremy/" class="card-post-author-name" data-tooltip-custom="author">
+				Jeremy
+			</a>
+			<div class="tooltip-custom tooltip-custom-author" style="display:none;">
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-avatar" aria-label="Jeremy" tabindex="-1">
+			<span class="avatar avatar-large" data-avatar-name="J">
+		
+
+<picture>
+	<source
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		type="image/webp"
+	>
+	<img
+		src="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s=250&amp;r=x&amp;d=mp"
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		width="1340"
+		height="530"
+		alt="Jeremy"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		loading="eager"
+	>
+</picture>
+	</span>
+	</a>
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-title">Jeremy</a>
+	<div>Hello! I&#x27;m Jeremy, the creative force behind Noted. With a blend of self-taught expertise in homelab tech and professional experience with Docker, I&#x27;m eager to connect with fellow innovators.</div>
+	
+<ul class="social-links social-links-author">	<li>
+		<a
+			class="social-link"
+			href="https://noted.lol/"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.66666 10.0001H18.3333M1.66666 10.0001C1.66666 14.6024 5.39762 18.3334 10 18.3334M1.66666 10.0001C1.66666 5.39771 5.39762 1.66675 10 1.66675M18.3333 10.0001C18.3333 14.6024 14.6023 18.3334 10 18.3334M18.3333 10.0001C18.3333 5.39771 14.6023 1.66675 10 1.66675M10 18.3334C12.0844 16.0514 13.269 13.0901 13.3333 10.0001C13.269 6.91011 12.0844 3.94871 10 1.66675M10 18.3334C7.9156 16.0514 6.73104 13.0901 6.66666 10.0001C6.73104 6.91011 7.9156 3.94871 10 1.66675" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+			<span class="label screen-reader-text">
+				Website
+			</span>
+		</a>
+	</li>
+	<li>
+		<a
+			class="social-link"
+			href="https://x.com/jeremy_noted"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.2437 2.25H21.5531L14.325 10.5094L22.8281 21.75H16.1719L10.9547 14.9344L4.99216 21.75H1.6781L9.40779 12.9141L1.25623 2.25H8.08123L12.7922 8.47969L18.2437 2.25ZM17.0812 19.7719H18.914L7.08279 4.125H5.11404L17.0812 19.7719Z" fill="currentColor"/>
+</svg>
+			<span class="label screen-reader-text">
+				X
+			</span>
+		</a>
+	</li>
+</ul></div>
+		</div>
+
+			<span class="card-post-meta-divider">&bull;</span>
+					<time class="card-post-date" datetime="2025-03-20">Mar 20, 2025</time>
+							<span class="card-post-meta-divider">&bull;</span>
+		<a class="card-post-primary-tag" href="https://noted.lol/tag/self-hosted-ai-tools/">Self Hosted AI Tools</a>
+			</div>
+
+	</div>
+</article>
+		</div>
+		<div class="swiper-slide">
+							
+
+
+
+
+
+
+
+<article class="card card-post card-post-classic-simple card-has-image card-has-author">
+			<div class="card-post-image">
+		<a class="card-post-image-link" aria-label="GoMFT - Self Hosted Managed File Transfer" href="https://noted.lol/gomft/"></a>
+
+			
+
+<picture>
+	<source
+		srcset="/content/images/size/w300/format/webp/2025/03/gomft-main-noted.jpg 300w,
+		/content/images/size/w400/format/webp/2025/03/gomft-main-noted.jpg 400w,
+		/content/images/size/w600/format/webp/2025/03/gomft-main-noted.jpg 600w
+"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		type="image/webp"
+	>
+	<img
+		src="https://noted.lol/content/images/2025/03/gomft-main-noted.jpg"
+		srcset="/content/images/size/w300/2025/03/gomft-main-noted.jpg 300w,
+		/content/images/size/w400/2025/03/gomft-main-noted.jpg 400w,
+		/content/images/size/w600/2025/03/gomft-main-noted.jpg 600w
+"
+		width="370"
+		height="210"
+		alt="GoMFT - Self Hosted Managed File Transfer"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		loading="lazy"
+	>
+</picture>
+		<span class="card-post-image-badge">
+				<span class="card-post-time">3 min read</span>
+
+
+
+		</span>
+	</div>
+	
+	<div class="card-post-content">
+				<h3 class="card-post-title"><a href="https://noted.lol/gomft/">GoMFT - Self Hosted Managed File Transfer</a></h3>
+
+			<div class="card-post-meta">
+						<div class="card-post-author">
+			<a href="https://noted.lol/author/jeremy/" class="card-post-author-name" data-tooltip-custom="author">
+				Jeremy
+			</a>
+			<div class="tooltip-custom tooltip-custom-author" style="display:none;">
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-avatar" aria-label="Jeremy" tabindex="-1">
+			<span class="avatar avatar-large" data-avatar-name="J">
+		
+
+<picture>
+	<source
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		type="image/webp"
+	>
+	<img
+		src="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s=250&amp;r=x&amp;d=mp"
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		width="1340"
+		height="530"
+		alt="Jeremy"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		loading="eager"
+	>
+</picture>
+	</span>
+	</a>
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-title">Jeremy</a>
+	<div>Hello! I&#x27;m Jeremy, the creative force behind Noted. With a blend of self-taught expertise in homelab tech and professional experience with Docker, I&#x27;m eager to connect with fellow innovators.</div>
+	
+<ul class="social-links social-links-author">	<li>
+		<a
+			class="social-link"
+			href="https://noted.lol/"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.66666 10.0001H18.3333M1.66666 10.0001C1.66666 14.6024 5.39762 18.3334 10 18.3334M1.66666 10.0001C1.66666 5.39771 5.39762 1.66675 10 1.66675M18.3333 10.0001C18.3333 14.6024 14.6023 18.3334 10 18.3334M18.3333 10.0001C18.3333 5.39771 14.6023 1.66675 10 1.66675M10 18.3334C12.0844 16.0514 13.269 13.0901 13.3333 10.0001C13.269 6.91011 12.0844 3.94871 10 1.66675M10 18.3334C7.9156 16.0514 6.73104 13.0901 6.66666 10.0001C6.73104 6.91011 7.9156 3.94871 10 1.66675" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+			<span class="label screen-reader-text">
+				Website
+			</span>
+		</a>
+	</li>
+	<li>
+		<a
+			class="social-link"
+			href="https://x.com/jeremy_noted"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.2437 2.25H21.5531L14.325 10.5094L22.8281 21.75H16.1719L10.9547 14.9344L4.99216 21.75H1.6781L9.40779 12.9141L1.25623 2.25H8.08123L12.7922 8.47969L18.2437 2.25ZM17.0812 19.7719H18.914L7.08279 4.125H5.11404L17.0812 19.7719Z" fill="currentColor"/>
+</svg>
+			<span class="label screen-reader-text">
+				X
+			</span>
+		</a>
+	</li>
+</ul></div>
+		</div>
+
+			<span class="card-post-meta-divider">&bull;</span>
+					<time class="card-post-date" datetime="2025-03-12">Mar 12, 2025</time>
+							<span class="card-post-meta-divider">&bull;</span>
+		<a class="card-post-primary-tag" href="https://noted.lol/tag/self-hosted-file-transfer/">Self Hosted File Transfer &amp; Synchronization</a>
+			</div>
+
+	</div>
+</article>
+		</div>
+		<div class="swiper-slide">
+							
+
+
+
+
+
+
+
+<article class="card card-post card-post-classic-simple card-has-image card-has-author">
+			<div class="card-post-image">
+		<a class="card-post-image-link" aria-label="VoceChat: Self-Hosted, Open-Source Chat Application Built with Rust" href="https://noted.lol/vocechat/"></a>
+
+			
+
+<picture>
+	<source
+		srcset="/content/images/size/w300/format/webp/2025/03/vocechat-self-hosted.jpg 300w,
+		/content/images/size/w400/format/webp/2025/03/vocechat-self-hosted.jpg 400w,
+		/content/images/size/w600/format/webp/2025/03/vocechat-self-hosted.jpg 600w
+"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		type="image/webp"
+	>
+	<img
+		src="https://noted.lol/content/images/2025/03/vocechat-self-hosted.jpg"
+		srcset="/content/images/size/w300/2025/03/vocechat-self-hosted.jpg 300w,
+		/content/images/size/w400/2025/03/vocechat-self-hosted.jpg 400w,
+		/content/images/size/w600/2025/03/vocechat-self-hosted.jpg 600w
+"
+		width="370"
+		height="210"
+		alt="VoceChat: Self-Hosted, Open-Source Chat Application Built with Rust"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		loading="lazy"
+	>
+</picture>
+		<span class="card-post-image-badge">
+				<span class="card-post-time">2 min read</span>
+
+
+
+		</span>
+	</div>
+	
+	<div class="card-post-content">
+				<h3 class="card-post-title"><a href="https://noted.lol/vocechat/">VoceChat: Self-Hosted, Open-Source Chat Application Built with Rust</a></h3>
+
+			<div class="card-post-meta">
+						<div class="card-post-author">
+			<a href="https://noted.lol/author/jeremy/" class="card-post-author-name" data-tooltip-custom="author">
+				Jeremy
+			</a>
+			<div class="tooltip-custom tooltip-custom-author" style="display:none;">
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-avatar" aria-label="Jeremy" tabindex="-1">
+			<span class="avatar avatar-large" data-avatar-name="J">
+		
+
+<picture>
+	<source
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		type="image/webp"
+	>
+	<img
+		src="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s=250&amp;r=x&amp;d=mp"
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		width="1340"
+		height="530"
+		alt="Jeremy"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		loading="eager"
+	>
+</picture>
+	</span>
+	</a>
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-title">Jeremy</a>
+	<div>Hello! I&#x27;m Jeremy, the creative force behind Noted. With a blend of self-taught expertise in homelab tech and professional experience with Docker, I&#x27;m eager to connect with fellow innovators.</div>
+	
+<ul class="social-links social-links-author">	<li>
+		<a
+			class="social-link"
+			href="https://noted.lol/"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.66666 10.0001H18.3333M1.66666 10.0001C1.66666 14.6024 5.39762 18.3334 10 18.3334M1.66666 10.0001C1.66666 5.39771 5.39762 1.66675 10 1.66675M18.3333 10.0001C18.3333 14.6024 14.6023 18.3334 10 18.3334M18.3333 10.0001C18.3333 5.39771 14.6023 1.66675 10 1.66675M10 18.3334C12.0844 16.0514 13.269 13.0901 13.3333 10.0001C13.269 6.91011 12.0844 3.94871 10 1.66675M10 18.3334C7.9156 16.0514 6.73104 13.0901 6.66666 10.0001C6.73104 6.91011 7.9156 3.94871 10 1.66675" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+			<span class="label screen-reader-text">
+				Website
+			</span>
+		</a>
+	</li>
+	<li>
+		<a
+			class="social-link"
+			href="https://x.com/jeremy_noted"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.2437 2.25H21.5531L14.325 10.5094L22.8281 21.75H16.1719L10.9547 14.9344L4.99216 21.75H1.6781L9.40779 12.9141L1.25623 2.25H8.08123L12.7922 8.47969L18.2437 2.25ZM17.0812 19.7719H18.914L7.08279 4.125H5.11404L17.0812 19.7719Z" fill="currentColor"/>
+</svg>
+			<span class="label screen-reader-text">
+				X
+			</span>
+		</a>
+	</li>
+</ul></div>
+		</div>
+
+			<span class="card-post-meta-divider">&bull;</span>
+					<time class="card-post-date" datetime="2025-03-10">Mar 10, 2025</time>
+							<span class="card-post-meta-divider">&bull;</span>
+		<a class="card-post-primary-tag" href="https://noted.lol/tag/self-hosted-communication/">Self Hosted Communication - Social Networks and Forums</a>
+			</div>
+
+	</div>
+</article>
+		</div>
+		<div class="swiper-slide">
+							
+
+
+
+
+
+
+
+<article class="card card-post card-post-classic-simple card-has-image card-has-author">
+			<div class="card-post-image">
+		<a class="card-post-image-link" aria-label="Omni-Tools - Self Hosted Web Tools" href="https://noted.lol/omni-tools/"></a>
+
+			
+
+<picture>
+	<source
+		srcset="/content/images/size/w300/format/webp/2025/03/omni-tools-main-noted.jpg 300w,
+		/content/images/size/w400/format/webp/2025/03/omni-tools-main-noted.jpg 400w,
+		/content/images/size/w600/format/webp/2025/03/omni-tools-main-noted.jpg 600w
+"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		type="image/webp"
+	>
+	<img
+		src="https://noted.lol/content/images/2025/03/omni-tools-main-noted.jpg"
+		srcset="/content/images/size/w300/2025/03/omni-tools-main-noted.jpg 300w,
+		/content/images/size/w400/2025/03/omni-tools-main-noted.jpg 400w,
+		/content/images/size/w600/2025/03/omni-tools-main-noted.jpg 600w
+"
+		width="370"
+		height="210"
+		alt="Omni-Tools - Self Hosted Web Tools"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		loading="lazy"
+	>
+</picture>
+		<span class="card-post-image-badge">
+				<span class="card-post-time">2 min read</span>
+
+
+
+		</span>
+	</div>
+	
+	<div class="card-post-content">
+				<h3 class="card-post-title"><a href="https://noted.lol/omni-tools/">Omni-Tools - Self Hosted Web Tools</a></h3>
+
+			<div class="card-post-meta">
+						<div class="card-post-author">
+			<a href="https://noted.lol/author/jeremy/" class="card-post-author-name" data-tooltip-custom="author">
+				Jeremy
+			</a>
+			<div class="tooltip-custom tooltip-custom-author" style="display:none;">
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-avatar" aria-label="Jeremy" tabindex="-1">
+			<span class="avatar avatar-large" data-avatar-name="J">
+		
+
+<picture>
+	<source
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		type="image/webp"
+	>
+	<img
+		src="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s=250&amp;r=x&amp;d=mp"
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		width="1340"
+		height="530"
+		alt="Jeremy"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		loading="eager"
+	>
+</picture>
+	</span>
+	</a>
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-title">Jeremy</a>
+	<div>Hello! I&#x27;m Jeremy, the creative force behind Noted. With a blend of self-taught expertise in homelab tech and professional experience with Docker, I&#x27;m eager to connect with fellow innovators.</div>
+	
+<ul class="social-links social-links-author">	<li>
+		<a
+			class="social-link"
+			href="https://noted.lol/"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.66666 10.0001H18.3333M1.66666 10.0001C1.66666 14.6024 5.39762 18.3334 10 18.3334M1.66666 10.0001C1.66666 5.39771 5.39762 1.66675 10 1.66675M18.3333 10.0001C18.3333 14.6024 14.6023 18.3334 10 18.3334M18.3333 10.0001C18.3333 5.39771 14.6023 1.66675 10 1.66675M10 18.3334C12.0844 16.0514 13.269 13.0901 13.3333 10.0001C13.269 6.91011 12.0844 3.94871 10 1.66675M10 18.3334C7.9156 16.0514 6.73104 13.0901 6.66666 10.0001C6.73104 6.91011 7.9156 3.94871 10 1.66675" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+			<span class="label screen-reader-text">
+				Website
+			</span>
+		</a>
+	</li>
+	<li>
+		<a
+			class="social-link"
+			href="https://x.com/jeremy_noted"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.2437 2.25H21.5531L14.325 10.5094L22.8281 21.75H16.1719L10.9547 14.9344L4.99216 21.75H1.6781L9.40779 12.9141L1.25623 2.25H8.08123L12.7922 8.47969L18.2437 2.25ZM17.0812 19.7719H18.914L7.08279 4.125H5.11404L17.0812 19.7719Z" fill="currentColor"/>
+</svg>
+			<span class="label screen-reader-text">
+				X
+			</span>
+		</a>
+	</li>
+</ul></div>
+		</div>
+
+			<span class="card-post-meta-divider">&bull;</span>
+					<time class="card-post-date" datetime="2025-03-05">Mar 5, 2025</time>
+							<span class="card-post-meta-divider">&bull;</span>
+		<a class="card-post-primary-tag" href="https://noted.lol/tag/self-hosted-web-tools/">Self Hosted Web Tools</a>
+			</div>
+
+	</div>
+</article>
+		</div>
+		<div class="swiper-slide">
+							
+
+
+
+
+
+
+
+<article class="card card-post card-post-classic-simple card-has-image card-has-author">
+			<div class="card-post-image">
+		<a class="card-post-image-link" aria-label="LinkAce - A Self Hosted Website Archive" href="https://noted.lol/linkace-a-self-hosted-website-archive/"></a>
+
+			
+
+<picture>
+	<source
+		srcset="/content/images/size/w300/format/webp/2025/03/sefl-hosted-linkace-main-noted.jpg 300w,
+		/content/images/size/w400/format/webp/2025/03/sefl-hosted-linkace-main-noted.jpg 400w,
+		/content/images/size/w600/format/webp/2025/03/sefl-hosted-linkace-main-noted.jpg 600w
+"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		type="image/webp"
+	>
+	<img
+		src="https://noted.lol/content/images/2025/03/sefl-hosted-linkace-main-noted.jpg"
+		srcset="/content/images/size/w300/2025/03/sefl-hosted-linkace-main-noted.jpg 300w,
+		/content/images/size/w400/2025/03/sefl-hosted-linkace-main-noted.jpg 400w,
+		/content/images/size/w600/2025/03/sefl-hosted-linkace-main-noted.jpg 600w
+"
+		width="370"
+		height="210"
+		alt="LinkAce - A Self Hosted Website Archive"
+		sizes="(max-width: 539.98px) 94vw, (max-width: 991.98px) 43vw, (max-width: 1574.98px) 25vw, 21vw"
+		loading="lazy"
+	>
+</picture>
+		<span class="card-post-image-badge">
+				<span class="card-post-time">3 min read</span>
+
+
+
+		</span>
+	</div>
+	
+	<div class="card-post-content">
+				<h3 class="card-post-title"><a href="https://noted.lol/linkace-a-self-hosted-website-archive/">LinkAce - A Self Hosted Website Archive</a></h3>
+
+			<div class="card-post-meta">
+						<div class="card-post-author">
+			<a href="https://noted.lol/author/jeremy/" class="card-post-author-name" data-tooltip-custom="author">
+				Jeremy
+			</a>
+			<div class="tooltip-custom tooltip-custom-author" style="display:none;">
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-avatar" aria-label="Jeremy" tabindex="-1">
+			<span class="avatar avatar-large" data-avatar-name="J">
+		
+
+<picture>
+	<source
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		type="image/webp"
+	>
+	<img
+		src="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s=250&amp;r=x&amp;d=mp"
+		srcset="https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 400w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1600w,
+		https://www.gravatar.com/avatar/ab32df3785e9d1a2e15660d757cc9b5f?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+		width="1340"
+		height="530"
+		alt="Jeremy"
+		sizes="(max-width: 991.98px) 90vw, 40vw"
+		loading="eager"
+	>
+</picture>
+	</span>
+	</a>
+	<a href="https://noted.lol/author/jeremy/" class="tooltip-title">Jeremy</a>
+	<div>Hello! I&#x27;m Jeremy, the creative force behind Noted. With a blend of self-taught expertise in homelab tech and professional experience with Docker, I&#x27;m eager to connect with fellow innovators.</div>
+	
+<ul class="social-links social-links-author">	<li>
+		<a
+			class="social-link"
+			href="https://noted.lol/"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.66666 10.0001H18.3333M1.66666 10.0001C1.66666 14.6024 5.39762 18.3334 10 18.3334M1.66666 10.0001C1.66666 5.39771 5.39762 1.66675 10 1.66675M18.3333 10.0001C18.3333 14.6024 14.6023 18.3334 10 18.3334M18.3333 10.0001C18.3333 5.39771 14.6023 1.66675 10 1.66675M10 18.3334C12.0844 16.0514 13.269 13.0901 13.3333 10.0001C13.269 6.91011 12.0844 3.94871 10 1.66675M10 18.3334C7.9156 16.0514 6.73104 13.0901 6.66666 10.0001C6.73104 6.91011 7.9156 3.94871 10 1.66675" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+			<span class="label screen-reader-text">
+				Website
+			</span>
+		</a>
+	</li>
+	<li>
+		<a
+			class="social-link"
+			href="https://x.com/jeremy_noted"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.2437 2.25H21.5531L14.325 10.5094L22.8281 21.75H16.1719L10.9547 14.9344L4.99216 21.75H1.6781L9.40779 12.9141L1.25623 2.25H8.08123L12.7922 8.47969L18.2437 2.25ZM17.0812 19.7719H18.914L7.08279 4.125H5.11404L17.0812 19.7719Z" fill="currentColor"/>
+</svg>
+			<span class="label screen-reader-text">
+				X
+			</span>
+		</a>
+	</li>
+</ul></div>
+		</div>
+
+			<span class="card-post-meta-divider">&bull;</span>
+					<time class="card-post-date" datetime="2025-03-04">Mar 4, 2025</time>
+							<span class="card-post-meta-divider">&bull;</span>
+		<a class="card-post-primary-tag" href="https://noted.lol/tag/self-hosted-bookmark-apps/">Self Hosted Bookmarks and Link Sharing</a>
+			</div>
+
+	</div>
+</article>
+		</div>
+	</div>
+
+	<div class="slider-button-wrapper slider-button-wrapper-prev">
+		<div class="slider-button slider-button-prev swiper-button-disabled"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.8333 10.0001H4.16666M4.16666 10.0001L9 5.16675M4.16666 10.0001L9 14.8334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
+	</div>
+	<div class="slider-button-wrapper slider-button-wrapper-next">
+		<div class="slider-button slider-button-next"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.16667 10.0001H15.8333M15.8333 10.0001L11 5.16675M15.8333 10.0001L11 14.8334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
+	</div>
+</div>	</section>
+
+			<section class="section section-subscription">
+				<div>
+					<h2>Subscribe to Noted</h2>
+					<p>Subscribe to our newsletter to get news and reviews delivered to your inbox!</p>
+				</div>
+
+							<form class="form-subscribe" data-members-form="subscribe">
+				<div>
+					<input type="email" id="section-subscription-email" placeholder="Type your email..." required data-members-email>
+					<button class="button" type="submit">
+							<span class="label hide-when-loading hide-when-success">Subscribe</span>
+						<span class="label loading">Sending<svg class="icon icon-loader" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path opacity="0.1" d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 14.1421 5.85786 17.5 10 17.5Z" stroke="currentColor" stroke-width="1.5"/>
+<path d="M17.5 10C17.5 14.1421 14.1421 17.5 10 17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+</span>
+						<span class="label success">Sent<svg class="icon icon-check" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.6667 5L7.5 14.1667L3.33334 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span>
+					</button>
+				</div>
+				<span class="form-alert">
+					<span class="success">Please check your inbox and click the confirmation link.</span>
+					<span class="error" data-members-error></span>
+				</span>
+			</form>
+			</section>
+
+<div class="popup popup-comments" data-popup-id="popup-comments" role="dialog" aria-modal="true" aria-hidden="true" aria-label="You can hide this popup with the ESC key">
+	<div class="popup-container">
+		<div class="popup-head">
+			<h2 class="popup-title">Discussion</h2>
+			<button class="popup-close button button-icon button-background-100 button-sm" aria-label="Hide popup">
+				<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+			</button>
+		</div>
+		<div class="popup-body post-comments">
+			
+        <script data-cfasync="false" src="https://noted.lol/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~1.2/umd/comments-ui.min.js" data-locale="en" data-ghost-comments="https://noted.lol/" data-api="https://noted.lol/ghost/api/content/" data-admin="https://noted.lol/ghost/" data-key="f13d2fe72ef69fe8db444cc0e7" data-title="" data-count="false" data-post-id="678e7d88f3bcda0001417c49" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#3d74e3" data-comments-enabled="all" data-publication="Noted" crossorigin="anonymous"></script>
+    
+		</div>
+	</div>
+	<button class="popup-close popup-overlay" aria-label="Hide popup"></button>
+</div>
+
+
+		</article>
+
+		<footer class="footer">
+	<div class="footer-copyright">© 2025 Noted</div>
+
+</footer>	</main>
+
+	<div class="popup popup-navigation" data-popup-id="popup-navigation" role="dialog" aria-modal="true" aria-hidden="true" aria-label="You can hide this popup with the ESC key">
+		<div class="popup-container">
+			<div class="popup-head">
+				<button class="popup-close button button-icon button-background-100 button-sm button-rounded" aria-label="Hide popup">
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+				</button>
+				<a class="logo" href="https://noted.lol/" aria-label="Noted">
+		<img class="logo-light" src="https://noted.lol/content/images/2025/01/Logo-1.png" alt="Noted">
+
+		<img class="logo-dark" src="https://noted.lol/content/images/2025/01/Logo-2.1.png" alt="Noted">
+</a>			</div>
+
+			<div class="popup-body">
+				<nav class="navigation navigation-popup" aria-label="Popup Primary Navigation">
+					<ul>
+<li class="nav-item">
+
+						
+<a
+	href="https://noted.lol/"
+	class="nav-link nav-link-home"
+		data-tippy-content="Home"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.5 17.4999V11.3332C7.5 10.8665 7.5 10.6331 7.59082 10.4549C7.67072 10.298 7.79821 10.1706 7.95501 10.0907C8.13327 9.99988 8.36658 9.99988 8.83333 9.99988H11.1667C11.6334 9.99988 11.8668 9.99988 12.045 10.0907C12.2018 10.1706 12.3292 10.298 12.4092 10.4549C12.5 10.6331 12.5 10.8665 12.5 11.3332V17.4999M9.18142 2.30321L3.52949 6.69915C3.15168 6.993 2.96278 7.13993 2.82669 7.32393C2.70614 7.48691 2.61633 7.67053 2.56169 7.86575C2.5 8.08615 2.5 8.32546 2.5 8.80413V14.8332C2.5 15.7666 2.5 16.2333 2.68166 16.5899C2.84144 16.9035 3.09641 17.1585 3.41002 17.3182C3.76653 17.4999 4.23324 17.4999 5.16667 17.4999H14.8333C15.7667 17.4999 16.2335 17.4999 16.59 17.3182C16.9036 17.1585 17.1586 16.9035 17.3183 16.5899C17.5 16.2333 17.5 15.7666 17.5 14.8332V8.80413C17.5 8.32546 17.5 8.08615 17.4383 7.86575C17.3837 7.67053 17.2938 7.48691 17.1733 7.32393C17.0372 7.13993 16.8483 6.993 16.4705 6.69915L10.8186 2.30321C10.5258 2.0755 10.3794 1.96165 10.2177 1.91788C10.0752 1.87926 9.92483 1.87926 9.78225 1.91788C9.62058 1.96165 9.47417 2.0755 9.18142 2.30321Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+	<span class="label">Home</span>
+</a>
+						</li>
+<li class="nav-item">
+
+						
+<a
+	href="https://noted.lol/get-started-self-hosting/"
+	class="nav-link nav-link-get-started"
+		data-tippy-content="Get Started"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.6667 1.89136V5.33347C11.6667 5.80018 11.6667 6.03354 11.7575 6.2118C11.8374 6.3686 11.9648 6.49608 12.1217 6.57598C12.2999 6.66681 12.5332 6.66681 13 6.66681H16.4421M13.3333 10.8334H6.66666M13.3333 14.1667H6.66666M8.33333 7.50008H6.66666M11.6667 1.66675H7.33333C5.93319 1.66675 5.23313 1.66675 4.69835 1.93923C4.22794 2.17891 3.8455 2.56136 3.60581 3.03177C3.33333 3.56655 3.33333 4.26661 3.33333 5.66675V14.3334C3.33333 15.7336 3.33333 16.4336 3.60581 16.9684C3.8455 17.4388 4.22794 17.8212 4.69835 18.0609C5.23313 18.3334 5.93319 18.3334 7.33333 18.3334H12.6667C14.0668 18.3334 14.7668 18.3334 15.3017 18.0609C15.7721 17.8212 16.1545 17.4388 16.3942 16.9684C16.6667 16.4336 16.6667 15.7336 16.6667 14.3334V6.66675L11.6667 1.66675Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+	<span class="label">Get Started</span>
+</a>
+						</li>
+<li class="nav-item">
+
+						
+<a
+	href="https://noted.lol/tags/"
+	class="nav-link nav-link-categories"
+		data-tippy-content="Categories"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.66667 6.66675H6.675M1.66667 4.33341V8.06217C1.66667 8.46983 1.66667 8.67366 1.71272 8.8655C1.75354 9.0355 1.82088 9.19808 1.91227 9.34725C2.01533 9.51541 2.15946 9.65958 2.44772 9.94783L8.83825 16.3383C9.82825 17.3283 10.3233 17.8234 10.8941 18.0088C11.3963 18.172 11.9371 18.172 12.4392 18.0088C13.01 17.8234 13.5051 17.3283 14.4951 16.3383L16.3383 14.4952C17.3283 13.5052 17.8233 13.0101 18.0088 12.4392C18.1719 11.9372 18.1719 11.3963 18.0088 10.8942C17.8233 10.3234 17.3283 9.82833 16.3383 8.83833L9.94775 2.4478C9.6595 2.15954 9.51533 2.01541 9.34717 1.91235C9.198 1.82096 9.03542 1.75362 8.86542 1.7128C8.67358 1.66675 8.46975 1.66675 8.0621 1.66675H4.33333C3.39992 1.66675 2.9332 1.66675 2.57668 1.84841C2.26308 2.00819 2.00811 2.26316 1.84833 2.57676C1.66667 2.93328 1.66667 3.39999 1.66667 4.33341ZM7.08333 6.66675C7.08333 6.89686 6.89678 7.08341 6.66667 7.08341C6.43655 7.08341 6.25 6.89686 6.25 6.66675C6.25 6.43663 6.43655 6.25008 6.66667 6.25008C6.89678 6.25008 7.08333 6.43663 7.08333 6.66675Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+	<span class="label">Categories</span>
+</a>
+						</li>
+<li class="nav-item">
+
+						
+<a
+	href="https://noted.lol/sponsors/"
+	class="nav-link nav-link-sponsors"
+		data-tippy-content="Sponsors"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.6667 1.89136V5.33347C11.6667 5.80018 11.6667 6.03354 11.7575 6.2118C11.8374 6.3686 11.9648 6.49608 12.1217 6.57598C12.2999 6.66681 12.5332 6.66681 13 6.66681H16.4421M13.3333 10.8334H6.66666M13.3333 14.1667H6.66666M8.33333 7.50008H6.66666M11.6667 1.66675H7.33333C5.93319 1.66675 5.23313 1.66675 4.69835 1.93923C4.22794 2.17891 3.8455 2.56136 3.60581 3.03177C3.33333 3.56655 3.33333 4.26661 3.33333 5.66675V14.3334C3.33333 15.7336 3.33333 16.4336 3.60581 16.9684C3.8455 17.4388 4.22794 17.8212 4.69835 18.0609C5.23313 18.3334 5.93319 18.3334 7.33333 18.3334H12.6667C14.0668 18.3334 14.7668 18.3334 15.3017 18.0609C15.7721 17.8212 16.1545 17.4388 16.3942 16.9684C16.6667 16.4336 16.6667 15.7336 16.6667 14.3334V6.66675L11.6667 1.66675Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+	<span class="label">Sponsors</span>
+</a>
+						</li>
+<li class="nav-item">
+
+						
+<a
+	href="https://noted.lol/about/"
+	class="nav-link nav-link-about"
+		data-tippy-content="About"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.5 16.6667C4.44649 14.6022 7.08918 13.3333 10 13.3333C12.9108 13.3333 15.5535 14.6022 17.5 16.6667M13.75 6.25C13.75 8.32107 12.0711 10 10 10C7.92893 10 6.25 8.32107 6.25 6.25C6.25 4.17893 7.92893 2.5 10 2.5C12.0711 2.5 13.75 4.17893 13.75 6.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+	<span class="label">About</span>
+</a>
+						</li>
+<li class="nav-item">
+
+						
+<a
+	href="https://noted.lol/contribute/"
+	class="nav-link nav-link-contribute"
+		data-tippy-content="Contribute"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.6667 1.89136V5.33347C11.6667 5.80018 11.6667 6.03354 11.7575 6.2118C11.8374 6.3686 11.9648 6.49608 12.1217 6.57598C12.2999 6.66681 12.5332 6.66681 13 6.66681H16.4421M13.3333 10.8334H6.66666M13.3333 14.1667H6.66666M8.33333 7.50008H6.66666M11.6667 1.66675H7.33333C5.93319 1.66675 5.23313 1.66675 4.69835 1.93923C4.22794 2.17891 3.8455 2.56136 3.60581 3.03177C3.33333 3.56655 3.33333 4.26661 3.33333 5.66675V14.3334C3.33333 15.7336 3.33333 16.4336 3.60581 16.9684C3.8455 17.4388 4.22794 17.8212 4.69835 18.0609C5.23313 18.3334 5.93319 18.3334 7.33333 18.3334H12.6667C14.0668 18.3334 14.7668 18.3334 15.3017 18.0609C15.7721 17.8212 16.1545 17.4388 16.3942 16.9684C16.6667 16.4336 16.6667 15.7336 16.6667 14.3334V6.66675L11.6667 1.66675Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+	<span class="label">Contribute</span>
+</a>
+						</li>
+<li class="nav-item">
+
+						
+<a
+	href="https://noted.lol/rss-feeds/"
+	class="nav-link nav-link-rss"
+		data-tippy-content="RSS"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.6667 1.89136V5.33347C11.6667 5.80018 11.6667 6.03354 11.7575 6.2118C11.8374 6.3686 11.9648 6.49608 12.1217 6.57598C12.2999 6.66681 12.5332 6.66681 13 6.66681H16.4421M13.3333 10.8334H6.66666M13.3333 14.1667H6.66666M8.33333 7.50008H6.66666M11.6667 1.66675H7.33333C5.93319 1.66675 5.23313 1.66675 4.69835 1.93923C4.22794 2.17891 3.8455 2.56136 3.60581 3.03177C3.33333 3.56655 3.33333 4.26661 3.33333 5.66675V14.3334C3.33333 15.7336 3.33333 16.4336 3.60581 16.9684C3.8455 17.4388 4.22794 17.8212 4.69835 18.0609C5.23313 18.3334 5.93319 18.3334 7.33333 18.3334H12.6667C14.0668 18.3334 14.7668 18.3334 15.3017 18.0609C15.7721 17.8212 16.1545 17.4388 16.3942 16.9684C16.6667 16.4336 16.6667 15.7336 16.6667 14.3334V6.66675L11.6667 1.66675Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+	<span class="label">RSS</span>
+</a>
+						</li>
+<li class="nav-item">
+
+						
+<a
+	href="https://noted.lol/membership/"
+	class="nav-link nav-link-signup"
+		data-tippy-content="Signup"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.5 2.5H13.5C14.9002 2.5 15.6002 2.5 16.135 2.77248C16.6054 3.01217 16.9878 3.39462 17.2275 3.86503C17.5 4.3998 17.5 5.09988 17.5 6.5V13.5C17.5 14.9002 17.5 15.6002 17.2275 16.135C16.9878 16.6054 16.6054 16.9878 16.135 17.2275C15.6002 17.5 14.9002 17.5 13.5 17.5H12.5M8.33333 5.83333L12.5 10M12.5 10L8.33333 14.1667M12.5 10H2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+	<span class="label">Signup</span>
+</a>
+						</li>
+<li class="nav-item">
+
+						
+<a
+	href="https://discord.gg/zA9FT8qW9g"
+	class="nav-link nav-link-discord"
+		data-tippy-content="Discord"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.6667 1.89136V5.33347C11.6667 5.80018 11.6667 6.03354 11.7575 6.2118C11.8374 6.3686 11.9648 6.49608 12.1217 6.57598C12.2999 6.66681 12.5332 6.66681 13 6.66681H16.4421M13.3333 10.8334H6.66666M13.3333 14.1667H6.66666M8.33333 7.50008H6.66666M11.6667 1.66675H7.33333C5.93319 1.66675 5.23313 1.66675 4.69835 1.93923C4.22794 2.17891 3.8455 2.56136 3.60581 3.03177C3.33333 3.56655 3.33333 4.26661 3.33333 5.66675V14.3334C3.33333 15.7336 3.33333 16.4336 3.60581 16.9684C3.8455 17.4388 4.22794 17.8212 4.69835 18.0609C5.23313 18.3334 5.93319 18.3334 7.33333 18.3334H12.6667C14.0668 18.3334 14.7668 18.3334 15.3017 18.0609C15.7721 17.8212 16.1545 17.4388 16.3942 16.9684C16.6667 16.4336 16.6667 15.7336 16.6667 14.3334V6.66675L11.6667 1.66675Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+	<span class="label">Discord</span>
+</a>
+						</li>
+<li class="nav-item">
+
+				
+<a
+	href="https://noted.lol/contact-us/"
+	class="nav-link nav-link-contact"
+		data-tippy-content="Contact"
+>
+	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.66667 5.83325L8.47075 10.5961C9.02175 10.9818 9.29726 11.1747 9.59692 11.2493C9.86159 11.3153 10.1384 11.3153 10.4031 11.2493C10.7028 11.1747 10.9783 10.9818 11.5293 10.5961L18.3333 5.83325M5.66667 16.6666H14.3333C15.7335 16.6666 16.4335 16.6666 16.9683 16.3941C17.4388 16.1544 17.8212 15.772 18.0608 15.3016C18.3333 14.7668 18.3333 14.0668 18.3333 12.6666V7.33325C18.3333 5.93312 18.3333 5.23305 18.0608 4.69828C17.8212 4.22787 17.4388 3.84542 16.9683 3.60574C16.4335 3.33325 15.7335 3.33325 14.3333 3.33325H5.66667C4.26654 3.33325 3.56647 3.33325 3.0317 3.60574C2.56129 3.84542 2.17884 4.22787 1.93916 4.69828C1.66667 5.23305 1.66667 5.93312 1.66667 7.33325V12.6666C1.66667 14.0668 1.66667 14.7668 1.93916 15.3016C2.17884 15.772 2.56129 16.1544 3.0317 16.3941C3.56647 16.6666 4.26654 16.6666 5.66667 16.6666Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+	<span class="label">Contact</span>
+</a>
+				</li>
+</ul>
+
+				</nav>
+
+
+									<nav class="navigation navigation-popup navigation-tags" aria-label="Popup Tags Navigation">
+							<a
+		href="https://noted.lol/tags/"
+	class="nav-link nav-link-tags nav-section-link"
+		data-tippy-content="Tags"
+>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.66667 6.66675H6.675M1.66667 4.33341V8.06217C1.66667 8.46983 1.66667 8.67366 1.71272 8.8655C1.75354 9.0355 1.82088 9.19808 1.91227 9.34725C2.01533 9.51541 2.15946 9.65958 2.44772 9.94783L8.83825 16.3383C9.82825 17.3283 10.3233 17.8234 10.8941 18.0088C11.3963 18.172 11.9371 18.172 12.4392 18.0088C13.01 17.8234 13.5051 17.3283 14.4951 16.3383L16.3383 14.4952C17.3283 13.5052 17.8233 13.0101 18.0088 12.4392C18.1719 11.9372 18.1719 11.3963 18.0088 10.8942C17.8233 10.3234 17.3283 9.82833 16.3383 8.83833L9.94775 2.4478C9.6595 2.15954 9.51533 2.01541 9.34717 1.91235C9.198 1.82096 9.03542 1.75362 8.86542 1.7128C8.67358 1.66675 8.46975 1.66675 8.0621 1.66675H4.33333C3.39992 1.66675 2.9332 1.66675 2.57668 1.84841C2.26308 2.00819 2.00811 2.26316 1.84833 2.57676C1.66667 2.93328 1.66667 3.39999 1.66667 4.33341ZM7.08333 6.66675C7.08333 6.89686 6.89678 7.08341 6.66667 7.08341C6.43655 7.08341 6.25 6.89686 6.25 6.66675C6.25 6.43663 6.43655 6.25008 6.66667 6.25008C6.89678 6.25008 7.08333 6.43663 7.08333 6.66675Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+
+	<span class="label">Tags</span>
+
+			<svg class="icon icon-arrow-right" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13 6.16675L16.8333 10.0001L13 13.8334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3.16669 10H16.8333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+							<ul>
+								<li>
+									<a
+		href="https://noted.lol/tag/self-hosting/"
+	class="nav-link nav-link-self-hosting"
+>
+
+		<span
+			class="nav-link-circle"
+			style="color: #0080c0"
+		></span>
+
+	<span class="label">Self Hosting</span>
+
+</a>
+								</li>
+								<li>
+									<a
+		href="https://noted.lol/tag/home-lab/"
+	class="nav-link nav-link-home-lab"
+>
+
+		<span
+			class="nav-link-circle"
+			style="color: #ff8000"
+		></span>
+
+	<span class="label">Homelab</span>
+
+</a>
+								</li>
+								<li>
+									<a
+		href="https://noted.lol/tag/weekly-roundup/"
+	class="nav-link nav-link-weekly-roundup"
+>
+
+		<span
+			class="nav-link-circle"
+			style="color: #1cd959"
+		></span>
+
+	<span class="label">Self Hosted Roundup</span>
+
+</a>
+								</li>
+								<li>
+									<a
+		href="https://noted.lol/tag/how-to/"
+	class="nav-link nav-link-how-to"
+>
+
+		<span
+			class="nav-link-circle"
+			style="color: #f1698e"
+		></span>
+
+	<span class="label">How To</span>
+
+</a>
+								</li>
+								<li>
+									<a
+		href="https://noted.lol/tag/self-hosted-file-transfer/"
+	class="nav-link nav-link-self-hosted-file-transfer"
+>
+
+		<span
+			class="nav-link-circle"
+		></span>
+
+	<span class="label">Self Hosted File Transfer &amp; Synchronization</span>
+
+</a>
+								</li>
+							</ul>
+						</nav>
+
+
+				<div class="footer sidebar-footer">
+	<ul class="social-links">
+  <li>
+		<a href="https://x.com/jeremy_noted" class="social-link" target="_blank" rel="noopener noreferrer">
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.2437 2.25H21.5531L14.325 10.5094L22.8281 21.75H16.1719L10.9547 14.9344L4.99216 21.75H1.6781L9.40779 12.9141L1.25623 2.25H8.08123L12.7922 8.47969L18.2437 2.25ZM17.0812 19.7719H18.914L7.08279 4.125H5.11404L17.0812 19.7719Z" fill="currentColor"/>
+</svg>
+      <span>X</span>
+		</a>
+  </li>
+</ul>
+
+
+	<div class="footer-copyright">© 2025 Noted</div>
+</div>			</div>
+		</div>
+
+		<button class="popup-overlay popup-close" aria-label="Hide popup" tabindex="-1"></button>
+	</div>
+
+	<script src="https://noted.lol/assets/vendors/motion.min.js?v=06f3ff1cf2"></script>
+
+	<script src="https://noted.lol/assets/vendors/popper.min.js?v=06f3ff1cf2"></script>
+	<script src="https://noted.lol/assets/vendors/tippy.umd.min.js?v=06f3ff1cf2"></script>
+
+	
+
+	<script src="https://noted.lol/assets/built/index.js?v=06f3ff1cf2"></script>
+
+	<script src="https://noted.lol/assets/built/slider-tags.js?v=06f3ff1cf2"></script>
+	<script src="https://noted.lol/assets/built/slider-cards.js?v=06f3ff1cf2"></script>
+
+	<script src="https://noted.lol/assets/built/announcement-bar.js?v=06f3ff1cf2"></script>
+
+	<script src="https://noted.lol/assets/custom.js?v=06f3ff1cf2"></script>
+
+	<script>
+window.pvs?.addExternalLinkAttributes?.();
+</script>
+</body>
+
+<!-- Mirrored from noted.lol/vaultwarden/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Jul 2025 17:41:09 GMT -->
+</html>

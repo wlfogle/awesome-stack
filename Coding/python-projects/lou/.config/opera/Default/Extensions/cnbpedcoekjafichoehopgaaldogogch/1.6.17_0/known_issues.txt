@@ -1,0 +1,28 @@
+Known issues:
+- do not work context menu ("paste" for input field). Wait for a fixes from Opera team;
+- on some pages can't detect selected text.
+- on some pages can't determine the active page to be translated;
+- simple design. Can anybody offer better? :)
+- Text-To-Speech limited by 100 characters. This is just additional feature, not text reader ;)
+- Pragma translator do not support some languages and not always correctly autodetect source language.
+- sometimes Google Translate Toolbar (may be toolbar by Microsoft too) do not showing on some pages. Try to clear the cache via "Tools" / "Delete Private Data" / "Delete entire cache".
+- sometimes Pragma don't work. Try manually to open url http://translate.ua/on-line before using it.
+
+
+Privacy notice:
+If click on extension-button with yellow rectangle, selected text will translated automatically.
+
+
+=== rus ===
+Известные ошибки:
+- не работает контекстное меню в поле ввода. Ждём исправления от команды Opera;
+- на некоторых страницах не подхватывает выделенный текст;
+- на некоторых страницах не определяет активную страницу для её перевода;
+- простой дизайн расширения. Можете предложить лучше? :)
+- озвучивание текста ограничено 100 символами. Это не профильная функция ;)
+- Pragma Переводчик не поддерживает некоторые языки и не всегда корректно определяет исходный язык.
+- иногда панель Google Перевод (возможно панель от Microsoft тоже) не показывается на странице. Попробуйте почистить кэш.
+- иногда Pragma не работает. Попробуйте вручную открыть ссылку http://translate.ua/on-line перед его использованием.
+
+Уведомление о конфиденциальности:
+Если кликнуть на кнопку расширения с жёлтым маркером, выделенный текст будет переведён автоматически.

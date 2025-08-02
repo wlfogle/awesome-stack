@@ -1,0 +1,1003 @@
+<!doctype html>
+<html lang="en-US" class="no-js">
+
+<!-- Mirrored from helgeklein.com/blog/vaultwarden-setup-guide-with-automatic-https/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Jul 2025 17:41:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="UTF-8">
+	<title>  Vaultwarden Setup Guide With Automatic HTTPS</title>
+	
+	<link href="http://www.google-analytics.com/" rel="dns-prefetch">
+	
+	      <link rel="preconnect" href="https://use.typekit.net/lyt8adm.css" crossorigin />
+      <link rel="preload" as="style" href="https://use.typekit.net/lyt8adm.css" />
+      <link rel="stylesheet" href="https://use.typekit.net/lyt8adm.css" />
+		
+	<link rel="apple-touch-icon" sizes="180x180" href="https://helgeklein.com/wp-content/themes/html5blank-helgeklein/favicons/apple-touch-icon.png?v=2019">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://helgeklein.com/wp-content/themes/html5blank-helgeklein/favicons/favicon-32x32.png?v=2019">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://helgeklein.com/wp-content/themes/html5blank-helgeklein/favicons/favicon-16x16.png?v=2019">
+	<link rel="manifest" href="https://helgeklein.com/wp-content/themes/html5blank-helgeklein/favicons/site.webmanifest?v=2019">
+	<link rel="mask-icon" href="https://helgeklein.com/wp-content/themes/html5blank-helgeklein/favicons/safari-pinned-tab.svg?v=2019" color="#1d1d1c">
+	<link rel="shortcut icon" href="https://helgeklein.com/wp-content/themes/html5blank-helgeklein/favicons/favicon.ico?v=2019">
+	<meta name="apple-mobile-web-app-title" content="Helge Klein">
+	<meta name="application-name" content="Helge Klein">
+	<meta name="msapplication-TileColor" content="#1d1d1c">
+	<meta name="msapplication-config" content="https://helgeklein.com/wp-content/themes/html5blank-helgeklein/favicons/browserconfig.xml?v=2019">
+	<meta name="theme-color" content="#ffffff">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Tools &amp; knowledge for IT pros">
+	
+	<meta name='robots' content='max-image-preview:large' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	
+            <script data-no-defer="1" data-ezscrex="false" data-cfasync="false" data-pagespeed-no-defer data-cookieconsent="ignore">
+                var ctPublicFunctions = {"_ajax_nonce":"fa03e4d18b","_rest_nonce":"017cd5b012","_ajax_url":"\/wp-admin\/admin-ajax.php","_rest_url":"https:\/\/helgeklein.com\/wp-json\/","data__cookies_type":"none","data__ajax_type":"rest","data__bot_detector_enabled":"0","data__frontend_data_log_enabled":1,"cookiePrefix":"","wprocket_detected":false,"host_url":"helgeklein.com","text__ee_click_to_select":"Click to select the whole data","text__ee_original_email":"The complete one is","text__ee_got_it":"Got it","text__ee_blocked":"Blocked","text__ee_cannot_connect":"Cannot connect","text__ee_cannot_decode":"Can not decode email. Unknown reason","text__ee_email_decoder":"CleanTalk email decoder","text__ee_wait_for_decoding":"The magic is on the way!","text__ee_decoding_process":"Please wait a few seconds while we decode the contact data."}
+            </script>
+        
+            <script data-no-defer="1" data-ezscrex="false" data-cfasync="false" data-pagespeed-no-defer data-cookieconsent="ignore">
+                var ctPublic = {"_ajax_nonce":"fa03e4d18b","settings__forms__check_internal":"0","settings__forms__check_external":"0","settings__forms__force_protection":0,"settings__forms__search_test":"1","settings__data__bot_detector_enabled":"0","settings__sfw__anti_crawler":0,"blog_home":"https:\/\/helgeklein.com\/","pixel__setting":"3","pixel__enabled":true,"pixel__url":"https:\/\/moderate4-v4.cleantalk.org\/pixel\/62a29d6c57ae0ae4f087ec49dbe84e3c.gif","data__email_check_before_post":"1","data__email_check_exist_post":0,"data__cookies_type":"none","data__key_is_ok":true,"data__visible_fields_required":true,"wl_brandname":"Anti-Spam by CleanTalk","wl_brandname_short":"CleanTalk","ct_checkjs_key":"910126d3340c90fe76e1b7cd4480ecfff3234aac36a46f88a98143defe0f3781","emailEncoderPassKey":"6abfc9b30e8a87eb22adef369a5cc82d","bot_detector_forms_excluded":"W10=","advancedCacheExists":true,"varnishCacheExists":false,"wc_ajax_add_to_cart":false}
+            </script>
+        <link rel='stylesheet' id='wp-block-library-css' href='https://helgeklein.com/wp-includes/css/dist/block-library/style.min.css?ver=6.8.1' media='all' />
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<link rel='stylesheet' id='prismatic-blocks-css' href='https://helgeklein.com/wp-content/plugins/prismatic/css/styles-blocks.css?ver=6.8.1' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='cleantalk-public-css-css' href='https://helgeklein.com/wp-content/plugins/cleantalk-spam-protect/css/cleantalk-public.min.css?ver=6.59_1751585693' media='all' />
+<link rel='stylesheet' id='cleantalk-email-decoder-css-css' href='https://helgeklein.com/wp-content/plugins/cleantalk-spam-protect/css/cleantalk-email-decoder.min.css?ver=6.59_1751585693' media='all' />
+<link rel='stylesheet' id='prismatic-prism-css' href='https://helgeklein.com/wp-content/plugins/prismatic/lib/prism/css/theme-default.css?ver=3.5' media='all' />
+<style id='prismatic-custom-inline-css' type='text/css'>
+.token.operator { background: unset; }
+</style>
+<link rel='stylesheet' id='normalize-css' href='https://helgeklein.com/wp-content/themes/html5blank-helgeklein/normalize.css?ver=1.0' media='all' />
+<link rel='stylesheet' id='html5blank-css' href='https://helgeklein.com/wp-content/themes/html5blank-helgeklein/css/styles.css?ver=1.0' media='all' />
+<script type="text/javascript" src="https://helgeklein.com/wp-content/themes/html5blank-helgeklein/js/lib/conditionizr-4.3.0.min.js?ver=4.3.0" id="conditionizr-js"></script>
+<script type="text/javascript" src="https://helgeklein.com/wp-content/themes/html5blank-helgeklein/js/lib/modernizr-2.7.1.min.js?ver=2.7.1" id="modernizr-js"></script>
+<script type="text/javascript" src="https://helgeklein.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://helgeklein.com/wp-content/themes/html5blank-helgeklein/js/scripts.js?ver=1.0.0" id="html5blankscripts-js"></script>
+<script type="text/javascript" src="https://helgeklein.com/wp-content/plugins/cleantalk-spam-protect/js/apbct-public-bundle_comm-func.min.js?ver=6.59_1751585693" id="apbct-public-bundle_comm-func-js-js"></script>
+<script type="text/javascript" id="ajax-load-more-posts-js-extra">
+/* <![CDATA[ */
+var ajax_params = {"ajaxurl":"https:\/\/helgeklein.com\/wp-admin\/admin-ajax.php","posts":"{\"page\":0,\"name\":\"vaultwarden-setup-guide-with-automatic-https\",\"error\":\"\",\"m\":\"\",\"p\":0,\"post_parent\":\"\",\"subpost\":\"\",\"subpost_id\":\"\",\"attachment\":\"\",\"attachment_id\":0,\"pagename\":\"\",\"page_id\":0,\"second\":\"\",\"minute\":\"\",\"hour\":\"\",\"day\":0,\"monthnum\":0,\"year\":0,\"w\":0,\"category_name\":\"\",\"tag\":\"\",\"cat\":\"\",\"tag_id\":\"\",\"author\":\"\",\"author_name\":\"\",\"feed\":\"\",\"tb\":\"\",\"paged\":0,\"meta_key\":\"\",\"meta_value\":\"\",\"preview\":\"\",\"s\":\"\",\"sentence\":\"\",\"title\":\"\",\"fields\":\"all\",\"menu_order\":\"\",\"embed\":\"\",\"category__in\":[],\"category__not_in\":[],\"category__and\":[],\"post__in\":[],\"post__not_in\":[],\"post_name__in\":[],\"tag__in\":[],\"tag__not_in\":[],\"tag__and\":[],\"tag_slug__in\":[],\"tag_slug__and\":[],\"post_parent__in\":[],\"post_parent__not_in\":[],\"author__in\":[],\"author__not_in\":[],\"search_columns\":[],\"ignore_sticky_posts\":false,\"suppress_filters\":false,\"cache_results\":true,\"update_post_term_cache\":true,\"update_menu_item_cache\":false,\"lazy_load_term_meta\":true,\"update_post_meta_cache\":true,\"post_type\":\"\",\"posts_per_page\":30,\"nopaging\":false,\"comments_per_page\":\"50\",\"no_found_rows\":false,\"order\":\"DESC\"}","current_page":"1","max_page":"0"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://helgeklein.com/wp-content/themes/html5blank-helgeklein/js/load_more_ajax.js?ver=6.8.1" id="ajax-load-more-posts-js"></script>
+<link rel="https://api.w.org/" href="https://helgeklein.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://helgeklein.com/wp-json/wp/v2/posts/15777" /><link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://helgeklein.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fhelgeklein.com%2Fblog%2Fvaultwarden-setup-guide-with-automatic-https%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://helgeklein.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fhelgeklein.com%2Fblog%2Fvaultwarden-setup-guide-with-automatic-https%2F&amp;format=xml" />
+	<script>
+	// conditionizr.com
+	// configure environment tests
+	conditionizr.config({
+		assets: 'https://helgeklein.com/wp-content/themes/html5blank-helgeklein',
+		tests: {}
+	});
+	</script>
+	
+</head>
+<body class="wp-singular post-template-default single single-post postid-15777 single-format-standard wp-theme-html5blank-helgeklein vaultwarden-setup-guide-with-automatic-https">
+	
+	<!-- header -->
+	<header class="header clear" role="banner">
+    
+    <!-- pre-header -->
+  	<div class="pre-header">
+			<div class="wrapper">
+  		
+	  		<!-- search -->
+<form class="search" method="get" action="https://helgeklein.com/" role="search">
+  
+	<input class="search-input" type="search" name="s" placeholder="Search">
+	
+  <button class="search-submit" type="submit" role="button">
+    <span>Search</span>
+  </button>
+  
+</form>
+<!-- /search -->
+				
+				<div class="meta-menu">
+					<ul id="menu-header-menu" class="menu"><li id="menu-item-12109" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12109"><a href="https://helgeklein.com/blog-archive/">Blog Archive</a></li>
+</ul>				</div>
+  		
+			</div>
+  	</div>
+  	<!-- /pre-header -->
+		
+		<!-- wrapper -->
+		<div class="wrapper">
+			
+			<!-- logo -->
+			<div class="logo">
+				<a href="https://helgeklein.com/">
+					<img src="https://helgeklein.com/wp-content/themes/html5blank-helgeklein/img/helge_klein-logo.svg" alt="Helge Klein" class="logo-img">
+				</a>
+			</div>
+			<!-- /logo -->
+      
+      <button class="nav-toggle">
+        <span>Menu</span>
+      </button>
+			
+			<!-- nav -->
+			<nav class="nav" role="navigation">
+				<ul><li id="menu-item-80" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-80"><a href="https://helgeklein.com/setacl/">SetACL</a>
+<ul class="sub-menu">
+	<li id="menu-item-6518" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-6518"><a href="https://helgeklein.com/setacl/">About SetACL</a>
+	<ul class="sub-menu">
+		<li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17"><a href="https://helgeklein.com/setacl/feature-set/">Feature set</a></li>
+		<li id="menu-item-42" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42"><a href="https://helgeklein.com/setacl/faq/">FAQ</a></li>
+		<li id="menu-item-14580" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14580"><a href="https://helgeklein.com/setacl/changelog/">Changelog</a></li>
+	</ul>
+</li>
+	<li id="menu-item-97" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-97"><a href="https://helgeklein.com/setacl/documentation/">Documentation</a>
+	<ul class="sub-menu">
+		<li id="menu-item-105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-105"><a href="https://helgeklein.com/setacl/documentation/command-line-version-setacl-exe/">Command Line-Version (SetACL.exe)</a></li>
+		<li id="menu-item-275" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-275"><a href="https://helgeklein.com/setacl/documentation/com-version-setacl-ocx/">COM Version (SetACL.dll)</a></li>
+	</ul>
+</li>
+	<li id="menu-item-168" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-168"><a href="https://helgeklein.com/setacl/examples/">Examples</a>
+	<ul class="sub-menu">
+		<li id="menu-item-167" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-167"><a href="https://helgeklein.com/setacl/examples/managing-file-system-permissions-with-setacl-exe/">Managing File System Permissions</a></li>
+		<li id="menu-item-166" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-166"><a href="https://helgeklein.com/setacl/examples/managing-registry-permissions-with-setacl-exe/">Managing Registry Permissions</a></li>
+		<li id="menu-item-165" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-165"><a href="https://helgeklein.com/setacl/examples/managing-printer-service-and-share-permissions-with-setacl-exe/">Managing Printer, Service, WMI and Share Permissions</a></li>
+		<li id="menu-item-3444" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3444"><a href="https://helgeklein.com/setacl/examples/setting-permissions-and-inheritance-from-csharp/">Setting permissions and blocking inheritance from C#</a></li>
+		<li id="menu-item-164" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-164"><a href="https://helgeklein.com/setacl/examples/setting-the-owner-from-vbscript-with-setacl-dll/">Setting the Owner from VBScript</a></li>
+		<li id="menu-item-163" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-163"><a href="https://helgeklein.com/setacl/examples/locking-and-unlocking-the-registry-with-setacl-exe/">Locking and Unlocking the Registry</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-4327" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4327"><a href="https://helgeklein.com/setacl-studio/">SetACL Studio</a>
+<ul class="sub-menu">
+	<li id="menu-item-4329" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4329"><a href="https://helgeklein.com/setacl-studio/feature-set/">Features</a></li>
+	<li id="menu-item-4324" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4324"><a href="https://helgeklein.com/setacl-studio/screenshots/">Screenshots</a></li>
+	<li id="menu-item-4540" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4540"><a href="https://helgeklein.com/setacl-studio/frequently-asked-questions/">FAQ</a></li>
+</ul>
+</li>
+<li id="menu-item-3713" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3713"><a href="https://helgeklein.com/free-tools/delprof2-user-profile-deletion-tool/">Delprof2</a></li>
+<li id="menu-item-72" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72"><a href="https://helgeklein.com/download/">Download</a></li>
+<li id="menu-item-13789" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-13789"><a href="https://helgeklein.com/bauprojekt-haus21-klimaneutral-heizen-kuehlen/">HAUS21</a>
+<ul class="sub-menu">
+	<li id="menu-item-16295" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-16295"><a href="#">Planung</a>
+	<ul class="sub-menu">
+		<li id="menu-item-13799" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13799"><a href="https://helgeklein.com/bauprojekt-haus21-klimaneutral-heizen-kuehlen/waerme-kaeltequellen-erdwaerme-geothermie-eisspeicher-luft-waermepumpe/">Wärme-/Kältequellen: Geothermie, Eisspeicher, Luft-Wärmepumpe</a></li>
+		<li id="menu-item-13797" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13797"><a href="https://helgeklein.com/bauprojekt-haus21-klimaneutral-heizen-kuehlen/heizen-und-kuehlen-mit-eisspeicher-details/">Heizen und Kühlen mit Eisspeicher: Details</a></li>
+		<li id="menu-item-13798" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13798"><a href="https://helgeklein.com/bauprojekt-haus21-klimaneutral-heizen-kuehlen/heizen-kuehlen-fussboden-vs-decke-vs-wand/">Heizen/Kühlen: Fußboden vs. Decke vs. Wand</a></li>
+		<li id="menu-item-13794" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13794"><a href="https://helgeklein.com/bauprojekt-haus21-klimaneutral-heizen-kuehlen/bauteilaktivierung-kuhlung-der-betondecken/">Bauteilaktivierung: Kühlung der Betondecken</a></li>
+		<li id="menu-item-13795" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13795"><a href="https://helgeklein.com/bauprojekt-haus21-klimaneutral-heizen-kuehlen/photovoltaik-und-stromspeicher/">Photovoltaik und Stromspeicher</a></li>
+		<li id="menu-item-13792" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13792"><a href="https://helgeklein.com/bauprojekt-haus21-klimaneutral-heizen-kuehlen/kontrollierte-wohnraumluftung-kwl/">Kontrollierte Wohnraumlüftung (KWL)</a></li>
+		<li id="menu-item-13793" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13793"><a href="https://helgeklein.com/bauprojekt-haus21-klimaneutral-heizen-kuehlen/baustoffe-viel-poroton-lehm-wenig-beton-kein-rigips/">Baustoffe: viel Poroton &#038; Lehm, wenig Beton, kein Rigips</a></li>
+		<li id="menu-item-13790" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13790"><a href="https://helgeklein.com/bauprojekt-haus21-klimaneutral-heizen-kuehlen/altersgerechtigkeit-und-barrierefreiheit/">Altersgerechtigkeit und Barrierefreiheit</a></li>
+		<li id="menu-item-13791" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13791"><a href="https://helgeklein.com/bauprojekt-haus21-klimaneutral-heizen-kuehlen/smart-home-das-vernetzte-haus/">Smart Home: das vernetzte Haus</a></li>
+	</ul>
+</li>
+	<li id="menu-item-16294" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-16294"><a href="#">Erfahrungen</a>
+	<ul class="sub-menu">
+		<li id="menu-item-16296" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16296"><a href="https://helgeklein.com/bauprojekt-haus21-klimaneutral-heizen-kuehlen/viessmann-eisspeicher-lieber-nicht/">Viessmann-Eisspeicher? Lieber Nicht!</a></li>
+	</ul>
+</li>
+	<li id="menu-item-13796" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13796"><a href="https://helgeklein.com/bauprojekt-haus21-klimaneutral-heizen-kuehlen/beteiligte-firmen/">Beteiligte Firmen</a></li>
+</ul>
+</li>
+</ul>				
+				<div class="meta-menu">
+					<ul id="menu-header-menu-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12109"><a href="https://helgeklein.com/blog-archive/">Blog Archive</a></li>
+</ul>				</div>
+			</nav>
+			<!-- /nav -->
+			
+			<!-- social-links -->
+			<div class="social-links">
+				
+				
+
+<a href="https://helgeklein.com/feed/" target="_blank">
+  <div class="social-links__item social-links__item--rss">
+    <svg width="21px" height="21px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <path fill="#fe9312" d="M4.3 23.5c-2.3 0-4.3 1.9-4.3 4.3 0 2.3 1.9 4.2 4.3 4.2 2.4 0 4.3-1.9 4.3-4.2 0-2.3-1.9-4.3-4.3-4.3zM0 10.9v6.1c4 0 7.7 1.6 10.6 4.4 2.8 2.8 4.4 6.6 4.4 10.6h6.2c0-11.7-9.5-21.1-21.1-21.1zM0 0v6.1c14.2 0 25.8 11.6 25.8 25.9h6.2c0-17.6-14.4-32-32-32z"></path>
+    </svg>
+  </div>
+</a>
+
+  <a href="https://www.linkedin.com/in/helgeklein/" target="_blank">
+    <div class="social-links__item social-links__item--linkedin">
+      <svg width="21px" height="21px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 32">
+        <path fill="#0077b5" d="M6.2 11.2v17.7h-5.9v-17.7h5.9zM6.6 5.7q0 1.3-0.9 2.2t-2.4 0.9h0q-1.5 0-2.4-0.9t-0.9-2.2 0.9-2.2 2.4-0.9 2.4 0.9 0.9 2.2zM27.4 18.7v10.1h-5.9v-9.5q0-1.9-0.7-2.9t-2.3-1.1q-1.1 0-1.9 0.6t-1.2 1.5q-0.2 0.5-0.2 1.4v9.9h-5.9q0-7.1 0-11.6t0-5.3l0-0.9h5.9v2.6h0q0.4-0.6 0.7-1t1-0.9 1.6-0.8 2-0.3q3 0 4.9 2t1.9 6z"></path>
+      </svg>
+    </div>
+  </a>
+				
+			</div>
+			<!-- /social-links -->
+			
+		</div>
+		<!-- /wrapper -->
+		
+	</header>
+	<!-- /header -->
+
+
+	<main role="main" class="wrapper">
+			
+		<!-- section -->
+		<section>
+
+			<!-- article -->
+			<article id="post-15777" class="pni-container post-15777 post type-post status-publish format-standard has-post-thumbnail hentry category-home-automation-networking-self-hosting tag-bitwarden tag-caddy tag-https tag-password tag-vaultwarden">
+				
+				<!-- post details -->
+				<div class="post__details">
+					by: <span class="post__details__author">Helge</span>,
+               published: <span class="post__details__date">Sep 4, 2023</span>,
+               updated: <span class="post__details__date">Jan 25, 2025</span>,					in <ul class="post-categories">
+	<li><a href="https://helgeklein.com/blog/category/home-automation-networking-self-hosting/" rel="tag">Home Automation, Networking &amp; Self-Hosting</a></li></ul>				</div>
+				<!-- /post details -->
+
+				<!-- post content container -->
+				<div class="post__content-container">
+
+					<!-- post title -->
+					<h1 class="post__title">Vaultwarden Setup Guide With Automatic HTTPS</h1>
+					<!-- /post title -->
+
+					<div class="post__content wysiwyg">
+						<div class="pni-navigation"><a name="pni-top0"></a><h5 class="pni-title">Contents</h5><ul><li><a href="#what-is-vaultwarden">What is Vaultwarden?</a></li><li><a href="#vaultwarden-installation">Vaultwarden Installation</a><ul><li><a href="#preparation">Preparation</a></li><li><a href="#dockerized-vaultwarden-directory-structure">Dockerized Vaultwarden Directory Structure</a></li><li><a href="#vaultwarden-docker-compose-file">Vaultwarden Docker Compose File</a></li><li><a href="#set-a-password-create-an-admin-token">Set a Password &#038; Create an Admin Token</a></li><li><a href="#vaultwarden-container-vars-env-file">Vaultwarden container-vars.env File</a></li><li><a href="#start-the-vaultwarden-container">Start the Vaultwarden Container</a></li></ul></li><li><a href="#let%e2%80%99s-encrypt-certificate-for-vaultwarden-via-caddy">Let’s Encrypt Certificate for Vaultwarden via Caddy</a><ul><li><a href="#caddyfile">Caddyfile</a></li><li><a href="#dns-a-record">DNS A Record</a></li><li><a href="#reload-caddy%e2%80%99s-configuration">Reload Caddy’s Configuration</a></li></ul></li><li><a href="#initial-vaultwarden-admin-configuration">Initial Vaultwarden Admin Configuration</a><ul><li><a href="#settings">Settings</a><ul><li><a href="#general-settings">General Settings</a></li><li><a href="#smtp-email-settings">SMTP Email Settings</a></li></ul></li><li><a href="#invite-users">Invite Users</a></li></ul></li><li><a href="#user-configuration">User Configuration</a><ul><li><a href="#accept-invitation">Accept Invitation</a></li><li><a href="#create-organization">Create Organization</a></li><li><a href="#mobile-apps">Mobile Apps</a><ul><li><a href="#add-vaultwarden-in-addition-to-a-bitwarden-instance">Add Vaultwarden in Addition to a Bitwarden Instance</a></li><li><a href="#switching-between-bitwarden-and-vaultwarden-accounts">Switching Between Bitwarden and Vaultwarden Accounts</a></li></ul></li></li></ul></li><li><a href="#changelog">Changelog</a><ul><li><a href="#024-04-14">&#50;024-04-14</a></li></ul></li></ul></div><div class="pni-content pni-container">
+<p>This article explains how to set up Vaultwarden with automatic HTTPS certificates (via Caddy). This post is part of my <a href="https://helgeklein.com/blog/category/home-automation-networking-self-hosting/" target="_blank" rel="noopener">series on home automation, networking &#038; self-hosting</a> that shows how to install, configure, and run a home server &#038; network with dockerized or virtualized services.</p>
+<p><img fetchpriority="high" decoding="async" src="https://helgeklein.com/wp-content/uploads/2023/09/Vaultwarden-web.png" alt="" width="815" height="456" class="alignnone size-full wp-image-15781" srcset="https://helgeklein.com/wp-content/uploads/2023/09/Vaultwarden-web.png 815w, https://helgeklein.com/wp-content/uploads/2023/09/Vaultwarden-web-400x224.png 400w, https://helgeklein.com/wp-content/uploads/2023/09/Vaultwarden-web@2x.png 1630w, https://helgeklein.com/wp-content/uploads/2023/09/Vaultwarden-web-400x224@2x.png 800w" sizes="(max-width: 815px) 100vw, 815px" /></p>
+<h2><a name="what-is-vaultwarden"></a>What is Vaultwarden?</h2>
+<p>Vaultwarden is a more efficient re-implementation of the Bitwarden server API aimed at self-hosting. Vaultwarden is compatible with Bitwarden clients.</p>
+<p><strong>Side note:</strong> Apparently, Bitwarden recently created a slimmed-down version of their Docker deployment: <a href="https://bitwarden.com/help/install-and-deploy-unified-beta/" target="_blank" rel="noopener">Unified</a> (currently in beta). While Unified &#8220;only&#8221; requires a single container and supports SQLite (as is the case with Vaultwarden), Bitwarden Unified still needs &#8220;at least 200 MB RAM&#8221;, whereas my Vaultwarden instance only consumes 10 MB.</p>
+<h2><a name="vaultwarden-installation"></a>Vaultwarden Installation</h2>
+<h3><a name="preparation"></a>Preparation</h3>
+<p>I’m assuming that you’ve <a href="https://helgeklein.com/blog/installing-proxmox-as-docker-host-on-intel-nuc-home-server/" target="_blank" rel="noopener">set up Docker</a> and the <a href="https://helgeklein.com/blog/automatic-https-certificates-for-services-on-internal-home-network-without-opening-firewall-port/" target="_blank" rel="noopener">Caddy container</a> as described in the <a href="https://helgeklein.com/blog/category/home-automation/" target="_blank" rel="noopener">previous articles in this series</a>.</p>
+<h3><a name="dockerized-vaultwarden-directory-structure"></a>Dockerized Vaultwarden Directory Structure</h3>
+<p>This is what the directory structure will look like when we’re done:</p>
+<pre><code>rpool/
+ └── encrypted/
+     └── docker/
+         └── vaultwarden/
+             ├── data/
+             ├── container-vars.env
+             └── docker-compose.yml
+</code></pre>
+<p>We’re placing the configuration on the encrypted ZFS dataset (<code>rpool/encrypted</code>).</p>
+<p>Create the new directories:</p>
+<pre><code class="lang-shell">mkdir -p /rpool/encrypted/docker/vaultwarden/data
+</code></pre>
+<h3><a name="vaultwarden-docker-compose-file"></a>Vaultwarden Docker Compose File</h3>
+<p>Create <code>docker-compose.yml</code> with the following content:</p>
+<pre><code class="lang-yaml">services:
+
+  vaultwarden:
+    container_name: vaultwarden
+    hostname: vaultwarden
+    image: vaultwarden/server:latest
+    restart: unless-stopped
+    networks:
+      caddy_caddynet:
+    expose:
+      - 80                 # Web UI
+      - 443                # Web UI
+    env_file:
+      - container-vars.env
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./data:/data
+
+networks:
+  caddy_caddynet:
+    external: true
+</code></pre>
+<h3><a name="set-a-password-create-an-admin-token"></a>Set a Password &#038; Create an Admin Token</h3>
+<p>To enable the admin page, we need to specify a (hashed) admin password via an environment variable (<a href="https://github.com/dani-garcia/vaultwarden/wiki/Enabling-admin-page" target="_blank" rel="noopener">docs</a>).</p>
+<p>Generate a secure password and make sure to store it safely. Run the following command to create the admin token via a temporary Vaultwarden container, specifying your new password when asked:</p>
+<pre><code class="lang-shell">docker run --rm -it vaultwarden/server /vaultwarden hash
+</code></pre>
+<p>Copy the output line that starts with <code>ADMIN_TOKEN=&#039;$argon2id$v=</code> to be pasted into <code>container-vars.env</code> (see below).</p>
+<h3><a name="vaultwarden-container-vars-env-file"></a>Vaultwarden container-vars.env File</h3>
+<p>Create <code>container-vars.env</code> with the following content:</p>
+<pre><code class="lang-ini"># Paste your ADMIN_TOKEN in the line below
+</code></pre>
+<h3><a name="start-the-vaultwarden-container"></a>Start the Vaultwarden Container</h3>
+<p>Navigate into the directory with <code>docker-compose.yml</code> and run:</p>
+<pre><code>docker compose up -d
+</code></pre>
+<p>Inspect the container logs for errors with the command <code>docker compose logs --tail 30 --timestamps</code>.</p>
+<h2><a name="let%e2%80%99s-encrypt-certificate-for-vaultwarden-via-caddy"></a>Let’s Encrypt Certificate for Vaultwarden via Caddy</h2>
+<h3><a name="caddyfile"></a>Caddyfile</h3>
+<p>Add the following to <code>Caddyfile</code> (<a href="https://helgeklein.com/blog/automatic-https-certificates-for-services-on-internal-home-network-without-opening-firewall-port/#caddy-container-on-proxmox-ve" target="_blank" rel="noopener">details</a>):</p>
+<pre><code>vault.{$MY_DOMAIN} {
+	reverse_proxy vaultwarden:80 {
+		# Send the true remote IP to Rocket, so that vaultwarden can put this in the log, so that fail2ban can ban the correct IP.
+		header_up X-Real-IP {remote_host}
+	}
+	tls {
+		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+	}
+}
+</code></pre>
+<h3><a name="dns-a-record"></a>DNS A Record</h3>
+<p>Add the following A record to your DNS domain:</p>
+<pre><code>vault.home.yourdomain.com 192.168.0.4     # replace with your Docker host&#039;s IP address
+</code></pre>
+<p>Try to resolve the name on a machine in your network (e.g., <code>nslookup vault.home.yourdomain.com</code>).</p>
+<h3><a name="reload-caddy%e2%80%99s-configuration"></a>Reload Caddy’s Configuration</h3>
+<p>Instruct Caddy to reload its configuration by running:</p>
+<pre><code>docker exec -w /etc/caddy caddy caddy reload
+</code></pre>
+<p>You should now be able to access the Vaultwarden web interface at <code>https://vault.home.yourdomain.com</code> without getting a certificate warning from your browser.</p>
+<h2><a name="initial-vaultwarden-admin-configuration"></a>Initial Vaultwarden Admin Configuration</h2>
+<p>We&#8217;re configuring Vaultwarden via its admin page (<a href="https://github.com/dani-garcia/vaultwarden/wiki/Enabling-admin-page" target="_blank" rel="noopener">docs</a>). In your browser, navigate to <code>https://vault.home.yourdomain.com/admin</code> and specify the admin password you generated above.				</p>
+<h3><a name="settings"></a>Settings</h3>
+<h4><a name="general-settings"></a>General Settings</h4>
+<ul>
+<li><strong>Domain:</strong> <code>https://vault.home.yourdomain.com</code></li>
+<li><strong>Allow new signups:</strong> unchecked</li>
+<li><strong>Allow password hints:</strong> unchecked</li>
+<li><strong>Invitation organization name:</strong> <code>Home</code></li>
+</ul>
+<h4><a name="smtp-email-settings"></a>SMTP Email Settings</h4>
+<p>If you&#8217;re using the free Sendgrid plan like I do (<a href="https://helgeklein.com/blog/authentication-sso-user-management-password-reset-for-home-networks/#free-sendgrid-account-to-send-email-from-your-server" target="_blank" rel="noopener">details</a>), create a new API key:</p>
+<ul>
+<li><strong>API key name:</strong> <code>Vaultwarden</code></li>
+<li><strong>API key permissions:</strong> Restricted access, only <code>Mail send</code> enabled</li>
+</ul>
+<p>Configure the following <strong>email settings in Vaultwarden:</strong></p>
+<ul>
+<li><strong>Host:</strong> <code>smtp.sendgrid.net</code></li>
+<li><strong>Port:</strong> <code>587</code></li>
+<li><strong>From address:</strong> <code><a href="https://helgeklein.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="315f505c5471555e5c50585f1f525e5c">[email&#160;protected]</a></code> (replace with your email)</li>
+<li><strong>From name:</strong> <code>Your name</code> (replace with your name)</li>
+<li><strong>Username:</strong> <code>apikey</code></li>
+<li><strong>Password:</strong> <code>YOUR_API_KEY</code></li>
+</ul>
+<p>Click <strong>Save</strong>. Go back to <strong>SMTP Email Settings</strong> > <strong>Test SMTP</strong>, enter your email address, and click <strong>Send test email</strong>.</p>
+<h3><a name="invite-users"></a>Invite Users</h3>
+<p>Still in the admin UI, navigate to <strong>Users</strong> and invite yourself as the first user.</p>
+<h2><a name="user-configuration"></a>User Configuration</h2>
+<h3><a name="accept-invitation"></a>Accept Invitation</h3>
+<p>To accept the invitation you got from your admin (see above), follow the instructions in the email you should have received:</p>
+<ul>
+<li>Make sure to create a new account, specifying a unique master password.</li>
+</ul>
+<h3><a name="create-organization"></a>Create Organization</h3>
+<p>Once logged in with your new account, you may want to create an organization for your family so that you can share a vault with passwords. To do that, click <strong>New organization</strong>, specify a name and <em>any</em> email (the email field is a leftover <em>billing email</em> from Bitwarden).</p>
+<h3><a name="mobile-apps"></a>Mobile Apps</h3>
+<p>As a re-implementation of the open-source Bitwarden server and its API, Vaultwarden is compatible with Bitwarden clients. Vaultwarden, therefore, doesn&#8217;t come with its own mobile apps but relies on Bitwarden&#8217;s Android and iOS apps instead.</p>
+<h4><a name="add-vaultwarden-in-addition-to-a-bitwarden-instance"></a>Add Vaultwarden in Addition to a Bitwarden Instance</h4>
+<p>I already had a Bitwarden cloud account in my Bitwarden mobile app. Adding my self-hosted Vaultwarden instance, too, was easy once I figured out where to do it.</p>
+<p>In the app&#8217;s upper-right corner, tap your account icon and then tap <strong>Add account</strong>. Specify the email address of your Vaultwarden account and make sure to select <strong>Self-hosted</strong> in the dropdown <strong>Logging in on</strong>. In the self-hosted settings that come up, specify only the server URL: <code>https://vault.home.yourdomain.com</code>.</p>
+<h4><a name="switching-between-bitwarden-and-vaultwarden-accounts"></a>Switching Between Bitwarden and Vaultwarden Accounts</h4>
+<p>To switch between accounts in the mobile Bitwarden app, tap the account icon in the upper right corner. A menu pops up that lists your configured accounts. Tap the account you want to switch to.</p>
+<h2><a name="changelog"></a>Changelog</h2>
+<h3><a name="024-04-14"></a>&#50;024-04-14</h3>
+<ul>
+<li>Removed the <code>version</code> from <code>docker-compose.yml</code>; a warning mentions that it&#8217;s obsolete.
+</ul>
+<p></div>
+					</div>
+					
+				</div>
+				<!-- /post content container -->
+				
+			</article>
+			<!-- /article -->
+
+							<ul class="post__meta post__meta--tags">
+					<li class="post__meta--tags__item"><a href="https://helgeklein.com/blog/tag/bitwarden/" rel="tag">Bitwarden</a></li><li class="post__meta--tags__item"><a href="https://helgeklein.com/blog/tag/caddy/" rel="tag">Caddy</a></li><li class="post__meta--tags__item"><a href="https://helgeklein.com/blog/tag/https/" rel="tag">HTTPS</a></li><li class="post__meta--tags__item"><a href="https://helgeklein.com/blog/tag/password/" rel="tag">Password</a></li><li class="post__meta--tags__item"><a href="https://helgeklein.com/blog/tag/vaultwarden/" rel="tag">Vaultwarden</a></li>				</ul>
+						
+						<div class="post__meta post__meta--author">
+				<h2>About the Author</h2>
+				<div class="wysiwyg">
+          Helge Klein (ex CTP, MVP, and vExpert) worked as a consultant and developer before founding vast limits, the uberAgent company, which was acquired by the Citrix business unit of Cloud Software Group in late 2023.
+Previously, Helge applied his extensive knowledge in IT infrastructure projects and architected a user profile management product, the successor of which is now available as Citrix Profile Management. Helge is the author of the popular tools Delprof2 and SetACL. He has presented at Citrix Synergy, BriForum, E2EVC, Splunk .conf, and many other events.        </div>
+        
+                          <p>
+            <a class="bold-underlined-link" href="https://helgeklein.com/about-helge-klein/">
+              Read more
+            </a>
+          </p>
+        			</div>
+						
+			<div class="post__navigation">
+									<div class="post__navigation__link post__navigation__link--previous">
+						<a href="https://helgeklein.com/blog/docker-monitoring-with-prometheus-automatic-https-sso-authentication/">
+							<span class="post__navigation__link__label">Previous Article</span>
+							<span class="post__navigation__link__title">Docker Monitoring With Prometheus, Automatic HTTPS &amp; SSO Authentication</span>
+						</a>
+					</div>
+													<div class="post__navigation__link post__navigation__link--next">
+						<a href="https://helgeklein.com/blog/guide-wordpress-on-dockerized-apache-on-hetzner-cloud/">
+							<span class="post__navigation__link__label">Next Article</span>
+							<span class="post__navigation__link__title">Guide: WordPress on Dockerized Apache on Hetzner Cloud</span>
+						</a>
+					</div>
+							</div>
+
+		</section>
+		<!-- /section -->
+		
+	</main>
+
+	<div class="comments-container">
+	<div class="wrapper">
+	
+		
+	
+		<h2 class="comments-heading">1 Comment</h2>
+
+		<ul class="comments">
+			  <!-- heads up: starting < for the html tag (li or div) in the next line: -->
+  <li class="comment even thread-even depth-1" id="comment-254548">
+      <div id="div-comment-254548" class="comment__body">
+        <div class="comment__author vcard">
+      Pat Corcoran    </div>
+        
+    <div class="comment__meta commentmetadata"><a href="index.html#comment-254548">
+      September 24, 2023 at 16:24</a>    </div>
+
+    <div class="wysiwyg">
+    <p>Version in &#8220;./docker-compose.yml&#8221; is unsupported.</p>
+    </div>
+    
+    <div class="comment-reply-link-wrapper">
+      <a rel="nofollow" class="comment-reply-link" href="index7c87.html?replytocom=254548#respond" data-commentid="254548" data-postid="15777" data-belowelement="div-comment-254548" data-respondelement="respond" data-replyto="Reply to Pat Corcoran" aria-label="Reply to Pat Corcoran">Reply</a>    </div>
+        </div>
+  </li><!-- #comment-## -->
+		</ul>
+
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://helgeklein.com/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p><p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required="required" /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required="required" /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" autocomplete="url" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='15777' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><input type="hidden" id="ct_checkjs_d2ddea18f00665ce8623e36bd4e3c7c5" name="ct_checkjs" value="0" /><script data-cfasync="false" src="https://helgeklein.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>setTimeout(function(){var ct_input_name = "ct_checkjs_d2ddea18f00665ce8623e36bd4e3c7c5";if (document.getElementById(ct_input_name) !== null) {var ct_input_value = document.getElementById(ct_input_name).value;document.getElementById(ct_input_name).value = document.getElementById(ct_input_name).value.replace(ct_input_value, '910126d3340c90fe76e1b7cd4480ecfff3234aac36a46f88a98143defe0f3781');}}, 1000);</script></form>	</div><!-- #respond -->
+		
+	</div>
+	<!-- /wrapper -->
+	
+</div>
+<!-- /comments -->
+  
+  <div class="wrapper">
+	
+  	
+  
+	<div class="related-posts-container">
+		
+		<h2 class="related-posts-heading">Related Posts</h2>
+	
+		<section class="related-posts">
+							
+				<article data-score="3" class="related-posts__item post-16159 post type-post status-publish format-standard has-post-thumbnail hentry category-home-automation-networking-self-hosting tag-authelia tag-caddy tag-docker tag-filebrowser tag-https tag-samba tag-sso" id="post-16159">
+				
+					<div class="related-posts__item__content teaser">
+						
+            
+<!-- teaser main -->
+<div class="teaser__main">
+
+  <!-- teaser title -->
+  <a href="https://helgeklein.com/blog/samba-file-server-web-access-through-filebrowser-with-sso-https/" title="Samba File Server: Web Access Through Filebrowser With SSO &#038; HTTPS">
+    <h2 class="teaser__title">
+      Samba File Server: Web Access Through Filebrowser With SSO &#038; HTTPS    </h2>
+  </a>
+  <!-- /teaser title -->
+  
+  <!-- teaser image -->
+  <a href="https://helgeklein.com/blog/samba-file-server-web-access-through-filebrowser-with-sso-https/" title="Samba File Server: Web Access Through Filebrowser With SSO &#038; HTTPS" class="teaser__image-wrapper">
+          <img width="400" height="267" src="https://helgeklein.com/wp-content/uploads/2024/07/pexels-hendrikcornelissen-2862070-400x267.jpg" class="teaser__image wp-post-image" alt="" decoding="async" srcset="https://helgeklein.com/wp-content/uploads/2024/07/pexels-hendrikcornelissen-2862070-400x267.jpg 400w, https://helgeklein.com/wp-content/uploads/2024/07/pexels-hendrikcornelissen-2862070.jpg 815w, https://helgeklein.com/wp-content/uploads/2024/07/pexels-hendrikcornelissen-2862070-400x267@2x.jpg 800w, https://helgeklein.com/wp-content/uploads/2024/07/pexels-hendrikcornelissen-2862070@2x.jpg 1630w" sizes="(max-width: 400px) 100vw, 400px" />      </a>
+  <!-- /teaser image -->
+  
+  <a class="teaser__excerpt" href="https://helgeklein.com/blog/samba-file-server-web-access-through-filebrowser-with-sso-https/" title="Samba File Server: Web Access Through Filebrowser With SSO &#038; HTTPS">
+    <p>This article explains how to set up Filebrowser in a Docker container as a web interface for browser-based access to a Samba file server.</p>    <p class="read-more"><span>Read more</span></p>
+  </a>
+  
+</div>
+<!-- /teaser main -->
+
+<!-- teaser footer -->
+<div class="teaser__footer">
+  
+  <!-- teaser meta -->
+  <div class="teaser__meta">
+    <span class="author">by Helge</span>
+    <span class="date">on </span>
+  </div>
+  <!-- /teaser meta -->
+  
+  <!-- teaser categories -->
+  <ul class="teaser__categories">
+          <li class="teaser__categories__item">
+        <a href="https://helgeklein.com/blog/category/home-automation-networking-self-hosting/">Home Automation, Networking &amp; Self-Hosting</a>
+      </li>
+      </ul>
+  <!-- /teaser categories -->
+  
+</div>
+<!-- /teaser footer -->
+
+				    
+				  </div>
+				
+				</article>
+				
+							
+				<article data-score="3" class="related-posts__item post-15219 post type-post status-publish format-standard has-post-thumbnail hentry category-home-automation-networking-self-hosting tag-caddy tag-certificate tag-docker tag-https tag-lets-encrypt tag-proxmox" id="post-15219">
+				
+					<div class="related-posts__item__content teaser">
+						
+            
+<!-- teaser main -->
+<div class="teaser__main">
+
+  <!-- teaser title -->
+  <a href="https://helgeklein.com/blog/automatic-https-certificates-for-services-on-internal-home-network-without-opening-firewall-port/" title="Automatic HTTPS Certificates for Services on Internal Home Network">
+    <h2 class="teaser__title">
+      Automatic HTTPS Certificates for Services on Internal Home Network    </h2>
+  </a>
+  <!-- /teaser title -->
+  
+  <!-- teaser image -->
+  <a href="https://helgeklein.com/blog/automatic-https-certificates-for-services-on-internal-home-network-without-opening-firewall-port/" title="Automatic HTTPS Certificates for Services on Internal Home Network" class="teaser__image-wrapper">
+          <img width="400" height="286" src="https://helgeklein.com/wp-content/uploads/2022/11/Sun-and-Mercury-400x286.jpg" class="teaser__image wp-post-image" alt="" decoding="async" srcset="https://helgeklein.com/wp-content/uploads/2022/11/Sun-and-Mercury-400x286.jpg 400w, https://helgeklein.com/wp-content/uploads/2022/11/Sun-and-Mercury.jpg 815w, https://helgeklein.com/wp-content/uploads/2022/11/Sun-and-Mercury-400x286@2x.jpg 800w, https://helgeklein.com/wp-content/uploads/2022/11/Sun-and-Mercury@2x.jpg 1630w" sizes="(max-width: 400px) 100vw, 400px" />      </a>
+  <!-- /teaser image -->
+  
+  <a class="teaser__excerpt" href="https://helgeklein.com/blog/automatic-https-certificates-for-services-on-internal-home-network-without-opening-firewall-port/" title="Automatic HTTPS Certificates for Services on Internal Home Network">
+    <p>This article explains how to set up automatic HTTPS certificates via Let’s Encrypt for services on your internal home network without opening a port on your firewall. It’s part of my series on home automation that shows how to install, configure, and run a home server with (dockerized or virtualized) services such as Home Assistant and OwnCloud.</p>    <p class="read-more"><span>Read more</span></p>
+  </a>
+  
+</div>
+<!-- /teaser main -->
+
+<!-- teaser footer -->
+<div class="teaser__footer">
+  
+  <!-- teaser meta -->
+  <div class="teaser__meta">
+    <span class="author">by Helge</span>
+    <span class="date">on </span>
+  </div>
+  <!-- /teaser meta -->
+  
+  <!-- teaser categories -->
+  <ul class="teaser__categories">
+          <li class="teaser__categories__item">
+        <a href="https://helgeklein.com/blog/category/home-automation-networking-self-hosting/">Home Automation, Networking &amp; Self-Hosting</a>
+      </li>
+      </ul>
+  <!-- /teaser categories -->
+  
+</div>
+<!-- /teaser footer -->
+
+				    
+				  </div>
+				
+				</article>
+				
+							
+				<article data-score="2" class="related-posts__item post-16430 post type-post status-publish format-standard has-post-thumbnail hentry category-home-automation-networking-self-hosting tag-caddy tag-coral tag-docker tag-frigate tag-nvr tag-raspberry-pi" id="post-16430">
+				
+					<div class="related-posts__item__content teaser">
+						
+            
+<!-- teaser main -->
+<div class="teaser__main">
+
+  <!-- teaser title -->
+  <a href="https://helgeklein.com/blog/frigate-nvr-with-object-detection-on-raspberry-pi-5-coral-tpu/" title="Frigate: NVR With Object Detection on Raspberry Pi 5 &#038; Coral TPU">
+    <h2 class="teaser__title">
+      Frigate: NVR With Object Detection on Raspberry Pi 5 &#038; Coral TPU    </h2>
+  </a>
+  <!-- /teaser title -->
+  
+  <!-- teaser image -->
+  <a href="https://helgeklein.com/blog/frigate-nvr-with-object-detection-on-raspberry-pi-5-coral-tpu/" title="Frigate: NVR With Object Detection on Raspberry Pi 5 &#038; Coral TPU" class="teaser__image-wrapper">
+          <img width="400" height="171" src="https://helgeklein.com/wp-content/uploads/2025/05/Frigate-Detector-inference-speed-and-CPU-usage-on-Raspberry-Pi-with-Coral-400x171.png" class="teaser__image wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://helgeklein.com/wp-content/uploads/2025/05/Frigate-Detector-inference-speed-and-CPU-usage-on-Raspberry-Pi-with-Coral-400x171.png 400w, https://helgeklein.com/wp-content/uploads/2025/05/Frigate-Detector-inference-speed-and-CPU-usage-on-Raspberry-Pi-with-Coral.png 815w, https://helgeklein.com/wp-content/uploads/2025/05/Frigate-Detector-inference-speed-and-CPU-usage-on-Raspberry-Pi-with-Coral-400x171@2x.png 800w, https://helgeklein.com/wp-content/uploads/2025/05/Frigate-Detector-inference-speed-and-CPU-usage-on-Raspberry-Pi-with-Coral@2x.png 1630w" sizes="auto, (max-width: 400px) 100vw, 400px" />      </a>
+  <!-- /teaser image -->
+  
+  <a class="teaser__excerpt" href="https://helgeklein.com/blog/frigate-nvr-with-object-detection-on-raspberry-pi-5-coral-tpu/" title="Frigate: NVR With Object Detection on Raspberry Pi 5 &#038; Coral TPU">
+    <p>This article explains how to install and configure the Frigate NVR software on a Raspberry Pi 5 with a Coral Edge TPU.</p>    <p class="read-more"><span>Read more</span></p>
+  </a>
+  
+</div>
+<!-- /teaser main -->
+
+<!-- teaser footer -->
+<div class="teaser__footer">
+  
+  <!-- teaser meta -->
+  <div class="teaser__meta">
+    <span class="author">by Helge</span>
+    <span class="date">on </span>
+  </div>
+  <!-- /teaser meta -->
+  
+  <!-- teaser categories -->
+  <ul class="teaser__categories">
+          <li class="teaser__categories__item">
+        <a href="https://helgeklein.com/blog/category/home-automation-networking-self-hosting/">Home Automation, Networking &amp; Self-Hosting</a>
+      </li>
+      </ul>
+  <!-- /teaser categories -->
+  
+</div>
+<!-- /teaser footer -->
+
+				    
+				  </div>
+				
+				</article>
+				
+							
+				<article data-score="2" class="related-posts__item post-16395 post type-post status-publish format-standard has-post-thumbnail hentry category-home-automation-networking-self-hosting tag-caddy tag-docker tag-elasticsearch tag-logs-metrics" id="post-16395">
+				
+					<div class="related-posts__item__content teaser">
+						
+            
+<!-- teaser main -->
+<div class="teaser__main">
+
+  <!-- teaser title -->
+  <a href="https://helgeklein.com/blog/elasticsearch-simple-docker-compose-setup-for-home-servers/" title="Elasticsearch: Simple Docker Compose Setup for Home Servers">
+    <h2 class="teaser__title">
+      Elasticsearch: Simple Docker Compose Setup for Home Servers    </h2>
+  </a>
+  <!-- /teaser title -->
+  
+  <!-- teaser image -->
+  <a href="https://helgeklein.com/blog/elasticsearch-simple-docker-compose-setup-for-home-servers/" title="Elasticsearch: Simple Docker Compose Setup for Home Servers" class="teaser__image-wrapper">
+          <img width="400" height="228" src="https://helgeklein.com/wp-content/uploads/2025/04/Elasticsearch-UI-400x228.png" class="teaser__image wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://helgeklein.com/wp-content/uploads/2025/04/Elasticsearch-UI-400x228.png 400w, https://helgeklein.com/wp-content/uploads/2025/04/Elasticsearch-UI.png 840w, https://helgeklein.com/wp-content/uploads/2025/04/Elasticsearch-UI-400x228@2x.png 800w, https://helgeklein.com/wp-content/uploads/2025/04/Elasticsearch-UI@2x.png 1680w" sizes="auto, (max-width: 400px) 100vw, 400px" />      </a>
+  <!-- /teaser image -->
+  
+  <a class="teaser__excerpt" href="https://helgeklein.com/blog/elasticsearch-simple-docker-compose-setup-for-home-servers/" title="Elasticsearch: Simple Docker Compose Setup for Home Servers">
+    <p>This is a deliberately simplistic dockerized Elasticsearch & Kibana setup focused on long-term stability and minimal maintenance requirements.</p>    <p class="read-more"><span>Read more</span></p>
+  </a>
+  
+</div>
+<!-- /teaser main -->
+
+<!-- teaser footer -->
+<div class="teaser__footer">
+  
+  <!-- teaser meta -->
+  <div class="teaser__meta">
+    <span class="author">by Helge</span>
+    <span class="date">on </span>
+  </div>
+  <!-- /teaser meta -->
+  
+  <!-- teaser categories -->
+  <ul class="teaser__categories">
+          <li class="teaser__categories__item">
+        <a href="https://helgeklein.com/blog/category/home-automation-networking-self-hosting/">Home Automation, Networking &amp; Self-Hosting</a>
+      </li>
+      </ul>
+  <!-- /teaser categories -->
+  
+</div>
+<!-- /teaser footer -->
+
+				    
+				  </div>
+				
+				</article>
+				
+					</section>
+		
+	</div>
+  	
+
+    
+  	  	
+	<div class="related-posts-container">
+		
+		<h2 class="related-posts-heading">Latest Posts</h2>
+	
+		<section class="related-posts">
+							
+				<article class="related-posts__item post-16483 post type-post status-publish format-standard has-post-thumbnail hentry category-home-automation-networking-self-hosting tag-home-assistant" id="post-16483">
+				
+					<div class="related-posts__item__content teaser">
+						
+            
+<!-- teaser main -->
+<div class="teaser__main">
+
+  <!-- teaser title -->
+  <a href="https://helgeklein.com/blog/creating-custom-home-assistant-dashboards-in-yaml-mode/" title="Creating Custom Home Assistant Dashboards in YAML Mode">
+    <h2 class="teaser__title">
+      Creating Custom Home Assistant Dashboards in YAML Mode    </h2>
+  </a>
+  <!-- /teaser title -->
+  
+  <!-- teaser image -->
+  <a href="https://helgeklein.com/blog/creating-custom-home-assistant-dashboards-in-yaml-mode/" title="Creating Custom Home Assistant Dashboards in YAML Mode" class="teaser__image-wrapper">
+          <img width="400" height="267" src="https://helgeklein.com/wp-content/uploads/2025/07/controls-1853330-400x267.jpg" class="teaser__image wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://helgeklein.com/wp-content/uploads/2025/07/controls-1853330-400x267.jpg 400w, https://helgeklein.com/wp-content/uploads/2025/07/controls-1853330.jpg 815w, https://helgeklein.com/wp-content/uploads/2025/07/controls-1853330-400x267@2x.jpg 800w, https://helgeklein.com/wp-content/uploads/2025/07/controls-1853330@2x.jpg 1630w" sizes="auto, (max-width: 400px) 100vw, 400px" />      </a>
+  <!-- /teaser image -->
+  
+  <a class="teaser__excerpt" href="https://helgeklein.com/blog/creating-custom-home-assistant-dashboards-in-yaml-mode/" title="Creating Custom Home Assistant Dashboards in YAML Mode">
+    <p>This is a getting started guide with information I wish I'd had when I made my first forays into creating custom dashboards for Home Assistant.</p>    <p class="read-more"><span>Read more</span></p>
+  </a>
+  
+</div>
+<!-- /teaser main -->
+
+<!-- teaser footer -->
+<div class="teaser__footer">
+  
+  <!-- teaser meta -->
+  <div class="teaser__meta">
+    <span class="author">by Helge</span>
+    <span class="date">on Jul 5, 2025</span>
+  </div>
+  <!-- /teaser meta -->
+  
+  <!-- teaser categories -->
+  <ul class="teaser__categories">
+          <li class="teaser__categories__item">
+        <a href="https://helgeklein.com/blog/category/home-automation-networking-self-hosting/">Home Automation, Networking &amp; Self-Hosting</a>
+      </li>
+      </ul>
+  <!-- /teaser categories -->
+  
+</div>
+<!-- /teaser footer -->
+
+				    
+				  </div>
+				
+				</article>
+				
+							
+				<article class="related-posts__item post-16459 post type-post status-publish format-standard has-post-thumbnail hentry category-knx-ets tag-enertex tag-knx tag-router" id="post-16459">
+				
+					<div class="related-posts__item__content teaser">
+						
+            
+<!-- teaser main -->
+<div class="teaser__main">
+
+  <!-- teaser title -->
+  <a href="https://helgeklein.com/blog/enertex-knx-ip-secure-router-initial-configuration-without-2nd-interface/" title="Enertex KNX IP Secure Router: Initial Configuration Without 2nd Interface">
+    <h2 class="teaser__title">
+      Enertex KNX IP Secure Router: Initial Configuration Without 2nd Interface    </h2>
+  </a>
+  <!-- /teaser title -->
+  
+  <!-- teaser image -->
+  <a href="https://helgeklein.com/blog/enertex-knx-ip-secure-router-initial-configuration-without-2nd-interface/" title="Enertex KNX IP Secure Router: Initial Configuration Without 2nd Interface" class="teaser__image-wrapper">
+          <img width="400" height="225" src="https://helgeklein.com/wp-content/uploads/2025/06/pexels-ruiyang-zhang-915467-3717242-400x225.jpg" class="teaser__image wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://helgeklein.com/wp-content/uploads/2025/06/pexels-ruiyang-zhang-915467-3717242-400x225.jpg 400w, https://helgeklein.com/wp-content/uploads/2025/06/pexels-ruiyang-zhang-915467-3717242.jpg 815w, https://helgeklein.com/wp-content/uploads/2025/06/pexels-ruiyang-zhang-915467-3717242-400x225@2x.jpg 800w, https://helgeklein.com/wp-content/uploads/2025/06/pexels-ruiyang-zhang-915467-3717242@2x.jpg 1630w" sizes="auto, (max-width: 400px) 100vw, 400px" />      </a>
+  <!-- /teaser image -->
+  
+  <a class="teaser__excerpt" href="https://helgeklein.com/blog/enertex-knx-ip-secure-router-initial-configuration-without-2nd-interface/" title="Enertex KNX IP Secure Router: Initial Configuration Without 2nd Interface">
+    <p>This article explains why to replace an MDT IP router SCN-IP100.03 with its Enertex counterpart KNX IP Secure Router and how to perform the Enertex' initial configuration.</p>    <p class="read-more"><span>Read more</span></p>
+  </a>
+  
+</div>
+<!-- /teaser main -->
+
+<!-- teaser footer -->
+<div class="teaser__footer">
+  
+  <!-- teaser meta -->
+  <div class="teaser__meta">
+    <span class="author">by Helge</span>
+    <span class="date">on Jun 7, 2025</span>
+  </div>
+  <!-- /teaser meta -->
+  
+  <!-- teaser categories -->
+  <ul class="teaser__categories">
+          <li class="teaser__categories__item">
+        <a href="https://helgeklein.com/blog/category/knx-ets/">KNX &amp; ETS</a>
+      </li>
+      </ul>
+  <!-- /teaser categories -->
+  
+</div>
+<!-- /teaser footer -->
+
+				    
+				  </div>
+				
+				</article>
+				
+							
+				<article class="related-posts__item post-16446 post type-post status-publish format-standard has-post-thumbnail hentry category-home-automation-networking-self-hosting tag-backblaze tag-backup tag-cloud tag-frigate tag-nvr tag-rclone tag-storage tag-synchronization" id="post-16446">
+				
+					<div class="related-posts__item__content teaser">
+						
+            
+<!-- teaser main -->
+<div class="teaser__main">
+
+  <!-- teaser title -->
+  <a href="https://helgeklein.com/blog/how-to-sync-backup-frigate-nvr-recordings-to-offsite-cloud-storage/" title="How to Sync &#038; Backup Frigate NVR Recordings to Offsite Cloud Storage">
+    <h2 class="teaser__title">
+      How to Sync &#038; Backup Frigate NVR Recordings to Offsite Cloud Storage    </h2>
+  </a>
+  <!-- /teaser title -->
+  
+  <!-- teaser image -->
+  <a href="https://helgeklein.com/blog/how-to-sync-backup-frigate-nvr-recordings-to-offsite-cloud-storage/" title="How to Sync &#038; Backup Frigate NVR Recordings to Offsite Cloud Storage" class="teaser__image-wrapper">
+          <img width="400" height="300" src="https://helgeklein.com/wp-content/uploads/2025/05/pexels-2150271317-31179418-400x300.jpg" class="teaser__image wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://helgeklein.com/wp-content/uploads/2025/05/pexels-2150271317-31179418-400x300.jpg 400w, https://helgeklein.com/wp-content/uploads/2025/05/pexels-2150271317-31179418.jpg 815w, https://helgeklein.com/wp-content/uploads/2025/05/pexels-2150271317-31179418-400x300@2x.jpg 800w, https://helgeklein.com/wp-content/uploads/2025/05/pexels-2150271317-31179418@2x.jpg 1630w" sizes="auto, (max-width: 400px) 100vw, 400px" />      </a>
+  <!-- /teaser image -->
+  
+  <a class="teaser__excerpt" href="https://helgeklein.com/blog/how-to-sync-backup-frigate-nvr-recordings-to-offsite-cloud-storage/" title="How to Sync &#038; Backup Frigate NVR Recordings to Offsite Cloud Storage">
+    <p>This article shows how to synchronize your Frigate NVR recordings to offsite cloud storage for backup and safekeeping in case your onsite NVR is stolen by a burglar.</p>    <p class="read-more"><span>Read more</span></p>
+  </a>
+  
+</div>
+<!-- /teaser main -->
+
+<!-- teaser footer -->
+<div class="teaser__footer">
+  
+  <!-- teaser meta -->
+  <div class="teaser__meta">
+    <span class="author">by Helge</span>
+    <span class="date">on May 31, 2025</span>
+  </div>
+  <!-- /teaser meta -->
+  
+  <!-- teaser categories -->
+  <ul class="teaser__categories">
+          <li class="teaser__categories__item">
+        <a href="https://helgeklein.com/blog/category/home-automation-networking-self-hosting/">Home Automation, Networking &amp; Self-Hosting</a>
+      </li>
+      </ul>
+  <!-- /teaser categories -->
+  
+</div>
+<!-- /teaser footer -->
+
+				    
+				  </div>
+				
+				</article>
+				
+							
+				<article class="related-posts__item post-16430 post type-post status-publish format-standard has-post-thumbnail hentry category-home-automation-networking-self-hosting tag-caddy tag-coral tag-docker tag-frigate tag-nvr tag-raspberry-pi" id="post-16430">
+				
+					<div class="related-posts__item__content teaser">
+						
+            
+<!-- teaser main -->
+<div class="teaser__main">
+
+  <!-- teaser title -->
+  <a href="https://helgeklein.com/blog/frigate-nvr-with-object-detection-on-raspberry-pi-5-coral-tpu/" title="Frigate: NVR With Object Detection on Raspberry Pi 5 &#038; Coral TPU">
+    <h2 class="teaser__title">
+      Frigate: NVR With Object Detection on Raspberry Pi 5 &#038; Coral TPU    </h2>
+  </a>
+  <!-- /teaser title -->
+  
+  <!-- teaser image -->
+  <a href="https://helgeklein.com/blog/frigate-nvr-with-object-detection-on-raspberry-pi-5-coral-tpu/" title="Frigate: NVR With Object Detection on Raspberry Pi 5 &#038; Coral TPU" class="teaser__image-wrapper">
+          <img width="400" height="171" src="https://helgeklein.com/wp-content/uploads/2025/05/Frigate-Detector-inference-speed-and-CPU-usage-on-Raspberry-Pi-with-Coral-400x171.png" class="teaser__image wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://helgeklein.com/wp-content/uploads/2025/05/Frigate-Detector-inference-speed-and-CPU-usage-on-Raspberry-Pi-with-Coral-400x171.png 400w, https://helgeklein.com/wp-content/uploads/2025/05/Frigate-Detector-inference-speed-and-CPU-usage-on-Raspberry-Pi-with-Coral.png 815w, https://helgeklein.com/wp-content/uploads/2025/05/Frigate-Detector-inference-speed-and-CPU-usage-on-Raspberry-Pi-with-Coral-400x171@2x.png 800w, https://helgeklein.com/wp-content/uploads/2025/05/Frigate-Detector-inference-speed-and-CPU-usage-on-Raspberry-Pi-with-Coral@2x.png 1630w" sizes="auto, (max-width: 400px) 100vw, 400px" />      </a>
+  <!-- /teaser image -->
+  
+  <a class="teaser__excerpt" href="https://helgeklein.com/blog/frigate-nvr-with-object-detection-on-raspberry-pi-5-coral-tpu/" title="Frigate: NVR With Object Detection on Raspberry Pi 5 &#038; Coral TPU">
+    <p>This article explains how to install and configure the Frigate NVR software on a Raspberry Pi 5 with a Coral Edge TPU.</p>    <p class="read-more"><span>Read more</span></p>
+  </a>
+  
+</div>
+<!-- /teaser main -->
+
+<!-- teaser footer -->
+<div class="teaser__footer">
+  
+  <!-- teaser meta -->
+  <div class="teaser__meta">
+    <span class="author">by Helge</span>
+    <span class="date">on May 24, 2025</span>
+  </div>
+  <!-- /teaser meta -->
+  
+  <!-- teaser categories -->
+  <ul class="teaser__categories">
+          <li class="teaser__categories__item">
+        <a href="https://helgeklein.com/blog/category/home-automation-networking-self-hosting/">Home Automation, Networking &amp; Self-Hosting</a>
+      </li>
+      </ul>
+  <!-- /teaser categories -->
+  
+</div>
+<!-- /teaser footer -->
+
+				    
+				  </div>
+				
+				</article>
+				
+					</section>
+		
+	</div>
+  	
+    
+  </div>
+
+
+
+	<!-- footer -->
+	<footer class="footer" role="contentinfo">
+		
+		<div class="wrapper">
+		
+			<!-- copyright -->
+			<div class="footer__section">
+				&copy; 2025 Helge Klein			</div>
+			<!-- /copyright -->
+      
+      <!-- social-links -->
+			<div class="footer__section social-links">
+				
+				
+
+<a href="https://helgeklein.com/feed/" target="_blank">
+  <div class="social-links__item social-links__item--rss">
+    <svg width="21px" height="21px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <path fill="#fe9312" d="M4.3 23.5c-2.3 0-4.3 1.9-4.3 4.3 0 2.3 1.9 4.2 4.3 4.2 2.4 0 4.3-1.9 4.3-4.2 0-2.3-1.9-4.3-4.3-4.3zM0 10.9v6.1c4 0 7.7 1.6 10.6 4.4 2.8 2.8 4.4 6.6 4.4 10.6h6.2c0-11.7-9.5-21.1-21.1-21.1zM0 0v6.1c14.2 0 25.8 11.6 25.8 25.9h6.2c0-17.6-14.4-32-32-32z"></path>
+    </svg>
+  </div>
+</a>
+
+  <a href="https://www.linkedin.com/in/helgeklein/" target="_blank">
+    <div class="social-links__item social-links__item--linkedin">
+      <svg width="21px" height="21px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 32">
+        <path fill="#0077b5" d="M6.2 11.2v17.7h-5.9v-17.7h5.9zM6.6 5.7q0 1.3-0.9 2.2t-2.4 0.9h0q-1.5 0-2.4-0.9t-0.9-2.2 0.9-2.2 2.4-0.9 2.4 0.9 0.9 2.2zM27.4 18.7v10.1h-5.9v-9.5q0-1.9-0.7-2.9t-2.3-1.1q-1.1 0-1.9 0.6t-1.2 1.5q-0.2 0.5-0.2 1.4v9.9h-5.9q0-7.1 0-11.6t0-5.3l0-0.9h5.9v2.6h0q0.4-0.6 0.7-1t1-0.9 1.6-0.8 2-0.3q3 0 4.9 2t1.9 6z"></path>
+      </svg>
+    </div>
+  </a>
+				
+			</div>
+			<!-- /social-links -->
+      
+      <!-- footer-menu -->
+      <div class="footer__section">
+        <ul id="menu-footer-menu" class="menu"><li id="menu-item-12108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12108"><a href="https://helgeklein.com/imprint/">Imprint</a></li>
+<li id="menu-item-12107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-12107"><a rel="privacy-policy" href="https://helgeklein.com/privacy-policy/">Privacy Policy</a></li>
+</ul>      </div>
+      <!-- /footer-menu -->
+			
+		</div>
+		
+	</footer>
+	<!-- /footer -->
+
+	<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/html5blank-helgeklein\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="text/javascript" src="https://helgeklein.com/wp-includes/js/comment-reply.min.js?ver=6.8.1" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
+<script type="text/javascript" src="https://helgeklein.com/wp-content/plugins/prismatic/lib/prism/js/prism-core.js?ver=3.5" id="prismatic-prism-js"></script>
+<script type="text/javascript" src="https://helgeklein.com/wp-content/plugins/prismatic/lib/prism/js/plugin-line-numbers.js?ver=3.5" id="prismatic-prism-line-numbers-js"></script>
+<script type="text/javascript" src="https://helgeklein.com/wp-content/plugins/prismatic/lib/prism/js/lang-ini.js?ver=3.5" id="prismatic-prism-ini-js"></script>
+<script type="text/javascript" src="https://helgeklein.com/wp-content/plugins/prismatic/lib/prism/js/lang-yaml.js?ver=3.5" id="prismatic-prism-yaml-js"></script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9613c43fa939111c","version":"2025.7.0","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"06c9e210c15e42458bed4812cea9c601","b":1}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from helgeklein.com/blog/vaultwarden-setup-guide-with-automatic-https/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Jul 2025 17:41:03 GMT -->
+</html>
+
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.boldgrid.com/w3-total-cache/
+
+Object Caching 270/955 objects using Redis
+Page Caching using Redis 
+
+Served from: helgeklein.com @ 2025-07-08 08:43:42 by W3 Total Cache
+-->

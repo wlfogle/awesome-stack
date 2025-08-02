@@ -1,0 +1,126 @@
+// German
+var EXT_LOCALE = "de";
+
+var WORDS = {
+	// popup
+	btnTranslate:				"Übersetzen",
+	btnClear:					"Löschen",
+	txtUse:						"nutze:",
+	txtBackTranslation:			"übersetzung zurück",
+	txtTranslateActivePage:		"Übersetze aktuelle Seite",
+	optAutoDetect:				"Autom. Erkennen",
+	optNone:					"nichts",
+	lnkSettingsPage:			"einstellungen",
+
+	txtRegistration:			"Registrierung",
+	txtUnregisteredMode:		"**Unregistrierter Modus**",
+	txtUnregisteredModeDetails:	"**Unregistrierter Modus hilft, nur einzelne Wörter zu übersetzen**\nNach der Registrierung haben Sie:\n- Fehlen dieser Nachricht und mögliche zusätzliche Werbung in Suchmaschinen;\n- Text-zu-Sprache, Rückübersetzung, Test Japanisch und Koreanisch IME;\n- zukünftige neue Funktionen.\n\nWenn nichts aus der Liste, die Sie benötigen, ist die Registrierung nicht erforderlich.",
+	txtVerify:					"Zu registrieren",
+
+	cmTranslateIt:				"Es übersetzen",
+	cmTranslatePage:			"Seite übersetzen",
+
+	// hints
+	hntFullExchange:			"Shift-Taste + Klick – Alles tauschen",
+	hntTranslate:				"Strg + Enter – Übersetzen",
+	hntReTranslate:				"Shift-Taste + Ändern – Re-Übersetzen durch ausgewählten Service",
+	hntVocalize:				"singen",
+	hntPutInTheDictionary:		"in das Wörterbuch einfügen",
+	hntRemoveFromTheDictionary:	"aus dem Wörterbuch entfernen",
+	hntCopy:					"kopieren",
+	hntPaste:					"kopierten text einfügen (Shift-Tste + Klick = Einfügen und Übersetzen)",
+	hntMaximize:				"Alt-Taste + Klick - In neuem Tab öffnen",
+
+	// services
+	byGoogle:					"Google Übersetzer",
+	byBing:						"Microsoft Übersetzer",
+	byYandex:					"Yandex Übersetzer",
+	byPromt:					"Promt Übersetzer",
+	byPragma:					"Pragma Übersetzer",
+	byBaidu:					"Baidu Übersetzer",
+	byNaver:					"Naver Übersetzer",
+	bySogou:					"Sogou Übersetzer",
+	bySystran:					"Systran Übersetzer",
+	byBabylon:					"Babylon Übersetzer",
+	byBabylonDictionaries:		"Wörterbücher von Babylon",
+	byLingvo:					"Lingvo Dictionary",
+	byGlosbe:					"Glosbe Übersetzer",
+	byUrban:					"Urban Dictionary",
+	byIbm:						"IBM Übersetzer",
+	byApertium:					"Apertium Übersetzer",
+	byDeepl:					"DeepL Übersetzer",
+
+	tbByGoogle:					"mit Google Übersetzer",
+	tbByBing:					"mit Microsoft Übersetzer",
+	tbByYandex:					"mit Yandex Übersetzer",
+	tbByPromt:					"mit Promt Übersetzer",
+
+	// messages
+	msgError:					"error",
+	msgErrorCode:				"fehlercode",
+	msgUnknownSourceLng:		"nicht unterstützte Quellsprache",
+	msgUnknownTargetLng:		"nicht unterstützte Zielsprache",
+	msgUnknownLng:				"nicht unterstützte Sprache",
+	msgExample:					"beispiel",
+	msgExamples:				"beispiele",
+	msgAlternatives:			"alternativen",
+
+	// dictionary
+	txtDictionary:				"wörterbuch",
+	linkRemove:					"entfernen",
+	txtUsePersonalDictionary:	"Persönliches wörterbuch verwenden",
+	txtShow:					"zeigen",
+	txtHide:					"ausblenden",
+
+	// options
+	txtOptionsTitle:			"Translator - Einstellungen",
+	txtMadeBy:					"Erstellt von",
+	linkFeedback:				"Bug-Bericht / Feedback",
+	hdrDefaultSourceLang:		"Standard-Ausgangssprache",
+	hdrDefaultTargetLang:		"Standard-Zielsprache",
+	labelAlwaysUseDefTargetLang:"Verwenden Sie immer die Standardzielsprache",
+	labelDefTargetLang2:		"wenn Quellsprache = erste Standardzielsprache",
+	hdrMaxStoredLangPairs:		"Anzahl maximal gespeicherter Spracheinträge",
+	hdrTranslateBtnPosition:	"Position \"Übersetzen\"-Schaltfläche",
+	txtAtRight:					"rechts",
+	txtAtLeft:					"links",
+	txtInvertButons:			"schaltflächen tauschen",
+	hdrTextareaFont:			"Textarea schrift",
+	hdrUITheme:					"Verwenden Sie ein helles oder dunkles Thema",
+	optLight:					"Licht",
+	optDark:					"Dunkel",
+	optDefault:					"Standard",
+	hdrIconTheme:				"Symbolthema",
+	wrnTextareaFont:			"Sie können in den Browsereinstellungen konkrete Schriftarten <a href='javascript:;'>einrichten</a>.",
+	hdrSetupPopupHotkey:		"Setup popup heißer Taste",
+	btnSetupPopupHotkey:		"Öffnen Sie heißer Taste-Konfigurator",
+	hdrUseTranslateToolbar:		"Übersetzungsleiste auf jeder Seite anzeigen",
+	hdrAdditKnownLangs:			"Übersetzer-Symbolleiste für Sprachen nicht anzeigen (außer Standardzielsprache)",
+	hdrUseContextMenuForPages:	"Einsatz-Kontext-Menü für Seiten",
+	hdrBingPrivateKey:			"Bing Übersetzer Privatzugang",
+	txtBingClientId:			"Klient ID:",
+	txtBingClientSecret:		"Klient Geheimnis:",
+	hintBingPrivateKey:			"Wenn Sie von blockierbaren öffentlichen Schlüssel, unabhängig zu sein, können Sie eigene private Schlüssel-Setup.<br />Sie können von hier empfangen werden:",
+	optDisabled:				"Deaktiviert",
+	wrnUseTranslateToolbar:		"<b>Achtung!</b> Von fast jeder Webseite werden Inhalte zu übersetzer anbieter gesendet, um die Sprache einer Seite bestimmen zu können!<br />Ausnahme: Seiten mit einer festgelegten Sprache.",
+	hdrAllowedProviders:		"Zulässige Übersetzungsanbieter",
+	hdrOtherOptions:			"Weitere Optionen",
+	txtOpenNewTabsNextToActive:	"Neue Tabs neben dem aktiven Tab öffnen",
+	txtRememberLastTranslation:	"Angemeldet letzten Übersetzung",
+	txtUseTextToSpeech:			"Text-zu-Sprache benutzen",
+	txtUseYellowMarker:			"Benutze gelbe Markierung als Hinweis für erfassten Text",
+	txtOutputExtensionButton:	"Symbol der Erweiterung auf Adressleiste anzeigen",
+	txtUseEnterToTranslate:		"Use \"Enter\"-taste zu übersetzen",
+	txtUseSelectionContextMenu:	"Verwenden Sie das Kontextmenü für die Textauswahl",
+	txtUseOldSkin:				"Verwenden Sie den alten visuellen Stil",
+	txtUseBgProcess:			"Verwenden Sie den Hintergrundprozess (Neustart des Browsers erforderlich)",
+
+	txtUseGoogleCn:				"Benutze google.com.hk (für die Fälle, wenn Ihre Firewall Block google.com)",
+
+	txtYouCanUseMyOtherProducts:"Testen Sie auch meine anderen Produkte:",
+	txtMyCalendarExensionDescr:	"Kalender-Erweiterung für Opera",
+	txtMyWebanketaServiceDescr:	"Kostenlose Erstellung von Fragebögen, Umfragen, Tests und Abstimmungen!",
+
+	txtPoweredByOpera:			"Unterstützt von Opera Browser"
+};
+//	translated by myonno

@@ -1,0 +1,1 @@
+"use strict";!function(){var t=window,e=t.location;if(t.top===t.self)if("https://tasks.google.com"===e.origin){var t=new URL(e.href),i=t.searchParams;if(!i.get("bm_iid")&&!i.get("bm_cid")){var o="https://calendar.google.com",r=i.getAll("origin");if(1===r.length){r=r[0];if(r===o)return;if(/^https:\/\/[\d.a-z]+\.google\.com\/?$/.test(r))return}i.set("origin",o),e.replace(t)}}}();

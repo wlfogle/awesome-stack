@@ -1,0 +1,96 @@
+{
+	"manifest_version": 3,
+
+	"name": "Translator",
+	"description": "__MSG_description__",
+	"author": "SailorMax",
+	"icons": {
+		"16": "icons/icon-16.png",
+		"18": "icons/icon-18.png",
+		"19": "icons/icon-19.png",
+		"20": "icons/icon-20.png",
+		"36": "icons/icon-18@2x.png",
+		"38": "icons/icon-19@2x.png",
+		"40": "icons/icon-20@2x.png",
+		"48": "icons/icon-48.png",
+		"64": "icons/icon-64.png",
+		"96": "icons/icon-48@2x.png",
+		"128": "icons/icon-128.png",
+		"256": "icons/icon-256.png"
+	},
+
+	"version": "1.6.9",
+	"applications": {
+		"gecko": {
+			"id": "translator@sailormax.net"
+		}
+	},
+
+	"default_locale": "en",
+	"background": {
+					"script": "js/background_loader.js",
+					"persistent": true
+					},
+	"content_scripts": [
+		{
+			"run_at": "document_end",
+			"js": ["includes/user_js.js"],
+			"matches": ["*://*/*"],
+			"all_frames": true
+		}
+	],
+
+	"content_security_policy": {
+					"extension_pages": "script-src 'self'; object-src 'self'"
+					},
+	"permissions": ["tabs",
+					"storage",
+					"contextMenus",
+					"tts",
+					"clipboardRead",
+					"webRequest", "webRequestBlocking"
+					],
+	"host_permissions": [
+					"*://*/"
+					],
+
+	"action": {
+		"default_icon": {
+						"16": "icons/icon-16.png",
+						"18": "icons/icon-18.png",
+						"19": "icons/icon-19.png",
+						"20": "icons/icon-20.png",
+						"36": "icons/icon-18@2x.png",
+						"38": "icons/icon-19@2x.png",
+						"40": "icons/icon-20@2x.png",
+						"48": "icons/icon-48.png",
+						"64": "icons/icon-64.png",
+						"96": "icons/icon-48@2x.png",
+						"128": "icons/icon-64@2x.png"
+						},
+		"default_title": "Translator",
+		"default_popup": "popup.html"
+	},
+
+	"commands": {
+		"_execute_browser_action": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+L"
+			},
+			"description": "__MSG_description_hotkey__"
+		}
+	},
+
+	"sidebar_action": {
+		"default_icon": "icons/icon-18.png",
+		"default_title" : "Translator",
+		"default_panel": "sidebar.html"
+	},
+
+	"options_page": "settings.html",
+	"options_ui": {
+		"browser_style": false,
+		"open_in_tab": true,
+		"page": "settings.html"
+	}
+}

@@ -1,0 +1,25 @@
+============================================================
+ENHANCED CALIBRE LIBRARY FILENAME FIX REPORT
+============================================================
+Generated: 2025-06-20 18:29:17
+Library Path: /run/media/lou/Data/Lou Fogle/Lou's Library
+Mode: DRY RUN
+AI Parsing: Enabled
+External Lookup: Enabled
+Backup Changes: Enabled
+
+SUMMARY STATISTICS
+----------------------------------------
+Books Processed: 3592
+Changes Needed: 3592
+Metadata Enhanced: 10
+Errors: 0
+
+OPERATION STATISTICS
+----------------------------------------
+read_metadata_opf: 3592
+opf_metadata_extracted: 3455
+opf_parse_error: 137
+parse_filename_ai: 137
+filename_pattern_matched: 137
+google_books_lookup_success: 5

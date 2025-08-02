@@ -1,0 +1,254 @@
+# Package Dependencies Information
+# Format: package_name -> dependency1 dependency2 ...
+
+7zip -> glibc gcc-libs sh
+alsa-firmware -> None
+appmenu-gtk-module -> None
+arj -> glibc
+ark -> breeze-icons gcc-libs glibc kcolorscheme kcompletion kconfig kconfigwidgets kcoreaddons kcrash kdbusaddons kfilemetadata ki18n kio kjobwidgets kparts kpty kservice kwidgetsaddons kwindowsystem kxmlgui libarchive libzip qt6-base sh zlib
+autorandr -> python xorg-xdpyinfo xorg-xrandr
+b43-fwcutter -> glibc
+base -> filesystem gcc-libs glibc bash coreutils file findutils gawk grep procps-ng sed tar gettext pciutils psmisc shadow util-linux bzip2 gzip xz licenses pacman archlinux-keyring systemd systemd-sysvcompat iputils iproute2
+base-devel -> archlinux-keyring autoconf automake binutils bison debugedit fakeroot file findutils flex gawk gcc gettext grep groff gzip libtool m4 make pacman patch pkgconf sed sudo texinfo which
+bash-completion -> bash
+bind -> bash dnssec-anchors e2fsprogs glibc icu libedit json-c krb5 libcap libidn2 libmaxminddb libnsl libuv libxml2 lmdb openssl readline xz zlib jemalloc libnghttp2 liburcu
+bluedevil -> bluez-qt gcc-libs glibc kcmutils kconfig kcoreaddons kdbusaddons kdeclarative ki18n kio kirigami kjobwidgets knotifications kservice ksvg kwidgetsaddons kwindowsystem libplasma qt6-base qt6-declarative
+bluetooth-support -> bluez bluez-hid2hci bluez-libs bluez-plugins bluez-tools bluez-utils
+bridge-utils -> glibc
+btrfs-assistant -> qt6-base qt6-svg ttf-font polkit util-linux btrfs-progs diffutils
+btrfs-progs -> glibc libgcrypt lzo systemd-libs util-linux-libs zlib zstd
+bzip2 -> glibc sh
+chaotic-keyring -> archlinux-keyring
+chaotic-mirrorlist -> None
+cmake -> cppdap curl expat gcc-libs glibc hicolor-icon-theme jsoncpp libarchive libuv ncurses rhash zlib
+coreutils -> acl attr glibc gmp libcap openssl
+cryptsetup -> device-mapper libdevmapper.so=1.02-64 glibc openssl libcrypto.so=3-64 popt util-linux-libs libblkid.so=1-64 libuuid.so=1-64 json-c libjson-c.so=5-64
+curlftpfs -> curl fuse2 glib2
+dialog -> sh ncurses
+dmidecode -> glibc
+dmraid -> device-mapper>=2.0.54
+dolphin -> baloo baloo-widgets gcc-libs glibc kbookmarks kcmutils kcodecs kcolorscheme kcompletion kconfig kconfigwidgets kcoreaddons kcrash kdbusaddons kfilemetadata kguiaddons ki18n kiconthemes kio kio-extras kjobwidgets knewstuff knotifications kparts kservice ktextwidgets kuserfeedback kwidgetsaddons kwindowsystem kxmlgui phonon-qt6 qt6-base solid
+dolphin-plugins -> gcc-libs glibc dolphin kcompletion kconfig kcoreaddons ki18n kio kjobwidgets kservice ktexteditor ktextwidgets kwidgetsaddons kxmlgui qt6-base solid
+dosfstools -> glibc
+downgrade -> pacman-contrib fzf
+dracut -> bash coreutils cpio filesystem findutils gawk grep kmod pkgconf procps-ng sed systemd util-linux
+e2fsprogs -> sh util-linux-libs
+ecryptfs-utils -> nss pam
+efibootmgr -> glibc popt efivar libefiboot.so=1-64 libefivar.so=1-64
+ethtool -> glibc libmnl
+exfatprogs -> glibc
+f2fs-tools -> util-linux
+fastfetch -> glibc yyjson
+fatresize -> glibc parted
+ffmpegthumbs -> ffmpeg gcc-libs glibc kconfig kcoreaddons kio qt6-base
+file -> glibc zlib xz bzip2 libseccomp libseccomp.so=2-64 zstd libzstd.so=1-64
+filesystem -> iana-etc
+findutils -> glibc sh
+firedragon-catppuccin -> dbus dbus-glib ffmpeg gtk3 libevent libjpeg libpulse libvpx libwebp libxss libxt mime-types nss pipewire ttf-font zlib
+firedragon-extension-plasma-integration -> plasma-browser-integration firedragon
+firewalld -> python-dbus glib2 hicolor-icon-theme nftables python-capng python-gobject
+freetype2 -> brotli bzip2 glibc libpng zlib harfbuzz
+fscrypt -> pam
+fwupd -> bash bluez curl flashrom fwupd-efi gcc-libs glib2 glibc gnutls hicolor-icon-theme json-glib libarchive libcbor libdrm libjcat libmbim libmm-glib libqmi libusb libxmlb passim polkit protobuf-c python shared-mime-info sqlite systemd-libs tpm2-tss xz zlib libarchive.so=13-64 libblkid.so=1-64 libcbor.so=0.11-64 libcurl.so=4-64 libjson-glib-1.0.so=0-64 libmm-glib.so=0-64 libpassim.so=1-64 libprotobuf-c.so=1-64 libqmi-glib.so=5-64
+garuda-boot-options -> qt5-base xdg-utils grub polkit
+garuda-browser-settings -> None
+garuda-common-settings -> btrfsmaintenance garuda-bash-config garuda-hooks garuda-icons garuda-migrations garuda-update garuda-wallpapers profile-sync-daemon zram-generator systemd-oomd-defaults noto-color-emoji-fontconfig
+garuda-dracut-support -> dracut zstd
+garuda-fish-config -> bat eza expac find-the-command-git fish fish-autopair fzf garuda-starship-prompt pkgfile tealdeer ugrep
+garuda-hooks -> pacman pacman-contrib chaotic-mirrorlist nss-mdns kernel-modules-hook grub update-grub awk garuda-libs gcc-libs
+garuda-hotfixes -> coreutils sed awk
+garuda-icons -> None
+garuda-mokka -> garuda-common-settings garuda-fish-config garuda-icons garuda-wallpapers inter-font ttf-jetbrains-mono-nerd kvantum kwin-effects-forceblur kwin-effect-rounded-corners-git plasma-applet-window-buttons plasma-systemmonitor plasma6-applets-window-title plasma6-applets-panel-colorizer plasma6-wallpapers-blurredwallpaper tela-circle-icon-theme-dracula xdg-desktop-portal-gtk
+garuda-network-assistant -> qt5-base xdg-utils polkit wget net-tools linux-wifi-hotspot traceroute wireless_tools
+garuda-nvidia-prime-config -> garuda-nvidia-config nvidia-prime garuda-video-linux-config
+garuda-rani -> cairo desktop-file-utils gdk-pixbuf2 glib2 gtk3 hicolor-icon-theme libsoup pango webkit2gtk-4.1 pacman-contrib garuda-libs
+garuda-settings-manager -> icu qt5-base>=5.12.3 hwinfo kitemmodels5 kauth5 kcoreaddons5 ckbcomp xdg-utils mhwd-garuda
+garuda-setup-assistant -> yad wget garuda-libs qt6-base
+garuda-system-maintenance -> qt6-base garuda-hotfixes knotifications kstatusnotifieritem garuda-libs snapper-tools
+garuda-video-linux-config -> xf86-video-ati xf86-video-amdgpu xf86-video-nouveau vulkan-intel vulkan-radeon intel-media-driver libvdpau-va-gl libva-intel-driver libva-mesa-driver mesa-vdpau vulkan-mesa-layers vulkan-swrast lib32-vulkan-intel lib32-vulkan-radeon lib32-mesa-vdpau lib32-libva-intel-driver lib32-libva-mesa-driver lib32-vulkan-mesa-layers
+garuda-wallpapers -> None
+gawk -> sh glibc mpfr
+gcc-libs -> glibc>=2.27
+gettext -> acl attr gcc-libs gnulib-l10n libunistring libxml2 ncurses sh
+glibc -> linux-api-headers>=4.10 tzdata filesystem
+gnu-netcat -> glibc
+grep -> glibc pcre2
+grub -> device-mapper gettext sh xz
+grub-btrfs -> btrfs-progs grub
+grub-garuda -> grub update-grub os-prober-btrfs efibootmgr memtest86+
+gstreamer-meta -> gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-espeak gstreamer-vaapi
+gwenview -> baloo cfitsio exiv2 gcc-libs glibc kcolorscheme kcompletion kconfig kconfigwidgets kcoreaddons kcrash kfilemetadata kguiaddons ki18n kiconthemes kimageannotator kio kitemmodels kitemviews kjobwidgets kparts kservice kwidgetsaddons kxmlgui lcms2 libjpeg-turbo libkdcraw libpng libtiff libx11 phonon-qt6 plasma-activities purpose qt6-base qt6-svg qt6-wayland solid wayland
+gzip -> glibc bash coreutils sed grep
+htop -> libcap libcap.so=2-64 libnl ncurses libncursesw.so=6-64
+inetutils -> glibc pam libcap readline ncurses libxcrypt libpam.so=0-64 libcrypt.so=2-64 libreadline.so=8-64 libncursesw.so=6-64
+input-devices-support -> android-udev bolt brightnessctl fprintd game-devices-udev iio-sensor-proxy libinput-gestures linuxconsole lirc v4l-utils xdotool xf86-input-elographics xf86-input-evdev xf86-input-libinput xf86-input-void xf86-input-wacom
+intel-ucode -> None
+inxi -> coreutils pciutils perl procps-ng util-linux
+iproute2 -> glibc libxtables.so=12-64 libcap libcap.so=2-64 libelf libbpf libbpf.so=1-64
+iptables-nft -> libnftnl libpcap libnfnetlink libnetfilter_conntrack bash nftables
+iputils -> libcap libidn2
+jfsutils -> util-linux
+kate -> gcc-libs glibc kbookmarks kcolorscheme kcompletion kconfig kconfigwidgets kcoreaddons kcrash kdbusaddons kguiaddons ki18n kiconthemes kio knewstuff kparts kservice ktexteditor kuserfeedback kwidgetsaddons kwindowsystem kxmlgui qt6-base syntax-highlighting
+kde-gtk-config -> gcc-libs glib2 glibc kcolorscheme kconfig kcoreaddons kdbusaddons kdecoration kguiaddons kwindowsystem qt6-base qt6-svg sh xsettingsd
+kdeconnect -> dbus gcc-libs glibc kcmutils kconfig kcoreaddons kcrash kdbusaddons kdeclarative kguiaddons ki18n kiconthemes kio kirigami kirigami-addons kitemmodels kjobwidgets knotifications kpeople kservice kstatusnotifieritem kwidgetsaddons kwindowsystem libfakekey libx11 libxkbcommon libxtst modemmanager-qt openssl pulseaudio-qt qqc2-desktop-style qt6-base qt6-connectivity qt6-declarative qt6-multimedia qt6-wayland solid wayland
+kdegraphics-thumbnailers -> gcc-libs ghostscript glibc karchive kcoreaddons kdegraphics-mobipocket kio libkdcraw libkexiv2 qt6-base
+kdeplasma-addons -> gcc-libs glibc icu kauth kcmutils kconfig kcoreaddons kdbusaddons kdeclarative kglobalaccel kholidays ki18n kiconthemes kio kirigami kirigami-addons kitemmodels kjobwidgets knewstuff knotifications kpackage krunner kservice ksvg kunitconversion kwidgetsaddons kwin kwindowsystem kxmlgui libplasma plasma-workspace plasma5support qt6-5compat qt6-base qt6-declarative qt6-quick3d sonnet
+kf6-servicemenus-rootactions -> dolphin kdialog perl polkit
+kimageformats -> gcc-libs glibc qt6-base
+kinfocenter -> aha clinfo dmidecode gcc-libs glibc glu iproute2 kauth kcmutils kconfig kcoreaddons kdeclarative ki18n kio kirigami kservice libdisplay-info libdrm libpulse libusb mesa-utils qt6-base qt6-declarative sh solid systemsettings vulkan-tools wayland-utils xorg-xdpyinfo
+kinit -> kio5
+konsole -> glibc gcc-libs icu kbookmarks kcolorscheme kconfig kconfigwidgets kcoreaddons kcrash kdbusaddons kglobalaccel kguiaddons ki18n kiconthemes kio knewstuff knotifications knotifyconfig kparts kpty kservice ktextwidgets kwidgetsaddons kwindowsystem kxmlgui qt6-5compat qt6-base qt6-multimedia sh
+kscreen -> gcc-libs glibc kcmutils kconfig kcoreaddons kdbusaddons ki18n kirigami ksvg kwindowsystem layer-shell-qt libkscreen libx11 libxcb libxi libplasma plasma5support qt6-base qt6-declarative qt6-sensors
+ksshaskpass -> gcc-libs glibc kcoreaddons ki18n kwallet kwidgetsaddons qt6-base
+kvantum -> gcc-libs glibc libx11 kwindowsystem qt6-base qt6-svg
+kwallet-pam -> glibc kwallet libgcrypt pam sh socat
+kwayland-integration -> gcc-libs glibc kwayland5 kwindowsystem5 qt5-base qt5-wayland wayland
+kwin -> breeze gcc-libs glibc plasma-activities kauth kcmutils kcolorscheme kconfig kconfigwidgets kcoreaddons kcrash kdbusaddons kdeclarative kdecoration kglobalaccel kglobalacceld kguiaddons ki18n kidletime kirigami kitemmodels knewstuff knotifications kpackage kquickcharts kscreenlocker kservice ksvg kwayland kwidgetsaddons kwindowsystem kxmlgui lcms2 libcanberra libdisplay-info libdrm libei libepoxy libinput libpipewire libqaccessibilityclient-qt6 libx11 libxcb libxcvt libxi libxkbcommon libxkbcommon-x11 mesa pipewire-session-manager libplasma qt6-5compat qt6-base qt6-declarative qt6-multimedia qt6-sensors qt6-svg qt6-tools qt6-wayland systemd-libs wayland xcb-util-cursor xcb-util-keysyms xcb-util-wm
+kwin-effect-rounded-corners-git -> kwin
+kwin-effects-forceblur -> kio knotifications kwin kcrash kglobalaccel
+lhasa -> glibc
+lib32-pipewire-jack -> libpipewire-0.3.so=0-32 lib32-glibc lib32-pipewire pipewire-jack
+libappindicator-gtk3 -> glib2 glibc gtk3 libdbusmenu-glib libdbusmenu-gtk3
+libdvdcss -> glibc
+libinput-gestures-qt -> libinput-gestures python-pyqt5 qt5-tools
+licenses -> None
+lightdm -> glib2 libgcrypt libx11 libxcb libxdmcp libxklavier pam polkit xorg-server xorg-xmodmap xorg-xrdb
+lightdm-gtk-greeter -> gtk3 lightdm
+linux-firmware -> linux-firmware-whence
+linux-zen -> coreutils initramfs kmod
+linux-zen-headers -> pahole
+logrotate -> popt gzip acl
+lrzip -> lzo
+lsb-release -> sh
+lvm2 -> bash device-mapper>=2.03.31 systemd-libs libudev.so=1-64 util-linux-libs libblkid.so=1-64 readline libreadline.so=8-64 thin-provisioning-tools libaio libaio.so=1-64
+lzip -> gcc-libs
+lzop -> lzo
+man-db -> bash gdbm zlib groff libpipeline less libseccomp glibc
+man-pages -> sh
+mdadm -> glibc systemd
+memtest86+ -> None
+micro -> None
+mtools -> bash glibc
+nano -> ncurses file glibc
+net-tools -> glibc
+networkmanager-support -> dnsmasq mobile-broadband-provider-info modemmanager network-manager-sstp networkmanager networkmanager-l2tp networkmanager-openconnect networkmanager-openvpn networkmanager-pptp networkmanager-strongswan networkmanager-vpnc nm-cloud-setup openldap openresolv openssh rp-pppoe usb_modeswitch wireguard-tools wpa_supplicant
+nfs-utils -> rpcbind nfsidmap gssproxy libevent device-mapper libxml2 libtirpc e2fsprogs keyutils util-linux-libs libnl krb5 libcap gcc-libs glibc sh readline
+nilfs-utils -> util-linux
+nmap -> gcc-libs glibc libpcap libssh2 libssh2.so=1-64 lua openssl pcre2 zlib
+noto-fonts -> None
+noto-fonts-cjk -> None
+noto-fonts-emoji -> None
+nss-mdns -> glibc avahi
+ntfs-3g -> util-linux fuse2
+octopi -> qt6-multimedia qtermwidget pacman pacman-contrib qt-sudo
+okular -> discount djvulibre freetype2 gcc-libs glibc plasma-activities karchive kbookmarks kcolorscheme kcompletion kconfig kconfigwidgets kcoreaddons kcrash ki18n kiconthemes kio kitemviews kparts kpty ktextwidgets kwallet kwidgetsaddons kwindowsystem kxmlgui libkexiv2 libspectre libtiff phonon-qt6 poppler-qt6 purpose qt6-base qt6-declarative qt6-speech qt6-svg threadweaver zlib
+openh264 -> gcc-libs
+os-prober-btrfs -> sh
+pacman -> bash coreutils curl gawk gettext glibc gnupg gpgme grep libarchive pacman-mirrorlist systemd
+pacman-contrib -> pacman
+partitionmanager -> gcc-libs glibc kcolorscheme kconfig kconfigwidgets kcoreaddons kcrash kdbusaddons ki18n kio kpmcore kwidgetsaddons kwindowsystem kxmlgui polkit-qt6 qt6-base
+paru -> git pacman libalpm.so>=14
+pciutils -> glibc hwdata kmod
+perl-file-mimeinfo -> perl-encode-locale perl-file-basedir perl-file-desktopentry shared-mime-info
+pipewire-jack -> glibc libpipewire-0.3.so=0-64 pipewire pipewire-audio pipewire-session-manager sh
+pipewire-support -> gst-plugin-pipewire pipewire libpipewire pipewire-alsa pipewire-jack pipewire-pulse pipewire-v4l2 pipewire-x11-bell pipewire-zeroconf realtime-privileges sof-firmware wireplumber
+plasma-applet-window-buttons -> gcc-libs glibc kcolorscheme kconfig kcoreaddons kdecoration ki18n kirigami kitemmodels ksvg libplasma plasma-workspace qt6-base qt6-declarative
+plasma-browser-integration -> gcc-libs glibc plasma-activities kconfig kcoreaddons kcrash kdbusaddons kfilemetadata ki18n kio kjobwidgets kservice kstatusnotifieritem plasma-workspace purpose qt6-base
+plasma-desktop -> attica baloo emoji-font gcc-libs glibc icu kauth kbookmarks kcmutils kcodecs kcompletion kconfig kconfigwidgets kcoreaddons kcrash kdbusaddons kdeclarative kglobalaccel kguiaddons ki18n kiconthemes kio kirigami kirigami-addons kitemmodels kitemviews kjobwidgets kmenuedit knewstuff knotifications knotifyconfig kpackage kpipewire krunner kservice ksvg kwidgetsaddons kwindowsystem kxmlgui libcanberra libksysguard libwacom libx11 libxcb libxcursor libxi libxkbcommon libxkbfile libplasma plasma-activities plasma-activities-stats plasma-workspace plasma5support polkit-kde-agent powerdevil qt6-5compat qt6-base qt6-declarative qt6-wayland sdl2 solid sonnet systemsettings wayland xcb-util-keysyms xdg-user-dirs
+plasma-firewall -> gcc-libs glibc kauth kcmutils kconfig kcoreaddons ki18n kirigami qt6-base qt6-declarative
+plasma-nm -> gcc-libs glib2 glibc kcmutils kcolorscheme kcompletion kconfig kcoreaddons kdbusaddons kdeclarative ki18n kio kirigami knotifications kquickcharts ksvg kwallet kwidgetsaddons kwindowsystem libnm libplasma modemmanager-qt networkmanager-qt plasma-workspace prison qca-qt6 qcoro qt6-base qt6-declarative solid
+plasma-pa -> gcc-libs glib2 glibc kcmutils kconfig kcoreaddons kdbusaddons kdeclarative kglobalaccel ki18n kirigami kitemmodels kstatusnotifieritem ksvg libcanberra libplasma libpulse plasma-workspace pulse-native-provider pulseaudio-qt qt6-base qt6-declarative
+plasma-systemmonitor -> gcc-libs glibc kconfig kcoreaddons kcrash kdbusaddons kdeclarative kglobalaccel ki18n kiconthemes kio kirigami kirigami-addons kitemmodels knewstuff kquickcharts kservice ksystemstats kwindowsystem libksysguard qt6-base qt6-declarative
+plasma-thunderbolt -> bolt gcc-libs glibc kcmutils kcoreaddons kdbusaddons ki18n kirigami knotifications qt6-base qt6-declarative
+plasma6-applets-window-title -> plasma-workspace
+plasma6-wallpapers-blurredwallpaper -> plasma-workspace
+plocate -> zstd liburing systemd
+power-profiles-daemon -> gcc-libs glib2 glibc libgudev polkit upower
+powerdevil -> ddcutil gcc-libs glibc plasma-activities kauth kcmutils kconfig kcoreaddons kcrash kdbusaddons kglobalaccel ki18n kidletime kirigami kitemmodels knotifications kservice ksvg kwindowsystem kxmlgui libkscreen libplasma libxcb plasma-workspace qcoro qt6-base qt6-declarative qt6-wayland solid systemd-libs wayland
+powertop -> gcc-libs libnl ncurses pciutils
+procps-ng -> glibc ncurses libncursesw.so=6-64 systemd-libs
+psmisc -> ncurses
+qt6-imageformats -> gcc-libs glibc jasper libmng libtiff libwebp qt6-base
+qt6-quick3d -> gcc-libs glibc openxr qt6-base qt6-declarative qt6-quicktimeline qt6-shadertools zlib
+quota-tools -> dbus e2fsprogs glibc libldap libnl libtirpc
+rate-mirrors -> gcc-libs
+resvg -> gdk-pixbuf2
+rsync -> acl libacl.so=1-64 lz4 openssl popt xxhash libxxhash.so=0-64 zlib zstd
+sddm -> bash gcc-libs glibc libxau libxcb pam qt6-base qt6-declarative systemd-libs ttf-font xorg-server xorg-xauth
+sddm-kcm -> gcc-libs glibc karchive kauth kcmutils kconfig kcoreaddons ki18n kio kirigami knewstuff kservice kwidgetsaddons qt6-base qt6-declarative sddm
+sed -> glibc acl
+shadow -> glibc acl libacl.so=1-64 attr libattr.so=1-64 audit libaudit.so=1-64 libxcrypt libcrypt.so=2-64 pam libpam.so=0-64 libpam_misc.so=0-64
+snapper-support -> snapper snap-pac grub-btrfs
+snapper-tools -> qt6-base qt6-svg polkit
+sof-firmware -> None
+spectacle -> gcc-libs glibc kconfig kconfigwidgets kcoreaddons kcrash kdbusaddons kglobalaccel kguiaddons ki18n kio kirigami kjobwidgets knotifications kpipewire kservice kstatusnotifieritem kwidgetsaddons kwindowsystem kxmlgui layer-shell-qt libxcb opencv prison purpose qt6-base qt6-declarative qt6-imageformats qt6-multimedia qt6-wayland wayland xcb-util xcb-util-cursor xcb-util-image
+sshfs -> fuse3 glib2 openssh
+sudo -> glibc openssl pam libldap zlib libcrypto.so=3-64 libssl.so=3-64
+systemd -> systemd-libs=257.4 acl libacl.so=1-64 bash cryptsetup libcryptsetup.so=12-64 dbus dbus-units kbd kmod hwdata libcap libcap.so=2-64 libgcrypt libxcrypt libcrypt.so=2-64 libidn2 lz4 pam libelf libseccomp libseccomp.so=2-64 util-linux libblkid.so=1-64 libmount.so=1-64 xz pcre2 audit libaudit.so=1-64 openssl libcrypto.so=3-64 libssl.so=3-64
+systemd-sysvcompat -> systemd=257.4
+tar -> glibc acl
+tela-circle-icon-theme-dracula -> hicolor-icon-theme
+terminus-font -> None
+traceroute -> glibc
+ttf-dejavu -> None
+ttf-fantasque-sans-mono -> None
+ttf-fira-sans -> None
+ttf-liberation -> None
+ttf-opensans -> None
+ugrep -> bzip2 lz4 pcre2 xz zlib zstd
+unace -> ncurses
+unarchiver -> gnustep-base openssl bzip2 icu gcc-libs zlib wavpack
+unarj -> glibc
+unrar -> gcc-libs glibc
+unzip -> bzip2 bash
+update-grub -> grub
+usbutils -> glibc hwdata libusb libusb-1.0.so=0-64 systemd-libs libudev.so=1-64
+util-linux -> util-linux-libs=2.40.4 coreutils file libmagic.so=1-64 glibc libcap-ng libxcrypt libcrypt.so=2-64 ncurses libncursesw.so=6-64 pam readline shadow systemd-libs libsystemd.so=0-64 libudev.so=1-64 zlib
+vi -> ncurses
+vlc -> a52dec abseil-cpp aribb24 bash cairo dbus faad2 ffmpeg4.4 fontconfig freetype2 fribidi gcc-libs gdk-pixbuf2 glib2 glibc gnutls harfbuzz hicolor-icon-theme libarchive libdca libdvbpsi libglvnd libidn libmad libmatroska libmpcdec libmpeg2 libproxy libsecret libtar libupnp libva libvlc libx11 libxcb libxinerama libxml2 libxpm lua qt5-base qt5-svg qt5-x11extras taglib wayland xcb-util-keysyms zlib
+warp-terminal -> curl default-cursors fontconfig libegl libx11 libxcb libxcursor libxi libxkbcommon-x11 opengl-driver xdg-utils zlib
+wget -> glibc zlib gnutls libidn2 libidn2.so=0-64 util-linux-libs libuuid.so=1-64 libpsl libpsl.so=5-64 pcre2 nettle libnettle.so=8-64
+which -> bash glibc
+whois -> libidn2 libxcrypt
+wireless-regdb -> bash iw
+wireless_tools -> None
+wireplumber -> libwireplumber=0.5.8-1 gcc-libs glibc libglib-2.0.so=0-64 libgobject-2.0.so=0-64 libgio-2.0.so=0-64 libpipewire libpipewire-0.3.so=0-64 libsystemd.so=0-64 lua pipewire systemd-libs
+wqy-zenhei -> sh
+xdg-desktop-portal -> fuse3 gcc-libs gdk-pixbuf2 glib2 glibc gstreamer gst-plugins-base-libs json-glib libgudev libpipewire pipewire rtkit systemd systemd-libs
+xdg-desktop-portal-gtk -> fontconfig gcc-libs gdk-pixbuf2 glib2 glibc gsettings-desktop-schemas gtk3 xdg-desktop-portal
+xdg-desktop-portal-kde -> gcc-libs glibc kconfig kcoreaddons kcrash kglobalaccel kiconthemes ki18n kio kio-fuse kirigami kitemviews knotifications kpipewire kservice kstatusnotifieritem kwayland kwindowsystem libxkbcommon plasma-workspace qt6-base qt6-declarative qt6-wayland wayland xdg-desktop-portal
+xdg-user-dirs -> sh systemd
+xdg-utils -> sh file xorg-xset xorg-xprop
+xfsprogs -> device-mapper libedit libinih liburcu sh util-linux-libs
+xorg-bdftopcf -> glibc
+xorg-iceauth -> libice glibc
+xorg-mkfontscale -> freetype2 libfontenc zlib glibc
+xorg-sessreg -> glibc
+xorg-smproxy -> libsm libxt libxmu libice libx11 glibc
+xorg-x11perf -> libx11 libxmu libxrender libxft libxext fontconfig sh glibc
+xorg-xbacklight -> xcb-util libxcb glibc
+xorg-xcmsdb -> libx11 glibc
+xorg-xcursorgen -> libx11 libxcursor libpng glibc
+xorg-xdriinfo -> libx11 libgl
+xorg-xev -> libx11 libxrandr glibc
+xorg-xgamma -> libx11 libxxf86vm
+xorg-xhost -> libx11 libxmu glibc
+xorg-xinit -> libx11 xorg-xauth xorg-xrdb xorg-xmodmap sh glibc
+xorg-xinput -> libx11 libxi>=1.5.99.2 xorg-xrandr libxinerama
+xorg-xkbevd -> libxkbfile libx11 glibc
+xorg-xkbprint -> libxkbfile libx11 glibc
+xorg-xkbutils -> libxaw libxt libx11 glibc
+xorg-xkill -> libx11 libxmu
+xorg-xlsatoms -> libxcb
+xorg-xlsclients -> libxcb
+xorg-xmodmap -> libx11
+xorg-xpr -> libx11 libxmu glibc sh
+xorg-xrefresh -> libx11 glibc
+xorg-xsetroot -> libxmu libx11 libxcursor
+xorg-xvinfo -> libx11 libxv
+xorg-xwd -> libxkbfile libx11 glibc
+xorg-xwininfo -> libxcb
+xorg-xwud -> libx11 glibc
+xsel -> libx11
+xz -> sh
+zip -> bzip2

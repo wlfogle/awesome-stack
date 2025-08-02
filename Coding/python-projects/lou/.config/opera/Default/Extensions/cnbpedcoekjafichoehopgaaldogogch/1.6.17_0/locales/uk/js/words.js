@@ -1,0 +1,126 @@
+// Ukrainian
+var EXT_LOCALE = "uk";
+
+var WORDS = {
+	// popup
+	btnTranslate:				"Перекласти",
+	btnClear:					"Очистити",
+	txtUse:						"вик.:",
+	txtBackTranslation:			"зворотній переклад",
+	txtTranslateActivePage:		"Перекласти активну сторінку",
+	optAutoDetect:				"Автовизн.",
+	optNone:					"нічого",
+	lnkSettingsPage:			"налаштування",
+
+	txtRegistration:			"Реєстрація",
+	txtUnregisteredMode:		"**Незареєстрований режим**",
+	txtUnregisteredModeDetails:	"**Незареєстрований режим допомагає перекладати лише окремі слова**\nПісля реєстрації Вам будуть доступні:\n - відсутність цих повідомлень і можлива додаткова реклама в пошукових системах\n- функція тексту, обраного перекладу, словника, тестового режиму вводу для Японського і Корейського мов;\n- майбутні нові функції.\n\n Якщо нічого з вищепереліченого Вам не потрібно, реєстрація не вимагається.",
+	txtVerify:					"Зареєструвати",
+
+	cmTranslateIt:				"Перекласти",
+	cmTranslatePage:			"Перекласти сторінку",
+
+	// hints
+	hntFullExchange:			"Shift+Click – змінити місцями разом із текстом",
+	hntTranslate:				"Ctrl+Enter – перекласти",
+	hntReTranslate:				"Shift+Change – перекласти обраним сервісом",
+	hntVocalize:				"озвучити",
+	hntPutInTheDictionary:		"в словнику",
+	hntRemoveFromTheDictionary:	"з словника",
+	hntCopy:					"копіювати",
+	hntPaste:					"вставити скопійований текст (Shift+Click = вставити і перекласти)",
+	hntMaximize:				"Alt+Click - відкрити в новій вкладці",
+
+	// services
+	byGoogle:					"Google Переклад",
+	byBing:						"Microsoft Перекладач",
+	byYandex:					"Яндекс.Переклад",
+	byPromt:					"Promt Перекладач",
+	byPragma:					"Pragma Перекладач",
+	byBaidu:					"Baidu Перекладач",
+	byNaver:					"Naver Перекладач",
+	bySogou:					"Sogou Перекладач",
+	bySystran:					"Systran Переклад",
+	byBabylon:					"Babylon Перекладач",
+	byBabylonDictionaries:		"Словники від Babylon",
+	byLingvo:					"Lingvo Словник",
+	byGlosbe:					"Glosbe Перекладач",
+	byUrban:					"Urban Словник",
+	byIbm:						"IBM Перекладач",
+	byApertium:					"Apertium Перекладач",
+	byDeepl:					"DeepL Перекладач",
+
+	tbByGoogle:					"від Google Переклад",
+	tbByBing:					"від Microsoft Перекладач",
+	tbByYandex:					"від Яндекс.Переклад",
+	tbByPromt:					"від Promt Перекладач",
+
+	// messages
+	msgError:					"помилка",
+	msgErrorCode:				"код помилки",
+	msgUnknownSourceLng:		"вихідна мова н підтримується",
+	msgUnknownTargetLng:		"мова перекладу не підтримується",
+	msgUnknownLng:				"мова не підтримується",
+	msgExample:					"наприклад",
+	msgExamples:				"приклади",
+	msgAlternatives:			"альтернативи",
+
+	// dictionary
+	txtDictionary:				"словник",
+	linkRemove:					"видалити",
+	txtUsePersonalDictionary:	"Використовувати особистий словник",
+	txtShow:					"відобразити",
+	txtHide:					"приховати",
+
+	// options
+	txtOptionsTitle:			"Translator - налаштування",
+	txtMadeBy:					"Розроблено",
+	linkFeedback:				"повідомити про помилку / зворотній зв'язок",
+	hdrDefaultSourceLang:		"Мова за замовчанням, з якого буде перекладатися текст",
+	hdrDefaultTargetLang:		"Мова за замовчанням, на який буде перекладатися текст",
+	labelAlwaysUseDefTargetLang:"завжди використовувати цільову мову за замовчуванням",
+	labelDefTargetLang2:		"коли мова джерела = перша цільова мова за замовчуванням",
+	hdrMaxStoredLangPairs:		"Максимальна кількість використовуваних пар мов, які слід запам'ятовувати",
+	hdrTranslateBtnPosition:	"Розташування кнопки \"Перекласти\"",
+	txtAtRight:					"праворуч",
+	txtAtLeft:					"ліворуч",
+	txtInvertButons:			"змінити кнопки місцями",
+	hdrTextareaFont:			"Шрифт текстового поля",
+	hdrUITheme:					"Використовуйте світлу або темну тему",
+	optLight:					"Світло",
+	optDark:					"Темний",
+	optDefault:					"За замовчанням",
+	hdrIconTheme:				"Стиль іконки",
+	wrnTextareaFont:			"Ви можете налаштувати конкретні шрифти в <a href='javascript:;'>налаштуваннях</a> браузера.",
+	hdrSetupPopupHotkey:		"Налаштування гарячої клавіші для спливаючого вікна",
+	btnSetupPopupHotkey:		"Відкрити налаштувальник гарячих клавіш",
+	hdrUseTranslateToolbar:		"Використовувати панель перекладача на кожній сторінці",
+	hdrAdditKnownLangs:			"Не показувати панель інструментів перекладу для мов (крім цільової мови за замовчуванням)",
+	hdrUseContextMenuForPages:	"Використовувати контекстне меню для сторінок",
+	hdrBingPrivateKey:			"Особистий доступ перекладача Bing",
+	txtBingClientId:			"ID клієнта:",
+	txtBingClientSecret:		"Ключ клієнта:",
+	hintBingPrivateKey:			"Якщо Ви хочете бути незалежним від публічних ключів доступу до сервісу, що блокуються, Ви можете налаштувати свої особисті ключі доступу.<br />Вони можуть бути отримані тут:",
+	optDisabled:				"Відключено",
+	wrnUseTranslateToolbar:		"<b>Увага!</b> Частина деяких вихідних сторінок відправлятиметься провайдеру перекладача для визначення вихідної мови!<br />Виняток: сторінки з визначенням власної мови.",
+	hdrAllowedProviders:		"Дозволені оператори перекладу",
+	hdrOtherOptions:			"Інші налаштування",
+	txtOpenNewTabsNextToActive:	"Відкривати нові вкладки слідом за активною",
+	txtRememberLastTranslation:	"Запам'ятовувати останній переклад",
+	txtUseTextToSpeech:			"Використовувати функцію читання тексту",
+	txtUseYellowMarker:			"Використовувати жовтий маркер як попередження про те, що виділений текст може бути перехоплений розширенням",
+	txtOutputExtensionButton:	"Виводити кнопку розширення в адресній панелі",
+	txtUseEnterToTranslate:		"Використовувати клавішу \"Введення\" для перекладу",
+	txtUseSelectionContextMenu:	"Використовуйте контекстне меню вибору тексту",
+	txtUseOldSkin:				"Використовувати старий візуальний стиль",
+	txtUseBgProcess:			"Використовуйте фоновий процес (вимагати перезавантаження браузера)",
+
+	txtUseGoogleCn:				"Використовувати google.com.hk (для випадків, коли у Вас заблокований google.com)",
+
+	txtYouCanUseMyOtherProducts:"Ви також можете спробувати інші мої продукти:",
+	txtMyCalendarExensionDescr:	"розширення календаря для Opera",
+	txtMyWebanketaServiceDescr:	"безкоштовне створення анкет, опитувань, тестів і голосувань!",
+
+	txtPoweredByOpera:			"Працює на браузері Opera"
+};
+//	translated by Vasyl, fixed by Михаил Журавский, fixed by Александр

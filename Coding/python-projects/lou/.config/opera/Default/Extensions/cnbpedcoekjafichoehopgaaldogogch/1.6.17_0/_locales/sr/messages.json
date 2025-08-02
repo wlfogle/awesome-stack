@@ -1,0 +1,14 @@
+{
+   "description": {
+      "message": "Превод изабраног или унетог текста"
+   },
+   "description_hotkey": {
+      "message": "Преведи изабраног текста"
+   },
+   "description_sidebar": {
+      "message": "Превод унетог текста"
+   },
+   "locale": {
+      "message": "sr"
+   }
+}

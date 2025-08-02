@@ -1,0 +1,16 @@
+[
+    {
+        "CreatedAt": "2025-07-13T19:57:01-04:00",
+        "Driver": "local",
+        "Labels": {
+            "com.docker.compose.config-hash": "c1eec468d549dbcb77943c33d43988b150f6f29145b8a52fb1c1da448e2193ce",
+            "com.docker.compose.project": "mediastack",
+            "com.docker.compose.version": "2.38.2",
+            "com.docker.compose.volume": "arrstack-data"
+        },
+        "Mountpoint": "/var/lib/docker/volumes/mediastack_arrstack-data/_data",
+        "Name": "mediastack_arrstack-data",
+        "Options": null,
+        "Scope": "local"
+    }
+]

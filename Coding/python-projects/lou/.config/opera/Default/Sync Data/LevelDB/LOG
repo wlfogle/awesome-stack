@@ -1,0 +1,5 @@
+2025/06/23-16:58:20.535 16e00 Creating DB /home/lou/.config/opera/Default/Sync Data/LevelDB since it was missing.
+2025/06/23-16:58:20.541 16e00 Reusing MANIFEST /home/lou/.config/opera/Default/Sync Data/LevelDB/MANIFEST-000001
+2025/06/23-17:01:08.160 16def Level-0 table #5: started
+2025/06/23-17:01:08.163 16def Level-0 table #5: 393993 bytes OK
+2025/06/23-17:01:08.165 16def Delete type=0 #3

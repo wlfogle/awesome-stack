@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Translator settings</title>
+	<link rel="icon" type="image/png" href="icons/icon-48.png" />
+	<link rel="stylesheet" href="css/settings.css" />
+	<script src="js/browser.js"></script>
+	<script src="js/words.js"></script>
+	<script src="js/shared_data.js"></script>
+	<script src="js/settings.js"></script>
+</head>
+<body>
+	<header>
+		<a id="linkLogo" href="https://chrome.google.com/webstore/detail/translator/blndkmebkmenignoajhoemebccmmfjib/"><img src="icons/icon-64.png" /></a>
+		<h1 id="widget-name">Translator</h1>
+		<h2><span id="txtMadeBy">Made by</span> <span id="widget-author">SailorMax</h2>
+		<a class="feedback" id="linkFeedback" href="https://translator.sailormax.net/cabinet/" target="_blank">bug report / feedback</a>
+	</header>
+
+	<section>
+		<form action="" method="post">
+			<h3 id="hdrDefaultSourceLang">Default source language</h3>
+			<fieldset>
+				<select name="defSourceLang">
+					<option value="">Auto detect</option>
+					<option value="---" disabled="1">——————————</option>
+				</select>
+			</fieldset>
+
+
+			<h3 id="hdrDefaultTargetLang">Default target languages</h3>
+			<fieldset>
+				<select name="defTargetLang">
+					<option value="">Auto detect</option>
+					<option value="---" disabled="1">——————————</option>
+				</select>
+				&ndash;
+				<input type="checkbox" name="useTargetLangAlways" id="useTargetLangAlways" />
+				<label for="useTargetLangAlways" id="labelAlwaysUseDefTargetLang">always use default target language</label>
+				<br />
+				<select name="defTargetLang2">
+					<option value="">Auto detect</option>
+					<option value="---" disabled="1">——————————</option>
+				</select>
+				&ndash;
+				<label id="labelDefTargetLang2">when source language = first default target language</label>
+			</fieldset>
+
+
+			<h3 id="hdrMaxStoredLangPairs">Maximum stored language pairs</h3>
+			<fieldset>
+				<input type="number" min="0" max="16" name="maxStoreLangPairs" value="3" />
+			</fieldset>
+
+
+			<h3 id="hdrTranslateBtnPosition">"Translate"-button position</h3>
+			<fieldset class="checkboxes">
+				<input type="radio" name="buttonPosition" value="right" id="buttonPosition_right" />
+				<label for="buttonPosition_right">
+					<span id="txtAtRight">at right</span>
+					<br />
+					<img src="img/buttons_right.png" />
+				</label>
+				<input type="radio" name="buttonPosition" value="left" id="buttonPosition_left" />
+				<label for="buttonPosition_left">
+					<span id="txtAtLeft">at left</span>
+					<br />
+					<img src="img/buttons_left.png" />
+				</label>
+
+				<input type="checkbox" name="buttonPositionInvert" value="left" id="buttonPosition_invert" />
+				<label for="buttonPosition_invert" id="txtInvertButons">invert buttons</label>
+			</fieldset>
+
+
+			<h3 id="hdrTextareaFont">Textarea font</h3>
+			<fieldset class="checkboxes">
+				<select name="useTextareaFont">
+					<option value="">Default</option>
+					<option value="monospace">Monospace</option>
+					<option value="sans-serif">Sans-Serif</option>
+					<option value="serif">Serif</option>
+				</select>
+			</fieldset>
+			<div class="hint">
+				<p id="wrnTextareaFont">
+					You can setup concrete fonts in browser <a href="javascript:;">settings</a>.
+				</p>
+			</div>
+
+
+			<h3 id="hdrUITheme">Use a light or dark theme</h3>
+			<fieldset class="checkboxes">
+				<select name="useTheme">
+					<option value="">Auto detect</option>
+					<option value="light">Light</option>
+					<option value="dark">Dark</option>
+				</select>
+			</fieldset>
+
+
+			<h3 id="hdrIconTheme">Icon theme</h3>
+			<fieldset class="checkboxes">
+				<input type="radio" name="iconTheme" value="0" id="iconTheme_default" />
+				<label for="iconTheme_default">
+					<span id="txtIconDefault">default</span>
+				</label>
+				<input type="radio" name="iconTheme" value="1" id="iconTheme_color" />
+				<label for="iconTheme_color">
+					<input type="color" name="iconColor" />
+				</label>
+			</fieldset>
+
+
+			<div id="blockSetupPopupHotkey">
+				<h3 id="hdrSetupPopupHotkey">Setup popup hotkey</h3>
+				<fieldset>
+					<button type="button" id="btnSetupPopupHotkey">Open hotkeys configurator</button>
+				</fieldset>
+			</div>
+
+
+			<div id="blockUseTranslateToolbar">
+				<h3 id="hdrUseTranslateToolbar">Use Translate Toolbar on each page</h3>
+				<fieldset>
+					<select name="useTranslateToolbar">
+						<option value="">Disabled</option>
+						<option value="google">by Google Translate</option>
+						<option value="bing">by Bing Translator</option>
+						<option value="yandex">by Yandex Translate</option>
+					</select>
+				</fieldset>
+				<div class="hint">
+					<p id="wrnUseTranslateToolbar">
+						<b>Warning!</b> Source (piece) of almost every page will be send to translator provider for detecting page language!<br />
+						Exception: pages with definition of their language.
+					</p>
+				</div>
+				<h3 id="hdrAdditKnownLangs">Do not show Translate Toolbar for languages (except default target language)</h3>
+				<fieldset>
+					<select name="knownLangs[]" class="known_lang">
+						<option value="">none</option>
+						<option value="---" disabled="1">——————————</option>
+					</select>
+				</fieldset>
+			</div>
+
+			<div id="blockContextMenuOfPages">
+				<h3 id="hdrUseContextMenuForPages">Use context menu for pages</h3>
+				<fieldset>
+					<select name="useContextMenuForPages">
+						<option value="">Disabled</option>
+						<option value="google">by Google Translate</option>
+						<option value="bing">by Bing Translator</option>
+						<option value="yandex">by Yandex Translate</option>
+						<option value="promt">by Promt Translator</option>
+					</select>
+				</fieldset>
+			</div>
+
+			<h3 id="hdrBingPrivateKey" style="display:none;">Bing Translator Private Access</h3>
+			<fieldset class="text_fields" style="display:none;">
+				<p>
+					<label for="bingClientId" id="txtBingClientId">Client ID:</label> <input type="text" name="bingClientId" />
+				</p>
+				<p>
+					<label for="bingClientSecret" id="txtBingClientSecret">Client Secret:</label> <input type="text" name="bingClientSecret" />
+				</p>
+			</fieldset>
+			<div class="hint" style="display:none;">
+				<p id="hintBingPrivateKey">
+					If you want to be independent from blockable public keys, you can setup own private keys.<br />
+					They can be received from here:
+				</p>
+				<a href="https://datamarket.azure.com/dataset/bing/microsofttranslator">https://datamarket.azure.com/dataset/bing/microsofttranslator</a>
+			</div>
+
+			<h3 id="hdrAllowedProviders">Allow to use translate providers</h3>
+			<fieldset class="checkboxes" id="setAllowedProviders">
+				<p id="providerTpl" style="display:none;">
+					<input type="checkbox" name="" id="" />
+					<label for="" id=""></label>
+				</p>
+			</fieldset>
+
+			<h3 id="hdrOtherOptions">Other options</h3>
+			<fieldset class="checkboxes">
+<!--
+				<p>
+					<input type="checkbox" name="useGoogleDict" id="useGoogleDict" onchange="SaveSettings()" />
+					<label for="useGoogleDict">Use Google Dictionary</label>
+				</p>
+-->
+				<p>
+					<input type="checkbox" name="useGoogleCn" id="useGoogleCn" />
+					<label for="useGoogleCn" id="txtUseGoogleCn">Use google.com.hk (for cases when your firewall block google.com)</label>
+				</p>
+				<p>
+					<input type="checkbox" name="usePersonalDictionary" id="usePersonalDictionary" />
+					<label for="usePersonalDictionary" id="txtUsePersonalDictionary">Use personal dictionary (allow to store required translations)</label>
+				</p>
+				<p>
+					<input type="checkbox" name="openNewTabsNextToActive" id="openNewTabsNextToActive" />
+					<label for="openNewTabsNextToActive" id="txtOpenNewTabsNextToActive">Open new tabs next to active</label>
+				</p>
+				<p>
+					<input type="checkbox" name="rememberLastTranslation" id="rememberLastTranslation" />
+					<label for="rememberLastTranslation" id="txtRememberLastTranslation">Remember last translation</label>
+				</p>
+				<p>
+					<input type="checkbox" name="useGoogleTTS" id="useGoogleTTS" />
+					<label for="useGoogleTTS" id="txtUseTextToSpeech">Use text-to-speech</label>
+				</p>
+<!--
+				<p>
+					<input type="checkbox" name="useSpeechRecognition" id="useSpeechRecognition" />
+					<label for="useSpeechRecognition" id="txtUseSpeechRecognition">Use speech-to-text</label>
+					<span id="errUseSpeechRecognition"></span>
+				</p>
+-->
+				<p>
+					<input type="checkbox" name="useSelMarker" id="useSelMarker" />
+					<label for="useSelMarker" id="txtUseYellowMarker">Use yellow marker as warning about catchable selected text</label>
+				</p>
+				<p>
+					<input type="checkbox" name="useExtensionButton" id="useExtensionButton" />
+					<label for="useExtensionButton" id="txtOutputExtensionButton">Output extension button on address bar</label>
+				</p>
+				<p>
+					<input type="checkbox" name="useEnterToTranslate" id="useEnterToTranslate" />
+					<label for="useEnterToTranslate" id="txtUseEnterToTranslate">Use "Enter" key to translate</label>
+				</p>
+				<p>
+					<input type="checkbox" name="useSelectionContextMenu" id="useSelectionContextMenu" />
+					<label for="useSelectionContextMenu" id="txtUseSelectionContextMenu">Use text selection context menu</label>
+				</p>
+				<p>
+					<input type="checkbox" name="useOldSkin" id="useOldSkin" />
+					<label for="useOldSkin" id="txtUseOldSkin">Use old visual style</label>
+				</p>
+				<p>
+					<input type="checkbox" name="useBgProcess" id="useBgProcess" />
+					<label for="useBgProcess" id="txtUseBgProcess">Use background process</label>
+				</p>
+			</fieldset>
+
+			<div id="blockRegistration">
+				<a name="registration"></a>
+				<h3 id="hdrRegistration">* Registration</h3>
+				<div class="hint">
+					<p id="unregistered_description">
+						**Unregistered mode limited by basic functions**<br />
+						After registration you will have:<br />
+						- lack of this message and possible advertising in search engines;<br />
+						- text-to-speech, back translation, test Japanese and Korean IME;<br />
+						- future new features.<br />
+						<br />
+						if nothing from the list you need and you do not want to thank the author, registration is not require.<br />
+					</p>
+					<p><span class="linkToVerify" id="linkToVerify">Click here to Register</span></p>
+				</div>
+			</div>
+			<iframe id="settings_partner_window" src="" scrolling="no"></iframe>
+		</form>
+	</section>
+
+	<section class="my_projects">
+		<center><b id="txtYouCanUseMyOtherProducts">You can also try my other products:</b></center>
+		<ul>
+<!--			<li id="myCalendarLink"><a href="https://addons.opera.com/en/addons/extensions/details/calendar/" target="_blank">Calendar</a> &ndash; <span id="txtMyCalendarExensionDescr">calendar extension for Opera</span></li> -->
+			<li id="myWebanketaLink"><a href="http://webanketa.com/" target="_blank">Webanketa.com</a> &ndash; <span id="txtMyWebanketaServiceDescr">free creation of questionnaires, surveys, tests and polls!</span></li>
+		</ul>
+	</section>
+
+	<footer>
+		<p id="txtPoweredByOpera">Powered by the Opera Browser</p>
+	</footer>
+</body>
+</html>

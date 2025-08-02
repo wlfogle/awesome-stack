@@ -1,0 +1,14 @@
+{
+   "description": {
+      "message": "Przetłumacz wpisany lub zaznaczony tekst"
+   },
+   "description_hotkey": {
+      "message": "Przetłumacz zaznaczony tekst"
+   },
+   "description_sidebar": {
+      "message": "Przetłumacz wpisany tekst"
+   },
+   "locale": {
+      "message": "pl"
+   }
+}

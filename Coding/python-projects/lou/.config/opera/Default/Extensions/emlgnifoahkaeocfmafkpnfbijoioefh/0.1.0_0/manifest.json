@@ -1,0 +1,42 @@
+{
+   "author": "Andy Portmen",
+   "background": {
+      "persistent": false,
+      "scripts": [ "common.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "16": "data/icons/16.png",
+         "32": "data/icons/32.png",
+         "64": "data/icons/64.png"
+      }
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "data/inject.js" ],
+      "matches": [ "\u003Call_urls>" ],
+      "run_at": "document_start"
+   } ],
+   "description": "Open current page or link in tor browser for better privacy",
+   "developer": {
+      "name": "andy-portmen"
+   },
+   "homepage_url": "http://add0n.com/open-in.html?from=tor",
+   "icons": {
+      "128": "data/icons/128.png",
+      "16": "data/icons/16.png",
+      "32": "data/icons/32.png",
+      "48": "data/icons/48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp8AKN9ndCUpowBHEuVIpCZoqZ/MomdUWXmpfx9zIZwexkezkMudIn3/7vTQNiib0Foi9wEj/KaXmGmyDGGuLTG5xggDmTkTv0HOm8xqi8DnIQ1N9EphDyYFEgl+Yv9RvoUFNyh6w3Y/fBuh9FNhGcW6poBwERHzTv0rke669ERR95TclnZfgk6Zim6tHPDDMu/nWoS5NglHs8Y349twfJ3kauj3nR1oHDETFfeYrIEDre3g2Qsw3d8OavPECMQOD1ivK9IDM+yntcdYjdnrWZzSsbvMSXwYeBPqZC/5I+P38cL7Qxf+xuQF18nJ6+bK3XtDlg7kcWWY/Ti0VSbQOtQIDAQAB",
+   "manifest_version": 2,
+   "name": "Open in Tor Browser",
+   "options_ui": {
+      "chrome_style": true,
+      "page": "data/options/index.html"
+   },
+   "permissions": [ "storage", "tabs", "contextMenus", "nativeMessaging", "downloads", "https://api.github.com/repos/andy-portmen/native-client/releases/latest" ],
+   "short_name": "ioitor",
+   "update_url": "https://extension-updates.opera.com/api/omaha/update/",
+   "version": "0.1.0"
+}

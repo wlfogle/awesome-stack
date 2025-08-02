@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Calibre Library Fixer
+Comment=Organize your Calibre library with standardized filenames
+Exec=calibre-library-fixer-gui
+Icon=calibre-library-fixer
+Terminal=false
+StartupNotify=true
+Categories=Office;Database;Utility;
+Keywords=calibre;ebook;library;organize;filename;
+MimeType=application/x-calibre-library;

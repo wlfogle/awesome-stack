@@ -1,0 +1,22 @@
+{
+   "background": {
+      "scripts": [ "background.js" ]
+   },
+   "description": "Online service that have 452 billion web pages saved over time and who is domain tool in context menu",
+   "developer": {
+      "name": "ulmdesign"
+   },
+   "homepage_url": "http://ulmdesign.mediamaster.eu/ulmdesign/contatti",
+   "icons": {
+      "128": "assets/icon_128.png",
+      "16": "assets/icon_16.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvPcfubSEkODQywXQbhG4em28Mvt7dxhuX6oBWp5kxjXueVNl5uaVBcSpMxtBcJVHHeDqsrFYH6WYodY/OUErCkBQHfBuXecC4MT7WhxnqxUie1lB96Y8yymG7znAPQOsKSaZoUYhF+6mI4hBG2P+ZxRz4ip3+8UKMv+15mpq7QLLH37us8Ey2JQ47FzWb95FDAgoIy8e2PcPKCu2vSpLXAbGYhaWDRFub2nBPU5FBVy6h/Lva6Kc4KrhuYubEHg1f9JmtTns6QXaoxNDYwYxYmN8ADtYsc+s+gV0qSsYDDzNLGaSRpp3a40YuAYDoVqRNEaWGBVLnAbkQEZTnDKqZQIDAQAB",
+   "manifest_version": 2,
+   "minimum_chrome_version": "38",
+   "name": "Wayback machine website",
+   "permissions": [ "tabs", "activeTab", "\u003Call_urls>", "contextMenus" ],
+   "short_name": "Wayback machine website and Who is domain",
+   "update_url": "https://extension-updates.opera.com/api/omaha/update/",
+   "version": "1.2.1"
+}

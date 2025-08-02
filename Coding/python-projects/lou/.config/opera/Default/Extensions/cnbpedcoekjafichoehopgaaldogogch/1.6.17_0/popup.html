@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="theme-color" content="#106ebe" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Translator</title>
+	<link rel="icon" type="image/png" href="icons/icon-128.png" />
+	<link rel="stylesheet" href="css/popup.css" />
+	<link rel="stylesheet" href="css/theme.css" />
+	<script src="js/browser.js"></script>
+	<script src="js/words.js"></script>
+	<script src="js/shared_data.js"></script>
+	<script src="js/translation.js"></script>
+	<script src="js/shared_popup_data.js"></script>
+	<script src="js/mel.js"></script>
+
+	<script src="js/libs/hi-base64.js"></script>
+	<script src="js/libs/naver_encoder.js"></script>
+	<script src="js/libs/sogou_sign.js"></script>
+	<script src="js/libs/baidu_sign.js"></script>
+
+	<script src="js/libs/crypto-js/core.js"></script>
+	<script src="js/libs/crypto-js/lib-typedarrays.js"></script>
+	<script src="js/libs/crypto-js/md5.js"></script>
+	<script src="js/libs/crypto-js/hmac.js"></script>
+	<script src="js/libs/crypto-js/enc-base64.js"></script>
+
+	<script src="js/text_reader.js"></script>
+	<script src="js/popup.js"></script>
+</head>
+<body>
+<!--	<div id="window_size_meter"></div> -->
+	<form action="" class="no_back_translation">
+		<div class="lang_selection"><div class="box">
+			<div>
+				<p class="lang"><select id="fromLang" tabindex="6" class="form-control"><option value="">Auto detect</option></select></p>
+				<p class="xchg">
+					<button id="exchangeFromTo" type="button" tabindex="7" title="Shift-Click &ndash; full exchange" class="form-control btn">
+						<span class="img">&nbsp;</span>
+					</button>
+				</p>
+				<p class="lang"><select id="toLang" tabindex="9" class="form-control"><option value="en">English</option></select></p>
+			</div>
+		</div></div>
+
+		<div class="from_text"><div class="box">
+			<div id="fromTextMicrophone" class="microphone_button disabled"></div>
+			<textarea id="fromText" tabindex="1" title="Ctrl-Enter &ndash; translate" class="form-control"></textarea>
+			<div id="fromTextPlayer" class="player_button disabled" title="vocalize"></div>
+			<div id="fromTextPaste" class="paste_button disabled" title="paste copied text (Shift-Click = paste and translate)"></div>
+		</div></div>
+
+		<div id="submitButtons" class="submit_buttons"><div class="box">	<!-- invert -->
+			<div class="provider_settings">
+				<span id="txtUse">use:</span>
+				<div class="chooser_box">
+					<select id="translateProvider" tabindex="5" title="Shift-Change &ndash; re-translate" class="form-control"></select>
+					<span id="copyrightTarget">©</span>
+				</div>
+			</div>
+
+			<div class="buttons_box">
+				<div>
+					<input type="button" tabindex="2" class="btnTranslate form-control btn btn-green" id="btnTranslate" value="Translate" />
+					<input type="button" tabindex="4" class="btnClear form-control btn" id="btnClear" value="Clear" />
+				</div>
+			</div>
+		</div></div>
+
+		<div class="to_text">
+			<div class="as_text" id="result_as_text">
+				<div id="toTextFavorite" class="favorite_button disabled" title="put in the dictionary"></div>
+				<textarea tabindex="3" id="toText" readonly="1" class="form-control"></textarea>
+				<div id="toTextPlayer" class="player_button disabled" title="vocalize"></div>
+				<div id="toTextCopy" class="copy_button disabled" title="copy"></div>
+			</div>
+			<div class="as_html" id="result_as_html">
+				<iframe src="about:blank" class="form-control"></iframe>
+			</div>
+		</div>
+
+		<div class="translated_buttons" id="translatedButtons"><div class="box">
+			<label class="back_translation" for="chkBackTranslation">
+				<input type="checkbox" id="chkBackTranslation" />
+				<b class="switch"></b>
+				<span id="txtBackTranslation">back translation</span><span style="display:none;">:</span>
+			</label>
+			<div class="linkDictionaryPage"><a href="dictionary.html" target="ext_translator_dictionary" id="lnkDictionaryPage">dictionary</a></div>
+		</div></div>
+
+		<div class="to_from_text" id="to_from_block"><div class="box">
+			<textarea tabindex="3" id="toFromText" readonly="1" class="form-control"></textarea>
+			<div id="toFromTextPlayer" class="player_button disabled" title="vocalize"></div>
+		</div></div>
+
+		<div class="footer"><div class="box">
+			<div id="btnTranslateUrl" class="linkTranslateActivePage btn-link"><span>Translate active page</span> <span></span></div>
+			<div class="extensionVersion">
+				<a href="settings.html" target="ext_translator_settings" id="lnkSettingsPage">settings</a>
+				v1.6<span id="versionMode"></span>
+				<a href="popup.html?window=1" target="_blank" class="maximize" id="lnkMaximize" title="Alt + Click - open in tab"><img src="img/maximize.svg" /></a>
+			</div>
+		</div></div>
+	</form>
+	<img src="img/resize.svg" alt="" class="window_resize_btn" id="imgWindowsResizer" draggable="false" />
+</body>
+</html>

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Open Interpreter GUI
+Comment=AI-powered code analysis and development assistance
+Exec=open-interpreter-gui
+Icon=open-interpreter-gui
+Terminal=false
+Type=Application
+Categories=Development;IDE;TextEditor;
+Keywords=AI;code;analysis;debugging;development;programming;
+StartupNotify=true
+MimeType=text/x-python;text/x-c;text/x-c++;text/x-java;text/javascript;

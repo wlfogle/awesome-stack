@@ -1,0 +1,52 @@
+Main tab Software Management
+
+    sub-tab 1 Search Packages
+
+        sub-tabs
+
+            Quick Search
+            Advanced Search
+            Search Results
+            Search History
+
+    sub-tab 2 Package Install
+
+        sub-tabs
+
+            Single Install
+            Batch Install
+            Install Queue
+            Install History
+            Install Log
+
+    sub-tab 3 Build & Distribute
+
+        sub-tabs
+
+            Package Builder
+            Distribution
+            Build Log
+
+    sub-tab 4 Windows Programs
+
+        sub-tabs
+
+            Wine Management
+            Program Installer
+            Installed Programs
+            Wine Prefixes
+            Logs
+
+    sub-tab 5 Maintenance
+
+        sub-tabs
+
+            Quick Maintenance
+            System Updates
+            Package Cache
+            System Optimization
+            Maintenance Logs
+
+    sub-tab 6 Installed Packages
+
+    sub-tab 7 Settings

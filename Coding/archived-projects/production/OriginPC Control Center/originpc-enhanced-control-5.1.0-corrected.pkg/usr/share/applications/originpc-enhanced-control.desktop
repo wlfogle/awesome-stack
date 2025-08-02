@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=OriginPC Enhanced Control Center
+Comment=Advanced RGB control and system monitoring
+Exec=originpc-enhanced-control
+Icon=preferences-desktop-peripherals
+Terminal=false
+Type=Application
+Categories=Settings;HardwareSettings;

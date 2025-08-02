@@ -1,0 +1,199 @@
+# Maintainer: Lou <lou@example.com>
+pkgname=open-interpreter-gui
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="AI-powered code analysis GUI with intelligent debugging and development assistance"
+arch=('x86_64')
+url="https://github.com/lou/open-interpreter-gui"
+license=('MIT')
+depends=('qt6-base' 'docker')
+makedepends=('cmake' 'make' 'qt6-base')
+optdepends=(
+    'python-open-interpreter: for AI analysis backend'
+    'python-pytest: for running tests'
+    'python-black: for code formatting'
+    'python-flake8: for code linting'
+)
+source=("${pkgname}-${pkgver}.tar.gz::file://$(pwd)")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir"
+    echo "1.0.0"
+}
+
+prepare() {
+    cd "$srcdir"
+    # Ensure build directory exists
+    mkdir -p build
+}
+
+build() {
+    cd "$srcdir"
+    
+    # Configure with CMake
+    cmake -B build \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_BINDIR=bin \
+        -Wno-dev
+    
+    # Build the application
+    cmake --build build --parallel $(nproc)
+}
+
+check() {
+    cd "$srcdir/build"
+    # Basic build test
+    test -f bin/OpenInterpreterGUI
+}
+
+package() {
+    cd "$srcdir"
+    
+    # Install the main executable
+    install -Dm755 build/bin/OpenInterpreterGUI "$pkgdir/usr/bin/open-interpreter-gui"
+    
+    # Install desktop entry
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/open-interpreter-gui.desktop" << 'EOF'
+[Desktop Entry]
+Name=Open Interpreter GUI
+Comment=AI-powered code analysis and development assistance
+Exec=open-interpreter-gui
+Icon=open-interpreter-gui
+Terminal=false
+Type=Application
+Categories=Development;IDE;TextEditor;
+Keywords=AI;code;analysis;debugging;development;programming;
+StartupNotify=true
+MimeType=text/x-python;text/x-c;text/x-c++;text/x-java;text/javascript;
+EOF
+
+    # Install icon
+    install -Dm644 assets/icon.png "$pkgdir/usr/share/pixmaps/open-interpreter-gui.png"
+    
+    # Install additional icons in multiple sizes
+    for size in 16 32 48 64 128 256; do
+        if [ -f "assets/icon_${size}.png" ]; then
+            install -Dm644 "assets/icon_${size}.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/open-interpreter-gui.png"
+        else
+            install -Dm644 assets/icon.png "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/open-interpreter-gui.png"
+        fi
+    done
+    
+    # Install documentation
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 DEVELOPER.md "$pkgdir/usr/share/doc/$pkgname/DEVELOPER.md"
+    
+    # Install license (create a basic MIT license)
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/$pkgname/LICENSE" << 'EOF'
+MIT License
+
+Copyright (c) 2024 Lou
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+EOF
+
+    # Create wrapper script for better desktop integration
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/open-interpreter-gui-wrapper" << 'EOF'
+#!/bin/bash
+# Wrapper script for Open Interpreter GUI
+
+# Set environment variables for better integration
+export QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor
+export GDK_SCALE=1
+
+# Check if Ollama container is running
+if ! docker ps | grep -q "open-interpreter"; then
+    echo "Starting Ollama container (open-interpreter)..."
+    if docker ps -a | grep -q "open-interpreter"; then
+        # Container exists but is stopped
+        docker start open-interpreter
+    else
+        echo "Warning: open-interpreter container not found."
+        echo "Please create and start the container manually."
+    fi
+    sleep 3
+fi
+
+# Launch the application
+exec /usr/bin/open-interpreter-gui "$@"
+EOF
+}
+
+# Post-install script
+post_install() {
+    echo "==> Open Interpreter GUI has been installed successfully!"
+    echo ""
+    echo "Prerequisites:"
+    echo "  - Docker must be running and accessible to your user"
+    echo "  - Ollama container 'open-interpreter' must be created and running"
+    echo "  - Required AI models should be pulled in the container:"
+    echo "    docker exec open-interpreter ollama pull codellama"
+    echo "    docker exec open-interpreter ollama pull magicoder"
+    echo "    docker exec open-interpreter ollama pull qwen2.5-coder"
+    echo ""
+    echo "Usage:"
+    echo "  - Launch from applications menu or run: open-interpreter-gui"
+    echo "  - Alternative wrapper: open-interpreter-gui-wrapper"
+    echo ""
+    echo "Documentation:"
+    echo "  - User guide: /usr/share/doc/open-interpreter-gui/README.md"
+    echo "  - Developer guide: /usr/share/doc/open-interpreter-gui/DEVELOPER.md"
+    echo ""
+    echo "Configuration:"
+    echo "  - Ollama URL: http://localhost:11434 (default)"
+    echo "  - Set OLLAMA_URL environment variable to override"
+    
+    # Update desktop database
+    if command -v update-desktop-database > /dev/null; then
+        update-desktop-database -q
+    fi
+    
+    # Update icon cache
+    if command -v gtk-update-icon-cache > /dev/null; then
+        gtk-update-icon-cache -q /usr/share/icons/hicolor
+    fi
+}
+
+# Post-upgrade script
+post_upgrade() {
+    post_install
+}
+
+# Pre-remove script
+pre_remove() {
+    echo "==> Removing Open Interpreter GUI..."
+}
+
+# Post-remove script
+post_remove() {
+    echo "==> Open Interpreter GUI removed successfully!"
+    echo "Note: Ollama and AI models are still installed and can be used independently."
+    
+    # Update desktop database
+    if command -v update-desktop-database > /dev/null; then
+        update-desktop-database -q
+    fi
+    
+    # Update icon cache
+    if command -v gtk-update-icon-cache > /dev/null; then
+        gtk-update-icon-cache -q /usr/share/icons/hicolor
+    fi
+}

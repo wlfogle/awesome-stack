@@ -1,0 +1,14 @@
+{
+   "description": {
+      "message": "Přeloží vybraný nebo vložený text"
+   },
+   "description_hotkey": {
+      "message": "Přeložit vybraný text"
+   },
+   "description_sidebar": {
+      "message": "Přeloží vložený text"
+   },
+   "locale": {
+      "message": "cs"
+   }
+}

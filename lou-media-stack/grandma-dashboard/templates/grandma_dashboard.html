@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grandma's Media Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header p {
+            font-size: 1.5em;
+            opacity: 0.9;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .card-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #4a5568;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .weather-card {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+        }
+
+        .weather-current {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .temperature {
+            font-size: 4em;
+            font-weight: bold;
+        }
+
+        .weather-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .weather-detail {
+            text-align: center;
+            padding: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+
+        .search-card {
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+            color: white;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .tv-card {
+            background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+            color: white;
+        }
+
+        .channels-list {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .channel-item {
+            padding: 10px;
+            background: rgba(255,255,255,0.1);
+            margin-bottom: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .channel-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .status-card {
+            background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+            color: white;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .status-online {
+            background: #00b894;
+        }
+
+        .status-offline {
+            background: #d63031;
+        }
+
+        .big-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .big-button {
+            padding: 30px;
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .big-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+            text-decoration: none;
+            color: white;
+        }
+
+        .button-icon {
+            font-size: 2em;
+        }
+
+        .recent-content {
+            background: rgba(255,255,255,0.9);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .recent-items {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .recent-item {
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #6c5ce7;
+        }
+
+        .forecast-hourly {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 20px 0;
+        }
+
+        .forecast-hour {
+            min-width: 80px;
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 15px 10px;
+            border-radius: 10px;
+        }
+
+        .epg-list {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .epg-item {
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        .epg-time {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .epg-title {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .epg-desc {
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .big-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+        }
+
+        .radar-container {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .radar-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .auto-refresh {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="auto-refresh">
+        🔄 Auto-refresh: <span id="refresh-timer">5:00</span>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🏠 Grandma's Media Center</h1>
+            <p>Everything you need in one simple place</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Weather Card -->
+            <div class="card weather-card">
+                <h2 class="card-title">🌤️ Weather in {{ weather.current.location }}</h2>
+                <div class="weather-current">
+                    <div>
+                        <div class="temperature">{{ weather.current.temperature }}°F</div>
+                        <div>{{ weather.current.description }}</div>
+                        <div>Feels like {{ weather.current.feels_like }}°F</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="https://openweathermap.org/img/wn/{{ weather.current.icon }}@4x.png" 
+                             alt="Weather" style="width: 100px;">
+                    </div>
+                </div>
+                
+                <div class="weather-details">
+                    <div class="weather-detail">
+                        <div>💧 Humidity</div>
+                        <div>{{ weather.current.humidity }}%</div>
+                    </div>
+                    <div class="weather-detail">
+                        <div>💨 Wind</div>
+                        <div>{{ weather.current.wind_speed }} mph</div>
+                    </div>
+                    <div class="weather-detail">
+                        <div>📊 Pressure</div>
+                        <div>{{ weather.current.pressure }} mb</div>
+                    </div>
+                    <div class="weather-detail">
+                        <div>👁️ Visibility</div>
+                        <div>{{ weather.current.visibility }} km</div>
+                    </div>
+                </div>
+
+                <div class="forecast-hourly">
+                    {% for hour in weather.forecast[:6] %}
+                    <div class="forecast-hour">
+                        <div>{{ hour.datetime.split(' ')[1][:5] }}</div>
+                        <img src="https://openweathermap.org/img/wn/{{ hour.icon }}.png" alt="Weather">
+                        <div>{{ hour.temperature }}°</div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Weather Radar -->
+                <div class="radar-container">
+                    <iframe src="https://embed.windy.com/embed2.html?lat=38.286&lon=-85.825&detailLat=38.286&detailLon=-85.825&width=650&height=450&zoom=10&level=surface&overlay=rain&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1"
+                            title="Weather Radar">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- AI Search Card -->
+            <div class="card search-card">
+                <h2 class="card-title">🔍 Find Movies & Shows</h2>
+                <form action="/search" method="get">
+                    <input type="text" name="q" class="search-box" 
+                           placeholder="Type what you want to watch..." 
+                           value="{{ request.args.get('q', '') }}">
+                    <button type="submit" style="width: 100%; padding: 15px; font-size: 1.2em; background: rgba(255,255,255,0.2); color: white; border: none; border-radius: 10px; cursor: pointer;">
+                        🔍 Search Everything
+                    </button>
+                </form>
+                
+                {% if recent_movies %}
+                <div class="recent-content">
+                    <h3>🎬 Recently Added Movies</h3>
+                    <div class="recent-items">
+                        {% for movie in recent_movies %}
+                        <div class="recent-item">
+                            <strong>{{ movie.title }}</strong> ({{ movie.year }})
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- TV Guide & EPG Card -->
+            <div class="card tv-card">
+                <h2 class="card-title">📺 Live TV Guide</h2>
+                <div class="channels-list">
+                    {% for channel in channels %}
+                    <div class="channel-item">
+                        <strong>{{ channel.name }}</strong>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                {% if epg_data %}
+                <div class="epg-list">
+                    <h3 style="margin: 20px 0 15px 0;">📅 What's On Now</h3>
+                    {% for program in epg_data %}
+                    <div class="epg-item">
+                        <div class="epg-time">{{ program.start[:8] }}</div>
+                        <div class="epg-title">{{ program.title }}</div>
+                        <div class="epg-desc">{{ program.desc[:100] }}...</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- System Status Card -->
+            <div class="card status-card">
+                <h2 class="card-title">⚡ System Status</h2>
+                <div class="status-grid">
+                    {% for service, status in system_status.items() %}
+                    <div class="status-item">
+                        <div class="status-dot {{ 'status-online' if status else 'status-offline' }}"></div>
+                        <div>{{ service.title() }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                {% if recent_shows %}
+                <div class="recent-content">
+                    <h3>📺 Recently Added Shows</h3>
+                    <div class="recent-items">
+                        {% for show in recent_shows %}
+                        <div class="recent-item">
+                            <strong>{{ show.title }}</strong> ({{ show.year }})
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Big Action Buttons -->
+        <div class="big-buttons">
+            <a href="{{ url_for('weather') }}" class="big-button">
+                <span class="button-icon">🌤️</span>
+                <span>Full Weather</span>
+                <small>Radar, Alerts, 7-day Forecast</small>
+            </a>
+
+            <a href="{{ url_for('tv_guide') }}" class="big-button">
+                <span class="button-icon">📺</span>
+                <span>TV Guide</span>
+                <small>Channel Guide & Recording</small>
+            </a>
+
+            <a href="{{ url_for('pseudotv') }}" class="big-button">
+                <span class="button-icon">🎭</span>
+                <span>Movie Channels</span>
+                <small>24/7 Movie & TV Channels</small>
+            </a>
+
+            <a href="{{ url_for('search') }}" class="big-button">
+                <span class="button-icon">🔍</span>
+                <span>Search Everything</span>
+                <small>Find any movie or show</small>
+            </a>
+
+            <a href="{{ jellyfin_url if jellyfin_url else '#' }}" class="big-button" target="_blank">
+                <span class="button-icon">🎥</span>
+                <span>Watch Movies</span>
+                <small>Jellyfin Media Player</small>
+            </a>
+
+            <a href="{{ overseerr_url if overseerr_url else '#' }}" class="big-button" target="_blank">
+                <span class="button-icon">📋</span>
+                <span>Request Movies</span>
+                <small>Request new content</small>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Auto-refresh functionality
+        let refreshTimer = 300; // 5 minutes
+        const timerElement = document.getElementById('refresh-timer');
+
+        function updateTimer() {
+            const minutes = Math.floor(refreshTimer / 60);
+            const seconds = refreshTimer % 60;
+            timerElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            refreshTimer--;
+            
+            if (refreshTimer < 0) {
+                location.reload();
+            }
+        }
+
+        setInterval(updateTimer, 1000);
+
+        // Auto-refresh weather data
+        setInterval(() => {
+            fetch('/api/weather')
+                .then(response => response.json())
+                .then(data => {
+                    // Update weather display without full page reload
+                    console.log('Weather updated:', data);
+                })
+                .catch(error => console.error('Weather update failed:', error));
+        }, 600000); // Every 10 minutes
+
+        // Real-time search suggestions
+        const searchBox = document.querySelector('.search-box');
+        if (searchBox) {
+            searchBox.addEventListener('input', function() {
+                if (this.value.length > 2) {
+                    fetch(`/api/search?q=${encodeURIComponent(this.value)}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            // Could show suggestions dropdown here
+                            console.log('Search results:', data.results);
+                        })
+                        .catch(error => console.error('Search failed:', error));
+                }
+            });
+        }
+
+        // Status monitoring
+        setInterval(() => {
+            fetch('/api/status')
+                .then(response => response.json())
+                .then(data => {
+                    // Update status indicators
+                    Object.keys(data).forEach(service => {
+                        if (service !== 'timestamp') {
+                            const statusDot = document.querySelector(`[data-service="${service}"]`);
+                            if (statusDot) {
+                                statusDot.className = `status-dot ${data[service] ? 'status-online' : 'status-offline'}`;
+                            }
+                        }
+                    });
+                })
+                .catch(error => console.error('Status update failed:', error));
+        }, 30000); // Every 30 seconds
+    </script>
+</body>
+</html>

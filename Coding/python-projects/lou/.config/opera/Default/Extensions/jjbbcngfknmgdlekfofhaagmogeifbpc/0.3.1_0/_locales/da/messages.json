@@ -1,0 +1,5 @@
+{
+   "description": {
+      "message": "Integrerer browseren med JDownloader enten ved at afbryde den indbyggede download manager eller fra højreklik-kontekstmenuen"
+   }
+}

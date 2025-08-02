@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  # Document Analysis API
+  doc-analyzer:
+    build: .
+    ports:
+      - "8090:8000"
+    volumes:
+      - /home/lou/awesome_stack/docs:/app/documents:ro
+      - ./reports:/app/reports
+      - ./cache:/app/cache
+    environment:
+      - OLLAMA_HOST=192.168.122.172:11434
+      - OLLAMA_MODEL=codellama:7b
+      - DOCS_PATH=/app/documents
+      - REPORTS_PATH=/app/reports
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - redis
+
+  # Vector Database for Document Embeddings
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"
+    volumes:
+      - ./qdrant_data:/qdrant/storage
+    restart: unless-stopped
+
+  # Database for Analysis Results
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: doc_analyzer
+      POSTGRES_USER: analyzer
+      POSTGRES_PASSWORD: analyzer_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  # Cache for Analysis Results
+  redis:
+    image: redis:alpine
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  # Web Interface
+  analyzer-ui:
+    build: ./ui
+    ports:
+      - "8091:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8090
+    depends_on:
+      - doc-analyzer
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:

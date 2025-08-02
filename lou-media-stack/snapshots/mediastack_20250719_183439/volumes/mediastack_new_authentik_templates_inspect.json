@@ -1,0 +1,16 @@
+[
+    {
+        "CreatedAt": "2025-07-12T13:11:26-04:00",
+        "Driver": "local",
+        "Labels": {
+            "com.docker.compose.config-hash": "4243c436095dfd87424d4f2da0c37082e9ef784609e609b6086f755381facff0",
+            "com.docker.compose.project": "mediastack_new",
+            "com.docker.compose.version": "2.38.2",
+            "com.docker.compose.volume": "authentik_templates"
+        },
+        "Mountpoint": "/var/lib/docker/volumes/mediastack_new_authentik_templates/_data",
+        "Name": "mediastack_new_authentik_templates",
+        "Options": null,
+        "Scope": "local"
+    }
+]

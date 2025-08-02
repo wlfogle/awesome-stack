@@ -1,0 +1,32 @@
+[Unit]
+Description=ArchForge Pro Real-time System Monitoring Service
+Documentation=https://archforgepro.org
+After=multi-user.target graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+Type=simple
+User=@USER@
+Group=@GROUP@
+ExecStart=@CMAKE_INSTALL_PREFIX@/bin/ArchForgePro --minimized --monitor-only
+Restart=always
+RestartSec=5
+Environment=DISPLAY=:0
+Environment=XDG_RUNTIME_DIR=/run/user/%i
+Environment=QT_QPA_PLATFORM=xcb
+
+# Security settings
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/var/log /tmp
+PrivateTmp=true
+RemoveIPC=true
+
+# Resource limits
+LimitNOFILE=4096
+CPUQuota=10%
+MemoryMax=256M
+
+[Install]
+WantedBy=multi-user.target

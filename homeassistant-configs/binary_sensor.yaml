@@ -1,0 +1,104 @@
+# 🔍 BINARY SENSORS FOR MEDIA STACK CONNECTIVITY
+# ===============================================
+# Monitors service connectivity and health status
+
+# ===============================
+# CONNECTIVITY BINARY SENSORS
+# ===============================
+- platform: template
+  sensors:
+    plex_online:
+      friendly_name: "Plex Server Online"
+      value_template: "{{ not (states('sensor.plex_server_info') == 'Offline') }}"
+      device_class: connectivity
+      icon_template: >
+        {% if is_state('binary_sensor.plex_online', 'on') %}
+          mdi:plex
+        {% else %}
+          mdi:plex-off
+        {% endif %}
+    
+    jellyfin_online:
+      friendly_name: "Jellyfin Server Online"
+      value_template: "{{ not (states('sensor.jellyfin_status') == 'Offline') }}"
+      device_class: connectivity
+      icon_template: >
+        {% if is_state('binary_sensor.jellyfin_online', 'on') %}
+          mdi:jellyfish
+        {% else %}
+          mdi:jellyfish-outline
+        {% endif %}
+    
+    ai_services_online:
+      friendly_name: "AI Services Online"
+      value_template: "{{ not (states('sensor.ai_service_status') == 'Offline') }}"
+      device_class: connectivity
+      icon_template: >
+        {% if is_state('binary_sensor.ai_services_online', 'on') %}
+          mdi:robot
+        {% else %}
+          mdi:robot-off
+        {% endif %}
+
+# ===============================
+# HEALTH STATUS BINARY SENSORS
+# ===============================
+- platform: template
+  sensors:
+    media_stack_healthy:
+      friendly_name: "Media Stack Healthy"
+      value_template: >
+        {% set healthy = states('sensor.media_stack_health') %}
+        {% if '/' in healthy %}
+          {% set current = healthy.split('/')[0] | int %}
+          {% set total = healthy.split('/')[1].split(' ')[0] | int %}
+          {{ current >= (total * 0.75) }}
+        {% else %}
+          false
+        {% endif %}
+      device_class: running
+      icon_template: >
+        {% if is_state('binary_sensor.media_stack_healthy', 'on') %}
+          mdi:check-circle
+        {% else %}
+          mdi:alert-circle
+        {% endif %}
+
+# ===============================
+# SYSTEM PERFORMANCE BINARY SENSORS
+# ===============================
+- platform: template
+  sensors:
+    system_performance_good:
+      friendly_name: "System Performance Good"
+      value_template: >
+        {% set perf = states('sensor.system_performance') %}
+        {{ perf in ['Excellent', 'Good'] }}
+      device_class: running
+      icon_template: >
+        {% set perf = states('sensor.system_performance') %}
+        {% if perf == 'Excellent' %}
+          mdi:speedometer
+        {% elif perf == 'Good' %}
+          mdi:speedometer-medium
+        {% else %}
+          mdi:speedometer-slow
+        {% endif %}
+
+# ===============================
+# NETWORK CONNECTIVITY SENSORS
+# ===============================
+- platform: template
+  sensors:
+    traefik_healthy:
+      friendly_name: "Traefik Load Balancer Healthy"
+      value_template: >
+        {% set routes = states('sensor.traefik_routes') %}
+        {{ routes != '0 routes active' and routes != 'unavailable' and routes != 'unknown' }}
+      device_class: connectivity
+      icon_template: >
+        {% if is_state('binary_sensor.traefik_healthy', 'on') %}
+          mdi:router-network
+        {% else %}
+          mdi:router-network-off
+        {% endif %}

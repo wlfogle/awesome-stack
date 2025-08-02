@@ -1,0 +1,11 @@
+tls:
+  certificates:
+    - certFile: /certs/mediastack.crt
+      keyFile: /certs/mediastack.key
+      stores:
+        - default
+  stores:
+    default:
+      defaultCertificate:
+        certFile: /certs/mediastack.crt
+        keyFile: /certs/mediastack.key

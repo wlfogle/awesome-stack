@@ -1,0 +1,51 @@
+[package]
+name = "originpc-control-center"
+version = "1.0.0"
+edition = "2021"
+authors = ["OriginPC User <user@originpc.com>"]
+description = "Modern GUI control center for OriginPC systems with RGB and fan management"
+license = "MIT"
+repository = "https://github.com/originpc/control-center"
+
+[dependencies]
+# Modern GUI Framework
+iced = { version = "0.13", features = ["tokio", "canvas", "image", "svg"] }
+iced_aw = { version = "0.12", features = ["tabs", "card", "spinner", "color_picker"] }
+
+# Async runtime and utilities
+tokio = { version = "1.0", features = ["full"] }
+tokio-util = "0.7"
+futures = "0.3"
+
+# System monitoring and hardware access
+sysinfo = "0.32"
+nix = "0.29"
+
+# Serialization and configuration
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+
+# Color manipulation and RGB effects
+palette = "0.7"
+colorsys = "0.6"
+
+# Logging and error handling
+tracing = "0.1"
+tracing-subscriber = "0.3"
+anyhow = "1.0"
+thiserror = "1.0"
+
+# File system and platform utilities
+dirs = "5.0"
+notify = "6.1"
+
+# Time and scheduling
+chrono = { version = "0.4", features = ["serde"] }
+
+# Command execution
+which = "6.0"
+
+[target.'cfg(target_os = "linux")'.dependencies]
+# Linux-specific dependencies for hardware access
+libc = "0.2"

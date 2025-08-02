@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Guide - Grandma's Media Center</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #4a90e2 0%, #7b68ee 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .back-button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            border-radius: 15px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .back-button:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .control-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 24px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .control-button:hover, .control-button.active {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .epg-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow-x: auto;
+        }
+        
+        .epg-grid {
+            display: grid;
+            grid-template-columns: 200px repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            min-width: 1000px;
+        }
+        
+        .time-header {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .channel-header {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .channel-logo {
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+        
+        .program-cell {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .program-cell:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.02);
+        }
+        
+        .program-cell.recording {
+            border-left-color: #ff4444;
+        }
+        
+        .program-cell.pseudo-tv {
+            border-left-color: #44ff44;
+        }
+        
+        .program-title {
+            font-weight: bold;
+            font-size: 1em;
+            margin-bottom: 4px;
+        }
+        
+        .program-time {
+            font-size: 0.8em;
+            opacity: 0.8;
+        }
+        
+        .program-desc {
+            font-size: 0.85em;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+        
+        .recording-controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .record-button {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        
+        .record-button:hover {
+            background: #ff6666;
+        }
+        
+        .record-button.stop {
+            background: #666;
+        }
+        
+        .record-button.stop:hover {
+            background: #888;
+        }
+        
+        .channel-filter {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 10px 15px;
+            font-size: 1.1em;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            width: 250px;
+        }
+        
+        .channel-filter::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .error-message {
+            text-align: center;
+            font-size: 1.5em;
+            color: #ffcdd2;
+            background: rgba(244, 67, 54, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .loading {
+            text-align: center;
+            font-size: 1.5em;
+            padding: 40px;
+        }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1em;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 4px;
+            border-radius: 2px;
+        }
+        
+        .legend-color.recording {
+            background: #ff4444;
+        }
+        
+        .legend-color.pseudo-tv {
+            background: #44ff44;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .epg-grid {
+                grid-template-columns: 150px repeat(auto-fit, minmax(150px, 1fr));
+                min-width: 800px;
+            }
+            
+            .program-cell {
+                min-height: 50px;
+                padding: 8px;
+            }
+            
+            .legend {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📺 TV Guide & DVR</h1>
+            <a href="/" class="back-button">🏠 Back to Home</a>
+        </div>
+        
+        <div class="controls">
+            <button class="control-button active" onclick="showAllChannels()">All Channels</button>
+            <button class="control-button" onclick="showOTAChannels()">OTA Channels</button>
+            <button class="control-button" onclick="showIPTVChannels()">IPTV Channels</button>
+            <button class="control-button" onclick="showPseudoTVChannels()">PseudoTV Channels</button>
+            <button class="control-button" onclick="refreshEPG()">🔄 Refresh</button>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color recording"></div>
+                <span>Recording/Scheduled</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color pseudo-tv"></div>
+                <span>PseudoTV Channel</span>
+            </div>
+        </div>
+        
+        <input type="text" class="channel-filter" placeholder="Filter channels..." onkeyup="filterChannels(this.value)">
+        
+        {% if error %}
+            <div class="error-message">
+                ⚠️ TV Guide is currently unavailable: {{ error }}
+            </div>
+        {% elif loading %}
+            <div class="loading">
+                📺 Loading TV Guide...
+            </div>
+        {% else %}
+            <div class="epg-container">
+                <div class="epg-grid" id="epg-grid">
+                    <!-- Time headers -->
+                    <div class="time-header">Channel</div>
+                    {% for time_slot in time_slots %}
+                        <div class="time-header">{{ time_slot }}</div>
+                    {% endfor %}
+                    
+                    <!-- Channel rows -->
+                    {% for channel in channels %}
+                        <div class="channel-header" data-channel-type="{{ channel.type }}">
+                            {% if channel.logo %}
+                                <img src="{{ channel.logo }}" alt="{{ channel.name }}" class="channel-logo">
+                            {% endif %}
+                            <div>
+                                <div>{{ channel.name }}</div>
+                                <small>{{ channel.number }}</small>
+                            </div>
+                        </div>
+                        
+                        {% for program in channel.programs %}
+                            <div class="program-cell {{ 'recording' if program.recording else '' }} {{ 'pseudo-tv' if channel.type == 'pseudotv' else '' }}" 
+                                 onclick="showProgramDetails('{{ program.id }}', '{{ channel.id }}')">
+                                <div class="program-title">{{ program.title }}</div>
+                                <div class="program-time">{{ program.start_time }} - {{ program.end_time }}</div>
+                                {% if program.description %}
+                                    <div class="program-desc">{{ program.description[:100] }}{% if program.description|length > 100 %}...{% endif %}</div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        
+        <div class="recording-controls">
+            <h3>Quick Recording Controls</h3>
+            <button class="record-button" onclick="recordCurrent()">🔴 Record Current Program</button>
+            <button class="record-button" onclick="showScheduledRecordings()">📅 View Scheduled</button>
+            <button class="record-button stop" onclick="stopAllRecordings()">⏹️ Stop All</button>
+        </div>
+    </div>
+
+    <script>
+        function showAllChannels() {
+            document.querySelectorAll('.control-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            // Show all channel rows
+            document.querySelectorAll('[data-channel-type]').forEach(row => {
+                row.style.display = 'flex';
+            });
+        }
+        
+        function showOTAChannels() {
+            document.querySelectorAll('.control-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            // Show only OTA channels
+            document.querySelectorAll('[data-channel-type]').forEach(row => {
+                row.style.display = row.dataset.channelType === 'ota' ? 'flex' : 'none';
+            });
+        }
+        
+        function showIPTVChannels() {
+            document.querySelectorAll('.control-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            // Show only IPTV channels
+            document.querySelectorAll('[data-channel-type]').forEach(row => {
+                row.style.display = row.dataset.channelType === 'iptv' ? 'flex' : 'none';
+            });
+        }
+        
+        function showPseudoTVChannels() {
+            document.querySelectorAll('.control-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            // Show only PseudoTV channels
+            document.querySelectorAll('[data-channel-type]').forEach(row => {
+                row.style.display = row.dataset.channelType === 'pseudotv' ? 'flex' : 'none';
+            });
+        }
+        
+        function filterChannels(query) {
+            const channels = document.querySelectorAll('[data-channel-type]');
+            channels.forEach(row => {
+                const channelName = row.textContent.toLowerCase();
+                if (channelName.includes(query.toLowerCase())) {
+                    row.style.display = 'flex';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+        
+        function refreshEPG() {
+            location.reload();
+        }
+        
+        function showProgramDetails(programId, channelId) {
+            // This would typically open a modal or navigate to a details page
+            alert(`Program ID: ${programId}, Channel ID: ${channelId}\nRecording options would be shown here.`);
+        }
+        
+        function recordCurrent() {
+            alert("Recording current program... (This would connect to your DVR system)");
+        }
+        
+        function showScheduledRecordings() {
+            alert("Scheduled recordings would be displayed here.");
+        }
+        
+        function stopAllRecordings() {
+            if (confirm("Are you sure you want to stop all active recordings?")) {
+                alert("All recordings stopped.");
+            }
+        }
+    </script>
+</body>
+</html>

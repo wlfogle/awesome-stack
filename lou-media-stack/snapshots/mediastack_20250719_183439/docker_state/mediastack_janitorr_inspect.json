@@ -1,0 +1,313 @@
+[
+    {
+        "Id": "4b3e9c27ed4d3e44b34b56c4ff50e9093dc8af76f9b24dd8a96a18702118ac2c",
+        "Created": "2025-07-17T16:17:52.110378512Z",
+        "Path": "java",
+        "Args": [
+            "-Dspring.config.additional-location=optional:file:/config/application.yaml,optional:file:/workspace/application.yaml,optional:file:/workspace/application.yml",
+            "-Dsun.jnu.encoding=UTF-8",
+            "-Dfile.encoding=UTF-8",
+            "-Xms256m",
+            "-cp",
+            "@/app/jib-classpath-file",
+            "com.github.schaka.janitorr.JanitorrApplicationKt"
+        ],
+        "State": {
+            "Status": "restarting",
+            "Running": true,
+            "Paused": false,
+            "Restarting": true,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 1,
+            "Error": "",
+            "StartedAt": "2025-07-19T22:34:27.565966408Z",
+            "FinishedAt": "2025-07-19T22:34:28.954329667Z"
+        },
+        "Image": "sha256:f8364bd27509354d8d2d918a436e3a59cb975e7fc6bb6b203b8037be4b23b2c8",
+        "ResolvConfPath": "/var/lib/docker/containers/4b3e9c27ed4d3e44b34b56c4ff50e9093dc8af76f9b24dd8a96a18702118ac2c/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/4b3e9c27ed4d3e44b34b56c4ff50e9093dc8af76f9b24dd8a96a18702118ac2c/hostname",
+        "HostsPath": "/var/lib/docker/containers/4b3e9c27ed4d3e44b34b56c4ff50e9093dc8af76f9b24dd8a96a18702118ac2c/hosts",
+        "LogPath": "/var/lib/docker/containers/4b3e9c27ed4d3e44b34b56c4ff50e9093dc8af76f9b24dd8a96a18702118ac2c/4b3e9c27ed4d3e44b34b56c4ff50e9093dc8af76f9b24dd8a96a18702118ac2c-json.log",
+        "Name": "/mediastack_janitorr",
+        "RestartCount": 80,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/mnt/sda1/config/janitorr/config:/config:rw",
+                "/mnt/sda1/media:/media:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "config_mediastack",
+            "PortBindings": {
+                "8070/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "8070"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "unless-stopped",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap",
+                "/sys/devices/system/cpu/cpu0/thermal_throttle",
+                "/sys/devices/system/cpu/cpu1/thermal_throttle",
+                "/sys/devices/system/cpu/cpu2/thermal_throttle",
+                "/sys/devices/system/cpu/cpu3/thermal_throttle",
+                "/sys/devices/system/cpu/cpu4/thermal_throttle",
+                "/sys/devices/system/cpu/cpu5/thermal_throttle",
+                "/sys/devices/system/cpu/cpu6/thermal_throttle",
+                "/sys/devices/system/cpu/cpu7/thermal_throttle",
+                "/sys/devices/system/cpu/cpu8/thermal_throttle",
+                "/sys/devices/system/cpu/cpu9/thermal_throttle",
+                "/sys/devices/system/cpu/cpu10/thermal_throttle",
+                "/sys/devices/system/cpu/cpu11/thermal_throttle",
+                "/sys/devices/system/cpu/cpu12/thermal_throttle",
+                "/sys/devices/system/cpu/cpu13/thermal_throttle",
+                "/sys/devices/system/cpu/cpu14/thermal_throttle",
+                "/sys/devices/system/cpu/cpu15/thermal_throttle",
+                "/sys/devices/system/cpu/cpu16/thermal_throttle",
+                "/sys/devices/system/cpu/cpu17/thermal_throttle",
+                "/sys/devices/system/cpu/cpu18/thermal_throttle",
+                "/sys/devices/system/cpu/cpu19/thermal_throttle",
+                "/sys/devices/system/cpu/cpu20/thermal_throttle",
+                "/sys/devices/system/cpu/cpu21/thermal_throttle",
+                "/sys/devices/system/cpu/cpu22/thermal_throttle",
+                "/sys/devices/system/cpu/cpu23/thermal_throttle",
+                "/sys/devices/system/cpu/cpu24/thermal_throttle",
+                "/sys/devices/system/cpu/cpu25/thermal_throttle",
+                "/sys/devices/system/cpu/cpu26/thermal_throttle",
+                "/sys/devices/system/cpu/cpu27/thermal_throttle",
+                "/sys/devices/system/cpu/cpu28/thermal_throttle",
+                "/sys/devices/system/cpu/cpu29/thermal_throttle",
+                "/sys/devices/system/cpu/cpu30/thermal_throttle",
+                "/sys/devices/system/cpu/cpu31/thermal_throttle"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "4b3e9c27ed4d3e44b34b56c4ff50e9093dc8af76f9b24dd8a96a18702118ac2c",
+                "LowerDir": "/var/lib/docker/overlay2/f4fe13953304e86212d9772909f64f671ef5f9ecdecd5f95fc49d64de9d465b6-init/diff:/var/lib/docker/overlay2/250475a0d7710e6be1910627aff0812ec955477a51495305dd8f1bc5ee671f9f/diff:/var/lib/docker/overlay2/25def775adb51720f73006cbfa3c1cc4150182d2f6f9a7f1c538239a3ec1208e/diff:/var/lib/docker/overlay2/1f1284b1dd460eb64f979502d4acbf6d8a235176634bd66c87d608afd01777ff/diff:/var/lib/docker/overlay2/83fb5f2eeb5b87327adbffdc93f5db20d0f4948f54e83be2488326ff9ddeb5cd/diff:/var/lib/docker/overlay2/e65c54892b306bde6cee05045a6442aec19b426bac20916ac0c9b8829163457c/diff:/var/lib/docker/overlay2/a1cc3bcc978fb7599b4a13f727a24e44178543850afd0c10ad835976e363ae91/diff:/var/lib/docker/overlay2/f332ef1e2da81c444b2fca636b67fdb4fc068f79e6e2ad8217d93f488eba69bb/diff:/var/lib/docker/overlay2/6e5c3da052fe98839f7f122ce1e15d46e630a98583abd5bb0a3f951f6a2e3f75/diff:/var/lib/docker/overlay2/04ddef440e3564a64ff676068fad8a5c159fba6de8e7d31273e2c0502d9b11ef/diff",
+                "MergedDir": "/var/lib/docker/overlay2/f4fe13953304e86212d9772909f64f671ef5f9ecdecd5f95fc49d64de9d465b6/merged",
+                "UpperDir": "/var/lib/docker/overlay2/f4fe13953304e86212d9772909f64f671ef5f9ecdecd5f95fc49d64de9d465b6/diff",
+                "WorkDir": "/var/lib/docker/overlay2/f4fe13953304e86212d9772909f64f671ef5f9ecdecd5f95fc49d64de9d465b6/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/mnt/sda1/config/janitorr/config",
+                "Destination": "/config",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/mnt/sda1/media",
+                "Destination": "/media",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "4b3e9c27ed4d",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "8070/tcp": {},
+                "8978/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PUID=1000",
+                "PGID=1000",
+                "TZ=America/New_York",
+                "PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "LANGUAGE=en_US:en",
+                "JAVA_HOME=/opt/java/openjdk",
+                "JAVA_VERSION=jdk-23.0.2+7",
+                "LC_ALL=en_US.UTF-8",
+                "LANG=en_US.UTF-8"
+            ],
+            "Cmd": null,
+            "Image": "ghcr.io/schaka/janitorr:latest",
+            "Volumes": {
+                "/config": {}
+            },
+            "WorkingDir": "",
+            "Entrypoint": [
+                "java",
+                "-Dspring.config.additional-location=optional:file:/config/application.yaml,optional:file:/workspace/application.yaml,optional:file:/workspace/application.yml",
+                "-Dsun.jnu.encoding=UTF-8",
+                "-Dfile.encoding=UTF-8",
+                "-Xms256m",
+                "-cp",
+                "@/app/jib-classpath-file",
+                "com.github.schaka.janitorr.JanitorrApplicationKt"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "0b45dd1ae76b96f4afd8f4396a79b36bf47910fed5e59e5083c6ead86dad3643",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:f8364bd27509354d8d2d918a436e3a59cb975e7fc6bb6b203b8037be4b23b2c8",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "config",
+                "com.docker.compose.project.config_files": "/home/lou/mediastack-new/config/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/home/lou/mediastack-new/config",
+                "com.docker.compose.service": "janitorr",
+                "com.docker.compose.version": "2.38.2",
+                "org.opencontainers.image.authors": "Schaka <schaka@github.com>",
+                "org.opencontainers.image.created": "2025-06-17T10:30:02.779+0000",
+                "org.opencontainers.image.description": "Cleans up your media library.",
+                "org.opencontainers.image.ref.name": "ubuntu",
+                "org.opencontainers.image.revision": "144137e69ebd7221c7beb6857c60a5aef43f4b21",
+                "org.opencontainers.image.source": "/home/runner/work/janitorr/janitorr",
+                "org.opencontainers.image.title": "janitorr",
+                "org.opencontainers.image.version": "develop"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "",
+            "SandboxKey": "",
+            "Ports": {},
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "config_mediastack": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "mediastack_janitorr",
+                        "janitorr"
+                    ],
+                    "MacAddress": "",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "475ece92575a4af78e9b3a51deb5b559680383eba9ad48dbd3530f2b9e52b2ce",
+                    "EndpointID": "",
+                    "Gateway": "",
+                    "IPAddress": "",
+                    "IPPrefixLen": 0,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "mediastack_janitorr",
+                        "janitorr",
+                        "4b3e9c27ed4d"
+                    ]
+                }
+            }
+        }
+    }
+]

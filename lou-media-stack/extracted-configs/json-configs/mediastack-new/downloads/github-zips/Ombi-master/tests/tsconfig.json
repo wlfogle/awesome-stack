@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "esModuleInterop": true,
+        "lib": ["es2018", "dom"],
+        "types": ["cypress", "cypress-wait-until", "cypress-image-snapshot", "cypress-real-events", "@bahmutov/cy-api", "node"],
+        "baseUrl": "./cypress",
+        "paths": {
+            "@/*": ["./*"]
+        }
+    },
+    "include": [
+        "**/*.ts",
+        "support/*.ts"
+    ]
+}

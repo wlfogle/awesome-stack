@@ -1,0 +1,12 @@
+{
+  "timestamp": "2025-06-20T18:29:17.661982",
+  "library_path": "/run/media/lou/Data/Lou Fogle/Lou's Library",
+  "settings": {
+    "dry_run": true,
+    "use_ai_parsing": true,
+    "use_external_lookup": true,
+    "backup_changes": true
+  },
+  "changes": [],
+  "errors": []
+}

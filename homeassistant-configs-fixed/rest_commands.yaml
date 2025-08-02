@@ -1,0 +1,72 @@
+# 🚀 FIXED REST COMMANDS FOR MEDIA STACK
+# ===================================================
+# Corrected methods and configurations for compatibility
+
+# ===============================
+# PLEX MEDIA SERVER COMMANDS
+# ===============================
+check_plex_status:
+  url: "http://192.168.122.230:32400/status/sessions"
+  method: GET
+  headers:
+    X-Plex-Token: "82VPxMS_fCnqpV6N6jUa"
+  timeout: 10
+
+plex_scan_library:
+  url: "http://192.168.122.230:32400/library/sections/all/refresh"
+  method: GET
+  headers:
+    X-Plex-Token: "82VPxMS_fCnqpV6N6jUa"
+  timeout: 30
+
+# ===============================
+# JELLYFIN MEDIA SERVER COMMANDS
+# ===============================
+check_jellyfin_status:
+  url: "http://192.168.122.231:8096/System/Info"
+  method: GET
+  timeout: 10
+
+jellyfin_scan_library:
+  url: "http://192.168.122.231:8096/Library/Refresh"
+  method: POST
+  headers:
+    Content-Type: "application/json"
+  timeout: 30
+
+# ===============================
+# AI SERVICES COMMANDS (OLLAMA)
+# ===============================
+check_ollama:
+  url: "http://192.168.122.172:11434/api/version"
+  method: GET
+  timeout: 10
+
+ollama_list_models:
+  url: "http://192.168.122.172:11434/api/tags"
+  method: GET
+  timeout: 15
+
+# ===============================
+# TRAEFIK LOAD BALANCER COMMANDS
+# ===============================
+check_traefik:
+  url: "http://192.168.122.103:9080/api/overview"
+  method: GET
+  timeout: 10
+
+# ===============================
+# SYSTEM HEALTH COMMANDS
+# ===============================
+health_check_all:
+  url: "http://192.168.122.9:8080/health-check"
+  method: GET
+  timeout: 15
+
+# ===============================
+# MONITORING COMMANDS
+# ===============================
+check_system_resources:
+  url: "http://192.168.122.103:9080/api/overview"
+  method: GET
+  timeout: 10

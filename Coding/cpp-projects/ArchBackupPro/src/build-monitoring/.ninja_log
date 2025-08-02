@@ -1,0 +1,4 @@
+# ninja log v6
+0	244	1750886304587986325	CMakeFiles/archbackuppro-monitoring-daemon.dir/run/media/lou/Data/Download/lou/Coding/ArchBackupPro/src/monitoring_daemon.cpp.o	62d74d868d79b681
+0	658	1750886304587125421	CMakeFiles/archbackuppro-monitoring-daemon.dir/run/media/lou/Data/Download/lou/Coding/ArchBackupPro/src/monitoringclass.cpp.o	fd9ab7af5766993c
+658	688	1750886305245140362	bin/archbackuppro-monitoring-daemon	c05ce61886d4b2ff

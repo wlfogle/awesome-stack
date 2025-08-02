@@ -1,0 +1,33 @@
+{
+  "enabled": false,
+  "missing": false,
+  "upgrade": false,
+  "skip_future_releases": false,
+  "process_no_release_dates": false,
+  "max_missing_movies": 2,
+  "max_upgrade_movies": 2,
+  "minimum_cutoff_percentage": 95,
+  "season_pack_priority": false,
+  "upgrade_profile_filter": "",
+  "monitored_only": true,
+  "dry_run": false,
+  "instances": [
+    {
+      "name": "Default",
+      "address": "http://localhost:7878",
+      "api_key": "",
+      "api_timeout": 120,
+      "state_management_mode": "custom",
+      "state_management_hours": 168
+    }
+  ],
+  "hunt_missing_movies": 1,
+  "hunt_upgrade_movies": 0,
+  "sleep_duration": 900,
+  "tag_processed_items": true,
+  "custom_tags": {
+    "missing": "huntarr-missing",
+    "upgrade": "huntarr-upgrade"
+  },
+  "hourly_cap": 20
+}

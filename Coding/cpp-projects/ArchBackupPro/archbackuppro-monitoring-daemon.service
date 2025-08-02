@@ -1,0 +1,32 @@
+[Unit]
+Description=ArchBackupPro Real-time Monitoring Daemon (C++)
+After=network.target
+Wants=network.target
+
+[Service]
+Type=forking
+User=root
+Group=root
+ExecStart=/usr/local/bin/archbackuppro-monitoring-daemon --daemon
+ExecStop=/bin/kill -TERM $MAINPID
+PIDFile=/run/archbackuppro/monitor.pid
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=read-only
+ProtectSystem=strict
+ReadWritePaths=/var/log/archbackuppro /var/lib/archbackuppro
+RuntimeDirectory=archbackuppro
+RuntimeDirectoryMode=0755
+
+# Resource limits
+MemoryMax=256M
+CPUQuota=25%
+
+[Install]
+WantedBy=multi-user.target

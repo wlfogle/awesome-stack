@@ -1,0 +1,14 @@
+{
+   "description": {
+      "message": "Translate selected or entered text"
+   },
+   "description_hotkey": {
+      "message": "Translate selected text"
+   },
+   "description_sidebar": {
+      "message": "Translate entered text"
+   },
+   "locale": {
+      "message": "en"
+   }
+}

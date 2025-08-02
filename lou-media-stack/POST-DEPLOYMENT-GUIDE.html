@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lou's Media Stack - Post-Deployment Configuration Guide</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #0f1419;
+            color: #e6e6e6;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #00d4aa;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #8cc8ff;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+        
+        .category {
+            margin-bottom: 40px;
+            background-color: #1a1f2e;
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid #2d3748;
+        }
+        
+        .category h2 {
+            color: #00d4aa;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #00d4aa;
+            padding-bottom: 10px;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .service {
+            background-color: #2d3748;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #4a5568;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .service:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 212, 170, 0.2);
+        }
+        
+        .service h3 {
+            color: #8cc8ff;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .service-url {
+            color: #00d4aa;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            font-family: monospace;
+        }
+        
+        .config-steps {
+            margin-top: 15px;
+        }
+        
+        .config-steps h4 {
+            color: #ffd700;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .config-steps ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .config-steps li {
+            margin-bottom: 8px;
+            color: #e6e6e6;
+        }
+        
+        .priority {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .priority.critical {
+            background-color: #e53e3e;
+            color: white;
+        }
+        
+        .priority.high {
+            background-color: #dd6b20;
+            color: white;
+        }
+        
+        .priority.medium {
+            background-color: #38a169;
+            color: white;
+        }
+        
+        .priority.low {
+            background-color: #3182ce;
+            color: white;
+        }
+        
+        .note {
+            background-color: #2a4365;
+            border-left: 4px solid #8cc8ff;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .note h4 {
+            color: #8cc8ff;
+            margin-top: 0;
+        }
+        
+        .api-key {
+            background-color: #744210;
+            color: #ffd700;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #4a5568;
+            color: #a0aec0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 Lou's Media Stack</h1>
+        <p class="subtitle">Post-Deployment Configuration Guide</p>
+        
+        <div class="note">
+            <h4>📋 Important Note</h4>
+            <p>This guide covers ONLY the services that require manual configuration after deployment. Services that work out-of-the-box are not listed here. Complete these configurations in the order presented for best results.</p>
+        </div>
+
+        <div class="category">
+            <h2>🔐 Critical Infrastructure</h2>
+            <div class="service-grid">
+                <div class="service">
+                    <span class="priority critical">CRITICAL</span>
+                    <h3>Traefik</h3>
+                    <div class="service-url">https://traefik.${DOMAIN}</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Verify SSL certificates are generated correctly</li>
+                            <li>Check dashboard access and authentication</li>
+                            <li>Confirm all service routing is working</li>
+                            <li>Review security headers and middleware</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service">
+                    <span class="priority high">HIGH</span>
+                    <h3>Gluetun VPN</h3>
+                    <div class="service-url">Container: mediastack-gluetun</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Verify VPN connection is active</li>
+                            <li>Check that download clients are routing through VPN</li>
+                            <li>Test IP address leak protection</li>
+                            <li>Configure kill switch settings</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>🎭 Media Servers</h2>
+            <div class="service-grid">
+                <div class="service">
+                    <span class="priority critical">CRITICAL</span>
+                    <h3>Plex Media Server</h3>
+                    <div class="service-url">https://plex.${DOMAIN}</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Claim server with existing <span class="api-key">PLEX_TOKEN</span></li>
+                            <li>Add media libraries (Movies, TV Shows, Music)</li>
+                            <li>Configure transcoding settings</li>
+                            <li>Set up remote access and port forwarding</li>
+                            <li>Configure user accounts and sharing</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service">
+                    <span class="priority high">HIGH</span>
+                    <h3>Jellyfin</h3>
+                    <div class="service-url">https://jellyfin.${DOMAIN}</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Run initial setup wizard</li>
+                            <li>Create admin account</li>
+                            <li>Add media libraries</li>
+                            <li>Configure hardware acceleration (if available)</li>
+                            <li>Set up user profiles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>📥 Download Management</h2>
+            <div class="service-grid">
+                <div class="service">
+                    <span class="priority high">HIGH</span>
+                    <h3>Jackett</h3>
+                    <div class="service-url">https://jackett.${DOMAIN}</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Add torrent indexers (trackers)</li>
+                            <li>Configure indexer credentials</li>
+                            <li>Test indexer connectivity</li>
+                            <li>Copy API key for *arr services</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service">
+                    <span class="priority medium">MEDIUM</span>
+                    <h3>Deluge</h3>
+                    <div class="service-url">https://deluge.${DOMAIN}</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Connect to deluge daemon</li>
+                            <li>Configure download paths</li>
+                            <li>Set up bandwidth limits</li>
+                            <li>Configure plugins (if needed)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>🎯 *arr Services (Automation)</h2>
+            <div class="service-grid">
+                <div class="service">
+                    <span class="priority high">HIGH</span>
+                    <h3>Sonarr (TV Shows)</h3>
+                    <div class="service-url">https://sonarr.${DOMAIN}</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Add download client (Deluge)</li>
+                            <li>Configure Jackett indexers</li>
+                            <li>Set up root folders for TV shows</li>
+                            <li>Configure quality profiles</li>
+                            <li>Test connections and add series</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service">
+                    <span class="priority high">HIGH</span>
+                    <h3>Radarr (Movies)</h3>
+                    <div class="service-url">https://radarr.${DOMAIN}</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Add download client (Deluge)</li>
+                            <li>Configure Jackett indexers</li>
+                            <li>Set up root folders for movies</li>
+                            <li>Configure quality profiles</li>
+                            <li>Test connections and add movies</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service">
+                    <span class="priority medium">MEDIUM</span>
+                    <h3>Lidarr (Music)</h3>
+                    <div class="service-url">https://lidarr.${DOMAIN}</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Add download client (Deluge)</li>
+                            <li>Configure music indexers</li>
+                            <li>Set up root folders for music</li>
+                            <li>Configure quality profiles</li>
+                            <li>Add artists and albums</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service">
+                    <span class="priority medium">MEDIUM</span>
+                    <h3>Readarr (Books)</h3>
+                    <div class="service-url">https://readarr.${DOMAIN}</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Add download client (Deluge)</li>
+                            <li>Configure book indexers</li>
+                            <li>Set up root folders for books</li>
+                            <li>Configure quality profiles</li>
+                            <li>Add authors and books</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service">
+                    <span class="priority medium">MEDIUM</span>
+                    <h3>Bazarr (Subtitles)</h3>
+                    <div class="service-url">https://bazarr.${DOMAIN}</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Connect to Sonarr and Radarr</li>
+                            <li>Configure subtitle providers</li>
+                            <li>Set up language preferences</li>
+                            <li>Configure subtitle search settings</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>🎫 Request Management</h2>
+            <div class="service-grid">
+                <div class="service">
+                    <span class="priority high">HIGH</span>
+                    <h3>Overseerr</h3>
+                    <div class="service-url">https://overseerr.${DOMAIN} or https://requests.${DOMAIN}</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Connect to Plex server</li>
+                            <li>Configure Sonarr and Radarr connections</li>
+                            <li>Set up user permissions</li>
+                            <li>Configure request approval workflow</li>
+                            <li>Test request functionality</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service">
+                    <span class="priority medium">MEDIUM</span>
+                    <h3>Jellyseerr</h3>
+                    <div class="service-url">https://jellyseerr.${DOMAIN}</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Connect to Jellyfin server</li>
+                            <li>Configure Sonarr and Radarr connections</li>
+                            <li>Set up user permissions</li>
+                            <li>Configure request approval workflow</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>📺 Live TV & Recording</h2>
+            <div class="service-grid">
+                <div class="service">
+                    <span class="priority medium">MEDIUM</span>
+                    <h3>TVHeadend</h3>
+                    <div class="service-url">https://tv.${DOMAIN}</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Configure TV adapters and tuners</li>
+                            <li>Set up channel scanning</li>
+                            <li>Configure recording profiles</li>
+                            <li>Set up EPG (Electronic Program Guide)</li>
+                            <li>Configure user access and permissions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>📊 Monitoring & Analytics</h2>
+            <div class="service-grid">
+                <div class="service">
+                    <span class="priority medium">MEDIUM</span>
+                    <h3>Tautulli</h3>
+                    <div class="service-url">https://tautulli.${DOMAIN}</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Connect to Plex server</li>
+                            <li>Configure notification settings</li>
+                            <li>Set up user monitoring</li>
+                            <li>Configure custom scripts (optional)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>🌤️ Weather Services</h2>
+            <div class="service-grid">
+                <div class="service">
+                    <span class="priority low">LOW</span>
+                    <h3>Weather Dashboard</h3>
+                    <div class="service-url">https://radar.${DOMAIN}</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Obtain OpenWeatherMap API key</li>
+                            <li>Configure <span class="api-key">OPENWEATHER_API_KEY</span> in .env</li>
+                            <li>Set <span class="api-key">WEATHER_CITY</span> and <span class="api-key">WEATHER_COUNTRY_CODE</span></li>
+                            <li>Test weather data display</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service">
+                    <span class="priority low">LOW</span>
+                    <h3>WeeWX Weather Station</h3>
+                    <div class="service-url">https://weather.${DOMAIN}</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Configure weather station hardware (if available)</li>
+                            <li>Set up weather data collection</li>
+                            <li>Configure web interface</li>
+                            <li>Set up data logging and reports</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>🛠️ Utility Services</h2>
+            <div class="service-grid">
+                <div class="service">
+                    <span class="priority medium">MEDIUM</span>
+                    <h3>Recyclarr</h3>
+                    <div class="service-url">Container: mediastack-recyclarr</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Configure API connections to *arr services</li>
+                            <li>Set up custom formats and quality profiles</li>
+                            <li>Configure sync schedules</li>
+                            <li>Test profile synchronization</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service">
+                    <span class="priority low">LOW</span>
+                    <h3>FileBot</h3>
+                    <div class="service-url">Container: mediastack-filebot</div>
+                    <div class="config-steps">
+                        <h4>Configuration Required:</h4>
+                        <ul>
+                            <li>Configure renaming patterns</li>
+                            <li>Set up file organization rules</li>
+                            <li>Configure license key (if available)</li>
+                            <li>Test file processing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <h4>🎯 Quick Start Recommendation</h4>
+            <p><strong>For your 99-year-old grandmother's ease of use, configure services in this order:</strong></p>
+            <ol>
+                <li><strong>Traefik</strong> - Ensure SSL and routing works</li>
+                <li><strong>Plex</strong> - Set up media libraries</li>
+                <li><strong>Jackett</strong> - Add a few reliable indexers</li>
+                <li><strong>Deluge</strong> - Basic download client setup</li>
+                <li><strong>Sonarr & Radarr</strong> - Connect everything for automation</li>
+                <li><strong>Overseerr</strong> - Simple request interface</li>
+                <li><strong>Heimdall Dashboard</strong> - One-click access to everything</li>
+            </ol>
+            <p>Once these core services are working, grandmother can easily request shows/movies through Overseerr, and everything will be automatically downloaded and added to Plex!</p>
+        </div>
+
+        <div class="footer">
+            <p>📚 Generated from Lou's Media Stack Configuration</p>
+            <p>Complete these configurations after running <code>docker-compose up -d</code></p>
+        </div>
+    </div>
+</body>
+</html>

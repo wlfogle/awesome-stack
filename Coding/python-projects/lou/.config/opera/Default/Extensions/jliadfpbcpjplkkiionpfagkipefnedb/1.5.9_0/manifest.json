@@ -1,0 +1,33 @@
+{
+   "author": "Ludwig VASSEUR",
+   "background": {
+      "persistent": true,
+      "scripts": [ "js/background.js" ]
+   },
+   "browser_action": {
+      "default_icon": "img/icon128.png",
+      "default_popup": "view/popup.html"
+   },
+   "content_scripts": [ {
+      "js": [ "js/parser.js" ],
+      "matches": [ "http://*/*", "https://*/*" ]
+   } ],
+   "default_locale": "en",
+   "description": "__MSG_description__",
+   "developer": {
+      "name": "xtnetwork"
+   },
+   "homepage_url": "https://real-debrid.com/",
+   "icons": {
+      "128": "img/icon128.png",
+      "16": "img/icon16.png",
+      "32": "img/icon32.png",
+      "48": "img/icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA36VrxZ+5hNMN7JPqKvUxJWF8QV47ofgRylWRtM4BslOrMcydu/YNEEUvF0p9sfj8gQyV9IcB++ZM/YEH8OhDIB8lC0H2nh9JOdBnAmXiRkUejnMs7FZkLuNYasgHmZnx3hGLP8eDGXBmOTd7qTku3O1f9/HlvMCdSVnY0BSW2ybi3dKcBvm2eth9D3T1Jxk4bvaaBGGkaQZ6fsF/kqteLIDvp+I34B/r+2zWKYHzjjaUKcZZ24a1OSLFQLvCiLi/T4Eq6aVeRCjMmkZqdwSVXKaIGajFLwFHUY1hsmRRpjPri//bxEil3ndTmBiccKfaAmAPqNCRicCI57bf4tvAwwIDAQAB",
+   "manifest_version": 2,
+   "name": "Real-Debrid extension",
+   "permissions": [ "\u003Call_urls>", "tabs", "activeTab", "clipboardWrite", "contextMenus", "storage", "notifications" ],
+   "update_url": "https://extension-updates.opera.com/api/omaha/update/",
+   "version": "1.5.9"
+}

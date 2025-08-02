@@ -1,0 +1,73 @@
+app-id: org.originpc.ControlCenter
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: originpc-control-center
+finish-args:
+  # X11 + Wayland access
+  - --share=ipc
+  - --socket=x11
+  - --socket=wayland
+  # Hardware access for RGB control
+  - --device=all
+  # System monitoring capabilities
+  - --system-talk-name=org.freedesktop.login1
+  - --system-talk-name=org.freedesktop.UPower
+  - --system-talk-name=org.freedesktop.thermald
+  # Allow notification
+  - --talk-name=org.freedesktop.Notifications
+  # Allow dbus communication with system services
+  - --system-talk-name=org.freedesktop.NetworkManager
+  # Filesystem access for configuration
+  - --filesystem=xdg-config/enhanced-originpc-control:create
+  - --filesystem=home/.config/enhanced-originpc-control:create
+  # Access for system monitoring tools
+  - --filesystem=/proc/acpi:ro
+  - --filesystem=/sys/class/power_supply:ro
+  - --filesystem=/sys/class/hwmon:ro
+  - --filesystem=/sys/devices:ro
+  # Allow persistent background operation
+  - --persist=.config/enhanced-originpc-control
+
+modules:
+  # Python dependencies
+  - name: python-pip-deps
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} PyQt5 psutil
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/P/PyQt5/PyQt5-5.15.10.tar.gz
+        sha256: d46b7804b1b10a4ff91753f8113e5b5580d2b4462f3226288e2d84497334898a
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/p/psutil/psutil-5.9.8.tar.gz
+        sha256: 6be126e3225486dff286a8fb9a06246a5253f4c7c53b475ea5f5ac934e64194c
+
+  - name: originpc-control-center
+    buildsystem: simple
+    build-commands:
+      # Create directories
+      - mkdir -p ${FLATPAK_DEST}/bin
+      - mkdir -p ${FLATPAK_DEST}/share/applications
+      - mkdir -p ${FLATPAK_DEST}/share/originpc-control/src
+      
+      # Install all Python source files
+      - install -Dm755 enhanced-professional-control-center.py ${FLATPAK_DEST}/bin/originpc-control-center
+      - install -Dm644 ai_effects_engine.py ${FLATPAK_DEST}/share/originpc-control/src/
+      - install -Dm644 core_system.py ${FLATPAK_DEST}/share/originpc-control/src/
+      - install -Dm644 hardware_optimizations.py ${FLATPAK_DEST}/share/originpc-control/src/
+      - install -Dm644 optimization_classes.py ${FLATPAK_DEST}/share/originpc-control/src/
+      - install -Dm644 system_intelligence.py ${FLATPAK_DEST}/share/originpc-control/src/
+      - install -Dm644 gentle-rgb-clear.py ${FLATPAK_DEST}/share/originpc-control/src/
+      - install -Dm644 lid-monitor-daemon.py ${FLATPAK_DEST}/share/originpc-control/src/
+      - install -Dm644 originpc-rgb-fix.py ${FLATPAK_DEST}/share/originpc-control/src/
+      
+      # Install desktop file
+      - install -Dm644 originpc-enhanced-control.desktop ${FLATPAK_DEST}/share/applications/org.originpc.ControlCenter.desktop
+      
+    sources:
+      - type: dir
+        path: ../src
+      - type: file
+        path: ../originpc-control-center.desktop
+        dest-filename: originpc-enhanced-control.desktop

@@ -1,0 +1,13 @@
+- add support using Bing Translator private keys
+? fix layout when browser zoom = 150%
+- try to add Microsoft Neural Translator: https://translator.microsoft.com/neural
+- translation log with possibility to delete/export
+- speech to text
+x support IME for Japanese and Korean input: http://wanakana.com/ http://ime.g4team.com/korea/
+	or try https://github.com/wikimedia/jquery.ime
+	https://github.com/pepebecker/hangul
+	https://github.com/pepebecker/hepburn
+- support IME for Chinese and Indic input: http://yuhanz.github.io/chinese-ime.html http://www.vishalon.net/pramukhime/javascript-library
+- try to add support: http://www.reverso.net/translationresults.aspx?lang=EN&direction=english-russian
+- try to add support: http://www.worldlingo.com/en/products_services/worldlingo_translator.html
+- translations history

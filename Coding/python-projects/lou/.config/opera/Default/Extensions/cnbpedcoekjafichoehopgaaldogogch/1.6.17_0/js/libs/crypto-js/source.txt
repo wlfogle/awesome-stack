@@ -1,0 +1,1 @@
+https://github.com/brix/crypto-js/releases/tag/4.0.0

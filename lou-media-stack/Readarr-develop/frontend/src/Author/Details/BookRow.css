@@ -1,0 +1,35 @@
+.title {
+  composes: cell from '~Components/Table/Cells/TableRowCell.css';
+}
+
+.monitored {
+  composes: cell from '~Components/Table/Cells/TableRowCell.css';
+
+  width: 42px;
+}
+
+.position,
+.rating,
+.status {
+  composes: cell from '~Components/Table/Cells/TableRowCell.css';
+
+  width: 100px;
+}
+
+.releaseDate {
+  composes: cell from '~Components/Table/Cells/TableRowCell.css';
+
+  width: 120px;
+}
+
+.pageCount {
+  composes: cell from '~Components/Table/Cells/TableRowCell.css';
+
+  width: 80px;
+}
+
+.indexerFlags {
+  composes: cell from '~Components/Table/Cells/TableRowCell.css';
+
+  width: 50px;
+}

@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>archforge_icon.svg</file>
+    </qresource>
+</RCC>

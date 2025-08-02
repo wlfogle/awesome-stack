@@ -1,0 +1,126 @@
+// Serbian
+var EXT_LOCALE = "sr";
+
+var WORDS = {
+	// popup
+	btnTranslate:				"Преведи",
+	btnClear:					"Очисти",
+	txtUse:						"користи:",
+	txtBackTranslation:			"повратни превод",
+	txtTranslateActivePage:		"Преведи активну страницу",
+	optAutoDetect:				"Откриј језик",
+	optNone:					"ништа",
+	lnkSettingsPage:			"подешавања",
+
+	txtRegistration:			"Регистрацију",
+	txtUnregisteredMode:		"**Нерегистрована режим**",
+	txtUnregisteredModeDetails:	"**Нерегистрована режим помаже да се преведе само појединачне речи**\nНакон регистрације имате:\n- непостојање ове поруке и могуће оглашавање у претраживачима;\n- Функција читања у тексту, задњи превод, тест јапански и корејски име;\n- будуће нове карактеристике.\n\nако ништа са листе потребно, Регистрација је не захтева.",
+	txtVerify:					"Кликните овде да бисте се регистровали",
+
+	cmTranslateIt:				"Преведи",
+	cmTranslatePage:			"Преведи страницу",
+
+	// hints
+	hntFullExchange:			"Shift+клик – пуна замена",
+	hntTranslate:				"Ctrl+Enter – преведи",
+	hntReTranslate:				"Shift+промени – преведи изабраним сервисом",
+	hntVocalize:				"воцализе",
+	hntPutInTheDictionary:		"ставите у речник",
+	hntRemoveFromTheDictionary:	"уклоните из речника",
+	hntCopy:					"цопи",
+	hntPaste:					"налепите копирани текст (Shift+клик = налепите и преведите)",
+	hntMaximize:				"Alt+клик - отвори у новој картици",
+
+	// services
+	byGoogle:					"Google преводилац",
+	byBing:						"Microsoft преводилац",
+	byYandex:					"Yandex преводилац",
+	byPromt:					"Promt преводилац",
+	byPragma:					"Pragma преводилац",
+	byBaidu:					"Baidu преводилац",
+	byNaver:					"Naver преводилац",
+	bySogou:					"Sogou преводилац",
+	bySystran:					"Systran преводилац",
+	byBabylon:					"Babylon преводилац",
+	byBabylonDictionaries:		"Babylon речници",
+	byLingvo:					"Lingvo Dictionary",
+	byGlosbe:					"Glosbe преводилац",
+	byUrban:					"Urban Dictionary",
+	byIbm:						"IBM преводилац",
+	byApertium:					"Apertium преводилац",
+	byDeepl:					"DeepL преводилац",
+
+	tbByGoogle:					"од Google преводиоца",
+	tbByBing:					"од Microsoft преводиоца",
+	tbByYandex:					"од Yandex преводиоца",
+	tbByPromt:					"од Promt преводиоца",
+
+	// messages
+	msgError:					"еррор",
+	msgErrorCode:				"еррор цоде",
+	msgUnknownSourceLng:		"није подржан изворни језик",
+	msgUnknownTargetLng:		"није подржан циљни језик",
+	msgUnknownLng:				"не подржава језик",
+	msgExample:					"пример",
+	msgExamples:				"примери",
+	msgAlternatives:			"алтернативе",
+
+	// dictionary
+	txtDictionary:				"речник",
+	linkRemove:					"уклонити",
+	txtUsePersonalDictionary:	"Користи лични речник",
+	txtShow:					"схов",
+	txtHide:					"сакрити",
+
+	// options
+	txtOptionsTitle:			"Translator - Подешавања",
+	txtMadeBy:					"Креирао",
+	linkFeedback:				"Пријава грешака / Повратне информације",
+	hdrDefaultSourceLang:		"Подразумевани изворни језик",
+	hdrDefaultTargetLang:		"Подразумевани циљни језик",
+	labelAlwaysUseDefTargetLang:"увек користите подразумевани циљни језик",
+	labelDefTargetLang2:		"када је изворни језик = први задани циљни језик",
+	hdrMaxStoredLangPairs:		"Максимални број сачуваних језичких парова",
+	hdrTranslateBtnPosition:	"Позиција дугмета \"Преведи\"",
+	txtAtRight:					"десно",
+	txtAtLeft:					"лево",
+	txtInvertButons:			"зaмени места дугмади",
+	hdrTextareaFont:			"Област текста фонтова",
+	hdrUITheme:					"Користите светлу или тамну тему",
+	optLight:					"Лигхт",
+	optDark:					"Дарк",
+	optDefault:					"Подразумевани",
+	hdrIconTheme:				"Иконе стила",
+	wrnTextareaFont:			"Можес да конкретне фонтова у <a href='javascript:;'>поставке</a> прегледача.",
+	hdrSetupPopupHotkey:		"Подешавање пречице искачућег прозора",
+	btnSetupPopupHotkey:		"Отвори подешавања тастерских пречица",
+	hdrAdditKnownLangs:			"Не прикажи траку са алаткама за превођење за језике (осим заданог циљног језика)",
+	hdrUseTranslateToolbar:		"Користи алатну траку за превод на свакој страници",
+	hdrUseContextMenuForPages:	"Користи контекстни мени за странице",
+	hdrBingPrivateKey:			"Приватни приступ Bing преводиоца",
+	txtBingClientId:			"ID клијента:",
+	txtBingClientSecret:		"Тајна клијента:",
+	hintBingPrivateKey:			"Ако желите да будете независни од јавних кључева који могу бити блокирани, можете да подесите сопствене приватне кључеве.<br />Могу бити примљени одавде:",
+	optDisabled:				"Онемогућено",
+	wrnUseTranslateToolbar:		"<b>Упозорење!</b> Извор скоро сваке странице ће бити послат преводилац-у ради откривања језика странице!<br />Изузетак: странице са већ дефинисаним језиком.",
+	hdrAllowedProviders:		"Дозвољени преводиоци",
+	hdrOtherOptions:			"Остале опције",
+	txtOpenNewTabsNextToActive:	"Отвори нове картице поред активне",
+	txtRememberLastTranslation:	"Запамти последњи превод",
+	txtUseTextToSpeech:			"Прикажи дугме за изговор текста",
+	txtUseYellowMarker:			"Користи жуту ознаку као обавештење да је изабрани текст прихваћен за превод",
+	txtOutputExtensionButton:	"Прикажи дугме проширења на траци адресе",
+	txtUseEnterToTranslate:		"Користите \"Enter\" кључ за превођење",
+	txtUseSelectionContextMenu:	"Користите контекстни изборник за одабир текста",
+	txtUseOldSkin:				"Користите стари визуелни стил",
+	txtUseBgProcess:			"Користите позадински процес (захтијевају поновно покретање прегледача)",
+
+	txtUseGoogleCn:				"Користи google.com.hk (у случајевима када заштитни зид блокира google.com)",
+
+	txtYouCanUseMyOtherProducts:"Пробајте моје друге производе:",
+	txtMyCalendarExensionDescr:	"календар за Opera прегледач",
+	txtMyWebanketaServiceDescr:	"бесплатно креирање упитника, анкета, тестова и гласања!",
+
+	txtPoweredByOpera:			"Креирано за Opera прегледач"
+};
+//	translated by sijera

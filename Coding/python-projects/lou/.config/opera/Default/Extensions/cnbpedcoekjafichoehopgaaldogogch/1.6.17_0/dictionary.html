@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Translator dictionary</title>
+	<link rel="icon" type="image/png" href="icons/icon-48.png" />
+	<link rel="stylesheet" href="css/settings.css" />
+	<script src="js/browser.js"></script>
+	<script src="js/words.js"></script>
+	<script src="js/shared_data.js"></script>
+	<script src="js/text_reader.js"></script>
+	<script src="js/dictionary.js"></script>
+</head>
+<body>
+	<header>
+		<a href="https://chrome.google.com/webstore/detail/translator/blndkmebkmenignoajhoemebccmmfjib/"><img src="icons/icon-64.png" /></a>
+		<h1 id="widget-name">Translator <span id="txtDictionary">dictionary</span></h1>
+	</header>
+
+	<div id="left_column" class="side_column left">
+	</div>
+	<div id="right_column" class="side_column right">
+		<div class="item" id="column_item_tpl" style="display:none;">
+			<a class="show">show</a>
+			<a class="hide">hide</a>
+			<a href="" class="title" target="_blank">Partner name</a>
+			<a href="" class="image" target="_blank"><img src="" /></a>
+		</div>
+	</div>
+	<section id="word_groups_box">
+		<div id="group_tpl" style="display:none;">
+			<h3>en-ru</h3>
+			<table id="tblDictionary">
+			</table>
+		</div>
+	</section>
+
+	<section>
+		<div id="blockRegistration">
+			<a name="registration"></a>
+			<h3 id="hdrRegistration">* Registration</h3>
+			<div class="hint">
+				<p id="unregistered_description">
+					**Unregistered mode limited by basic functions**<br />
+					After registration you will have:<br />
+					- lack of this message and possible advertising in search engines;<br />
+					- text-to-speech, back translation, test Japanese and Korean IME;<br />
+					- future new features.<br />
+					<br />
+					if nothing from the list you need and you do not want to thank the author, registration is not require.<br />
+				</p>
+				<p><span class="linkToVerify" id="linkToVerify">Click here to Register</span></p>
+			</div>
+		</div>
+		<iframe id="settings_partner_window" src="" scrolling="no"></iframe>
+	</section>
+
+	<section class="my_projects">
+		<center><b id="txtYouCanUseMyOtherProducts">You can also try my other products:</b></center>
+		<ul>
+<!--			<li id="myCalendarLink"><a href="https://addons.opera.com/en/addons/extensions/details/calendar/" target="_blank">Calendar</a> &ndash; <span id="txtMyCalendarExensionDescr">calendar extension for Opera</span></li> -->
+			<li id="myWebanketaLink"><a href="http://webanketa.com/" target="_blank">Webanketa.com</a> &ndash; <span id="txtMyWebanketaServiceDescr">free creation of questionnaires, surveys, tests and polls!</span></li>
+		</ul>
+	</section>
+
+	<footer>
+		<p id="txtPoweredByOpera">Powered by the Opera Browser</p>
+	</footer>
+</body>
+</html>

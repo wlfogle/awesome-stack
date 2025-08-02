@@ -1,0 +1,1 @@
+"use strict";!function(){function t(t,n){return"function"==typeof t&&t({}),"function"==typeof n&&n({}),Promise.resolve({})}var n={clear:t,get:t,set:t};window.chrome={runtime:{getURL:function(t){return t?t.startsWith("/")?".."+t:t:""}},storage:{local:n,sync:n}}}();

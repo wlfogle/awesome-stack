@@ -1,0 +1,352 @@
+[
+    {
+        "Id": "1c3cf3ce08f8b3c339637cdc48bfc03f21a3dad7fc06e802ae1dc61967f53526",
+        "Created": "2025-07-19T22:13:45.066253762Z",
+        "Path": "/init",
+        "Args": [],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 2279854,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2025-07-19T22:13:49.167555326Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:27bea06e02d90bdd710a73dd3f4916f21c28f28bde01a1edc216d864243f15d0",
+        "ResolvConfPath": "/var/lib/docker/containers/1c3cf3ce08f8b3c339637cdc48bfc03f21a3dad7fc06e802ae1dc61967f53526/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/1c3cf3ce08f8b3c339637cdc48bfc03f21a3dad7fc06e802ae1dc61967f53526/hostname",
+        "HostsPath": "/var/lib/docker/containers/1c3cf3ce08f8b3c339637cdc48bfc03f21a3dad7fc06e802ae1dc61967f53526/hosts",
+        "LogPath": "/var/lib/docker/containers/1c3cf3ce08f8b3c339637cdc48bfc03f21a3dad7fc06e802ae1dc61967f53526/1c3cf3ce08f8b3c339637cdc48bfc03f21a3dad7fc06e802ae1dc61967f53526-json.log",
+        "Name": "/mediastack-tvheadend",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/home/lou/media/recordings:/recordings:rw",
+                "/home/lou/media/timeshift:/timeshift:rw",
+                "lou-media-stack_tvheadend_config:/config:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "lou-media-stack_mediastack",
+            "PortBindings": {
+                "9981/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "8320"
+                    }
+                ],
+                "9982/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "8321"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "unless-stopped",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap",
+                "/sys/devices/system/cpu/cpu0/thermal_throttle",
+                "/sys/devices/system/cpu/cpu1/thermal_throttle",
+                "/sys/devices/system/cpu/cpu2/thermal_throttle",
+                "/sys/devices/system/cpu/cpu3/thermal_throttle",
+                "/sys/devices/system/cpu/cpu4/thermal_throttle",
+                "/sys/devices/system/cpu/cpu5/thermal_throttle",
+                "/sys/devices/system/cpu/cpu6/thermal_throttle",
+                "/sys/devices/system/cpu/cpu7/thermal_throttle",
+                "/sys/devices/system/cpu/cpu8/thermal_throttle",
+                "/sys/devices/system/cpu/cpu9/thermal_throttle",
+                "/sys/devices/system/cpu/cpu10/thermal_throttle",
+                "/sys/devices/system/cpu/cpu11/thermal_throttle",
+                "/sys/devices/system/cpu/cpu12/thermal_throttle",
+                "/sys/devices/system/cpu/cpu13/thermal_throttle",
+                "/sys/devices/system/cpu/cpu14/thermal_throttle",
+                "/sys/devices/system/cpu/cpu15/thermal_throttle",
+                "/sys/devices/system/cpu/cpu16/thermal_throttle",
+                "/sys/devices/system/cpu/cpu17/thermal_throttle",
+                "/sys/devices/system/cpu/cpu18/thermal_throttle",
+                "/sys/devices/system/cpu/cpu19/thermal_throttle",
+                "/sys/devices/system/cpu/cpu20/thermal_throttle",
+                "/sys/devices/system/cpu/cpu21/thermal_throttle",
+                "/sys/devices/system/cpu/cpu22/thermal_throttle",
+                "/sys/devices/system/cpu/cpu23/thermal_throttle",
+                "/sys/devices/system/cpu/cpu24/thermal_throttle",
+                "/sys/devices/system/cpu/cpu25/thermal_throttle",
+                "/sys/devices/system/cpu/cpu26/thermal_throttle",
+                "/sys/devices/system/cpu/cpu27/thermal_throttle",
+                "/sys/devices/system/cpu/cpu28/thermal_throttle",
+                "/sys/devices/system/cpu/cpu29/thermal_throttle",
+                "/sys/devices/system/cpu/cpu30/thermal_throttle",
+                "/sys/devices/system/cpu/cpu31/thermal_throttle"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "1c3cf3ce08f8b3c339637cdc48bfc03f21a3dad7fc06e802ae1dc61967f53526",
+                "LowerDir": "/var/lib/docker/overlay2/23470a6c19210e9960af8f62df0f44dbece1ed8a80c433761c21f98547b8f291-init/diff:/var/lib/docker/overlay2/100f6ab68fcf015da1f8e7b4d8b77cd7a5d4295413863c5ce496132784f3543d/diff:/var/lib/docker/overlay2/a1985fa0ae77985b9803f050afc0e428284fc122ff941f06e75a2f8cabe7f27a/diff:/var/lib/docker/overlay2/a00093a3baf3e1c35a15f4066b63a3013a07f28027de2bb20710ffd2df01e18f/diff:/var/lib/docker/overlay2/b97a0f6599859bf8c8b68d0237dbd1416330104c5b9d7e371500a4ac96f2df48/diff:/var/lib/docker/overlay2/bf36163ec731357926471a951531ab3ee872bea72e1b63442ea15b6cf669d829/diff:/var/lib/docker/overlay2/a5636ba4117d2822b1ee50b92a9bc0ee7f77324c1de0bffcb1fead401d6d6265/diff:/var/lib/docker/overlay2/8f0173281b0480e96dd710d1d85ca4ed4f95d0fcf56229429d926a0946428963/diff:/var/lib/docker/overlay2/540075b1e24d474e30d749392ed98c81527f7210df516ca7da4fbab79cb10b5f/diff:/var/lib/docker/overlay2/ddb8a750e7e4b23779c1ab6f21e24a2588d0529151e64910eef6bbedab398da4/diff:/var/lib/docker/overlay2/cefb920433365653025da888eeea1b1ac8196c934faa8064e227b5aa305c53e5/diff:/var/lib/docker/overlay2/84e24d226f02a40d8e678e44846f482c63c4e4f0b7898517f4abaf8b8ad25cbc/diff:/var/lib/docker/overlay2/3abe321e9417b2d096ff573a3f9059f2f66de51759d13522d4d1d79f897c25c9/diff",
+                "MergedDir": "/var/lib/docker/overlay2/23470a6c19210e9960af8f62df0f44dbece1ed8a80c433761c21f98547b8f291/merged",
+                "UpperDir": "/var/lib/docker/overlay2/23470a6c19210e9960af8f62df0f44dbece1ed8a80c433761c21f98547b8f291/diff",
+                "WorkDir": "/var/lib/docker/overlay2/23470a6c19210e9960af8f62df0f44dbece1ed8a80c433761c21f98547b8f291/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/home/lou/media/recordings",
+                "Destination": "/recordings",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/home/lou/media/timeshift",
+                "Destination": "/timeshift",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "volume",
+                "Name": "lou-media-stack_tvheadend_config",
+                "Source": "/var/lib/docker/volumes/lou-media-stack_tvheadend_config/_data",
+                "Destination": "/config",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "1c3cf3ce08f8",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "9981/tcp": {},
+                "9982/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PUID=1000",
+                "PGID=1000",
+                "TZ=America/New_York",
+                "RUN_OPTS=--satip_rtsp 554",
+                "PATH=/lsiopy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "PS1=$(whoami)@$(hostname):$(pwd)\\$ ",
+                "HOME=/config",
+                "TERM=xterm",
+                "S6_CMD_WAIT_FOR_SERVICES_MAXTIME=0",
+                "S6_VERBOSITY=1",
+                "S6_STAGE2_HOOK=/docker-mods",
+                "VIRTUAL_ENV=/lsiopy",
+                "LSIO_FIRST_PARTY=true"
+            ],
+            "Cmd": null,
+            "Image": "linuxserver/tvheadend",
+            "Volumes": {
+                "/config": {}
+            },
+            "WorkingDir": "/",
+            "Entrypoint": [
+                "/init"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "build_version": "Linuxserver.io version:- d1fb6da0-ls257 Build-date:- 2025-07-12T15:45:42+00:00",
+                "com.docker.compose.config-hash": "a02e6086c1243eb01c6acbc47e3d635265ff627b2c1c5ba297542dc230dcffd7",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:27bea06e02d90bdd710a73dd3f4916f21c28f28bde01a1edc216d864243f15d0",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "lou-media-stack",
+                "com.docker.compose.project.config_files": "/home/lou/lou-media-stack/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/home/lou/lou-media-stack",
+                "com.docker.compose.replace": "96d4d2d1f2ed6415523d16fa43dbe6130ceb402ae6f52f2004c65c1fd0567bf8",
+                "com.docker.compose.service": "tvheadend",
+                "com.docker.compose.version": "2.38.2",
+                "maintainer": "saarg",
+                "org.opencontainers.image.authors": "linuxserver.io",
+                "org.opencontainers.image.created": "2025-07-12T15:45:42+00:00",
+                "org.opencontainers.image.description": "[Tvheadend](https://www.tvheadend.org/) works as a proxy server: is a TV streaming server and recorder for Linux, FreeBSD and Android supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, ISDB-T, IPTV, SAT>IP and HDHomeRun as input sources.  Tvheadend offers the HTTP (VLC, MPlayer), HTSP (Kodi, Movian) and SAT>IP streaming.  Multiple EPG sources are supported (over-the-air DVB and ATSC including OpenTV DVB extensions, XMLTV, PyXML).  ",
+                "org.opencontainers.image.documentation": "https://docs.linuxserver.io/images/docker-tvheadend",
+                "org.opencontainers.image.licenses": "GPL-3.0-only",
+                "org.opencontainers.image.ref.name": "6339693ada561c266a2f4ddb868464ad07e02df2",
+                "org.opencontainers.image.revision": "6339693ada561c266a2f4ddb868464ad07e02df2",
+                "org.opencontainers.image.source": "https://github.com/linuxserver/docker-tvheadend",
+                "org.opencontainers.image.title": "Tvheadend",
+                "org.opencontainers.image.url": "https://github.com/linuxserver/docker-tvheadend/packages",
+                "org.opencontainers.image.vendor": "linuxserver.io",
+                "org.opencontainers.image.version": "d1fb6da0-ls257",
+                "traefik.enable": "true",
+                "traefik.http.routers.tvheadend.rule": "Host(`tv.mediastack.local`)",
+                "traefik.http.routers.tvheadend.tls": "true",
+                "traefik.http.routers.tvheadend.tls.certresolver": "letsencrypt",
+                "traefik.http.services.tvheadend.loadbalancer.server.port": "9981"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "e38cd729dfd78b31ea8646b1a8bc896c50262fd4989e310984e554279d914a80",
+            "SandboxKey": "/var/run/docker/netns/e38cd729dfd7",
+            "Ports": {
+                "9981/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "8320"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "8320"
+                    }
+                ],
+                "9982/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "8321"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "8321"
+                    }
+                ]
+            },
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "lou-media-stack_mediastack": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "mediastack-tvheadend",
+                        "tvheadend"
+                    ],
+                    "MacAddress": "82:c2:27:f0:cb:67",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "b3fb64607c143030bcd11a51704e837e93e971335d48bfc90770116fa304af44",
+                    "EndpointID": "900271e025fab5c60060d90e73c50af33c8338826c8b337f1a698e165949b2f6",
+                    "Gateway": "172.21.0.1",
+                    "IPAddress": "172.21.0.22",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "mediastack-tvheadend",
+                        "tvheadend",
+                        "1c3cf3ce08f8"
+                    ]
+                }
+            }
+        }
+    }
+]

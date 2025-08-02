@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ArchForge Pro
+Comment=Advanced Arch Linux system management and real-time monitoring suite
+Comment[de]=Erweiterte Arch Linux Systemverwaltung und Echtzeitüberwachungssuite
+Comment[es]=Suite avanzada de gestión del sistema y monitoreo en tiempo real para Arch Linux
+Comment[fr]=Suite avancée de gestion système et surveillance en temps réel pour Arch Linux
+Exec=@CMAKE_INSTALL_PREFIX@/bin/ArchForgePro
+Icon=drive-harddisk
+Terminal=false
+StartupNotify=true
+Categories=System;Monitor;Qt;
+Keywords=backup;restore;monitor;system;pacman;arch;forge;realtime;
+MimeType=application/x-tar;application/x-compressed-tar;
+StartupWMClass=ArchForgePro

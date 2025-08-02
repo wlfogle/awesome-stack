@@ -1,0 +1,14 @@
+{
+   "description": {
+      "message": "Переклад виділеного або введеного тексту"
+   },
+   "description_hotkey": {
+      "message": "Перекласти вибраний текст"
+   },
+   "description_sidebar": {
+      "message": "Переклад введеного тексту"
+   },
+   "locale": {
+      "message": "uk"
+   }
+}

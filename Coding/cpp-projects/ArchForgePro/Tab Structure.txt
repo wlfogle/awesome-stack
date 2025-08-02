@@ -1,0 +1,97 @@
+
+
+ArchForge Pro
+
+Main tab 1 Clean Install Backup/Restore
+
+    sub-tabs
+
+        Backup
+        Restore
+        Logs
+
+Main tab 2 Software Management
+
+    sub-tab 1 Search Packages
+
+        sub-tabs
+
+            Quick Search
+            Advanced Search
+            Search Results
+            Search History
+
+    sub-tab 2 Package Install
+
+        sub-tabs
+
+            Single Install
+            Batch Install
+            Install Queue
+            Install History
+            Install Log
+
+     sub-tab 3 Build & Distribute
+
+        sub-tabs
+
+            Package Builder
+            Distribution
+            Build Log
+
+    sub-tab 4 Windows Programs
+
+        sub-tabs
+
+            Wine Management
+            Program Installer
+            Installed Programs
+            Wine Prefixes
+            Logs
+
+    sub-tab 5 Maintenance
+
+        sub-tabs
+
+            Quick Maintenance
+            System Updates
+            Package Cache
+            System Optimization
+            Maintenance Logs
+
+    sub-tab 6 Installed Packages
+
+    sub-tab 7 Settings
+
+Main tab 3 RGB/Fan Control
+
+    sub-tabs
+
+        Keyboard
+        Fans
+
+Main tab 4 Kernel Tools
+
+    sub-tabs
+
+        Download
+        Configure
+        Compile
+        Install
+
+Main tab 5  AI Assistant
+
+    sub-tabs
+
+        Chat
+        Recommendations
+        Analysis
+        Settings
+Main tab 6 ProxMox/VM Control
+Main tab 7 Settings
+
+    sub-tabs
+
+        Help
+        About
+

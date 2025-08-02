@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ArchBackupPro
+Comment=Comprehensive backup and restore solution for Arch Linux
+Comment[de]=Umfassende Backup- und Wiederherstellungslösung für Arch Linux
+Comment[es]=Solución integral de copia de seguridad y restauración para Arch Linux
+Comment[fr]=Solution complète de sauvegarde et de restauration pour Arch Linux
+Exec=@CMAKE_INSTALL_PREFIX@/bin/ArchBackupPro
+Icon=drive-harddisk
+Terminal=false
+StartupNotify=true
+Categories=System;Archiving;Qt;
+Keywords=backup;restore;archive;system;pacman;arch;
+MimeType=application/x-tar;application/x-compressed-tar;
+StartupWMClass=ArchBackupPro

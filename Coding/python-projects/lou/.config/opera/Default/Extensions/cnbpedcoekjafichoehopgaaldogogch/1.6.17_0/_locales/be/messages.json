@@ -1,0 +1,14 @@
+{
+  "locale": {
+    "message": "be"
+  },
+  "description": {
+    "message": "Пераклад вылучанага ці ўведзенага тэксту"
+  },
+  "description_sidebar": {
+    "message": "Пераклад ўведзенага тэксту"
+  },
+  "description_hotkey": {
+    "message": "Перавесці абраны тэкст"
+  }
+}

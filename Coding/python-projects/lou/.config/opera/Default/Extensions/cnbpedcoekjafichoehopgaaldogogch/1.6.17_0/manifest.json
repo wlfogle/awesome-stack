@@ -1,0 +1,80 @@
+{
+   "applications": {
+      "gecko": {
+         "id": "translator@sailormax.net"
+      }
+   },
+   "author": "SailorMax",
+   "background": {
+      "page": "index.html",
+      "persistent": true
+   },
+   "browser_action": {
+      "default_icon": {
+         "128": "icons/icon-64@2x.png",
+         "16": "icons/icon-16.png",
+         "18": "icons/icon-18.png",
+         "19": "icons/icon-19.png",
+         "20": "icons/icon-20.png",
+         "36": "icons/icon-18@2x.png",
+         "38": "icons/icon-19@2x.png",
+         "40": "icons/icon-20@2x.png",
+         "48": "icons/icon-48.png",
+         "64": "icons/icon-64.png",
+         "96": "icons/icon-48@2x.png"
+      },
+      "default_popup": "popup.html",
+      "default_title": "Translator"
+   },
+   "commands": {
+      "_execute_browser_action": {
+         "description": "__MSG_description_hotkey__",
+         "suggested_key": {
+            "default": "Ctrl+Shift+L"
+         }
+      }
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "includes/user_js.js" ],
+      "matches": [ "*://*/*" ],
+      "run_at": "document_end"
+   } ],
+   "content_security_policy": "script-src 'self'; object-src 'self'",
+   "default_locale": "en",
+   "description": "__MSG_description__",
+   "developer": {
+      "name": "sailormax"
+   },
+   "icons": {
+      "128": "icons/icon-128.png",
+      "16": "icons/icon-16.png",
+      "18": "icons/icon-18.png",
+      "19": "icons/icon-19.png",
+      "20": "icons/icon-20.png",
+      "256": "icons/icon-256.png",
+      "36": "icons/icon-18@2x.png",
+      "38": "icons/icon-19@2x.png",
+      "40": "icons/icon-20@2x.png",
+      "48": "icons/icon-48.png",
+      "64": "icons/icon-64.png",
+      "96": "icons/icon-48@2x.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDDMPYuvHsTP6SD9th3LkZ4WExdEATu5kujW8LjCx41gWWCxLqBhpoAUdbXzCA9haQfh4zD8B9usTt23sl7WXktta1m3eYOFYYw2GysUo3pPIFHn2FUAufZlT07GFszVMu4srxJ+3FwtGdZjjW9GbOdfeYbbbAolK8ULZN0SefVAwIDAQAB",
+   "manifest_version": 2,
+   "name": "Translator",
+   "options_page": "settings.html",
+   "options_ui": {
+      "browser_style": false,
+      "open_in_tab": true,
+      "page": "settings.html"
+   },
+   "permissions": [ "tabs", "storage", "contextMenus", "tts", "*://*/", "clipboardRead", "webRequest", "webRequestBlocking" ],
+   "sidebar_action": {
+      "default_icon": "icons/icon-18.png",
+      "default_panel": "sidebar.html",
+      "default_title": "Translator"
+   },
+   "update_url": "https://extension-updates.opera.com/api/omaha/update/",
+   "version": "1.6.17"
+}

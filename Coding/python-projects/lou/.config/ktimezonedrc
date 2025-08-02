@@ -1,0 +1,4 @@
+[TimeZones]
+LocalZone=America/Kentucky/Louisville
+ZoneinfoDir=/usr/share/zoneinfo
+Zonetab=/usr/share/zoneinfo/zone.tab

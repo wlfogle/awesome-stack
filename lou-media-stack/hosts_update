@@ -1,0 +1,35 @@
+# Static table lookup for hostnames.
+# See hosts(5) for details.
+127.0.0.1        localhost
+::1              localhost
+192.168.12.213 vault.local
+
+# MediaStack Local Services
+127.0.0.1        mediastack.local
+127.0.0.1        dashboard.mediastack.local
+127.0.0.1        traefik.mediastack.local
+127.0.0.1        portainer.mediastack.local
+127.0.0.1        jellyfin.mediastack.local
+127.0.0.1        plex.mediastack.local
+127.0.0.1        jackett.mediastack.local
+127.0.0.1        deluge.mediastack.local
+127.0.0.1        sonarr.mediastack.local
+127.0.0.1        radarr.mediastack.local
+127.0.0.1        lidarr.mediastack.local
+127.0.0.1        readarr.mediastack.local
+127.0.0.1        bazarr.mediastack.local
+127.0.0.1        overseerr.mediastack.local
+127.0.0.1        jellyseerr.mediastack.local
+127.0.0.1        ombi.mediastack.local
+127.0.0.1        requests.mediastack.local
+127.0.0.1        tautulli.mediastack.local
+127.0.0.1        tv.mediastack.local
+127.0.0.1        vaultwarden.mediastack.local
+127.0.0.1        weather.mediastack.local
+127.0.0.1        radar.mediastack.local
+127.0.0.1        autobrr.mediastack.local
+127.0.0.1        janitorr.mediastack.local
+127.0.0.1        gaps.mediastack.local
+127.0.0.1        prometheus.mediastack.local
+127.0.0.1        grafana.mediastack.local
+127.0.0.1        notifiarr.mediastack.local

@@ -1,0 +1,5 @@
+{
+   "description": {
+      "message": "Integrálja a böngészőt a JDownloaderrel akár a beépített letöltéskezelő megszakításával, akár a jobb egérgombbal kattintva elérhető kontextusmenüből"
+   }
+}

@@ -1,0 +1,61 @@
+.cell {
+  composes: cell from '~Components/Table/Cells/TableRowCell.css';
+}
+
+.protocol {
+  composes: cell;
+
+  width: 80px;
+}
+
+.titleContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  word-break: break-all;
+}
+
+.indexer {
+  composes: cell;
+
+  width: 85px;
+}
+
+.quality {
+  composes: cell;
+
+  text-align: center;
+}
+
+.quality {
+  white-space: nowrap;
+}
+
+.customFormatScore {
+  composes: cell from '~Components/Table/Cells/TableRowCell.css';
+
+  width: 55px;
+  font-weight: bold;
+  cursor: default;
+}
+
+.rejected,
+.indexerFlags,
+.download {
+  composes: cell;
+
+  width: 50px;
+}
+
+.age,
+.size {
+  composes: cell;
+
+  white-space: nowrap;
+}
+
+.peers {
+  composes: cell;
+
+  width: 75px;
+}

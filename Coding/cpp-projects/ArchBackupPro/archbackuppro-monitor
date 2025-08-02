@@ -1,0 +1,151 @@
+#!/bin/bash
+
+# ArchBackupPro Real-time Monitoring Daemon
+# This script monitors system changes and logs important events
+
+LOG_FILE="/var/log/archbackuppro/monitor.log"
+DATA_DIR="/var/lib/archbackuppro"
+PID_FILE="/run/archbackuppro/monitor.pid"
+
+# Create necessary directories
+mkdir -p "$(dirname "$LOG_FILE")"
+mkdir -p "$DATA_DIR"
+mkdir -p "$(dirname "$PID_FILE")"
+
+# Function to log messages
+log_message() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a "$LOG_FILE"
+}
+
+# Function to check if another instance is running
+check_instance() {
+    if [[ -f "$PID_FILE" ]]; then
+        local existing_pid=$(cat "$PID_FILE")
+        if kill -0 "$existing_pid" 2>/dev/null; then
+            log_message "ERROR: Another instance is already running (PID: $existing_pid)"
+            exit 1
+        else
+            log_message "WARNING: Stale PID file found, removing it"
+            rm -f "$PID_FILE"
+        fi
+    fi
+}
+
+# Function to cleanup on exit
+cleanup() {
+    log_message "INFO: Monitoring daemon shutting down"
+    rm -f "$PID_FILE"
+    exit 0
+}
+
+# Function to monitor package changes
+monitor_packages() {
+    local current_hash=$(pacman -Q | sha256sum | cut -d' ' -f1)
+    local stored_hash_file="$DATA_DIR/packages.hash"
+    
+    if [[ -f "$stored_hash_file" ]]; then
+        local stored_hash=$(cat "$stored_hash_file")
+        if [[ "$current_hash" != "$stored_hash" ]]; then
+            log_message "CHANGE: Package list has changed"
+            # Get recently installed packages (last 24 hours)
+            if pacman -Qi | grep -A1 "Install Date" | grep "$(date '+%Y-%m-%d')" >/dev/null 2>&1; then
+                log_message "INFO: Recent package installation detected"
+            fi
+        fi
+    fi
+    
+    echo "$current_hash" > "$stored_hash_file"
+}
+
+# Function to monitor configuration files
+monitor_configs() {
+    local config_dirs=("/etc" "$HOME/.config")
+    local changes_file="$DATA_DIR/config_changes.log"
+    
+    for dir in "${config_dirs[@]}"; do
+        if [[ -d "$dir" ]]; then
+            # Check for recently modified files (last 10 minutes)
+            local recent_changes=$(find "$dir" -type f -mmin -10 2>/dev/null | wc -l)
+            if [[ "$recent_changes" -gt 0 ]]; then
+                log_message "CHANGE: $recent_changes configuration files modified in $dir"
+                find "$dir" -type f -mmin -10 2>/dev/null | head -5 >> "$changes_file"
+            fi
+        fi
+    done
+}
+
+# Function to monitor system resources
+monitor_resources() {
+    local cpu_usage=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | sed 's/%us,//')
+    local mem_usage=$(free | grep Mem | awk '{printf "%.1f", ($3/$2) * 100.0}')
+    local disk_usage=$(df / | tail -1 | awk '{print $5}' | sed 's/%//')
+    
+    # Log if usage is high
+    if (( $(echo "$cpu_usage > 80" | bc -l) )); then
+        log_message "WARNING: High CPU usage: ${cpu_usage}%"
+    fi
+    
+    if (( $(echo "$mem_usage > 80" | bc -l) )); then
+        log_message "WARNING: High memory usage: ${mem_usage}%"
+    fi
+    
+    if [[ "$disk_usage" -gt 80 ]]; then
+        log_message "WARNING: High disk usage: ${disk_usage}%"
+    fi
+}
+
+# Function to monitor systemd services
+monitor_services() {
+    local failed_services=$(systemctl --failed --no-legend | wc -l)
+    if [[ "$failed_services" -gt 0 ]]; then
+        log_message "WARNING: $failed_services systemd services have failed"
+        systemctl --failed --no-legend | head -3 | while read line; do
+            log_message "FAILED: $line"
+        done
+    fi
+}
+
+# Function to check backup schedule suggestions
+check_backup_suggestions() {
+    local last_backup_file="$DATA_DIR/last_backup.timestamp"
+    local current_time=$(date +%s)
+    
+    if [[ -f "$last_backup_file" ]]; then
+        local last_backup=$(cat "$last_backup_file")
+        local time_diff=$((current_time - last_backup))
+        local days_since_backup=$((time_diff / 86400))
+        
+        if [[ "$days_since_backup" -gt 7 ]]; then
+            log_message "SUGGESTION: Last backup was $days_since_backup days ago, consider running a backup"
+        fi
+    else
+        log_message "SUGGESTION: No backup history found, consider running an initial backup"
+        echo "$current_time" > "$last_backup_file"
+    fi
+}
+
+# Set up signal handlers
+trap cleanup SIGTERM SIGINT
+
+# Check for existing instance
+check_instance
+
+# Write PID file
+echo $$ > "$PID_FILE"
+
+log_message "INFO: ArchBackupPro monitoring daemon started (PID: $$)"
+log_message "INFO: Logging to $LOG_FILE"
+log_message "INFO: Data directory: $DATA_DIR"
+
+# Main monitoring loop
+while true; do
+    # Monitor various system aspects
+    monitor_packages
+    monitor_configs
+    monitor_resources
+    monitor_services
+    check_backup_suggestions
+    
+    # Sleep for 5 minutes before next check
+    sleep 300
+done

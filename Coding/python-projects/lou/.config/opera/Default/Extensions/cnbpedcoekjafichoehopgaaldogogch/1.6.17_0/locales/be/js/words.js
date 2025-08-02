@@ -1,0 +1,126 @@
+// Belarusian
+var EXT_LOCALE = "be";
+
+var WORDS = {
+	// popup
+	btnTranslate:				"Перакласці",
+	btnClear:					"Выдаліць",
+	txtUse:						"выкарыст.:",
+	txtBackTranslation:			"адваротны пераклад",
+	txtTranslateActivePage:		"Перакласці актыўную старонку",
+	optAutoDetect:				"Аўтавызнач.",
+	optNone:					"нічога",
+	lnkSettingsPage:			"налады",
+
+	txtRegistration:			"Рэгістрацыя",
+	txtUnregisteredMode:		"**Незарэгістраваны рэжым**",
+	txtUnregisteredModeDetails:	"**Незарэгістраваны рэжым дапамагае перакладаць толькі словы**\nПасля рэгістрацыі ты робішся ўладальнікам прахону да:\n- гэта апавяданне знікне і магчыма, дадатковая рэклама ў пошукавых сістэмах;\n- функцыя чытача тэкста, адваротны пераклад, тэставы рэжым для ўправаджэньня Японскай і Карэйскай мовы;\n- будучыя новыя функцыі.\n\nкалі нічога з вышпералічанага не патрабуецца, рэгістрацыя не патрэбна.",
+	txtVerify:					"Зарэгістраваць",
+
+	cmTranslateIt:				"Перакласці",
+	cmTranslatePage:			"Перакласці старонку",
+
+	// hints
+	hntFullExchange:			"Shift+Click – змяніць месцамі разам з тэкстам",
+	hntTranslate:				"Ctrl+Enter – перакласці",
+	hntReTranslate:				"Shift+Change – перакласці абраным сэрвісам",
+	hntVocalize:				"агучыць",
+	hntPutInTheDictionary:		"пакласці ў слоўніку",
+	hntRemoveFromTheDictionary:	"выдаліць з слоўніка",
+	hntCopy:					"капіраваць",
+	hntPaste:					"ўставіць скапіяваны тэкст (Shift+Click = ўстаўка і пераклад)",
+	hntMaximize:				"Alt+Click - адкрыць у новай укладцы",
+
+	// services
+	byGoogle:					"Google Пераклад",
+	byBing:						"Microsoft Перакладчык",
+	byYandex:					"Яндекс.Пераклад",
+	byPromt:					"Promt Перакладчык",
+	byPragma:					"Pragma Перакладчык",
+	byBaidu:					"Baidu Перакладчык",
+	byNaver:					"Naver Перакладчык",
+	bySogou:					"Sogou Перакладчык",
+	bySystran:					"Systran Пераклад",
+	byBabylon:					"Babylon Перакладчык",
+	byBabylonDictionaries:		"Слоўнікі ад Babylon",
+	byLingvo:					"Lingvo Dictionary",
+	byGlosbe:					"Glosbe Перакладчык",
+	byUrban:					"Urban Dictionary",
+	byIbm:						"IBM Перакладчык",
+	byApertium:					"Apertium Перакладчык",
+	byDeepl:					"DeepL Перакладчык",
+
+	tbByGoogle:					"от Google Пераклад",
+	tbByBing:					"от Microsoft Перакладчык",
+	tbByYandex:					"от Яндекс.Пераклад",
+	tbByPromt:					"от Promt Перакладчык",
+
+	// messages
+	msgError:					"памылка",
+	msgErrorCode:				"код памылкі",
+	msgUnknownSourceLng:		"не падтрымліваецца зыходны мова",
+	msgUnknownTargetLng:		"не падтрымліваецца мэтавай мова",
+	msgUnknownLng:				"не падтрымліваецца мова",
+	msgExample:					"прыклад",
+	msgExamples:				"прыкладаў",
+	msgAlternatives:			"альтэрнатывы",
+
+	// dictionary
+	txtDictionary:				"слоўнік",
+	linkRemove:					"выдаліць",
+	txtUsePersonalDictionary:	"Скарыстацца асабістым слоўнікам",
+	txtShow:					"паказаць",
+	txtHide:					"схаваць",
+
+	// options
+	txtOptionsTitle:			"Translator - налады",
+	txtMadeBy:					"Распрацавана",
+	linkFeedback:				"паведаміць аб памылке / адваротная сувязь",
+	hdrDefaultSourceLang:		"Мова бяздзейнасці, з якой будзе перекладацца тэкст",
+	hdrDefaultTargetLang:		"Мова бяздзейнасці,з якой будзе перекладацца тэкст",
+	labelAlwaysUseDefTargetLang:"заўсёды выкарыстоўваецца мэтавая мова па змаўчанні",
+	labelDefTargetLang2:		"калі крыніца мовы = першая мэтавая мова па змаўчанні",
+	hdrMaxStoredLangPairs:		"Максімальная колькасць скарыстаных пар моў якія трэба захоўваць",
+	hdrTranslateBtnPosition:	"Знаходжанне кнопкі \"Перакласці\"",
+	txtAtRight:					"правы бок",
+	txtAtLeft:					"левы бок",
+	txtInvertButons:			"прамен кнопкі месцамі",
+	hdrTextareaFont:			"Шрыфт тэкставага поля",
+	hdrUITheme:					"Выкарыстоўвайце светлую або цёмную тэму",
+	optLight:					"Светлую",
+	optDark:					"Тёмно",
+	optDefault:					"Бяздзейнасць",
+	hdrIconTheme:				"Cтыль абразкі",
+	wrnTextareaFont:			"Ты здолен наладзіць канкрэтны шрыфт у <a href='javascript:;'>наладах</a> браўзара.",
+	hdrSetupPopupHotkey:		"Налады набітай клавішы для ўсплывае акна",
+	btnSetupPopupHotkey:		"Адчыніць наладчык набітых клавіш",
+	hdrUseTranslateToolbar:		"Скарыстацца панэллю перакладчыка на кожнай старонцы",
+	hdrAdditKnownLangs:			"Не паказваць панэль інструментаў перакладу для моў (акрамя мэтавай мовы па змаўчанні)",
+	hdrUseContextMenuForPages:	"Скарыстацца кантэкстным меню для старонак",
+	hdrBingPrivateKey:			"Асабісты прахон перакладчыка Bing",
+	txtBingClientId:			"ID спажыўца:",
+	txtBingClientSecret:		"Ключ спажыўца:",
+	hintBingPrivateKey:			"Калі ёсць жаданне быць незалежным ад агульнадаступных ключоў якія могуць быць заблакаваны, зрабі налады для сваіх, асабістых,ключоў доступу.<br />Гэта можна атрымаць тут:",
+	optDisabled:				"Адключана",
+	wrnUseTranslateToolbar:		"<b>Увага!</b> Частка некаторых ісходных старонак будзе адпраўляцца правайдару перакладчыка для вызначэння ісходнай мовы!<br />Выключэнні: старонкі з наканаваннем сваёй мовы.",
+	hdrAllowedProviders:		"Дазваляецца перакладчыкаў",
+	hdrOtherOptions:			"Іншыя налады",
+	txtOpenNewTabsNextToActive:	"Адкрываць новыя ўкладкі следам за актыўнай",
+	txtRememberLastTranslation:	"Запамінаць апошні пераклад",
+	txtUseTextToSpeech:			"Скарыстаць функцыю чытання тэксту",
+	txtUseYellowMarker:			"Скарыстаць жоўты маркер маркер як папярэджанне аб тым што вылучаны тэкст можа быць перахоплены пашырэннем",
+	txtOutputExtensionButton:	"Выводзіць кнопку пашырэння ў адраснай панэлі",
+	txtUseEnterToTranslate:		"Скарыстаць клавішу \"Увод\" для пераклада",
+	txtUseSelectionContextMenu:	"Выкарыстоўвайце кантэкстнае меню выбару тэксту",
+	txtUseOldSkin:				"Выкарыстоўваць стары візуальны стыль",
+	txtUseBgProcess:			"Выкарыстоўваць фонавы працэс (патрабуецца перазагрузка браўзэра)",
+
+	txtUseGoogleCn:				"Скарыстаць google.com.hk (для выпадкаў, калі ў вас заблакаваны google.com)",
+
+	txtYouCanUseMyOtherProducts:"Таксама маешь магчымасць пачаставацца іншымі маімі прадуктамі:",
+	txtMyCalendarExensionDescr:	"пашырэнне календару для Оpera",
+	txtMyWebanketaServiceDescr:	"бясплатнае стварэнне анкет, апытанак, тэстаў і галасаванняў!",
+
+	txtPoweredByOpera:			"Працуе на браўзары Opera"
+};
+//	translated by Turov Igor

@@ -1,0 +1,15 @@
+[package]
+name = "clevo_rgb"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <your.email@example.com>"]
+description = "RGB lighting controller for Clevo-based keyboards (Garuda Linux)"
+
+[dependencies]
+clap = { version = "4.4", features = ["derive", "cargo"] }
+anyhow = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+colored = "2.0"
+thiserror = "1.0"
+rand = "0.8"

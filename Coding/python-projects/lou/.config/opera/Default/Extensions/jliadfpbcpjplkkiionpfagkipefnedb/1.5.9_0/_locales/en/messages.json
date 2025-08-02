@@ -1,0 +1,83 @@
+{
+   "authorize": {
+      "message": "Authorize my account"
+   },
+   "auto_debrid": {
+      "message": "Automatic discovery of links"
+   },
+   "back": {
+      "message": "Back"
+   },
+   "cancel": {
+      "message": "Cancel"
+   },
+   "check": {
+      "message": "Check / Uncheck all links"
+   },
+   "clipboard": {
+      "message": "Copy links in the clipboard"
+   },
+   "day": {
+      "message": "Day"
+   },
+   "days": {
+      "message": "Days"
+   },
+   "debrid": {
+      "message": "Unrestrict selected links"
+   },
+   "debrid_now": {
+      "message": "Unrestrict and download this link"
+   },
+   "debrid_one": {
+      "message": "Add links from the selection"
+   },
+   "description": {
+      "message": "Real-Debrid is an unrestricted downloader that allows you to download files instantly and at the best of your Internet speed."
+   },
+   "download": {
+      "message": "Download"
+   },
+   "email": {
+      "message": "Email"
+   },
+   "expiration": {
+      "message": "Expiration"
+   },
+   "logout": {
+      "message": "Logout"
+   },
+   "no_link_found": {
+      "message": "No supported link has been found"
+   },
+   "not_streamable": {
+      "message": "This link is not watchable but supported"
+   },
+   "not_supported_link": {
+      "message": "Ce lien n'est pas supporté"
+   },
+   "offline": {
+      "message": "You are not connected"
+   },
+   "points": {
+      "message": "Fidelity points"
+   },
+   "settings": {
+      "message": "Settings"
+   },
+   "stream_now": {
+      "message": "Watch in streaming now"
+   },
+   "type": {
+      "message": "Account type"
+   },
+   "username": {
+      "message": "Username"
+   },
+   "view": {
+      "message": "View"
+   },
+   "waiting_authorize": {
+      "message": "Waiting for authorization"
+   }
+}

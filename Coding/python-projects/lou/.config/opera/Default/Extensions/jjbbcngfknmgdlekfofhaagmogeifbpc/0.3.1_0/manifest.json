@@ -1,0 +1,42 @@
+{
+   "action": {
+   },
+   "background": {
+      "service_worker": "worker.js"
+   },
+   "commands": {
+      "_execute_action": {
+      }
+   },
+   "default_locale": "en",
+   "description": "__MSG_description__",
+   "developer": {
+      "name": "joe-ertaba"
+   },
+   "homepage_url": "https://add0n.com/download-with.html?from=jdownloader",
+   "icons": {
+      "128": "data/icons/128.png",
+      "16": "data/icons/16.png",
+      "256": "data/icons/256.png",
+      "32": "data/icons/32.png",
+      "48": "data/icons/48.png",
+      "512": "data/icons/512.png",
+      "64": "data/icons/64.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0fJDRcYsUigDPiNRcX+BNKnP7oahdsCMIwZioPg5Ik/j4zDweCxbuLP8fviWMj4Fb0ZlnxEEOYWpFuUvbdXOpiQnNdnMWR5UyQghYjsWLcaT3h/+cHORB6NUSVdlW1cojrmC2TWO8977Pw1NGcR1218DO/PaED4n493b4Dx0nCQAGAaKm8BnNO/bQOLAzxUmm/DwCCim10jr0jcGQgXF/YO+FqHNzSjNVXkn0/28P/sh9gdLCXQdk8/0ehSTAvYsug+EFUYMcePmYOESAFb27eARdpMkaadpi486ShV6aLNPO6DO9Xl1aNmicUOdnVpH2ZngYd9Kqukat3WQS95hMwIDAQAB",
+   "manifest_version": 3,
+   "name": "Download with JDownloader",
+   "optional_host_permissions": [ "*://*/*" ],
+   "optional_permissions": [ "cookies" ],
+   "options_ui": {
+      "open_in_tab": true,
+      "page": "data/options/index.html"
+   },
+   "permissions": [ "storage", "nativeMessaging", "notifications", "downloads", "contextMenus", "activeTab", "scripting" ],
+   "update_url": "https://extension-updates.opera.com/api/omaha/update/",
+   "version": "0.3.1",
+   "web_accessible_resources": [ {
+      "matches": [ "*://*/*" ],
+      "resources": [ "data/grab/index.html" ]
+   } ]
+}

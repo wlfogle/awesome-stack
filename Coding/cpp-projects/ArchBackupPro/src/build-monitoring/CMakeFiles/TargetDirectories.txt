@@ -1,0 +1,7 @@
+/run/media/lou/Data/Download/lou/Coding/ArchBackupPro/src/build-monitoring/CMakeFiles/archbackuppro-monitoring-daemon.dir
+/run/media/lou/Data/Download/lou/Coding/ArchBackupPro/src/build-monitoring/CMakeFiles/edit_cache.dir
+/run/media/lou/Data/Download/lou/Coding/ArchBackupPro/src/build-monitoring/CMakeFiles/rebuild_cache.dir
+/run/media/lou/Data/Download/lou/Coding/ArchBackupPro/src/build-monitoring/CMakeFiles/list_install_components.dir
+/run/media/lou/Data/Download/lou/Coding/ArchBackupPro/src/build-monitoring/CMakeFiles/install.dir
+/run/media/lou/Data/Download/lou/Coding/ArchBackupPro/src/build-monitoring/CMakeFiles/install/local.dir
+/run/media/lou/Data/Download/lou/Coding/ArchBackupPro/src/build-monitoring/CMakeFiles/install/strip.dir

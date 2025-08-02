@@ -1,0 +1,51 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+scrape_configs:
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Traefik metrics
+  - job_name: 'traefik'
+    static_configs:
+      - targets: ['mediastack-traefik:8080']
+    metrics_path: '/metrics'
+
+  # Docker containers (if available)
+  - job_name: 'docker'
+    static_configs:
+      - targets: ['host.docker.internal:9323']
+    scrape_interval: 30s
+
+  # Media services health checks
+  - job_name: 'media-services'
+    static_configs:
+      - targets: 
+        - 'mediastack-jellyfin:8096'
+        - 'mediastack-plex:32400'
+        - 'mediastack-sonarr:8989'
+        - 'mediastack-radarr:7878'
+        - 'mediastack-lidarr:8686'
+        - 'mediastack-jackett:9117'
+    scrape_interval: 30s
+    metrics_path: '/health'
+    scrape_timeout: 10s
+
+  # Database monitoring
+  - job_name: 'postgres'
+    static_configs:
+      - targets: ['mediastack-postgres:5432']
+    scrape_interval: 30s
+
+  # Redis/Valkey monitoring  
+  - job_name: 'valkey'
+    static_configs:
+      - targets: ['mediastack-valkey:6379']
+    scrape_interval: 30s

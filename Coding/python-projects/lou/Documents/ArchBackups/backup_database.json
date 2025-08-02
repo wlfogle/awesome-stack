@@ -1,0 +1,20 @@
+[
+    {
+        "path": "/home/lou/Documents/ArchBackups/package_backup_20250623_160147.tar.gz",
+        "size": 1661,
+        "timestamp": "2025-06-23T16:01:47",
+        "type": 2
+    },
+    {
+        "path": "/home/lou/Documents/ArchBackups/package_backup_20250623_172300.tar.gz",
+        "size": 1687,
+        "timestamp": "2025-06-23T17:23:01",
+        "type": 2
+    },
+    {
+        "path": "/home/lou/Documents/ArchBackups/settings_backup_20250623_172312.tar.gz",
+        "size": 87092091,
+        "timestamp": "2025-06-23T17:23:18",
+        "type": 3
+    }
+]

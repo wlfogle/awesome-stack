@@ -1,0 +1,89 @@
+---
+#id: pb
+name: Pornbay
+identifier: pornbay
+description: Pornbay (PB) is a private torrent tracker for XXX
+language: en-us
+urls:
+  - https://pornbay.org/
+privacy: private
+protocol: torrent
+supports:
+  - irc
+  - rss
+# source: gazelle
+settings:
+  - name: authkey
+    type: secret
+    required: true
+    label: Auth key
+    help: Right click DL on a torrent and get the authkey.
+
+  - name: torrent_pass
+    type: secret
+    required: true
+    label: Torrent pass
+    help: Right click DL on a torrent and get the torrent_pass.
+
+irc:
+  network: DigitalIRC
+  server: irc.digitalirc.org
+  port: 6697
+  tls: true
+  channels:
+    - "#pornbay-announce"
+  announcers:
+    - "PB-Announcer"
+    - "Llamab1t"
+    - "Llamab3t"
+  settings:
+    - name: nick
+      type: text
+      required: true
+      label: Nick
+      help: Bot nick. Eg. user_bot
+
+    - name: auth.account
+      type: text
+      required: true
+      label: NickServ Account
+      help: NickServ account. Make sure to group your user and bot.
+
+    - name: auth.password
+      type: secret
+      required: true
+      label: NickServ Password
+      help: NickServ password
+
+  parse:
+    type: single
+    lines:
+      - tests:
+        - line: '[XXX-Cateogry] [SomeXXXSite] Wow So Much Come [2015-05-30, 3K, 1500p] [4.77 GB - Uploader: Tester] - https://pornbay.org/torrents.php?id=000000'
+          expect:
+            category: XXX-Cateogry
+            torrentName: '[SomeXXXSite] Wow So Much Come [2015-05-30, 3K, 1500p]'
+            torrentSize: 4.77 GB
+            uploader: Tester
+            baseUrl: https://pornbay.org/
+            torrentId: "000000"
+        - line: '[XXX-Category-2] SomeXXXSite - Some Name [1.35 GB - Uploader: someUploader] - https://pornbay.org/torrents.php?id=000000'
+          expect:
+            category: XXX-Category-2
+            torrentName: SomeXXXSite - Some Name
+            torrentSize: 1.35 GB
+            uploader: someUploader
+            baseUrl: https://pornbay.org/
+            torrentId: "000000"
+        pattern: '\[(.+?)\] (\[?.*\]?.*) \[([0-9]+?.*?) - Uploader: (.+)\] - (https:\/\/.+\/)torrents.php\?id=(\d+)'
+        vars:
+          - category
+          - torrentName
+          - torrentSize
+          - uploader
+          - baseUrl
+          - torrentId
+
+    match:
+      infourl: "/torrents.php?id={{ .torrentId }}"
+      torrenturl: "/torrents.php?action=download&id={{ .torrentId }}&authkey={{ .authkey }}&torrent_pass={{ .torrent_pass }}"

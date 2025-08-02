@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Albany Weather</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            min-height: 100vh;
+        }
+        .weather-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        .current-temp {
+            font-size: 4rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .weather-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .info-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        .info-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+        .info-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .refresh-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 10px;
+        }
+        .refresh-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .status {
+            text-align: center;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        .error {
+            background: rgba(231, 76, 60, 0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .location {
+            text-align: center;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="weather-card">
+        <h1>🌤️ Weather Dashboard</h1>
+        <div class="location">New Albany, IN</div>
+        
+        <div id="status" class="status">Loading weather data...</div>
+        <div id="error" class="error" style="display: none;"></div>
+        
+        <div id="weather-content" style="display: none;">
+            <div class="current-temp" id="temperature">--°F</div>
+            
+            <div class="weather-info">
+                <div class="info-item">
+                    <div class="info-label">Condition</div>
+                    <div class="info-value" id="condition">--</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Feels Like</div>
+                    <div class="info-value" id="feels-like">--°F</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Humidity</div>
+                    <div class="info-value" id="humidity">--%</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Wind</div>
+                    <div class="info-value" id="wind">-- mph</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Pressure</div>
+                    <div class="info-value" id="pressure">-- inHg</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Visibility</div>
+                    <div class="info-value" id="visibility">-- mi</div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <button class="refresh-btn" onclick="fetchWeather()">🔄 Refresh</button>
+            <button class="refresh-btn" onclick="toggleAutoRefresh()" id="auto-btn">▶️ Auto Refresh</button>
+        </div>
+        
+        <div id="last-update" class="status" style="font-size: 0.8rem;"></div>
+    </div>
+
+    <script>
+        const API_KEY = 'b47d7da2bab745798b08cbf9b1d1ad30';
+        const CITY = 'New Albany,IN,US';
+        let autoRefreshInterval = null;
+
+        async function fetchWeather() {
+            const statusEl = document.getElementById('status');
+            const errorEl = document.getElementById('error');
+            const contentEl = document.getElementById('weather-content');
+            
+            statusEl.textContent = 'Fetching latest weather...';
+            statusEl.style.display = 'block';
+            errorEl.style.display = 'none';
+            
+            try {
+                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid=${API_KEY}&units=imperial`);
+                
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status} - ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                // Update all weather data
+                document.getElementById('temperature').textContent = `${Math.round(data.main.temp)}°F`;
+                document.getElementById('condition').textContent = data.weather[0].description.replace(/\b\w/g, l => l.toUpperCase());
+                document.getElementById('feels-like').textContent = `${Math.round(data.main.feels_like)}°F`;
+                document.getElementById('humidity').textContent = `${data.main.humidity}%`;
+                document.getElementById('wind').textContent = `${Math.round(data.wind.speed)} mph`;
+                document.getElementById('pressure').textContent = `${(data.main.pressure * 0.02953).toFixed(2)} inHg`;
+                document.getElementById('visibility').textContent = `${Math.round(data.visibility * 0.000621371)} mi`;
+                
+                // Update timestamp
+                document.getElementById('last-update').textContent = `Last updated: ${new Date().toLocaleString()}`;
+                
+                // Hide status, show content
+                statusEl.style.display = 'none';
+                contentEl.style.display = 'block';
+                
+            } catch (error) {
+                console.error('Weather fetch error:', error);
+                errorEl.textContent = `Failed to load weather: ${error.message}`;
+                errorEl.style.display = 'block';
+                statusEl.style.display = 'none';
+                contentEl.style.display = 'none';
+            }
+        }
+
+        function toggleAutoRefresh() {
+            const btn = document.getElementById('auto-btn');
+            
+            if (autoRefreshInterval) {
+                clearInterval(autoRefreshInterval);
+                autoRefreshInterval = null;
+                btn.textContent = '▶️ Auto Refresh';
+            } else {
+                autoRefreshInterval = setInterval(fetchWeather, 300000); // 5 minutes
+                btn.textContent = '⏸️ Stop Auto';
+            }
+        }
+
+        // Load weather on page load
+        fetchWeather();
+    </script>
+</body>
+</html>

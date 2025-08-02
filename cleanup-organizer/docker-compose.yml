@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  # Main cleanup and organization service
+  cleanup-organizer:
+    build: .
+    ports:
+      - "8092:8000"
+    volumes:
+      - /home/lou/awesome_stack:/app/workspace
+      - ./organized:/app/organized
+      - ./archive:/app/archive
+      - ./reports:/app/reports
+      - ./config:/app/config
+    environment:
+      - WORKSPACE_PATH=/app/workspace
+      - ORGANIZED_PATH=/app/organized
+      - ARCHIVE_PATH=/app/archive
+      - OLLAMA_HOST=192.168.122.172:11434
+      - OLLAMA_MODEL=codellama:7b
+      - AUTO_ORGANIZE=true
+      - BACKUP_BEFORE_CLEANUP=true
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - redis
+
+  # Database for tracking changes and decisions
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: cleanup_organizer
+      POSTGRES_USER: organizer
+      POSTGRES_PASSWORD: organizer_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  # Cache for analysis results
+  redis:
+    image: redis:alpine
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  # Web interface
+  organizer-ui:
+    build: ./ui
+    ports:
+      - "8093:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8092
+    depends_on:
+      - cleanup-organizer
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:

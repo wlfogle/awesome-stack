@@ -1,0 +1,36 @@
+# Maintainer: Lou <lou@example.com>
+pkgname=calibre-library-fixer
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="A GUI and CLI tool for organizing Calibre library filenames with standardized naming"
+arch=('any')
+url="https://github.com/example/calibre-library-fixer"
+license=('MIT')
+depends=('python' 'python-pyqt6' 'calibre')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+optdepends=(
+    'python-pillow: Enhanced icon support'
+    'python-requests: Future update checking'
+)
+source=("${pkgname}-${pkgver}.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    python -m build --wheel --no-isolation
+}
+
+package() {
+    cd "$srcdir/$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    
+    # Install desktop file
+    install -Dm644 calibre-library-fixer.desktop "$pkgdir/usr/share/applications/calibre-library-fixer.desktop"
+    
+    # Install icon
+    install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/calibre-library-fixer.png"
+    
+    # Install documentation
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

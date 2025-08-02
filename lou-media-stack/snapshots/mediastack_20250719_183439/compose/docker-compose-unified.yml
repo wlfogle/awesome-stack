@@ -1,0 +1,1039 @@
+networks:
+  mediastack:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
+
+services:
+  # ============================================================================
+  # PHASE 1: CORE INFRASTRUCTURE (8000-8099)
+  # ============================================================================
+  
+  # Database Services
+  postgres:
+    image: postgres:16-alpine
+    container_name: mediastack-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mediastack
+    ports:
+      - "8020:5432"    # Phase 1: Core Infrastructure
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  valkey:
+    image: valkey/valkey:7-alpine
+    container_name: mediastack-valkey
+    restart: unless-stopped
+    command: --save 60 1 --loglevel warning
+    volumes:
+      - valkey_data:/data
+    networks:
+      - mediastack
+    ports:
+      - "8021:6379"    # Phase 1: Core Infrastructure
+    healthcheck:
+      test: ["CMD-SHELL", "valkey-cli ping | grep PONG"]
+      start_period: 20s
+      interval: 30s
+      retries: 5
+      timeout: 3s
+
+  # VPN Infrastructure
+  gluetun:
+    image: qmcgaw/gluetun
+    container_name: mediastack-gluetun
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    environment:
+      VPN_SERVICE_PROVIDER: ${VPN_PROVIDER}
+      VPN_TYPE: ${VPN_TYPE}
+      WIREGUARD_PRIVATE_KEY: ${VPN_PRIVATE_KEY}
+      WIREGUARD_ADDRESSES: ${VPN_ADDRESSES}
+      SERVER_COUNTRIES: ${VPN_COUNTRIES}
+      FIREWALL_OUTBOUND_SUBNETS: 172.21.0.0/16
+      HEALTH_SUCCESS_WAIT_DURATION: 5s
+    volumes:
+      - gluetun_data:/gluetun
+    ports:
+      - "8001:8888/tcp" # HTTP proxy - Phase 1: Core Infrastructure  
+      - "8002:8388/tcp" # Shadowsocks - Phase 1: Core Infrastructure
+      - "8003:8080/tcp" # Built-in HTTP control server - Phase 1: Core Infrastructure
+    networks:
+      - mediastack
+
+  # Reverse Proxy
+  traefik:
+    image: traefik:v3.0
+    container_name: mediastack-traefik
+    restart: unless-stopped
+    command:
+      - "--api.dashboard=true"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--providers.file.filename=/etc/traefik/traefik-tls.yml"
+      - "--providers.file.watch=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+      - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
+      - "--log.level=INFO"
+      - "--metrics.prometheus=true"
+      - "--metrics.prometheus.addEntryPointsLabels=true"
+    ports:
+      - "80:80"        # Standard HTTP - Phase 1: Core Infrastructure
+      - "443:443"      # Standard HTTPS - Phase 1: Core Infrastructure  
+      - "8000:8080"    # Traefik Dashboard - Phase 1: Core Infrastructure
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik-tls.yml:/etc/traefik/traefik-tls.yml:ro
+      - ./certs:/certs:ro
+    networks:
+      - mediastack
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.${DOMAIN}`)"
+      - "traefik.http.routers.traefik.service=api@internal"
+
+  # Certificate Management
+  traefik-certs-dumper:
+    image: ldez/traefik-certs-dumper:latest
+    container_name: mediastack-traefik-certs-dumper
+    restart: unless-stopped
+    volumes:
+      - traefik_acme:/data:ro
+      - ./certs:/certs
+    networks:
+      - mediastack
+
+  # Authentication
+  authentik-server:
+    image: ghcr.io/goauthentik/server:latest
+    container_name: mediastack-authentik-server
+    restart: unless-stopped
+    command: server
+    environment:
+      AUTHENTIK_LOG_LEVEL: info
+      AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY}
+      AUTHENTIK_REDIS__HOST: mediastack-valkey
+      AUTHENTIK_POSTGRESQL__HOST: mediastack-postgres
+      AUTHENTIK_POSTGRESQL__NAME: ${POSTGRES_DB}
+      AUTHENTIK_POSTGRESQL__USER: ${POSTGRES_USER}
+      AUTHENTIK_POSTGRESQL__PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - authentik_media:/media
+      - authentik_templates:/templates
+    networks:
+      - mediastack
+    ports:
+      - "8030:9000"    # Phase 1: Core Infrastructure
+      - "8031:9443"    # HTTPS variant
+    depends_on:
+      - postgres
+      - valkey
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.authentik.rule=Host(`auth.${DOMAIN}`)"
+      - "traefik.http.routers.authentik.tls=true"
+      - "traefik.http.services.authentik.loadbalancer.server.port=9000"
+
+  authentik-worker:
+    image: ghcr.io/goauthentik/server:latest
+    container_name: mediastack-authentik-worker
+    restart: unless-stopped
+    command: worker
+    environment:
+      AUTHENTIK_LOG_LEVEL: info
+      AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY}
+      AUTHENTIK_REDIS__HOST: mediastack-valkey
+      AUTHENTIK_POSTGRESQL__HOST: mediastack-postgres
+      AUTHENTIK_POSTGRESQL__NAME: ${POSTGRES_DB}
+      AUTHENTIK_POSTGRESQL__USER: ${POSTGRES_USER}
+      AUTHENTIK_POSTGRESQL__PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - authentik_media:/media
+      - authentik_templates:/templates
+    networks:
+      - mediastack
+    depends_on:
+      - postgres
+      - valkey
+
+  # ============================================================================
+  # PHASE 2: ESSENTIAL MEDIA SERVICES (8100-8199)
+  # ============================================================================
+
+  # Indexer Management
+  jackett:
+    image: linuxserver/jackett
+    container_name: mediastack-jackett
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      - jackett_config:/config
+      - ${DOWNLOADS_ROOT}:/downloads
+    networks:
+      - mediastack
+    ports:
+      - "8100:9117"    # Phase 2: Essential Media
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jackett.rule=Host(`jackett.${DOMAIN}`)"
+      - "traefik.http.routers.jackett.tls=true"
+      - "traefik.http.services.jackett.loadbalancer.server.port=9117"
+
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: mediastack-flaresolverr
+    restart: unless-stopped
+    environment:
+      LOG_LEVEL: info
+      LOG_HTML: false
+      CAPTCHA_SOLVER: none
+      TZ: ${TZ}
+    networks:
+      - mediastack
+    ports:
+      - "8101:8191"    # Phase 2: Essential Media
+
+  # Download Client (through VPN)
+  deluge:
+    image: linuxserver/deluge
+    container_name: mediastack-deluge
+    restart: unless-stopped
+    network_mode: "service:gluetun"
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+      DELUGE_LOGLEVEL: error
+    volumes:
+      - deluge_config:/config
+      - ${DOWNLOADS_ROOT}:/downloads
+    depends_on:
+      - gluetun
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.deluge.rule=Host(`deluge.${DOMAIN}`)"
+      - "traefik.http.routers.deluge.tls=true"
+      - "traefik.http.services.deluge.loadbalancer.server.port=8112"
+
+  # Media Management (Arr Suite)
+  sonarr:
+    image: linuxserver/sonarr
+    container_name: mediastack-sonarr
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      - sonarr_config:/config
+      - ${MEDIA_ROOT}/tv:/tv
+      - ${DOWNLOADS_ROOT}:/downloads
+    networks:
+      - mediastack
+    ports:
+      - "8110:8989"    # Phase 2: Essential Media
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.sonarr.rule=Host(`sonarr.${DOMAIN}`)"
+      - "traefik.http.routers.sonarr.tls=true"
+      - "traefik.http.services.sonarr.loadbalancer.server.port=8989"
+
+  radarr:
+    image: linuxserver/radarr
+    container_name: mediastack-radarr
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      - radarr_config:/config
+      - ${MEDIA_ROOT}/movies:/movies
+      - ${DOWNLOADS_ROOT}:/downloads
+    networks:
+      - mediastack
+    ports:
+      - "8111:7878"    # Phase 2: Essential Media
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.radarr.rule=Host(`radarr.${DOMAIN}`)"
+      - "traefik.http.routers.radarr.tls=true"
+      - "traefik.http.services.radarr.loadbalancer.server.port=7878"
+
+  lidarr:
+    image: linuxserver/lidarr
+    container_name: mediastack-lidarr
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      - lidarr_config:/config
+      - ${MEDIA_ROOT}/music:/music
+      - ${DOWNLOADS_ROOT}:/downloads
+    networks:
+      - mediastack
+    ports:
+      - "8112:8686"    # Phase 2: Essential Media
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.lidarr.rule=Host(`lidarr.${DOMAIN}`)"
+      - "traefik.http.routers.lidarr.tls=true"
+      - "traefik.http.services.lidarr.loadbalancer.server.port=8686"
+
+  readarr:
+    image: linuxserver/readarr:nightly
+    container_name: mediastack-readarr
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      - readarr_config:/config
+      - ${MEDIA_ROOT}/books:/books
+      - ${MEDIA_ROOT}/audiobooks:/audiobooks
+      - ${DOWNLOADS_ROOT}:/downloads
+    networks:
+      - mediastack
+    ports:
+      - "8113:8787"    # Phase 2: Essential Media
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.readarr.rule=Host(`readarr.${DOMAIN}`)"
+      - "traefik.http.routers.readarr.tls=true"
+      - "traefik.http.services.readarr.loadbalancer.server.port=8787"
+
+  # File Processing
+  unpackerr:
+    image: golift/unpackerr
+    container_name: mediastack-unpackerr
+    restart: unless-stopped
+    environment:
+      UN_SONARR_0_URL: http://mediastack-sonarr:8989
+      UN_SONARR_0_API_KEY: ${SONARR_API_KEY}
+      UN_RADARR_0_URL: http://mediastack-radarr:7878
+      UN_RADARR_0_API_KEY: ${RADARR_API_KEY}
+      UN_LIDARR_0_URL: http://mediastack-lidarr:8686
+      UN_LIDARR_0_API_KEY: ${LIDARR_API_KEY}
+      UN_READARR_0_URL: http://mediastack-readarr:8787
+      UN_READARR_0_API_KEY: ${READARR_API_KEY}
+    volumes:
+      - ${DOWNLOADS_ROOT}:/downloads
+    networks:
+      - mediastack
+
+  filebot:
+    image: jlesage/filebot:latest
+    container_name: mediastack-filebot
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      - filebot_config:/config
+      - ${MEDIA_ROOT}:/media
+      - ${DOWNLOADS_ROOT}:/downloads
+    networks:
+      - mediastack
+    ports:
+      - "8120:5800"    # Phase 2: Essential Media
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.filebot.rule=Host(`filebot.${DOMAIN}`)"
+      - "traefik.http.routers.filebot.tls=true"
+      - "traefik.http.services.filebot.loadbalancer.server.port=5800"
+
+  # ============================================================================
+  # PHASE 3: MEDIA SERVERS & CONSUMPTION (8200-8299)
+  # ============================================================================
+
+  # Media Servers
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: mediastack-jellyfin
+    restart: unless-stopped
+    environment:
+      JELLYFIN_PublishedServerUrl: https://jellyfin.${DOMAIN}
+    volumes:
+      - jellyfin_config:/config
+      - jellyfin_cache:/cache
+      - ${MEDIA_ROOT}/movies:/media/movies:ro
+      - ${MEDIA_ROOT}/tv:/media/tv:ro
+      - ${MEDIA_ROOT}/music:/media/music:ro
+      - ${MEDIA_ROOT}/audiobooks:/media/audiobooks:ro
+      - ${MEDIA_ROOT}/books:/media/books:ro
+    networks:
+      - mediastack
+    ports:
+      - "8200:8096"    # Phase 3: Media Servers
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jellyfin.rule=Host(`jellyfin.${DOMAIN}`)"
+      - "traefik.http.routers.jellyfin.tls=true"
+      - "traefik.http.services.jellyfin.loadbalancer.server.port=8096"
+
+  plex:
+    image: plexinc/pms-docker
+    container_name: mediastack-plex
+    restart: unless-stopped
+    environment:
+      PLEX_CLAIM: ${PLEX_CLAIM}
+      PLEX_UID: ${PUID}
+      PLEX_GID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      - plex_config:/config
+      - plex_transcode:/transcode
+      - ${MEDIA_ROOT}/movies:/media/movies:ro
+      - ${MEDIA_ROOT}/tv:/media/tv:ro
+      - ${MEDIA_ROOT}/music:/media/music:ro
+      - ${MEDIA_ROOT}/audiobooks:/media/audiobooks:ro
+    networks:
+      - mediastack
+    ports:
+      - "8201:32400"   # Phase 3: Media Servers
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.plex.rule=Host(`plex.${DOMAIN}`)"
+      - "traefik.http.routers.plex.tls=true"
+      - "traefik.http.services.plex.loadbalancer.server.port=32400"
+
+  # Audiobook Server
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    container_name: mediastack-audiobookshelf
+    restart: unless-stopped
+    environment:
+      AUDIOBOOKSHELF_UID: ${PUID}
+      AUDIOBOOKSHELF_GID: ${PGID}
+    volumes:
+      - audiobookshelf_config:/config
+      - audiobookshelf_metadata:/metadata
+      - ${MEDIA_ROOT}/audiobooks:/audiobooks:ro
+      - ${MEDIA_ROOT}/books:/books:ro
+    networks:
+      - mediastack
+    ports:
+      - "8210:80"      # Phase 3: Media Servers
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.audiobookshelf.rule=Host(`audiobooks.${DOMAIN}`)"
+      - "traefik.http.routers.audiobookshelf.tls=true"
+      - "traefik.http.services.audiobookshelf.loadbalancer.server.port=80"
+
+  # eBook Management
+  calibre-web:
+    image: lscr.io/linuxserver/calibre-web:latest
+    container_name: mediastack-calibre-web
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      - calibre_web_config:/config
+      - ${MEDIA_ROOT}/books:/books
+    networks:
+      - mediastack
+    ports:
+      - "8211:8083"    # Phase 3: Media Servers
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.calibre-web.rule=Host(`books.${DOMAIN}`)"
+      - "traefik.http.routers.calibre-web.tls=true"
+      - "traefik.http.services.calibre-web.loadbalancer.server.port=8083"
+
+  # TV/IPTV Services
+  channels-dvr:
+    image: fancybits/channels-dvr:latest
+    container_name: mediastack-channels-dvr
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ}
+    volumes:
+      - channels_dvr_data:/channels-dvr
+      - ${MEDIA_ROOT}/recordings:/recordings
+    networks:
+      - mediastack
+    ports:
+      - "8220:8089"    # Phase 3: Media Servers
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.channels-dvr.rule=Host(`dvr.${DOMAIN}`)"
+      - "traefik.http.routers.channels-dvr.tls=true"
+      - "traefik.http.services.channels-dvr.loadbalancer.server.port=8089"
+
+  iptv-proxy:
+    image: pierro777/iptv-proxy:latest
+    container_name: mediastack-iptv-proxy
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ}
+    volumes:
+      - iptv_proxy_config:/app/config
+    networks:
+      - mediastack
+    ports:
+      - "8221:8080"    # Phase 3: Media Servers
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.iptv-proxy.rule=Host(`iptv.${DOMAIN}`)"
+      - "traefik.http.routers.iptv-proxy.tls=true"
+      - "traefik.http.services.iptv-proxy.loadbalancer.server.port=8080"
+
+  tvapp2:
+    image: thebinaryninja/tvapp2:latest
+    container_name: mediastack-tvapp2
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ}
+    networks:
+      - mediastack
+    ports:
+      - "8222:4124"    # Phase 3: Media Servers
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.tvapp2.rule=Host(`tvapp2.${DOMAIN}`)"
+      - "traefik.http.routers.tvapp2.tls=true"
+      - "traefik.http.services.tvapp2.loadbalancer.server.port=4124"
+
+  # Media Processing
+  tdarr:
+    image: ghcr.io/haveagitgat/tdarr:latest
+    container_name: mediastack-tdarr
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ}
+      PUID: ${PUID}
+      PGID: ${PGID}
+    volumes:
+      - tdarr_server_data:/app/server
+      - tdarr_config_data:/app/configs
+      - tdarr_log_data:/app/logs
+      - ${MEDIA_ROOT}:/media
+    networks:
+      - mediastack
+    ports:
+      - "8230:8265"    # Phase 3: Media Servers - Web UI
+      - "8231:8266"    # Server Port
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.tdarr.rule=Host(`tdarr.${DOMAIN}`)"
+      - "traefik.http.routers.tdarr.tls=true"
+      - "traefik.http.services.tdarr.loadbalancer.server.port=8265"
+
+  tdarr-node:
+    image: ghcr.io/haveagitgat/tdarr_node:latest
+    container_name: mediastack-tdarr-node
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ}
+      PUID: ${PUID}
+      PGID: ${PGID}
+      nodeName: MainNode
+    volumes:
+      - tdarr_config_data:/app/configs
+      - tdarr_log_data:/app/logs
+      - ${MEDIA_ROOT}:/media
+    networks:
+      - mediastack
+    depends_on:
+      - tdarr
+
+  # ============================================================================
+  # PHASE 4: ENHANCEMENT SERVICES (8300-8399)
+  # ============================================================================
+
+  # Subtitles
+  bazarr:
+    image: linuxserver/bazarr
+    container_name: mediastack-bazarr
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      - bazarr_config:/config
+      - ${MEDIA_ROOT}/movies:/movies
+      - ${MEDIA_ROOT}/tv:/tv
+    networks:
+      - mediastack
+    ports:
+      - "8300:6767"    # Phase 4: Enhancement
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bazarr.rule=Host(`bazarr.${DOMAIN}`)"
+      - "traefik.http.routers.bazarr.tls=true"
+      - "traefik.http.services.bazarr.loadbalancer.server.port=6767"
+
+  # Request Management
+  overseerr:
+    image: sctx/overseerr:latest
+    container_name: mediastack-overseerr
+    restart: unless-stopped
+    environment:
+      LOG_LEVEL: info
+      TZ: ${TZ}
+    volumes:
+      - overseerr_config:/app/config
+    networks:
+      - mediastack
+    ports:
+      - "8310:5055"    # Phase 4: Enhancement
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.overseerr.rule=Host(`overseerr.${DOMAIN}`, `requests.${DOMAIN}`)"
+      - "traefik.http.routers.overseerr.tls=true"
+      - "traefik.http.services.overseerr.loadbalancer.server.port=5055"
+
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: mediastack-jellyseerr
+    restart: unless-stopped
+    environment:
+      LOG_LEVEL: info
+      TZ: ${TZ}
+    volumes:
+      - jellyseerr_config:/app/config
+    networks:
+      - mediastack
+    ports:
+      - "8311:5055"    # Phase 4: Enhancement
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jellyseerr.rule=Host(`jellyseerr.${DOMAIN}`)"
+      - "traefik.http.routers.jellyseerr.tls=true"
+      - "traefik.http.services.jellyseerr.loadbalancer.server.port=5055"
+
+  # Live TV
+  tvheadend:
+    image: linuxserver/tvheadend
+    container_name: mediastack-tvheadend
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+      RUN_OPTS: --satip_rtsp 554
+    volumes:
+      - tvheadend_config:/config
+      - ${MEDIA_ROOT}/recordings:/recordings
+      - ${MEDIA_ROOT}/timeshift:/timeshift
+    ports:
+      - "8320:9981"    # Phase 4: Enhancement - TVHeadend Web
+      - "8321:9982"    # Phase 4: Enhancement - TVHeadend HTSP
+    networks:
+      - mediastack
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.tvheadend.rule=Host(`tv.${DOMAIN}`)"
+      - "traefik.http.routers.tvheadend.tls=true"
+      - "traefik.http.services.tvheadend.loadbalancer.server.port=9981"
+
+  # Analytics
+  tautulli:
+    image: linuxserver/tautulli
+    container_name: mediastack-tautulli
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      - tautulli_config:/config
+    networks:
+      - mediastack
+    ports:
+      - "8330:8181"    # Phase 4: Enhancement
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.tautulli.rule=Host(`tautulli.${DOMAIN}`)"
+      - "traefik.http.routers.tautulli.tls=true"
+      - "traefik.http.services.tautulli.loadbalancer.server.port=8181"
+
+  # Dashboards
+  organizr:
+    image: organizr/organizr:latest
+    container_name: mediastack-organizr
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+      fpm: "true"
+    volumes:
+      - organizr_config:/config
+    networks:
+      - mediastack
+    ports:
+      - "8340:80"      # Phase 4: Enhancement
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.organizr.rule=Host(`${DOMAIN}`, `dashboard.${DOMAIN}`)"
+      - "traefik.http.routers.organizr.tls=true"
+      - "traefik.http.services.organizr.loadbalancer.server.port=80"
+
+  homarr:
+    image: ghcr.io/ajnart/homarr:latest
+    container_name: mediastack-homarr
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ}
+    volumes:
+      - homarr_config:/app/data/configs
+      - homarr_icons:/app/public/icons
+      - homarr_data:/data
+    networks:
+      - mediastack
+    ports:
+      - "8341:7575"    # Phase 4: Enhancement
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.homarr.rule=Host(`homarr.${DOMAIN}`)"
+      - "traefik.http.routers.homarr.tls=true"
+      - "traefik.http.services.homarr.loadbalancer.server.port=7575"
+
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: mediastack-homepage
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ}
+      PUID: ${PUID}
+      PGID: ${PGID}
+    volumes:
+      - homepage_config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - mediastack
+    ports:
+      - "8342:3000"    # Phase 4: Enhancement
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.homepage.rule=Host(`homepage.${DOMAIN}`)"
+      - "traefik.http.routers.homepage.tls=true"
+      - "traefik.http.services.homepage.loadbalancer.server.port=3000"
+
+  # ============================================================================
+  # MONITORING & SECURITY (8400-8499)
+  # ============================================================================
+
+  # Monitoring
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: mediastack-prometheus
+    restart: unless-stopped
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    volumes:
+      - prometheus_data:/prometheus
+      - prometheus_config:/etc/prometheus
+    networks:
+      - mediastack
+    ports:
+      - "8400:9090"    # Phase 5: Monitoring
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.prometheus.rule=Host(`prometheus.${DOMAIN}`)"
+      - "traefik.http.routers.prometheus.tls=true"
+      - "traefik.http.services.prometheus.loadbalancer.server.port=9090"
+
+  # Security
+  crowdsec:
+    image: crowdsecurity/crowdsec:latest
+    container_name: mediastack-crowdsec
+    restart: unless-stopped
+    environment:
+      COLLECTIONS: "crowdsecurity/nginx crowdsecurity/base-http-scenarios"
+    volumes:
+      - crowdsec_config:/etc/crowdsec
+      - crowdsec_data:/var/lib/crowdsec/data
+      - /var/log:/var/log:ro
+    networks:
+      - mediastack
+
+  # VPN Network
+  tailscale:
+    image: tailscale/tailscale:latest
+    container_name: mediastack-tailscale
+    restart: unless-stopped
+    environment:
+      TS_AUTHKEY: ${TAILSCALE_AUTH_KEY}
+    volumes:
+      - tailscale_data:/var/lib/tailscale
+    networks:
+      - mediastack
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+
+  # ============================================================================
+  # MANAGEMENT & UTILITIES (8500-8599)
+  # ============================================================================
+
+  # Container Management
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: mediastack-portainer
+    restart: unless-stopped
+    command: -H unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    networks:
+      - mediastack
+    ports:
+      - "8500:9000"    # Phase 6: Management
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portainer.rule=Host(`portainer.${DOMAIN}`)"
+      - "traefik.http.routers.portainer.tls=true"
+      - "traefik.http.services.portainer.loadbalancer.server.port=9000"
+
+  # Remote Access
+  guacd:
+    image: guacamole/guacd:latest
+    container_name: mediastack-guacd
+    restart: unless-stopped
+    networks:
+      - mediastack
+
+  guacamole:
+    image: guacamole/guacamole:latest
+    container_name: mediastack-guacamole
+    restart: unless-stopped
+    environment:
+      GUACD_HOSTNAME: mediastack-guacd
+      MYSQL_HOSTNAME: mediastack-postgres
+      MYSQL_DATABASE: guacamole
+      MYSQL_USER: ${POSTGRES_USER}
+      MYSQL_PASSWORD: ${POSTGRES_PASSWORD}
+    networks:
+      - mediastack
+    ports:
+      - "8510:8080"    # Phase 6: Management
+    depends_on:
+      - guacd
+      - postgres
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.guacamole.rule=Host(`remote.${DOMAIN}`)"
+      - "traefik.http.routers.guacamole.tls=true"
+      - "traefik.http.services.guacamole.loadbalancer.server.port=8080"
+
+  # Browser in Container
+  chromium:
+    image: lscr.io/linuxserver/chromium:latest
+    container_name: mediastack-chromium
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      - chromium_config:/config
+    networks:
+      - mediastack
+    ports:
+      - "8520:3000"    # Phase 6: Management
+    security_opt:
+      - seccomp:unconfined
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.chromium.rule=Host(`browser.${DOMAIN}`)"
+      - "traefik.http.routers.chromium.tls=true"
+      - "traefik.http.services.chromium.loadbalancer.server.port=3000"
+
+  # Automation & Maintenance
+  watchtower:
+    image: containrrr/watchtower
+    container_name: mediastack-watchtower
+    restart: unless-stopped
+    environment:
+      WATCHTOWER_CLEANUP: "true"
+      WATCHTOWER_SCHEDULE: "0 0 4 * * *"
+      WATCHTOWER_NOTIFICATIONS: shoutrrr
+      WATCHTOWER_NOTIFICATION_URL: ${WATCHTOWER_NOTIFICATION_URL}
+      WATCHTOWER_INCLUDE_STOPPED: "true"
+      WATCHTOWER_REVIVE_STOPPED: "false"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - mediastack
+
+  recyclarr:
+    image: recyclarr/recyclarr:latest
+    container_name: mediastack-recyclarr
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ}
+    volumes:
+      - recyclarr_config:/config
+    networks:
+      - mediastack
+
+  autoscan:
+    image: ghcr.io/hotio/autoscan:latest
+    container_name: mediastack-autoscan
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ}
+    volumes:
+      - autoscan_config:/config
+      - ${MEDIA_ROOT}:/media:ro
+    networks:
+      - mediastack
+    ports:
+      - "8530:3030"    # Phase 6: Management
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.autoscan.rule=Host(`autoscan.${DOMAIN}`)"
+      - "traefik.http.routers.autoscan.tls=true"
+      - "traefik.http.services.autoscan.loadbalancer.server.port=3030"
+
+  # Content Management
+  kometa:
+    image: kometateam/kometa:latest
+    container_name: mediastack-kometa
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ}
+    volumes:
+      - kometa_config:/config
+      - ${MEDIA_ROOT}:/media:ro
+    networks:
+      - mediastack
+
+  gaps:
+    image: housewrecker/gaps:latest
+    container_name: mediastack-gaps
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ}
+    volumes:
+      - gaps_data:/usr/app
+    networks:
+      - mediastack
+    ports:
+      - "8540:8484"    # Phase 6: Management
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.gaps.rule=Host(`gaps.${DOMAIN}`)"
+      - "traefik.http.routers.gaps.tls=true"
+      - "traefik.http.services.gaps.loadbalancer.server.port=8484"
+
+  # Security & Authentication
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: mediastack-vaultwarden
+    restart: unless-stopped
+    environment:
+      WEBSOCKET_ENABLED: true
+      ROCKET_PORT: 80
+      DOMAIN: https://vaultwarden.${DOMAIN}
+      ADMIN_TOKEN: ${VAULTWARDEN_ADMIN_TOKEN}
+      SIGNUPS_ALLOWED: ${VAULTWARDEN_SIGNUPS_ALLOWED:-true}
+      INVITATIONS_ALLOWED: ${VAULTWARDEN_INVITATIONS_ALLOWED:-true}
+      SHOW_PASSWORD_HINT: false
+      LOG_LEVEL: warn
+      TZ: ${TZ}
+    volumes:
+      - vaultwarden_data:/data
+    networks:
+      - mediastack
+    ports:
+      - "8550:80"      # Phase 6: Management
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.vaultwarden.rule=Host(`vaultwarden.${DOMAIN}`)"
+      - "traefik.http.routers.vaultwarden.tls=true"
+      - "traefik.http.services.vaultwarden.loadbalancer.server.port=80"
+
+volumes:
+  # Core Infrastructure
+  postgres_data:
+  valkey_data:
+  gluetun_data:
+  traefik_acme:
+  authentik_media:
+  authentik_templates:
+
+  # Media Management
+  jackett_config:
+  deluge_config:
+  sonarr_config:
+  radarr_config:
+  lidarr_config:
+  readarr_config:
+  bazarr_config:
+  filebot_config:
+  unpackerr_config:
+
+  # Media Servers
+  jellyfin_config:
+  jellyfin_cache:
+  plex_config:
+  plex_transcode:
+  audiobookshelf_config:
+  audiobookshelf_metadata:
+  calibre_web_config:
+  channels_dvr_data:
+  iptv_proxy_config:
+  tdarr_server_data:
+  tdarr_config_data:
+  tdarr_log_data:
+
+  # Enhancement Services
+  overseerr_config:
+  jellyseerr_config:
+  tvheadend_config:
+  tautulli_config:
+  organizr_config:
+  homarr_config:
+  homarr_icons:
+  homarr_data:
+  homepage_config:
+
+  # Monitoring & Security
+  prometheus_data:
+  prometheus_config:
+  crowdsec_config:
+  crowdsec_data:
+  tailscale_data:
+
+  # Management & Utilities
+  portainer_data:
+  chromium_config:
+  recyclarr_config:
+  autoscan_config:
+  kometa_config:
+  gaps_data:
+  vaultwarden_data:

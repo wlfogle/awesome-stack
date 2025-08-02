@@ -1,0 +1,126 @@
+// Czech
+var EXT_LOCALE = "cs";
+
+var WORDS = {
+	// popup
+	btnTranslate:				"Přeložit",
+	btnClear:					"Smazat",
+	txtUse:						"použít:",
+	txtBackTranslation:			"zpětný překlad",
+	txtTranslateActivePage:		"Přeložit současnou stránku",
+	optAutoDetect:				"Automatická detekce",
+	optNone:					"nic",
+	lnkSettingsPage:			"nastavení",
+
+	txtRegistration:			"Registrace",
+	txtUnregisteredMode:		"**Neregistrovaná verze**",
+	txtUnregisteredModeDetails:	"**Pokud není provedena registrace, je možné překládat pouze samostatná slova**\nPokud provedete registraci, budete moci:\n- nedostatek této zprávy a možná další reklama ve vyhledávačích;\n- funkce čtení textu, zpětný překlad, test japonský a korejský IME;\n- budoucí nové funkce.\n\nPokud žádné z těchto funkcí nepotřebujete, registraci provádět nemusíte.",
+	txtVerify:					"Pro registraci klikněte zde",
+
+	cmTranslateIt:				"Přeložit to",
+	cmTranslatePage:			"Přeložit stránku",
+
+	// hints
+	hntFullExchange:			"Shift+klik – včetně výměny textových polí",
+	hntTranslate:				"Ctrl+Enter – přeložit",
+	hntReTranslate:				"Shift+Change – ihned přeložit zvolenou službou",
+	hntVocalize:				"vokalizovat",
+	hntPutInTheDictionary:		"do slovníku",
+	hntRemoveFromTheDictionary:	"odstranit ze slovníku",
+	hntCopy:					"kopírovat",
+	hntPaste:					"vložit zkopírovaný text (Shift+klik = vložit a přeložit)",
+	hntMaximize:				"Alt+klik - otevřít na nové kartě",
+
+	// services
+	byGoogle:					"Google překladač",
+	byBing:						"Microsoft překladač",
+	byYandex:					"Yandex překladač",
+	byPromt:					"Promt překladač",
+	byPragma:					"Pragma překladač",
+	byBaidu:					"Baidu překladač",
+	byNaver:					"Naver překladač",
+	bySogou:					"Sogou překladač",
+	bySystran:					"Systran překladač",
+	byBabylon:					"Babylon překladač",
+	byBabylonDictionaries:		"Slovníky Babylon",
+	byLingvo:					"Lingvo Slovníky",
+	byGlosbe:					"Glosbe překladač",
+	byUrban:					"Urban slovník",
+	byIbm:						"IBM překladač",
+	byApertium:					"Apertium překladač",
+	byDeepl:					"DeepL překladač",
+
+	tbByGoogle:					"Google překladačem",
+	tbByBing:					"Microsoft překladačem",
+	tbByYandex:					"Yandex překladačem",
+	tbByPromt:					"Promt překladačem",
+
+	// messages
+	msgError:					"chyba",
+	msgErrorCode:				"chybový kód",
+	msgUnknownSourceLng:		"nepodporovaný zdrojový jazyk",
+	msgUnknownTargetLng:		"nepodporovaný cílový jazyk",
+	msgUnknownLng:				"nepodporovaný jazyk",
+	msgExample:					"příklad",
+	msgExamples:				"příklady",
+	msgAlternatives:			"alternativ",
+
+	// dictionary
+	txtDictionary:				"slovník",
+	linkRemove:					"odebrat",
+	txtUsePersonalDictionary:	"Používat osobní slovník",
+	txtShow:					"show",
+	txtHide:					"skrýt",
+
+	// options
+	txtOptionsTitle:			"Nastavení překladače",
+	txtMadeBy:					"Vyrobil",
+	linkFeedback:				"nahlásit problém / zpětná vazba",
+	hdrDefaultSourceLang:		"Výchozí zdrojový jazyk",
+	hdrDefaultTargetLang:		"Výchozí cílový jazyk",
+	labelAlwaysUseDefTargetLang:"vždy používejte výchozí cílový jazyk",
+	labelDefTargetLang2:		"když zdrojový jazyk = první výchozí cílový jazyk",
+	hdrMaxStoredLangPairs:		"Maximální počet připnutých jazykových variant překladu",
+	hdrTranslateBtnPosition:	"Pozice tlačítka \"Přeložit\"",
+	txtAtRight:					"na pravo",
+	txtAtLeft:					"na levo",
+	txtInvertButons:			"přehotid tlačítka",
+	hdrTextareaFont:			"Písmo TextFont",
+	hdrUITheme:					"Použijte světlý nebo tmavý motiv",
+	optLight:					"Světlo",
+	optDark:					"Tmavý",
+	optDefault:					"Výchozí",
+	hdrIconTheme:				"Téma ikony",
+	wrnTextareaFont:			"V <a href='javascript:;'>nastavení</a> prohlížeče můžete nastavit konkrétní písma.",
+	hdrSetupPopupHotkey:		"Nastavení klávesové zkratky otevření překladače",
+	btnSetupPopupHotkey:		"Otevřít konfigurátor klávesových zkratek",
+	hdrUseTranslateToolbar:		"Používat nástrojovou lištu translátoru na každé stránce",
+	hdrAdditKnownLangs:			"Nezobrazovat panel nástrojů Překladač pro jazyky (kromě výchozího cílového jazyka)",
+	hdrUseContextMenuForPages:	"Na stránkách polovit kontextové menu překladače",
+	hdrBingPrivateKey:			"Privátní přístup Bing překladače",
+	txtBingClientId:			"Klienstké ID:",
+	txtBingClientSecret:		"Klientské heslo:",
+	hintBingPrivateKey:			"Pokud chcete být nezávislý na veřejných klíčích, které mohou být zablokované, můžete nastavit vlastní soukromé klíče.<br />Klíče můžete získat zde:",
+	optDisabled:				"Zakázáno",
+	wrnUseTranslateToolbar:		"<b>Varování!</b> Zdrojové kódy (jeho části) téměř každé stránky budou odesílány poskytovateli překladače za účelem zjištění jazyka stránky!<br />Výjimku tvoří stránky, které mají jazyk definovaný v hlavičce.",
+	hdrAllowedProviders:		"Povolení překladatelé",
+	hdrOtherOptions:			"Ostatní nastavení",
+	txtOpenNewTabsNextToActive:	"Nové záložky otevírat za aktivní stránku",
+	txtRememberLastTranslation:	"Pamatovat si poslední překlad",
+	txtUseTextToSpeech:			"Používat převod textu na řeč",
+	txtUseYellowMarker:			"Ikonu rozšížení zvýrazňovat žlutě jako varování, že vybraný text může být zpracován překladačem",
+	txtOutputExtensionButton:	"Zobrazit tlačítko překladače v adresním řádku",
+	txtUseEnterToTranslate:		"Použijte klávesu \"Enter\" k překladu",
+	txtUseSelectionContextMenu:	"Použijte kontextové menu pro výběr textu",
+	txtUseOldSkin:				"Používejte starý vizuální styl",
+	txtUseBgProcess:			"Používejte proces na pozadí (vyžadují restart prohlížeče)",
+
+	txtUseGoogleCn:				"Používat google.com.hk (například pokud je doména google.com blokována firewallem)",
+
+	txtYouCanUseMyOtherProducts:"Můžete také vyzkoušet jiné produkty:",
+	txtMyCalendarExensionDescr:	"rozšíření Kalendář pro Operu",
+	txtMyWebanketaServiceDescr:	"bezplatné vytváření dotazníků, průzkumů, testů a hlasování!",
+
+	txtPoweredByOpera:			"Běží na prohlížeči Opera"
+};
+//	translated by Petr Havel

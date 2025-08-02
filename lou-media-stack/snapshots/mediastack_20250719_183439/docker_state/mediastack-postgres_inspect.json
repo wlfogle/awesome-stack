@@ -1,0 +1,328 @@
+[
+    {
+        "Id": "d7af53df06060706796d6b03a8aace1623144d37508ff8a4dc86dcc82769214a",
+        "Created": "2025-07-18T20:13:17.803876935Z",
+        "Path": "docker-entrypoint.sh",
+        "Args": [
+            "postgres"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 1414838,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2025-07-18T20:13:28.730086148Z",
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "Health": {
+                "Status": "healthy",
+                "FailingStreak": 0,
+                "Log": [
+                    {
+                        "Start": "2025-07-19T18:33:49.949786538-04:00",
+                        "End": "2025-07-19T18:33:49.994226996-04:00",
+                        "ExitCode": 0,
+                        "Output": "/var/run/postgresql:5432 - accepting connections\n"
+                    },
+                    {
+                        "Start": "2025-07-19T18:33:59.995529134-04:00",
+                        "End": "2025-07-19T18:34:00.052873132-04:00",
+                        "ExitCode": 0,
+                        "Output": "/var/run/postgresql:5432 - accepting connections\n"
+                    },
+                    {
+                        "Start": "2025-07-19T18:34:10.053184001-04:00",
+                        "End": "2025-07-19T18:34:10.10995456-04:00",
+                        "ExitCode": 0,
+                        "Output": "/var/run/postgresql:5432 - accepting connections\n"
+                    },
+                    {
+                        "Start": "2025-07-19T18:34:20.110647354-04:00",
+                        "End": "2025-07-19T18:34:20.167835817-04:00",
+                        "ExitCode": 0,
+                        "Output": "/var/run/postgresql:5432 - accepting connections\n"
+                    },
+                    {
+                        "Start": "2025-07-19T18:34:30.168804434-04:00",
+                        "End": "2025-07-19T18:34:30.219987557-04:00",
+                        "ExitCode": 0,
+                        "Output": "/var/run/postgresql:5432 - accepting connections\n"
+                    }
+                ]
+            }
+        },
+        "Image": "sha256:68f788e38c163918a165c335298a4cd4b49c9c5b04cc6fac113972828ea08272",
+        "ResolvConfPath": "/var/lib/docker/containers/d7af53df06060706796d6b03a8aace1623144d37508ff8a4dc86dcc82769214a/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/d7af53df06060706796d6b03a8aace1623144d37508ff8a4dc86dcc82769214a/hostname",
+        "HostsPath": "/var/lib/docker/containers/d7af53df06060706796d6b03a8aace1623144d37508ff8a4dc86dcc82769214a/hosts",
+        "LogPath": "/var/lib/docker/containers/d7af53df06060706796d6b03a8aace1623144d37508ff8a4dc86dcc82769214a/d7af53df06060706796d6b03a8aace1623144d37508ff8a4dc86dcc82769214a-json.log",
+        "Name": "/mediastack-postgres",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "lou-media-stack_postgres_data:/var/lib/postgresql/data:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "lou-media-stack_mediastack",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "unless-stopped",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap",
+                "/sys/devices/system/cpu/cpu0/thermal_throttle",
+                "/sys/devices/system/cpu/cpu1/thermal_throttle",
+                "/sys/devices/system/cpu/cpu2/thermal_throttle",
+                "/sys/devices/system/cpu/cpu3/thermal_throttle",
+                "/sys/devices/system/cpu/cpu4/thermal_throttle",
+                "/sys/devices/system/cpu/cpu5/thermal_throttle",
+                "/sys/devices/system/cpu/cpu6/thermal_throttle",
+                "/sys/devices/system/cpu/cpu7/thermal_throttle",
+                "/sys/devices/system/cpu/cpu8/thermal_throttle",
+                "/sys/devices/system/cpu/cpu9/thermal_throttle",
+                "/sys/devices/system/cpu/cpu10/thermal_throttle",
+                "/sys/devices/system/cpu/cpu11/thermal_throttle",
+                "/sys/devices/system/cpu/cpu12/thermal_throttle",
+                "/sys/devices/system/cpu/cpu13/thermal_throttle",
+                "/sys/devices/system/cpu/cpu14/thermal_throttle",
+                "/sys/devices/system/cpu/cpu15/thermal_throttle",
+                "/sys/devices/system/cpu/cpu16/thermal_throttle",
+                "/sys/devices/system/cpu/cpu17/thermal_throttle",
+                "/sys/devices/system/cpu/cpu18/thermal_throttle",
+                "/sys/devices/system/cpu/cpu19/thermal_throttle",
+                "/sys/devices/system/cpu/cpu20/thermal_throttle",
+                "/sys/devices/system/cpu/cpu21/thermal_throttle",
+                "/sys/devices/system/cpu/cpu22/thermal_throttle",
+                "/sys/devices/system/cpu/cpu23/thermal_throttle",
+                "/sys/devices/system/cpu/cpu24/thermal_throttle",
+                "/sys/devices/system/cpu/cpu25/thermal_throttle",
+                "/sys/devices/system/cpu/cpu26/thermal_throttle",
+                "/sys/devices/system/cpu/cpu27/thermal_throttle",
+                "/sys/devices/system/cpu/cpu28/thermal_throttle",
+                "/sys/devices/system/cpu/cpu29/thermal_throttle",
+                "/sys/devices/system/cpu/cpu30/thermal_throttle",
+                "/sys/devices/system/cpu/cpu31/thermal_throttle"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "d7af53df06060706796d6b03a8aace1623144d37508ff8a4dc86dcc82769214a",
+                "LowerDir": "/var/lib/docker/overlay2/be860ac32557ccc410663edacbeb75f257afc003a47fa49cd19bbf821ded54f0-init/diff:/var/lib/docker/overlay2/8a0d90d24bc89cf890bbcba2f5675f3966de05ca67bba995b30f0f6628340d6d/diff:/var/lib/docker/overlay2/d7f6694ca9d2f04a443cc8daa0174a51abb07bae09e4e7c894b1633261f7b1b2/diff:/var/lib/docker/overlay2/4c37a073141826a8123f6fe5a7e4b651bccb5b4ce4c18d85963042c7d0394dfa/diff:/var/lib/docker/overlay2/e306b464829a36ece538f3a418a3ddf37002c9b45b9b7053e4a08082a05e30cf/diff:/var/lib/docker/overlay2/467a49e74ccb6a01333a248fe95052b4a7bb6a8b002f961609fddc5f8e80df51/diff:/var/lib/docker/overlay2/cbd8f660d491cf7bf366f074a95f7669fe1c1817d4c1bbeca08f33b0cd289476/diff:/var/lib/docker/overlay2/dbfd9511723122835e9045d6939fc820191ce5d629f0bce19e3f44369db257ac/diff:/var/lib/docker/overlay2/d3eaaeb6f7cbd489e4854dbb29c03d8c7f8dffa8e33dd3a96ae4cf985ab806fb/diff:/var/lib/docker/overlay2/7581706314abd7539f97d2f28430e99ad3aeb6848428125aa0ce51d5ef045594/diff:/var/lib/docker/overlay2/b5a20144a2c84d08212731791b617a26d7d5e63180f9844c70f1b8de7c889492/diff:/var/lib/docker/overlay2/63b347274840c00ddf5753ad16df0224d98664917680058907ab98c9f3e14f08/diff:/var/lib/docker/overlay2/84af71c835abbbf1cd5d41a68037c89c07ee14164e6447df5019da85acc3384c/diff:/var/lib/docker/overlay2/2145b487d02b4905faba71b23b85e87060565395e6f7cc3a203f82b4c6a00bac/diff:/var/lib/docker/overlay2/d73d3250de5a115e9369a6860af1ea791f3bc83aae10d1191245efaa2155c1db/diff",
+                "MergedDir": "/var/lib/docker/overlay2/be860ac32557ccc410663edacbeb75f257afc003a47fa49cd19bbf821ded54f0/merged",
+                "UpperDir": "/var/lib/docker/overlay2/be860ac32557ccc410663edacbeb75f257afc003a47fa49cd19bbf821ded54f0/diff",
+                "WorkDir": "/var/lib/docker/overlay2/be860ac32557ccc410663edacbeb75f257afc003a47fa49cd19bbf821ded54f0/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "lou-media-stack_postgres_data",
+                "Source": "/var/lib/docker/volumes/lou-media-stack_postgres_data/_data",
+                "Destination": "/var/lib/postgresql/data",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "d7af53df0606",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "5432/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "POSTGRES_USER=mediastack",
+                "POSTGRES_PASSWORD=mediastack_postgres_secure_2024!",
+                "POSTGRES_DB=mediastack",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/15/bin",
+                "GOSU_VERSION=1.17",
+                "LANG=en_US.utf8",
+                "PG_MAJOR=15",
+                "PG_VERSION=15.13-1.pgdg120+1",
+                "PGDATA=/var/lib/postgresql/data"
+            ],
+            "Cmd": [
+                "postgres"
+            ],
+            "Healthcheck": {
+                "Test": [
+                    "CMD-SHELL",
+                    "pg_isready -U mediastack"
+                ],
+                "Interval": 10000000000,
+                "Timeout": 5000000000,
+                "Retries": 5
+            },
+            "Image": "postgres:15",
+            "Volumes": {
+                "/var/lib/postgresql/data": {}
+            },
+            "WorkingDir": "",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "92e05ecaaa323f0ab0c744ba5bd6252de71d900cd28d6fa6fba3ad0f9e2f4546",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:68f788e38c163918a165c335298a4cd4b49c9c5b04cc6fac113972828ea08272",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "lou-media-stack",
+                "com.docker.compose.project.config_files": "/home/lou/lou-media-stack/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/home/lou/lou-media-stack",
+                "com.docker.compose.replace": "2795be74d3318f0b708289018c503503c9715eee31ca77716d03b6a25cd1dc62",
+                "com.docker.compose.service": "postgres",
+                "com.docker.compose.version": "2.38.2"
+            },
+            "StopSignal": "SIGINT"
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "42fa4d4846c5daac05b603e841c485db0f05472d90ea293d53d75300cb612bd3",
+            "SandboxKey": "/var/run/docker/netns/42fa4d4846c5",
+            "Ports": {
+                "5432/tcp": null
+            },
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "lou-media-stack_mediastack": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "mediastack-postgres",
+                        "postgres"
+                    ],
+                    "MacAddress": "2e:e2:2d:fe:7a:20",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "b3fb64607c143030bcd11a51704e837e93e971335d48bfc90770116fa304af44",
+                    "EndpointID": "7ffe9507a3deec0e253a12803e7560e2cccfe26772d9479d80f0ac42f4bc43d2",
+                    "Gateway": "172.21.0.1",
+                    "IPAddress": "172.21.0.5",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "mediastack-postgres",
+                        "postgres",
+                        "d7af53df0606"
+                    ]
+                }
+            }
+        }
+    }
+]

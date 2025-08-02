@@ -1,0 +1,302 @@
+# 🚀 COMPLETE HOME ASSISTANT CONFIGURATION FOR ALEXA VOICE CONTROL
+# ==================================================================
+# This is your main configuration.yaml file with full Alexa integration
+
+# Loads default set of integrations. Do not remove.
+default_config:
+  # Disable problematic integrations that cause network errors
+  homeassistant_alerts: false
+
+# ===============================
+# NETWORK & DISCOVERY CONFIGURATION
+# ===============================
+# Ensure network integration is properly loaded
+network:
+
+# Configure zeroconf for proper network discovery
+zeroconf:
+  default_interface: true
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+# Split configuration into organized files
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+sensor: !include sensors.yaml
+binary_sensor: !include binary_sensor.yaml
+rest_command: !include rest_commands.yaml
+
+# ===============================
+# ALEXA INTEGRATION - COMPLETE
+# ===============================
+alexa:
+  smart_home:
+    locale: en-US
+    endpoint: https://api.amazonalexa.com/v1/events
+    filter:
+      include_domains:
+        - script
+        - switch
+        - media_player
+        - sensor
+        - automation
+        - binary_sensor
+        - light
+      include_entities:
+        # Media Control Scripts
+        - script.movie_night
+        - script.entertainment_mode
+        - script.pause_all_media
+        - script.resume_all_media
+        - script.restart_media_services
+        
+        # System Management Scripts
+        - script.system_status
+        - script.server_health_report
+        - script.emergency_status
+        - script.check_storage_space
+        - script.network_status_check
+        
+        # AI Services Scripts
+        - script.ai_assistant_status
+        - script.ai_coding_session
+        - script.restart_ai_services
+        
+        # Download Management Scripts
+        - script.check_downloads
+        - script.pause_downloads
+        - script.resume_downloads
+        - script.check_arr_apps
+        
+        # Media Server Scripts
+        - script.restart_plex
+        - script.restart_jellyfin
+        - script.scan_plex_library
+        - script.scan_jellyfin_library
+        
+        # Infrastructure Scripts
+        - script.restart_traefik
+        - script.check_security
+        - script.check_vpn
+        - script.check_cleanup_tools
+        - script.check_organizr
+        
+        # Lifestyle Mode Scripts
+        - script.gaming_mode
+        - script.maintenance_mode
+        
+        # Status Sensors
+        - sensor.plex_status
+        - sensor.jellyfin_status
+        - sensor.ai_service_status
+        - sensor.traefik_routes
+        - sensor.system_performance
+        - sensor.media_stack_health
+
+# ===============================
+# ALEXA MEDIA PLAYER FOR TTS
+# ===============================
+alexa_media:
+  accounts:
+    - email: !secret alexa_email
+      password: !secret alexa_password
+      url: amazon.com
+
+# Intent Script for custom voice commands
+intent_script:
+  MovieNightIntent:
+    speech:
+      text: "Starting movie night mode. Plex is ready and lights are dimming."
+    action:
+      service: script.movie_night
+        
+  SystemStatusIntent:
+    speech:
+      text: "Checking system status now."
+    action:
+      service: script.system_status
+      
+  AIStatusIntent:
+    speech:
+      text: "Checking AI services status."
+    action:
+      service: script.ai_assistant_status
+      
+  GamingModeIntent:
+    speech:
+      text: "Activating gaming mode. Optimizing system for gaming."
+    action:
+      service: script.gaming_mode
+
+# ===============================
+# SECURITY & NETWORK - ENHANCED
+# ===============================
+# Note: HTTP configuration optimized for Home Assistant Supervisor compatibility
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 192.168.122.0/24
+    - 127.0.0.1
+    - ::1
+    - 100.96.98.61  # Tailscale IP
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
+  cors_allowed_origins:
+    - https://alexa.amazon.com
+    - https://pitangui.amazon.com
+  # Remove incompatible options for Supervisor compatibility
+
+# Enable API access
+api:
+
+# ===============================
+# SUPERVISOR COMPATIBILITY
+# ===============================
+# Ensure compatibility with Home Assistant Supervisor
+hassio:
+
+# ===============================
+# DATABASE OPTIMIZATION - CRITICAL
+# ===============================
+recorder:
+  # Reduce database size and improve performance
+  db_url: sqlite:////config/home-assistant_v2.db
+  purge_keep_days: 7
+  commit_interval: 5
+  # Exclude noisy domains to keep DB lean
+  exclude:
+    domains:
+      - automation
+      - updater
+      - sun
+    entity_globs:
+      - sensor.*_active_streams
+      - sensor.time*
+      - sensor.date*
+    entities:
+      - sensor.date
+      - sensor.time
+      - sun.sun
+  # Only include important events
+  include:
+    domains:
+      - script
+      - media_player
+      - binary_sensor
+    entities:
+      - sensor.plex_status
+      - sensor.jellyfin_status
+      - sensor.ai_service_status
+      - sensor.traefik_routes
+      - sensor.system_performance
+
+# ===============================
+# LOGGING OPTIMIZATION
+# ===============================
+logger:
+  default: warning
+  logs:
+    # Reduce REST API spam in logs
+    homeassistant.components.rest: error
+    homeassistant.helpers.template: error
+    # Keep important logs
+    homeassistant.components.alexa: info
+    homeassistant.components.script: info
+    homeassistant.components.alexa_media: info
+    custom_components: debug
+
+# ===============================
+# HISTORY OPTIMIZATION  
+# ===============================
+history:
+  # Reduce history storage
+  exclude:
+    domains:
+      - automation
+      - updater
+      - sun
+    entity_globs:
+      - sensor.time*
+      - sensor.date*
+
+# ===============================
+# SYSTEM HEALTH MONITORING
+# ===============================
+system_health:
+
+# ===============================
+# NOTIFICATIONS - ENHANCED
+# ===============================
+notify:
+  - name: "system_alerts"
+    platform: persistent_notification
+  - name: "alexa_tts"
+    platform: alexa_media
+    target: 
+      - media_player.lou_s_smart_glasses
+      - media_player.lou_s_echo_show
+      - media_player.lou_s_echo_spot
+
+# ===============================
+# MEDIA STACK INTEGRATIONS
+# ===============================
+# Note: Plex integration is now configured through the UI
+# Go to Settings > Integrations > Add Integration > Plex
+
+# ===============================
+# ENERGY & PERFORMANCE MONITORING
+# ===============================
+energy:
+
+# ===============================
+# MOBILE APP SUPPORT
+# ===============================
+mobile_app:
+
+# ===============================
+# BACKUP CONFIGURATION
+# ===============================
+backup:
+
+# ===============================
+# WEBHOOK INTEGRATION FOR IFTTT
+# ===============================
+webhook:
+
+# ===============================
+# CUSTOM DASHBOARD CONFIGURATION
+# ===============================
+lovelace:
+  mode: yaml
+  resources:
+    - url: /local/mini-graph-card-bundle.js
+      type: module
+    - url: /local/button-card.js
+      type: module
+    - url: /local/alexa-voice-control-card.js
+      type: module
+
+# ===============================
+# DISCOVERY FOR ALEXA DEVICES
+# ===============================
+discovery:
+  ignore:
+    - yeelight
+    - xiaomi_gw
+
+# ===============================
+# CLOUD INTEGRATION (OPTIONAL)
+# ===============================
+# Uncomment if using Nabu Casa for external access
+# cloud:
+#   alexa:
+#     filter:
+#       include_domains:
+#         - script
+#         - media_player
+#       include_entities:
+#         - script.movie_night
+#         - script.system_status

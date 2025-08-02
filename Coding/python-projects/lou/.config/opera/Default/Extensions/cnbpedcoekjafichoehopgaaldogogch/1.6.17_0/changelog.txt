@@ -1,0 +1,517 @@
+future
+- Support of private keys for Google, Yandex, Microsoft, DeepL Pro
+± context menu (require js-open popup)
+> selected text with Ctrl-key translate immediately (require js-open popup)
+? hot-keys (require js-open popup). Chrome and Opera support own keys for extensions
+x problems with proxies (old Opera's bug). Fixed in Chromium Opera
+x selection of menu ( http://www.ebay.co.uk/ ) - footer (Opera's bug). Fixed in Chromium Opera
+x google translate speech without plugins (using Microsoft Speech)
+x direction=rtl for: ar, fa, he, yi
+
+next
+TODO:
+- fix: speak for different services
+- new: test support Chinese input method editor (IME) (require registration)
+- new: sync dictionaries between installations
+- mod: optimize dictionary/settings for mobile phone
+
+what's wrong so far:
+- "use personal dictionary" in settings lacks explanation
+- broken DeepL -- require DeepL Pro...
+
+--
+1.6.17
+- add: Lingvanex Translator
+- fix: vocalize button in dictionary
+- fix: context menu "Translate this page" for Google Translator
+- fix: using google.cn (switched to google.com.hk)
+- fix: Microsoft Translator
+- fix: Promt Translator
+- fix: Naver Translator
+- fix: link to Microsoft Edge shop page
+- off: Systran Translator (not free anymore)
+
+1.6.16
+- fix: Promt Translator
+- fix: Baidu Translator
+
+1.6.15
+- add: possibility to change icon color (potencialy for Opera GX)
+- mod: priority target languages
+- mod: use vector extension icon
+- fix: getting selected text from PDF
+
+1.6.14
+- update: Japanese input method editor (IME)
+
+1.6.13
+- fix broken links
+- restore banners
+
+1.6.12
+- fix: context menu button
+
+1.6.11
+- new: remember popup window size and position
+- fix: Promt Translator
+- fix: Sogou Translator
+- fix: Glosbe Dictionary -> Translator
+- fix: IBM Translator
+- fix: Apertium Translator
+
+1.6.10
+- fix: (re)store popup size
+
+1.6.9
+- mod: preparations for manifest v3
+- mod: turn off background process for Firefox
+- fix: Chrome popup layout
+- fix: Firefox sidebar
+- fix: using disabled translator provider
+- fix: Naver Translator
+- fix: Yandex Translator
+- fix: Microsoft Translator
+- fix: compatibility Microsoft Translator with Opera
+
+1.6.8
+- mod: theme icons and colors
+- fix: Firefox in menu window width
+- fix: DeepL translator
+
+1.6.7
+- fix: context menu in Firefox based browsers
+- fix: email and phone detection to do not translate
+
+1.6.6
+- fix: catch selection from context menu
+- fix: Opera Classic compatibility
+
+1.6.5
+- mod: context menu for browsers without fully support it
+- mod: add setting to always use default target language
+- fix: compatibility Microsoft Translator with Firefox
+- fix: compatibility Babylon Dictionaries with Firefox
+- fix: Baidu translation when source language is autodetect
+
+1.6.4
+- fix: wrong autodetect target language when using autodetect pairs
+- fix: browser detection
+- fix: more secured internal requests
+- fix: Firefox tiny window buttons box height
+
+1.6.3
+- mod: change method of copy/paste buttons to do not require clippboardWrite permission
+
+1.6.2
+- add: Sogou Translator
+- mod: selection translate now always use default target language
+- mod: more secure requests
+- fix: error messages on extension update
+- fix: badge icon on disconnect from active page
+
+1.6.1
+- fix: popup window for Firefox
+- fix: better auto detection target language
+
+1.6.0
+- new: refreshed languages list
+- new: phone number, emails and passwords do not send to translate
+- mod: temporary turn off registration
+- mod: layout fix for Firefox latest builds problems
+- mod: try to fix UI in Firefox mobile
+- mod: disable broken Microsoft Speak
+- fix: support of some Microsoft languages
+- fix: Google Speak
+
+1.5.2
+- new: support of Systran Translate
+
+1.5.1
+- fix: detect selection in new tab
+
+1.5.0
+- new: ability to open Translator in separate tab/window
+- new: in tab-mode support to install Translator as application
+- new: list of known languages to do not display Translator Toolbar
+- new: support of IBM Watson Translator (beta)
+- new: support of Apertium Translator (beta)
+- new: support of Naver Translator
+
+1.4.11
+- new: Yandex page translate Toolbar
+- new: Speech button on dictionary page
+- mod: add possibility to turn off background process
+
+1.4.10
+- new: support for shortcucts on Firefox
+- fix: output translate toolbars on pages with your native language
+- fix: links to Store page
+- fix: link to hotkeys page
+- fix: detect mobile browser mode
+- fix: Portuguese translation
+- fix: Minimal height for result box for latest Firefox
+
+1.4.9
+- new: support of hot key for Mac - Cmd+Enter
+- mod: disable translate toolbars for Chrome (Chrome Store refuse obfuscated scripts)
+
+1.4.8
+- mod: clear old code
+
+1.4.7
+- mod: allow to hide not required translate services
+- fix: support of Microsoft service
+- fix: back translation and result with dictionary
+
+1.4.6
+- mod: manual UI theme chooser in settings
+- fix: more checks for suspicious urls
+
+1.4.5
+- fix: fix loading Japan and Korean IME
+- fix: Lingvo can't output empty result
+- fix: less errors in console
+
+1.4.4
+- fix: Copy/Paste buttons for Firefox
+- mod: move Registration to the settings
+- mod: better method to get registration status
+
+1.4.3
+- fix: Auto translate of selection used wrong target language
+
+1.4.2
+- mod: Firefox popup in menu now has resizer too
+
+1.4.1
+- fix: Firefox lost resizer
+
+1.4
+- new: modern skin
+- new: test support dark mode
+- new: button to copy translation
+- new: button to paste source text
+- new: option to turn off selection context menu
+- mod: update Italian translation
+- fix: DeepL translator, but not fully
+- fix: Yandex translate with unknown language
+- fix: broken link to browser settings page (firefox)
+- fix: ignore "Use text-to-speech" setting
+
+1.3.1
+- fix: support Firefox embed popup
+- fix: better support Firefox for Android
+- fix: copyright page for Glosbe
+- fix: translate system messages
+- mod: Glosbe support examples
+
+1.3.0
+- new: support of Glosbe Dictionary
+- new: support of Lingvo Dictionary
+- fix: support of DeepL Translator
+- fix: Firefox and Edge now uses smaller font size
+- mod: Bing Translator renamed to Microsoft Translator
+
+1.2.5
+- fix: support of new Edge
+- fix: wrong detect Opera for demo-mode
+
+1.2.4
+- mod: clear some code
+- mod: remove permission "menus" (firefox 'alias' of contextMenus)
+- mod: translate pages now opens next to active tab
+- fix: restore support of Yandex Browser
+- fix: restore context menu functions for Firefox
+- fix: more respectful attitude to incognito-mode
+- fix: some UI words
+
+1.2.3
+- fix: dictionary broken repaint
+
+1.2.2
+- new: usefull online language teachers on dictionary page
+- new: Belarus UI translation
+- fix: Ukraine UI translation
+
+1.2.1
+- mod: dictionary not require registration
+- fix: detect selection in case when opened multiple windows
+- fix: Firefox now support context menu
+
+1.2
+- new: support of Firefox Browser (beta)
+- new: DeepL Translator
+- new: Turkish UI translation
+- new: monetizus plugin for unregistered users
+- mod: removed Cherokee language (no one provider support it)
+- mod: autosaved pairs start from ~ to disable find them when user search required language by keyboard
+- fix: right-to-left textareas and speach/favorites buttons
+- fix: Baidu Translator
+- fix: Urban Dictionary
+- fix: remove not required permissions
+- fix: detect Bing not supported language
+
+1.1
+- new: personal dictionary (require registration)
+- new: test support Japanese input method editor (IME) (require registration)
+- new: test support Korean input method editor (IME) (require registration)
+- new: use browser's TTS engine in some cases
+- fix: page language autodetection
+- fix: loading some settings
+- fix: Dictionaries by Babylon
+- fix: Bing Translator with public keys
+
+1.0
+- new: back translation (require registration)
+- new: context menu for future builds of Chrome
+- new: support of sidebar in Opera Next
+- new: Babylon Translator
+- new: Baidu Translator
+- new: setting to use Enter to translate
+- new: preview support Edge browser
+- new: Czech UI translation
+- mod: translate toolabrs now support HTTPS pages
+- mod: removed advisormedia module
+- mod: show transcription for 1-2 words
+- mod: use additional offline method to detect page language for translator toolbars
+- mod: support AngularJS like pages for translator toolbars
+- fix: Yandex Translate
+- fix: detect Bing translator unsupported language
+- fix: transcription for single word by Google Translator
+- fix: use Google Speak of unsupported by Microsoft languages
+- fix: setup popup minimum size as workaround for broken Opera development builds
+- fix: Bing multiline strings
+- fix: lost used language pair after using dictionaries
+- fix: Ukranian UI translation
+
+0.12
+- new: extension icon
+- new: auto-select pre-inserted source text
+- new: link to browser settings of hotkeys
+- new: support Bing Serbian Cyrillic/Latin
+- new: support selections by touch screen
+- new: link to support page on options page
+- mod: Pragma Translator
+- fix: Google Translate
+- fix: Google Translate + Opera Classic + China
+- fix: Bing Translator with public keys
+- fix: language of speak source text
+- fix: GUI, support browser default font sizes
+- fix: translate toolbars language detection
+- fix: support of Opera Classic
+- fix: Portuguese (Brazil) UI translation for Chromium engine
+- fix: more use HTTPS
+- fix: Bing Translator Speak
+- fix: Google Speak for China
+- fix: Serbian translation
+
+0.11 (0.11.5 for Opera 12-; and 0.11.6 for Opera 15+ and Chrome)
+- new: Google Translate via Google.cn setting (for Chinese users)
+- fix: selection detection in Chrome / Opera 15+
+- fix: Bing/Google Toolbars on some pages, like cnn.com
+- fix: Bing Translator problems with private keys
+- fix: Pragma Translator
+- fix: Promt Translator
+- fix: Polish UI translation
+- new: Collecting the broken domains (switchable)
+- new: Serbian translate of extension
+- fix: Google Dictionary
+
+0.10 (0.10.1 for Opera 12-; and 0.10.2 for Opera 15+ and Chrome)
+- new: Portuguese (Brazil) translate of extension
+- new: option "Remember last translation"
+- new: Promt now support Japanese
+- new: Bing Translator now support autodetected language
+- new: autodetect language now support more chinese writing systems
+- new: link to settings in popup window
+- fix: new lines in source text for Promt and Pragma translators
+- fix: Yandex dictionary errors with unsupported language pairs
+
+0.9.5
+- new: Yandex Translate now support transcription of the source word
+- fix: Yandex Translate support source language detection again
+- fix: do not reload popup on first Ctrl-Enter
+
+0.9.4
+- fix: support Google Translate and Yandex for Opera 18+
+- fix: support iframes for Opera 15+
+- mod: do not reset source language on selection translate, if default source language is "Auto Detect" and translate service do not support "Auto Detect"
+
+0.9.3
+- new: logo in options-page now is link to the extension page
+- fix: Yandex Translate
+- fix: back compatibility with Opera < 12
+- fix: detect selected text in ajax-sites for Opera >= 15
+- mod: refreshed the icon
+
+0.9 (0.9.1 - for Opera 12- and 0.9.2 - for Opera 15+)
+- new: compatibility with Opera Next 15 and Chrome
+- new: added Urban Dictionary (not supported page translator)
+- new: Polish translate of extension
+- fix: empty source language in some cases
+- fix: reduce internal requests
+- fix: saved language pairs output not as pair
+- fix: stop of text speaking
+- fix: Google Translate Toolbar
+- fix: Yandex Translate (lost source language detection)
+
+0.8f
+- new: Ukrainian translate of extension
+
+0.8e
+- fix: you can now turn off yellow marker again
+
+0.8d
+- new: Italian translate of extension
+- new: German translate of extension
+- fix: sometimes source language is empty
+- mod: slightly wider minimal popup
+
+0.8c
+- fix: return supporting Opera 12.02 and lower
+
+0.8b
+- new: supporting multilanguage UI
+- new: Russian translate of extension
+- fix: error in Error Console when click on buttons
+- mod: remove "Open new tabs next to active" setting for Opera >= 12.10 (uses the Opera's setting)
+
+0.8a
+- fix: error in Error Console on click on radio buttons or checkboxes
+
+0.8
+- new: Yandex Translate with dictionary and page translator
+- new: page translator with Promt
+- new: "Open new tabs next to active" setting
+- new: Shift + "change translator" -> re-translate source with new translator
+- fix: Promt was broken few days ago
+- fix: back compatibility for text selection (Opera < 12)
+- fix: handlers for unsupported languages
+- fix: extension do not remember setting "Use Google text-to-speech"
+- fix: speech do not use all dictionary result
+- mod: replace Google's speech on Microsoft speech (now without plugins)
+- mod: remove "Use Google Dictionary" setting
+
+0.7c
+- fix: error in Error Console on starting up extension
+- fix: old text on Preferences page (about "sel" marker)
+
+0.7b
+- fix: "sel" marker by default was off
+- fix: temporary fix for Pragma translator
+- fix: resizing of popup for Opera Next
+- fix: sometimes animation overwrite result of translation
+- mod: "sel" marker replaced with yellow rectangle
+
+0.7a
+- new: option to turn off "sel" marker on the button
+- new: option to turn off extension's button for users, who use only translate toolbars
+- fix: partially fix for Opera 11.01 (except translate toolbars)
+
+0.7
+- new: Dictionaries by Babylon
+- new: possibility to resize popup window
+- fix: Google Translate Toolbar now support default target language
+- fix: translate toolbars sometimes cannot detect page language
+- fix: Microsoft Translator stop working after some time
+- fix: Pragma translator stop working after some time
+- fix: do not output translate toolbars for Speeddial thumbnail (detect view-mode:minimized) (experimental fix)
+- mod: translated text now contains transcription of the source word, when it possible to get
+- mod: exchanging languages with shift key now also focus source field
+- mod: exchanging languages without shift key now also focus source field + select its content
+- mod: exchanging languages with shift key now also remove dictionary addition information
+
+0.6
+- new: Google Translate Toolbar (do not support default target language!)
+- new: Microsoft Translator Toolbar
+- new: Default Source language setting
+- fix: Google Translate Auto detect Source language
+- fix: Microsoft Translator and text with double-quotes
+- fix: Pragma translator and double-quotes
+- fix: Temporary "fix" for Promt autodetect
+- fix: highlighting of translated Text-To-Speech
+- fix: more anti-"srcLang = destLang" function
+- fix: space by Google Translate
+
+0.5a
+- fix: multiple sentences by Google Translate
+
+0.5
+- new: support of Google Text-To-Speech
+- new: autodetect right-to-left text direction
+- new: option to invert Translate/Clear buttons
+- new: simple anti-"srcLang = destLang" function
+- fix: remove using deprecated Google Translate API
+- fix: does not work with passwords-fields
+- fix: broken Pragma translator
+
+0.4b
+- fix: after start translation do not clear previous translate result
+- fix: better "Auto-detect"-replacer on exchange languages
+- fix: temporary return part of old internal communication due to the Opera's bug with (empty) frames on the page (gmail.com without calendar widget)
+
+0.4a
+- fix: compatibility with extension "AutoComplete"
+- fix: mistaken "Prompt" renamed to "Promt"
+- fix: "Bing (Microsoft)" renamed to "Bing Translator"
+
+0.4
+- new: added Prompt translator (not supported page translator)
+- new: added Pragma translator (not supported page translator)
+- new: use Google Dictionary when try translate 1 word
+- new: store last used language pairs
+- new: default language property
+- new: check Ctrl-Enter on each element (not only in source-textarea)
+- new: show autodetected language, if it known
+- fix: stop previous animation on double translate
+- fix: could be confused by background pages (rewrite internal communications)
+- fix: do not save last target language when translate not selection
+- fix: trim spaces in selection
+- mod: redesign properties
+
+0.3f
+- fix: do not load user_js with any type of widgets
+
+0.3e
+- cosmetic changes
+
+0.3d
+- added clear button
+- cosmetic changes
+- simple options page
+
+0.3c
+- fixed detection last used languages on popup open
+- added support of Opera 11 pre-beta
+
+0.3b
+- fix quotes and other special characters in translations
+
+0.3a
+- fix red dot on page, loaded from speeddial
+
+0.3
+- reset language pair to Auto-detect -> [last target language with autodetect] on translation of the selected text
+
+0.2e
+- do not retranslate on open popup with same selection
+
+0.2d
+- show red dot on pages, which can not work (can't detect selection, can't get title and url)
+
+0.2c
+- return support frames and iframes. Was broken in version 0.2
+
+0.2b
+- restore translate provider on open popup
+
+0.2a
+- update how_does_it_work.txt
+- store detected language
+
+0.2
+- store last used texts (for awile in localStorage). TODO: after Opera's fix change on sessionStorage
+- setup focus on source TEXTAREA when open popup
+- optimized "get_active_page_data"-message
+- change 22x22 icon on 18x18
+- TranslateUrl-link now has a title

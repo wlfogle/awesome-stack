@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info">
+  <bookmark href="file:///home/lou/Downloads/Warp-x86_64.AppImage" added="2025-06-23T04:22:00.964000Z" modified="2025-06-23T04:22:11.169000Z" visited="2025-06-23T04:22:11.169000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/vnd.appimage"/>
+        <bookmark:applications>
+          <bookmark:application name="org.freedesktop.impl.portal.desktop.kde" exec="/usr/lib/xdg-desktop-portal-kde %f" modified="2025-06-23T04:22:00.964000Z" count="1"/>
+        <bookmark:application name="" exec="dolphin %f" modified="2025-06-23T04:22:11.169000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/lou/Data/fixes8" added="2025-06-23T04:30:56.150000Z" modified="2025-06-23T04:30:56.150000Z" visited="2025-06-23T04:30:56.150000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/x-perl"/>
+        <bookmark:applications>
+          <bookmark:application name="org.kde.kate" exec="kate -b %u" modified="2025-06-23T04:30:56.150000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="https://app.warp.dev/signup/remote?scheme=warp&amp;state=a6a6a912-15b1-435c-bee0-aff2b1b86ea0&amp;public_beta=true" added="2025-06-23T04:35:59.781000Z" modified="2025-06-23T04:35:59.781000Z" visited="2025-06-23T04:35:59.781000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="firedragon" exec="/usr/lib/firedragon/firedragon %u" modified="2025-06-23T04:35:59.781000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/lou/Coding/universal-arch-installer/universal_arch_installer_optimized.py" added="2025-06-23T04:48:16.180000Z" modified="2025-06-23T04:48:16.180000Z" visited="2025-06-23T04:48:16.180000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-python3"/>
+        <bookmark:applications>
+          <bookmark:application name="konsolerun" exec="dolphin %f" modified="2025-06-23T04:48:16.180000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/lou/Coding/ArchBackupPro/project_log.md" added="2025-06-23T04:50:44.997000Z" modified="2025-06-23T19:05:47.180000Z" visited="2025-06-23T19:05:47.180000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/markdown"/>
+        <bookmark:applications>
+          <bookmark:application name="org.kde.kate" exec="kate -b %u" modified="2025-06-23T19:05:47.180000Z" count="3"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/lou/Ventoy/packages.txt" added="2025-06-23T06:19:31.065000Z" modified="2025-06-23T20:00:50.078000Z" visited="2025-06-23T20:00:50.078000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/plain"/>
+        <bookmark:applications>
+          <bookmark:application name="ArchBackupPro" exec="ArchBackupPro %f" modified="2025-06-23T20:00:50.078000Z" count="7"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="https://app.warp.dev/signup/remote?scheme=warp&amp;state=6d5b6318-5d9f-42fa-a29b-86a462a6c040&amp;public_beta=true" added="2025-06-23T16:31:11.416000Z" modified="2025-06-23T16:31:11.416000Z" visited="2025-06-23T16:31:11.416000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="firedragon" exec="/usr/lib/firedragon/firedragon %u" modified="2025-06-23T16:31:11.416000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/lou/Documents/ArchBackups/test_package_list.txt" added="2025-06-23T17:02:11.461000Z" modified="2025-06-23T18:44:59.048000Z" visited="2025-06-23T18:44:59.048000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/plain"/>
+        <bookmark:applications>
+          <bookmark:application name="org.kde.kate" exec="kate -b %u" modified="2025-06-23T18:44:59.048000Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/lou/Data/Download/production/OriginPC%20Control%20Center.tar.gz" added="2025-06-23T17:13:59.857000Z" modified="2025-06-23T17:13:59.857000Z" visited="2025-06-23T17:13:59.857000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/x-compressed-tar"/>
+        <bookmark:applications>
+          <bookmark:application name="org.kde.ark" exec="ark %u" modified="2025-06-23T17:13:59.857000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/lou/Data/Download/production/originpc-enhanced-control-5.1.0-corrected.deb" added="2025-06-23T17:14:24.276000Z" modified="2025-06-23T17:14:24.276000Z" visited="2025-06-23T17:14:24.276000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/vnd.debian.binary-package"/>
+        <bookmark:applications>
+          <bookmark:application name="org.kde.ark" exec="ark %u" modified="2025-06-23T17:14:24.276000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/lou/Data/Download/production/originpc-enhanced-control-5.1.0-aur-submission.tar.gz" added="2025-06-23T17:14:54.170000Z" modified="2025-06-23T17:14:54.170000Z" visited="2025-06-23T17:14:54.170000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/x-compressed-tar"/>
+        <bookmark:applications>
+          <bookmark:application name="org.kde.ark" exec="ark %u" modified="2025-06-23T17:14:54.170000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/lou/Data/Download/production/originpc-enhanced-control-5.1.0-corrected.rpm" added="2025-06-23T17:15:18.823000Z" modified="2025-06-23T17:15:18.823000Z" visited="2025-06-23T17:15:18.823000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/x-rpm"/>
+        <bookmark:applications>
+          <bookmark:application name="org.kde.ark" exec="ark %u" modified="2025-06-23T17:15:18.823000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/lou/Data/Download/production/originpc-enhanced-control-5.1.0-corrected/usr/bin/originpc-enhanced-control" added="2025-06-23T17:16:12.289000Z" modified="2025-06-23T17:16:12.289000Z" visited="2025-06-23T17:16:12.289000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/x-shellscript"/>
+        <bookmark:applications>
+          <bookmark:application name="org.kde.kate" exec="kate -b %u" modified="2025-06-23T17:16:12.289000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/lou/archforge" added="2025-06-23T17:39:42.060000Z" modified="2025-06-23T17:39:42.060000Z" visited="2025-06-23T17:39:42.060000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="org.kde.kate" exec="kate -b %u" modified="2025-06-23T17:39:42.060000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/lou/wayland_troubleshooting_log.md" added="2025-06-23T18:00:41.440000Z" modified="2025-06-23T19:11:32.971000Z" visited="2025-06-23T19:11:32.971000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/markdown"/>
+        <bookmark:applications>
+          <bookmark:application name="org.kde.kate" exec="kate -b %u" modified="2025-06-23T19:11:32.971000Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="https://app.warp.dev/signup/remote?scheme=warp&amp;state=0d8489f4-5a88-4a20-97a6-cdc4a2ac25d9&amp;public_beta=true" added="2025-06-23T18:30:24.030000Z" modified="2025-06-23T18:30:24.030000Z" visited="2025-06-23T18:30:24.030000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="firedragon" exec="/usr/lib/firedragon/firedragon %u" modified="2025-06-23T18:30:24.030000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/lou/Documents/ArchBackups/installed_packages.txt" added="2025-06-23T18:44:26.353000Z" modified="2025-06-23T18:44:26.353000Z" visited="2025-06-23T18:44:26.353000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/plain"/>
+        <bookmark:applications>
+          <bookmark:application name="org.kde.kate" exec="kate -b %u" modified="2025-06-23T18:44:26.353000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/lou/Documents/ArchBackups/aur_packages.txt" added="2025-06-23T18:44:37.433000Z" modified="2025-06-23T18:44:37.433000Z" visited="2025-06-23T18:44:37.433000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/plain"/>
+        <bookmark:applications>
+          <bookmark:application name="org.kde.kate" exec="kate -b %u" modified="2025-06-23T18:44:37.433000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="https://app.warp.dev/signup/remote?scheme=warp&amp;state=96c669eb-e898-4b59-805a-2e2fa17e8966&amp;public_beta=true" added="2025-06-23T19:09:27.243000Z" modified="2025-06-23T19:09:27.243000Z" visited="2025-06-23T19:09:27.243000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="firedragon" exec="/usr/lib/firedragon/firedragon %u" modified="2025-06-23T19:09:27.243000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="https://app.warp.dev/signup/remote?scheme=warp&amp;state=9b22bb56-6ff6-4a2b-8dc8-5cd334d7c9a0&amp;public_beta=true" added="2025-06-23T19:41:19.713000Z" modified="2025-06-23T19:41:19.713000Z" visited="2025-06-23T19:41:19.713000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="firedragon" exec="/usr/lib/firedragon/firedragon %u" modified="2025-06-23T19:41:19.713000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/lou/Documents/ArchBackups/all_packages.txt" added="2025-06-23T20:03:45.023000Z" modified="2025-06-23T20:03:45.023000Z" visited="2025-06-23T20:03:45.023000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/plain"/>
+        <bookmark:applications>
+          <bookmark:application name="org.kde.kate" exec="kate -b %u" modified="2025-06-23T20:03:45.023000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/lou/Documents/ArchBackups/package_dependencies.txt" added="2025-06-23T20:04:02.772000Z" modified="2025-06-23T20:04:02.772000Z" visited="2025-06-23T20:04:02.772000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/plain"/>
+        <bookmark:applications>
+          <bookmark:application name="org.kde.kate" exec="kate -b %u" modified="2025-06-23T20:04:02.772000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="https://app.warp.dev/signup/remote?scheme=warp&amp;state=6de8806e-1c12-468a-a61d-a71a47a232ed&amp;public_beta=true" added="2025-06-23T20:26:49.755000Z" modified="2025-06-23T20:26:49.755000Z" visited="2025-06-23T20:26:49.755000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="firedragon" exec="/usr/lib/firedragon/firedragon %u" modified="2025-06-23T20:26:49.755000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="https://app.warp.dev/signup/remote?scheme=warp&amp;state=95729e67-7182-4dd1-ac72-539980ab9e92&amp;public_beta=true" added="2025-06-23T21:02:26.825000Z" modified="2025-06-23T21:02:26.825000Z" visited="2025-06-23T21:02:26.825000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="opera" exec="opera %u" modified="2025-06-23T21:02:26.825000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="warp://auth/desktop_redirect?refresh_token=AMf-vBwH8VwHtC4rahTi8iuvAaNP7pR2AGIBjj34Pltsgb5D7I9R_9jwEEP1tQhKwFKB08u1EKKmwYrRv75k8TBGkLEuZ_GHfoNnCbanlciNSkY43c2Bm4cdLaBQQT5_aVaBQh9dRaCtcsQBG15ONjnp6-4icAIiEa3YSBZzU09SpQf7rBHoyepBtBayQ6vG17s_RDjl1wU-s6O62JIjtbsFC1isTROCTlEIYCPkgd3bYUwZTGJVmKw&amp;is_onboarded=false&amp;user_uid=aZLhe65tMAX1mBFt6lZFghR73I63&amp;deleted_anonymous_user=false&amp;state=95729e67-7182-4dd1-ac72-539980ab9e92" added="2025-06-23T21:03:46.322000Z" modified="2025-06-23T21:03:46.322000Z" visited="2025-06-23T21:03:46.322000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="dev.warp.Warp" exec="warp-terminal %u" modified="2025-06-23T21:03:46.322000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="https://app.warp.dev/signup/remote?scheme=warp&amp;state=055b6869-4f6e-4ccc-9b64-c0f1adaf2acd&amp;public_beta=true" added="2025-06-23T21:56:25.163000Z" modified="2025-06-23T21:56:25.163000Z" visited="2025-06-23T21:56:25.163000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="opera" exec="opera %u" modified="2025-06-23T21:56:25.163000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="warp://auth/desktop_redirect?refresh_token=AMf-vBzm8iBXm9WLNjG67vYqnOTX__SDfxGyVSs6pDpjNQM4QVYE74nbuX9DZu5yE3rMZGDeHMHao88gTQo6oxWAy47O8hzyL66Q8oQbUpWgUkSW0bo9B21HOqGc7x_xXZ7LX04sHT5cSVL7rufL-cIrtub2TbUHRl1HtpiQuSN_0UwAYluE6y67O_XHur8tqPXOW-QRjQh9dI2iqd5y6X4NQcgtjPTI4RuPFHV3E1-A6kszdR7oM4Q&amp;is_onboarded=false&amp;user_uid=QjOGR7Qn3VZKxS65iDTTtDRjT993&amp;deleted_anonymous_user=false&amp;state=055b6869-4f6e-4ccc-9b64-c0f1adaf2acd" added="2025-06-23T21:57:08.071000Z" modified="2025-06-23T21:57:08.071000Z" visited="2025-06-23T21:57:08.071000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="dev.warp.Warp" exec="warp-terminal %u" modified="2025-06-23T21:57:08.071000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="https://app.warp.dev/signup/remote?scheme=warp&amp;state=62a3d339-6073-4065-becd-a5343ce6dfa1&amp;public_beta=true" added="2025-06-23T22:21:38.425000Z" modified="2025-06-23T22:21:38.425000Z" visited="2025-06-23T22:21:38.425000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="opera" exec="opera %u" modified="2025-06-23T22:21:38.425000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="warp://auth/desktop_redirect?refresh_token=AMf-vBzm8iBXm9WLNjG67vYqnOTX__SDfxGyVSs6pDpjNQM4QVYE74nbuX9DZu5yE3rMZGDeHMHao88gTQo6oxWAy47O8hzyL66Q8oQbUpWgUkSW0bo9B21HOqGc7x_xXZ7LX04sHT5cSVL7rufL-cIrtub2TbUHRl1HtpiQuSN_0UwAYluE6y67O_XHur8tqPXOW-QRjQh9dI2iqd5y6X4NQcgtjPTI4RuPFHV3E1-A6kszdR7oM4Q&amp;is_onboarded=true&amp;user_uid=QjOGR7Qn3VZKxS65iDTTtDRjT993&amp;deleted_anonymous_user=false&amp;state=093846ad-07be-40c2-9cf0-c246276352ad" added="2025-06-23T22:22:26.449000Z" modified="2025-06-23T22:22:26.449000Z" visited="2025-06-23T22:22:26.449000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="dev.warp.Warp" exec="warp-terminal %u" modified="2025-06-23T22:22:26.449000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="warp://auth/desktop_redirect?refresh_token=AMf-vBylUwKrE-kx5uvb4y4N1Mf4xAYVRiwGROI7XobEFcst6hhDsxih--l1kTMa2hSEsrCPBjYqz-byAiEGSoHwpWPC0tKvTja3TIymPMJGH6mrkHQljY3iXP48xOSakbflsT--ScaF7lWwtihfNQCyVzyMMX10Xw1d8DMOArTC2jyfJkqJMFXGquYyDHwvm59DCT71g5BurmQPN0IlDx7ErQ3vHmzIWpKCYGL5BhzUe_zQhEJArLY&amp;is_onboarded=false&amp;user_uid=XcGJtzzDloUoWi9mqXaqeHVLi2y1&amp;deleted_anonymous_user=false&amp;state=093846ad-07be-40c2-9cf0-c246276352ad" added="2025-06-23T22:23:50.587000Z" modified="2025-06-23T22:23:50.587000Z" visited="2025-06-23T22:23:50.587000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="dev.warp.Warp" exec="warp-terminal %u" modified="2025-06-23T22:23:50.587000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/lou/Documents/ArchBackups/settings_backup_20250623_172312.tar.gz" added="2025-06-23T22:30:49.792000Z" modified="2025-06-23T22:33:24.204000Z" visited="2025-06-23T22:33:24.204000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/x-compressed-tar"/>
+        <bookmark:applications>
+          <bookmark:application name="ArchBackupPro" exec="ArchBackupPro %f" modified="2025-06-23T22:33:24.204000Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="https://app.warp.dev/signup/remote?scheme=warp&amp;state=3554e62d-2cbf-43bb-8799-41b7b23e3619&amp;public_beta=true" added="2025-06-23T23:01:06.000000Z" modified="2025-06-23T23:01:06.000000Z" visited="2025-06-23T23:01:06.000000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="opera" exec="opera %u" modified="2025-06-23T23:01:06.000000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="warp://auth/desktop_redirect?refresh_token=AMf-vBy08lSUzK960W7_akBpXZzruAgov2LyDIl2EOHsOG3n_OS4M3zluEK2STLSNki4Zc_gh4VpBkuZzFleO4TDCYicINmIkTgl-M3PM4Bu9j3Zu_A6ivwDtzQtwmJgc4YQiS8meQ_w9soTPuSnK9RtZdwICnLR_DOH3-bKyjxVKwQysAEtM2P16wjyrBx60SGsIkxeWF_Yycql29ylZ7b1m4JBPEYcXTg_8QOkRsZYUmHXMG7D-Qo&amp;is_onboarded=false&amp;user_uid=ShOK63H3wVS7ZuenBhG6INjPfru2&amp;deleted_anonymous_user=false&amp;state=3554e62d-2cbf-43bb-8799-41b7b23e3619" added="2025-06-23T23:02:06.378000Z" modified="2025-06-23T23:02:06.378000Z" visited="2025-06-23T23:02:06.378000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="dev.warp.Warp" exec="warp-terminal %u" modified="2025-06-23T23:02:06.378000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="warp://auth/desktop_redirect?refresh_token=AMf-vBwC5y7_1vfUujwRurZLihdJXl_WCWgv0M6uxIJXmwvEFWB9K-ejP2Y0NjDBRG2FYZel5eAVNlDtscie5S3h6xM1eK1dLmE43pdErF6DMLT62mYi_q_p1pgLA75Uuz3qD-C-pCjU4OESGG5gPYP9CYW3B1T0MPjVFKi838-_gIZUEe2YCrtL9Gz6MHPrJwpmQW5BQ6aCcQnUR6ua4eD0F9laF0M4yeLJZiOBGYBZigUmKVLeWY8&amp;is_onboarded=false&amp;user_uid=ZucddclgVKVFOEiDvNh0ZuHFup72&amp;deleted_anonymous_user=false&amp;state=3554e62d-2cbf-43bb-8799-41b7b23e3619" added="2025-06-23T23:58:59.895000Z" modified="2025-06-23T23:58:59.895000Z" visited="2025-06-23T23:58:59.895000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="dev.warp.Warp" exec="warp-terminal %u" modified="2025-06-23T23:58:59.895000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/lou/Coding/ArchForge-RGB-Control/integration_log.md" added="2025-06-24T00:02:07.504000Z" modified="2025-06-24T00:28:19.974000Z" visited="2025-06-24T00:28:19.974000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/markdown"/>
+        <bookmark:applications>
+          <bookmark:application name="org.kde.kate" exec="kate -b %u" modified="2025-06-24T00:28:19.974000Z" count="3"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="https://app.warp.dev/signup/remote?scheme=warp&amp;state=8b742814-e256-4ec9-9638-ceeefa66e2e4&amp;public_beta=true" added="2025-06-24T00:17:58.676000Z" modified="2025-06-24T00:17:58.676000Z" visited="2025-06-24T00:17:58.676000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="opera" exec="opera %u" modified="2025-06-24T00:17:58.676000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="warp://auth/desktop_redirect?refresh_token=AMf-vByknfAS258DC2R6utqwOfmBg2CmJcRv-P9juMwmhTP_BDco6p67FHKK13s7sYDKb-ebwE9gjED5TSNP51E4GHiLzmhBUJhfCLAOFcgOLqIZlDX_M3zUtNnuEkrHheXvmhKPUip1-hBJetAJN_VsrA9uEuPb6hvac7FvtdX73_ZAzdRPw6ccyGlrj_cu4cFfAG2dnvcf_1o-jO58gjbqf7XCNN7I5s0Of_-8Ve1Af8V2yDhOBXo&amp;is_onboarded=false&amp;user_uid=m4b5Mt2gjNOLkG5b6brRdFMv9Ht2&amp;deleted_anonymous_user=false&amp;state=8b742814-e256-4ec9-9638-ceeefa66e2e4" added="2025-06-24T00:18:35.931000Z" modified="2025-06-24T00:18:35.931000Z" visited="2025-06-24T00:18:35.931000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="dev.warp.Warp" exec="warp-terminal %u" modified="2025-06-24T00:18:35.931000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/lou/Coding/ArchForge-RGB-Control/build/ArchForge-RGB-Control" added="2025-06-24T00:35:45.097000Z" modified="2025-06-24T00:35:45.097000Z" visited="2025-06-24T00:35:45.097000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/x-executable"/>
+        <bookmark:applications>
+          <bookmark:application name="konsolerun" exec="dolphin %f" modified="2025-06-24T00:35:45.097000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="https://app.warp.dev/signup/remote?scheme=warp&amp;state=1dd5c5e2-9fef-4202-a2f2-099e347f0175&amp;public_beta=true" added="2025-06-24T01:06:47.487000Z" modified="2025-06-24T01:06:47.487000Z" visited="2025-06-24T01:06:47.487000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="opera" exec="opera %u" modified="2025-06-24T01:06:47.487000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="warp://auth/desktop_redirect?refresh_token=AMf-vBzoGZVH7WPMXZ4PKEKlPfSHZGpiA8lHis95X9172NdrIf3sdKZDAB5X3qiljxBVLmsjoHBFHCVWxkFUW_TIJ2F4U7IY9_gegjy_kY0OOsEjSU-rPjSBLFIuBsSt_KOZd6qXs8mGBzzxcr6QO-b5hv7wwNwsc7xwePyqGYllUWXY_jho3atf2nngFIdJVeLXKF7KSTY-paTpUZ93pZzNw2kglTSqJBkfqT3IHwKsyLUX7VO47pk&amp;is_onboarded=false&amp;user_uid=8mLOEvv1hrZjlv97lXQhV2ualF63&amp;deleted_anonymous_user=false&amp;state=1dd5c5e2-9fef-4202-a2f2-099e347f0175" added="2025-06-24T01:07:32.986000Z" modified="2025-06-24T01:07:32.986000Z" visited="2025-06-24T01:07:32.986000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="dev.warp.Warp" exec="warp-terminal %u" modified="2025-06-24T01:07:32.986000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/lou/Data/Download/production/README.md" added="2025-06-24T01:37:17.282000Z" modified="2025-06-24T01:37:17.282000Z" visited="2025-06-24T01:37:17.282000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/markdown"/>
+        <bookmark:applications>
+          <bookmark:application name="org.kde.kate" exec="kate -b %u" modified="2025-06-24T01:37:17.282000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/lou/Data/Download/universal-arch-installer/universal_arch_installer_optimized.py" added="2025-06-24T02:12:33.907000Z" modified="2025-06-24T02:12:33.907000Z" visited="2025-06-24T02:12:33.907000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-python3"/>
+        <bookmark:applications>
+          <bookmark:application name="konsolerun" exec="dolphin %f" modified="2025-06-24T02:12:33.907000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="warp://auth/desktop_redirect?refresh_token=AMf-vBwBTIDpBV404r42W3AcT5k4F4XDXFR6eyuYTR47NQn35_Dt8k-b_rI8Y42zTkUczeE29k9FhdUOoaXuS_MUHPOz68061CKm2EzHzWvN2EZILbs2oN87921AicgbcenAysvV28eJIP5I7kkClkcGRgjxi2CzQOoa9Mwh0G6qBE_KlVp5cEZFu2V2tj-TH295qe53XF12O_JiDGs629Gy2aZBOVBRw1CJ5dqKDT-O4rrHwL1t8zg&amp;is_onboarded=false&amp;user_uid=X1INBfgmLxMa8T1gS5WFvmM1A1n2&amp;deleted_anonymous_user=false&amp;state=1dd5c5e2-9fef-4202-a2f2-099e347f0175" added="2025-06-24T02:16:00.427000Z" modified="2025-06-24T02:16:00.427000Z" visited="2025-06-24T02:16:00.427000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="dev.warp.Warp" exec="warp-terminal %u" modified="2025-06-24T02:16:00.427000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="warp://auth/desktop_redirect?refresh_token=AMf-vBwBTIDpBV404r42W3AcT5k4F4XDXFR6eyuYTR47NQn35_Dt8k-b_rI8Y42zTkUczeE29k9FhdUOoaXuS_MUHPOz68061CKm2EzHzWvN2EZILbs2oN87921AicgbcenAysvV28eJIP5I7kkClkcGRgjxi2CzQOoa9Mwh0G6qBE_KlVp5cEZFu2V2tj-TH295qe53XF12O_JiDGs629Gy2aZBOVBRw1CJ5dqKDT-O4rrHwL1t8zg&amp;is_onboarded=true&amp;user_uid=X1INBfgmLxMa8T1gS5WFvmM1A1n2&amp;deleted_anonymous_user=false&amp;state=81abbb82-53b7-4051-a465-923d2960f7ec" added="2025-06-24T02:19:01.286000Z" modified="2025-06-24T02:19:01.286000Z" visited="2025-06-24T02:19:01.286000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="dev.warp.Warp" exec="warp-terminal %u" modified="2025-06-24T02:19:01.286000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/lou/Data/Download/universal-arch-installer/universal_installer_fix_log.txt" added="2025-06-24T02:26:29.537000Z" modified="2025-06-24T03:04:27.571000Z" visited="2025-06-24T03:04:27.571000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/plain"/>
+        <bookmark:applications>
+          <bookmark:application name="org.kde.kate" exec="kate -b %u" modified="2025-06-24T03:04:27.571000Z" count="3"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="warp://auth/desktop_redirect?refresh_token=AMf-vBw9ufUzLUBzmPM4hjCMVALtD2MvDingnzJDt2VYMQeQiJtaSKcg5dQDVEIgG8v3mR1CkxY3ix_RPoVDckFiLjonNxFv5JKJHxpdGd5gnoLSBFf6_S9C-a3xboSbxJ16b8gewfIa2MX3AdKsNCztT0VqF-sb81gmsRkh1d2-9NO57BBeO85xKfK3LwDI9MoNY-dKaspTPoW2G_JuwHBKDySx1UDXqatpIzYhQL7xe0VfxMTWa0g&amp;is_onboarded=false&amp;user_uid=0I4FzaJ7KVX4qjXKLuDQygsJxN22&amp;deleted_anonymous_user=false&amp;state=81abbb82-53b7-4051-a465-923d2960f7ec" added="2025-06-24T02:50:45.125000Z" modified="2025-06-24T02:50:45.125000Z" visited="2025-06-24T02:50:45.125000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="dev.warp.Warp" exec="warp-terminal %u" modified="2025-06-24T02:50:45.125000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="warp://auth/desktop_redirect?refresh_token=AMf-vBzWQHXwntIEqKbTTyZt89kbVHbbo8LvOzsH0fcyYArceg0PCwGMzj_ZbRNV3aB5xhg6GOPW2eR-LZQ_91AwgUDCYkXaJiWXx7bFNPD7FNFckHkUuZvXGFeKu3w9eSVGGVmErDXbLWYw1lYvs5UY-xoUzFCG-VtOHobC_uYDhEvxejFXbMaNVZFH1Z3iv2Fel_6zRJXYwh5JQ9XJxVw3XQR8ou7xddHOd3ZCLcPyyIf-6OoP7SU&amp;is_onboarded=false&amp;user_uid=tikeIf4r3SOG3dnnRzlyu3hhbJk1&amp;deleted_anonymous_user=false&amp;state=81abbb82-53b7-4051-a465-923d2960f7ec" added="2025-06-24T03:24:30.256000Z" modified="2025-06-24T03:24:30.256000Z" visited="2025-06-24T03:24:30.256000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="dev.warp.Warp" exec="warp-terminal %u" modified="2025-06-24T03:24:30.256000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="warp://auth/desktop_redirect?refresh_token=AMf-vBzuBsNr9utNA-0l_r0eA6S4DWYdM7k4Ym55gp7VTl7s_WGB9-LItaTN1ysNvbBBMjwW2vvOhVXzAkUun7zNPeTG2efmpqc0Wh9eyKp5qjrTlsPfayEOASN85WYIlitSd88qBjkWxozm5mqHoskHWWUKeMUekJcQbg32v36sTDxTPixCb1201M_Q-s7SwzjHELuNOjZdM6ijjLQ9u3L8RvzRbEG79WNPyFZOA8YxVuuEFz--Fv4&amp;is_onboarded=false&amp;user_uid=4NbXzERnRBPcrbskyVGOu8aoQ2k2&amp;deleted_anonymous_user=false&amp;state=81abbb82-53b7-4051-a465-923d2960f7ec" added="2025-06-24T04:00:48.458000Z" modified="2025-06-24T04:00:48.458000Z" visited="2025-06-24T04:00:48.458000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="dev.warp.Warp" exec="warp-terminal %u" modified="2025-06-24T04:00:48.458000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/lou/Data/Download/universal-arch-installer/SESSION_LOG.md" added="2025-06-24T04:18:48.425000Z" modified="2025-06-24T04:18:48.425000Z" visited="2025-06-24T04:18:48.425000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/markdown"/>
+        <bookmark:applications>
+          <bookmark:application name="org.kde.kate" exec="kate -b %u" modified="2025-06-24T04:18:48.425000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="warp://auth/desktop_redirect?refresh_token=AMf-vBxT_slrtxrdKvgwIQvN0CnKyGoN5L7_2vfNl0vHzcjjE_Gf4LquHoCMW85WLzdcot4KbXfiR0DKdohCSpuNOXyWd7vJ-PGVf240cew1IzsHrxj8_kjp1lKWMplGOEUy67_1hHgrZySZFF8W2J4n-NApbcJx7MTxq7IvYdaz1hMp-7Jzm1-xpzC9Tn7TdMvSmHW1qw7DgZVcxeA2veUHuVoUn8LTgxvAIHzceQm0SohdIY5vy58&amp;is_onboarded=false&amp;user_uid=CsxImdiaenNyuzbC3VgiZIZqhox1&amp;deleted_anonymous_user=false&amp;state=81abbb82-53b7-4051-a465-923d2960f7ec" added="2025-06-24T04:34:41.025000Z" modified="2025-06-24T04:34:41.025000Z" visited="2025-06-24T04:34:41.025000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="dev.warp.Warp" exec="warp-terminal %u" modified="2025-06-24T04:34:41.025000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+</xbel>

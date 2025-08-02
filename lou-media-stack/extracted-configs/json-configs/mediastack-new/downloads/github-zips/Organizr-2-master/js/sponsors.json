@@ -1,0 +1,26 @@
+[
+  {
+    "company_name": "Seedboxes.cc",
+    "logo": "https://user-images.githubusercontent.com/16184466/154811062-201be154-6868-4a24-ade6-a26278935415.png",
+    "logo_dark": "https://user-images.githubusercontent.com/16184466/154811063-80476df1-8dd1-440e-8fb5-e5d02f2d31e6.png",
+    "website": "https://www.seedboxes.cc/",
+    "about": "<b>Seed with monster power<\/b><br\/>\r\nReliable and affordable web hosting, with the power of your friendly monsters!\nSimple, Elegant, Full Featured.",
+    "coupon": "ORGANIZR50",
+    "coupon_about": "50% off First Month"
+  },
+  {
+    "company_name": "Unraid",
+    "logo": "https://user-images.githubusercontent.com/16184466/49177230-e6f6f680-f309-11e8-9d6a-67be65109d14.png",
+    "logo_dark": "https://user-images.githubusercontent.com/16184466/49177230-e6f6f680-f309-11e8-9d6a-67be65109d14.png",
+    "website": "https://unraid.net/"
+  },
+  {
+    "company_name": "Ultra.cc",
+    "logo": "https://user-images.githubusercontent.com/16184466/165360431-7324ecac-2c4d-4dc0-aa70-f582f197eb1f.png",
+    "logo_dark": "https://user-images.githubusercontent.com/16184466/165360431-7324ecac-2c4d-4dc0-aa70-f582f197eb1f.png",
+    "website": "https://ultra.cc/",
+    "about": "<b>Premium apps hosting that just works<\/b><br\/>",
+    "coupon": "FLASH20",
+    "coupon_about": "20% off recurring"
+  }
+]

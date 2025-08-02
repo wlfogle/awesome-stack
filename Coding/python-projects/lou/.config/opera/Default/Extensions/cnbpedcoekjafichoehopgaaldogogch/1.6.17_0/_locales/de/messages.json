@@ -1,0 +1,14 @@
+{
+   "description": {
+      "message": "Übersetze ausgewählten oder eingegebenen Text"
+   },
+   "description_hotkey": {
+      "message": "Übersetze ausgewählten Text"
+   },
+   "description_sidebar": {
+      "message": "Übersetze eingegebenen Text"
+   },
+   "locale": {
+      "message": "de"
+   }
+}

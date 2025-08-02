@@ -1,0 +1,31 @@
+[
+    {
+        "Name": "mediastack",
+        "Id": "a055661ea812cb36d44a2cd4c9ca3b19642678c70f4034786ae4b89e7f2936ee",
+        "Created": "2025-07-18T14:41:43.161124004-04:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.19.0.0/16",
+                    "Gateway": "172.19.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {},
+        "Options": {},
+        "Labels": {}
+    }
+]

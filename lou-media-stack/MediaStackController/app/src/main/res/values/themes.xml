@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme -->
+    <style name="AppTheme" parent="Theme.Material3.DayNight">
+        <item name="colorPrimary">@color/blue_500</item>
+        <item name="colorPrimaryDark">@color/blue_700</item>
+        <item name="colorAccent">@color/purple_500</item>
+    </style>
+
+    <!-- Theme for Fire TV -->
+    <style name="FireTVTheme" parent="Theme.Material3.DayNight">
+        <item name="colorPrimary">@color/fire_tv_primary</item>
+        <item name="colorPrimaryDark">@color/fire_tv_background</item>
+        <item name="colorAccent">@color/fire_tv_accent</item>
+        <item name="android:windowBackground">@color/fire_tv_background</item>
+    </style>
+
+    <!-- AppBar overlay theme -->
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.Material3.Dark.ActionBar" />
+
+    <!-- Popup overlay theme -->
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.Material3.Light" />
+</resources>

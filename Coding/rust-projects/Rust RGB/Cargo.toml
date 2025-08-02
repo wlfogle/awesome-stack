@@ -1,0 +1,26 @@
+[package]
+name = "archforge_control_center"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <your.email@example.com>"]
+description = "ArchForge Control Center - Backup and RGB Management Suite for Garuda Linux"
+
+[dependencies]
+clap = { version = "4.4", features = ["derive", "cargo"] }
+anyhow = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+colored = "2.0"
+thiserror = "1.0"
+rand = "0.8"
+tokio = { version = "1.0", features = ["full"] }
+# GUI dependencies
+iced = { version = "0.13", features = ["tokio", "advanced"] }
+iced_aw = "0.12.2"  # Additional widgets
+# Keep some utilities
+chrono = { version = "0.4", features = ["serde"] }
+dirs = "5.0"
+walkdir = "2.0"
+tar = "0.4"
+flate2 = "1.0"
+uuid = { version = "1.0", features = ["v4"] }

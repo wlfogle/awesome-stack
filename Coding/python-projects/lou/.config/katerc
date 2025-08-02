@@ -1,0 +1,82 @@
+[General]
+Close After Last=true
+
+[KTextEditor Document]
+Allow End of Line Detection=true
+Newline at End of File=true
+On-The-Fly Spellcheck=false
+Show Tabs=true
+Word Wrap=false
+Word Wrap Column=80
+
+[KTextEditor Renderer]
+Animate Bracket Matching=true
+Auto Color Theme Selection=false
+Color Theme=Mokka
+Font=FiraCode Nerd Font Mono,11,-1,5,50,0,0,0,0,0
+Line Height Multiplier=1
+Show Indentation Lines=true
+Show Whole Bracket Expression=false
+Text Font=Liberation Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+Text Font Features=
+Word Wrap Marker=false
+
+[KTextEditor View]
+Dynamic Word Wrap=true
+Dynamic Word Wrap Align Indent=80
+Dynamic Word Wrap At Static Marker=false
+Dynamic Word Wrap Indicators=1
+Dynamic Wrap not at word boundaries=false
+Enable Tab completion=false
+Line Numbers=true
+Show File Encoding=true
+Show Line Count=true
+Show Scrollbars=0
+Show Statusbar Dictionary=true
+Show Statusbar Highlighting Mode=true
+Show Statusbar Input Mode=true
+Show Statusbar Line Column=true
+Show Statusbar Tab Settings=true
+Show Word Count=false
+Smart Copy Cut=true
+Text Drag And Drop=true
+Word Completion=true
+Word Completion Minimal Word Length=3
+Word Completion Remove Tail=true
+
+[Konsole]
+AutoSyncronize=true
+RemoveExtension=false
+
+[UiSettings]
+ColorScheme=Mokka
+
+[filetree]
+middleClickToClose=false
+shadingEnabled=true
+showCloseButton=false
+showFullPathOnRoots=false
+showToolbar=true
+
+[lspclient]
+AllowedServerCommandLines=
+AutoHover=true
+AutoImport=true
+BlockedServerCommandLines=/usr/bin/perl -MPerl::LanguageServer -e Perl::LanguageServer::run --
+CompletionDocumentation=true
+CompletionParens=true
+Diagnostics=true
+FormatOnSave=false
+HighlightGoto=true
+IncrementalSync=false
+InlayHints=false
+Messages=true
+ReferencesDeclaration=true
+SemanticHighlighting=true
+ServerConfiguration=
+SignatureHelp=true
+SymbolDetails=false
+SymbolExpand=true
+SymbolSort=false
+SymbolTree=true
+TypeFormatting=false

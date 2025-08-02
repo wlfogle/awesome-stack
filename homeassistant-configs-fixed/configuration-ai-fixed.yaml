@@ -1,0 +1,120 @@
+# 🤖 AI-OPTIMIZED HOME ASSISTANT CONFIGURATION
+# ============================================
+# Fixes applied based on AI analysis
+
+default_config:
+
+# Split configuration files
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+sensor: !include sensors.yaml
+rest_command: !include rest_commands.yaml
+
+frontend:
+  themes: !include_dir_merge_named themes
+
+# ===============================
+# ALEXA INTEGRATION - AI OPTIMIZED
+# ===============================
+alexa:
+  smart_home:
+    locale: en-US
+    filter:
+      include_domains:
+        - script
+        - switch
+        - media_player
+        - binary_sensor
+      include_entities:
+        # Core Voice Commands
+        - script.movie_night
+        - script.system_status
+        - script.ai_assistant_status
+        - script.entertainment_mode
+        - script.gaming_mode
+        
+        # Media Control
+        - script.check_downloads
+        - script.pause_downloads
+        - script.resume_downloads
+        - script.restart_plex
+        - script.restart_jellyfin
+        
+        # System Sensors
+        - sensor.plex_status
+        - sensor.jellyfin_status
+        - sensor.ai_service_status
+        - sensor.traefik_routes
+        - sensor.system_performance
+        
+        # Binary Sensors (Fixed)
+        - binary_sensor.plex_online
+        - binary_sensor.jellyfin_online
+        - binary_sensor.ai_services_online
+
+# ===============================
+# NETWORK & SECURITY
+# ===============================
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 192.168.122.0/24
+    - 127.0.0.1
+    - ::1
+    - 100.96.98.61
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
+
+api:
+
+# ===============================
+# DATABASE OPTIMIZATION
+# ===============================
+recorder:
+  db_url: sqlite:////config/home-assistant_v2.db
+  purge_keep_days: 7
+  commit_interval: 5
+  exclude:
+    domains:
+      - automation
+      - updater
+      - sun
+    entity_globs:
+      - sensor.time*
+      - sensor.date*
+
+# ===============================
+# SYSTEM HEALTH (REPLACES SYSTEMMONITOR)
+# ===============================
+system_health:
+
+# ===============================
+# LOGGING
+# ===============================
+logger:
+  default: warning
+  logs:
+    homeassistant.components.rest: error
+    homeassistant.helpers.template: error
+    homeassistant.components.alexa: info
+    homeassistant.components.script: info
+
+# ===============================
+# NOTIFICATIONS (FIXED)
+# ===============================
+notify:
+  - name: alexa_notifications
+    platform: persistent_notification
+
+# ===============================
+# DISCOVERY
+# ===============================
+discovery:
+  ignore:
+    - yeelight
+    - xiaomi_gw
+
+mobile_app:
+energy:
+backup:

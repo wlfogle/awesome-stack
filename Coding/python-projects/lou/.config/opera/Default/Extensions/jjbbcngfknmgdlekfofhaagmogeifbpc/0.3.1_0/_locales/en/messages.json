@@ -1,0 +1,5 @@
+{
+   "description": {
+      "message": "Integrates the browser with JDownloader either by interrupting the built-in download manager or from right-click context menu"
+   }
+}

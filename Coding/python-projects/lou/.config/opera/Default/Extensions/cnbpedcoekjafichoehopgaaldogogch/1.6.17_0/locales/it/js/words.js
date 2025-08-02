@@ -1,0 +1,126 @@
+// Italian
+var EXT_LOCALE = "it";
+
+var WORDS = {
+	// popup
+	btnTranslate:				"Traduci",
+	btnClear:					"Cancella",
+	txtUse:						"usa:",
+	txtBackTranslation:			"traduzione posteriore",
+	txtTranslateActivePage:		"Traduci la pagina web attiva",
+	optAutoDetect:				"Rilevazione auto.",
+	optNone:					"niente",
+	lnkSettingsPage:			"impostazioni",
+
+	txtRegistration:			"Registrazione",
+	txtUnregisteredMode:		"**Modalità non registrata**",
+	txtUnregisteredModeDetails:	"**La modalità non registrata aiuta a tradurre solo le singole parole**\nDopo la registrazione si avrà:\n- mancanza di questo messaggio e possibile pubblicità aggiuntiva nei motori di ricerca;\n- Text-to-speech, traduzione indietro, test giapponese e coreano IME;\n- nuove funzionalità future.\n\nse nulla dalla lista che ti serve, la registrazione non è necessario.",
+	txtVerify:					"Clicca qui per Registrarti",
+
+	cmTranslateIt:				"Traducilo",
+	cmTranslatePage:			"Traduci pagina",
+
+	// hints
+	hntFullExchange:			"Shift+Click – scambio completo",
+	hntTranslate:				"Ctrl+Invio – traduci",
+	hntReTranslate:				"Shift+Modifica – ri-traduce in base al servizio scelto",
+	hntVocalize:				"vocalizzare",
+	hntPutInTheDictionary:		"metti nel dizionario",
+	hntRemoveFromTheDictionary:	"rimuovere dal dizionario",
+	hntCopy:					"copia",
+	hntPaste:					"incolla il testo copiato (Shift+Click = incolla e traduci)",
+	hntMaximize:				"Alt+Click - apri in una nuova scheda",
+
+	// services
+	byGoogle:					"Google Traduttore",
+	byBing:						"Microsoft Traduttore",
+	byYandex:					"Yandex Traduttore",
+	byPromt:					"Promt Traduttore",
+	byPragma:					"Pragma Traduttore",
+	byBaidu:					"Baidu Traduttore",
+	byNaver:					"Naver Traduttore",
+	bySogou:					"Sogou Traduttore",
+	bySystran:					"Systran Traduttore",
+	byBabylon:					"Babylon Traduttore",
+	byBabylonDictionaries:		"Dizionari di Babylon",
+	byLingvo:					"Dizionario Lingvo",
+	byGlosbe:					"Glosbe Traduttore",
+	byUrban:					"Dizionario Urban",
+	byIbm:						"IBM Traduttore",
+	byApertium:					"Apertium Traduttore",
+	byDeepl:					"DeepL Traduttore",
+
+	tbByGoogle:					"da Google Traduttore",
+	tbByBing:					"da Microsoft Traduttore",
+	tbByYandex:					"da Yandex Traduttore",
+	tbByPromt:					"da Promt Traduttore",
+
+	// messages
+	msgError:					"errore",
+	msgErrorCode:				"codice errore",
+	msgUnknownSourceLng:		"lingua sorgente non supportata",
+	msgUnknownTargetLng:		"lingua di destinazione non supportata",
+	msgUnknownLng:				"lingua non supportata",
+	msgExample:					"esempio",
+	msgExamples:				"esempi",
+	msgAlternatives:			"alternative",
+
+	// dictionary
+	txtDictionary:				"dizionario",
+	linkRemove:					"rimuovi",
+	txtUsePersonalDictionary:	"Usa dizionario personale",
+	txtShow:					"mostra",
+	txtHide:					"nascondi",
+
+	// options
+	txtOptionsTitle:			"Impostazioni traduttore",
+	txtMadeBy:					"Realizzato da",
+	linkFeedback:				"segnala problema / invia commento",
+	hdrDefaultSourceLang:		"Lingua sorgente principale",
+	hdrDefaultTargetLang:		"Lingua di destinazione principale",
+	labelAlwaysUseDefTargetLang:"usa sempre la lingua di destinazione predefinita",
+	labelDefTargetLang2:		"quando lingua di origine = prima lingua di destinazione predefinita",
+	hdrMaxStoredLangPairs:		"Numero massimo coppie linguaggi memorizzate",
+	hdrTranslateBtnPosition:	"Posizione del pulsante \"Traduci\"",
+	txtAtRight:					"a destra",
+	txtAtLeft:					"a sinistra",
+	txtInvertButons:			"scambia pulsanti",
+	hdrTextareaFont:			"Carattere del testo da tradurre",
+	hdrUITheme:					"Usa un tema chiaro o scuro",
+	optLight:					"Luce",
+	optDark:					"Buio",
+	optDefault:					"Predefinito",
+	hdrIconTheme:				"Tema dell'icona",
+	wrnTextareaFont:			"Puoi cambiare il tipo di carattere nelle <a href='javascript:;'>impostazioni</a> del browser.",
+	hdrSetupPopupHotkey:		"Imposta combinazione di tasti",
+	btnSetupPopupHotkey:		"Configura combinazioni di tasti",
+	hdrUseTranslateToolbar:		"Utilizza la barra strumenti di Traduzione in ogni pagina web",
+	hdrAdditKnownLangs:			"Non mostrare la barra degli strumenti Traduci per le lingue (tranne la lingua di destinazione predefinita)",
+	hdrUseContextMenuForPages:	"Utilizza il menu contestuale nelle pagine web",
+	hdrBingPrivateKey:			"Utilizza Bing in modalità privata",
+	txtBingClientId:			"ID del client:",
+	txtBingClientSecret:		"Password del client:",
+	hintBingPrivateKey:			"Se vuoi essere indipendente dalle chiavi pubbliche bloccabili, puoi impostare le tue chiavi private.<br />Possono essere ricevute da qui:",
+	optDisabled:				"Disattivato",
+	wrnUseTranslateToolbar:		"<b>Attenzione!</b> Una parte di ogni pagina web sarà inviata al provider traduttore per la rilevazione della lingua in cui è scritta!<br />Eccezione: pagine con definizione della loro lingua nel codice.",
+	hdrAllowedProviders:		"Fornitori di traduzioni consentiti",
+	hdrOtherOptions:			"Altre opzioni",
+	txtOpenNewTabsNextToActive:	"Apri le nuove schede accanto a quella attiva",
+	txtRememberLastTranslation:	"Ricorda l'ultima traduzione",
+	txtUseTextToSpeech:			"Utilizza lettura del testo",
+	txtUseYellowMarker:			"Evidenzia in giallo l'avvertimento relativo al testo selezionato che può essere intercettato",
+	txtOutputExtensionButton:	"Pulsante estensione nella barra indirizzi",
+	txtUseEnterToTranslate:		"Usa il tasto \"Invio\" per avviare la traduzione",
+	txtUseSelectionContextMenu:	"Usa il menu contestuale di selezione del testo",
+	txtUseOldSkin:				"Utilizza il vecchio tema visivo",
+	txtUseBgProcess:			"Usa il processo in background (richiede il riavvio del browser)",
+
+	txtUseGoogleCn:				"Utilizza google.com.hk (nel caso non sia possibile accedere a google.com)",
+
+	txtYouCanUseMyOtherProducts:"Prova anche gli altri miei prodotti:",
+	txtMyCalendarExensionDescr:	"estensione calendario per Opera",
+	txtMyWebanketaServiceDescr:	"creazione gratuita di questionari, votazioni, test e sondaggi!",
+
+	txtPoweredByOpera:			"Elaborato da Opera Browser"
+};
+//	translated by Andrea Gramegna, Gian Matteo Esposito

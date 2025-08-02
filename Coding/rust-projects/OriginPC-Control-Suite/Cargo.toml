@@ -1,0 +1,63 @@
+[package]
+name = "originpc-control-suite"
+version = "1.0.0"
+edition = "2021"
+authors = ["Lou <lou@originpc.com>"]
+description = "Comprehensive control suite for OriginPC Eon17-X with RGB, fan control, and system management"
+license = "MIT"
+repository = "https://github.com/lou/originpc-control-suite"
+
+[dependencies]
+# Modern GUI Framework
+iced = { version = "0.13", features = ["tokio", "canvas", "image", "svg", "debug"] }
+
+# Async runtime and utilities
+tokio = { version = "1.0", features = ["full"] }
+tokio-util = "0.7"
+futures = "0.3"
+
+# System monitoring and hardware access
+sysinfo = "0.32"
+nix = "0.29"
+
+# Serialization and configuration
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+
+# Color manipulation and RGB effects
+palette = "0.7"
+colorsys = "0.6"
+
+# Logging and error handling
+tracing = "0.1"
+tracing-subscriber = "0.3"
+anyhow = "1.0"
+thiserror = "1.0"
+
+# File system and platform utilities
+dirs = "5.0"
+notify = "6.1"
+
+# Time and scheduling
+chrono = { version = "0.4", features = ["serde"] }
+
+# Command execution and process management
+which = "6.0"
+subprocess = "0.2"
+
+# HID device access for RGB control
+hidapi = "2.6"
+
+# Command line argument parsing
+clap = { version = "4.4", features = ["derive", "cargo"] }
+
+# Random number generation for effects
+rand = "0.8"
+
+# Regex for text processing
+regex = "1.10"
+
+[target.'cfg(target_os = "linux")'.dependencies]
+# Linux-specific dependencies for hardware access
+libc = "0.2"

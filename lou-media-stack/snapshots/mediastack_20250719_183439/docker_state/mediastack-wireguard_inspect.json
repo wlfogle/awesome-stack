@@ -1,0 +1,329 @@
+[
+    {
+        "Id": "9769cc781d682fda77f3cd4cb541b1375c7c47124f77502ce4d629e30587f366",
+        "Created": "2025-07-19T22:13:45.065915695Z",
+        "Path": "/init",
+        "Args": [],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 2279988,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2025-07-19T22:13:49.181344391Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:66ea685faee1322ac3d1dfbd6cae229158f16321c0696f7b1c6eb54e938a327b",
+        "ResolvConfPath": "/var/lib/docker/containers/9769cc781d682fda77f3cd4cb541b1375c7c47124f77502ce4d629e30587f366/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/9769cc781d682fda77f3cd4cb541b1375c7c47124f77502ce4d629e30587f366/hostname",
+        "HostsPath": "/var/lib/docker/containers/9769cc781d682fda77f3cd4cb541b1375c7c47124f77502ce4d629e30587f366/hosts",
+        "LogPath": "/var/lib/docker/containers/9769cc781d682fda77f3cd4cb541b1375c7c47124f77502ce4d629e30587f366/9769cc781d682fda77f3cd4cb541b1375c7c47124f77502ce4d629e30587f366-json.log",
+        "Name": "/mediastack-wireguard",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "lou-media-stack_wireguard_config:/config:rw",
+                "/lib/modules:/lib/modules:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "lou-media-stack_mediastack",
+            "PortBindings": {
+                "51820/udp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "8010"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "unless-stopped",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": [
+                "CAP_NET_ADMIN",
+                "CAP_SYS_MODULE"
+            ],
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Sysctls": {
+                "net.ipv4.conf.all.src_valid_mark": "1"
+            },
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap",
+                "/sys/devices/system/cpu/cpu0/thermal_throttle",
+                "/sys/devices/system/cpu/cpu1/thermal_throttle",
+                "/sys/devices/system/cpu/cpu2/thermal_throttle",
+                "/sys/devices/system/cpu/cpu3/thermal_throttle",
+                "/sys/devices/system/cpu/cpu4/thermal_throttle",
+                "/sys/devices/system/cpu/cpu5/thermal_throttle",
+                "/sys/devices/system/cpu/cpu6/thermal_throttle",
+                "/sys/devices/system/cpu/cpu7/thermal_throttle",
+                "/sys/devices/system/cpu/cpu8/thermal_throttle",
+                "/sys/devices/system/cpu/cpu9/thermal_throttle",
+                "/sys/devices/system/cpu/cpu10/thermal_throttle",
+                "/sys/devices/system/cpu/cpu11/thermal_throttle",
+                "/sys/devices/system/cpu/cpu12/thermal_throttle",
+                "/sys/devices/system/cpu/cpu13/thermal_throttle",
+                "/sys/devices/system/cpu/cpu14/thermal_throttle",
+                "/sys/devices/system/cpu/cpu15/thermal_throttle",
+                "/sys/devices/system/cpu/cpu16/thermal_throttle",
+                "/sys/devices/system/cpu/cpu17/thermal_throttle",
+                "/sys/devices/system/cpu/cpu18/thermal_throttle",
+                "/sys/devices/system/cpu/cpu19/thermal_throttle",
+                "/sys/devices/system/cpu/cpu20/thermal_throttle",
+                "/sys/devices/system/cpu/cpu21/thermal_throttle",
+                "/sys/devices/system/cpu/cpu22/thermal_throttle",
+                "/sys/devices/system/cpu/cpu23/thermal_throttle",
+                "/sys/devices/system/cpu/cpu24/thermal_throttle",
+                "/sys/devices/system/cpu/cpu25/thermal_throttle",
+                "/sys/devices/system/cpu/cpu26/thermal_throttle",
+                "/sys/devices/system/cpu/cpu27/thermal_throttle",
+                "/sys/devices/system/cpu/cpu28/thermal_throttle",
+                "/sys/devices/system/cpu/cpu29/thermal_throttle",
+                "/sys/devices/system/cpu/cpu30/thermal_throttle",
+                "/sys/devices/system/cpu/cpu31/thermal_throttle"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "9769cc781d682fda77f3cd4cb541b1375c7c47124f77502ce4d629e30587f366",
+                "LowerDir": "/var/lib/docker/overlay2/0aeb18f32de28764c143499aedc455c2909fda4386b187bc8eda7e9fa129d912-init/diff:/var/lib/docker/overlay2/ea48cd115c4387df9cde532db7a0f4fb58788e3529c0ba59f7a43913bee888f5/diff:/var/lib/docker/overlay2/ef145c72939a484bba35d796939f1211846ef5769439ffabc9234b9a9e2c7f95/diff:/var/lib/docker/overlay2/de14a77011aa4940eb5c008ba0c5e36e917b581f946e1997b942e5802e304234/diff:/var/lib/docker/overlay2/3fb0b3f382a41f7378ea0db5878fd4ea4464df72b391d8fa2e1803cbb911becf/diff:/var/lib/docker/overlay2/09373283e55c1787d6a663024322dfef145cde5457e610e2e97f52051ff89f37/diff:/var/lib/docker/overlay2/2efe11988353b76801a7978476d3a35df791db16fe66c906f4f15a70a7ab2bc7/diff:/var/lib/docker/overlay2/0dc2f498b37dd281fe5166e6ca82b45a28518281d387509bda3e7fd3a744fb41/diff:/var/lib/docker/overlay2/0b9c8d8b9be54fed19cab56b9b0f537d11023986de581dc95ed5ec9127fa9502/diff:/var/lib/docker/overlay2/49039dc7cc58ac1ba4b0062644c0a24500d98e55bd7b4cef085732bd917e8805/diff",
+                "MergedDir": "/var/lib/docker/overlay2/0aeb18f32de28764c143499aedc455c2909fda4386b187bc8eda7e9fa129d912/merged",
+                "UpperDir": "/var/lib/docker/overlay2/0aeb18f32de28764c143499aedc455c2909fda4386b187bc8eda7e9fa129d912/diff",
+                "WorkDir": "/var/lib/docker/overlay2/0aeb18f32de28764c143499aedc455c2909fda4386b187bc8eda7e9fa129d912/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "lou-media-stack_wireguard_config",
+                "Source": "/var/lib/docker/volumes/lou-media-stack_wireguard_config/_data",
+                "Destination": "/config",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            },
+            {
+                "Type": "bind",
+                "Source": "/lib/modules",
+                "Destination": "/lib/modules",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "9769cc781d68",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "51820/udp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "TZ=America/New_York",
+                "PGID=1000",
+                "PEERS=1",
+                "PUID=1000",
+                "SERVERPORT=51820",
+                "PEERDNS=auto",
+                "INTERNAL_SUBNET=10.13.13.0",
+                "SERVERURL=auto",
+                "PATH=/lsiopy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "PS1=$(whoami)@$(hostname):$(pwd)\\$ ",
+                "HOME=/root",
+                "TERM=xterm",
+                "S6_CMD_WAIT_FOR_SERVICES_MAXTIME=0",
+                "S6_VERBOSITY=1",
+                "S6_STAGE2_HOOK=/docker-mods",
+                "VIRTUAL_ENV=/lsiopy",
+                "LSIO_FIRST_PARTY=true"
+            ],
+            "Cmd": null,
+            "Image": "linuxserver/wireguard",
+            "Volumes": null,
+            "WorkingDir": "/",
+            "Entrypoint": [
+                "/init"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "build_version": "Linuxserver.io version:- 1.0.20210914-r4-ls79 Build-date:- 2025-07-17T11:29:19+00:00",
+                "com.docker.compose.config-hash": "a15afbbbdc37a61c68e49ae8c7c6365fa6f6d5b5a75dba4203867e7f645502f3",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:66ea685faee1322ac3d1dfbd6cae229158f16321c0696f7b1c6eb54e938a327b",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "lou-media-stack",
+                "com.docker.compose.project.config_files": "/home/lou/lou-media-stack/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/home/lou/lou-media-stack",
+                "com.docker.compose.replace": "0dcc452363b110498a5590b4f841d23a244b1014335cf43df1cf3a7936effca5",
+                "com.docker.compose.service": "wireguard",
+                "com.docker.compose.version": "2.38.2",
+                "maintainer": "thespad",
+                "org.opencontainers.image.authors": "linuxserver.io",
+                "org.opencontainers.image.created": "2025-07-17T11:29:19+00:00",
+                "org.opencontainers.image.description": "[WireGuard®](https://www.wireguard.com/) is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography. It aims to be faster, simpler, leaner, and more useful than IPsec, while avoiding the massive headache. It intends to be considerably more performant than OpenVPN. WireGuard is designed as a general purpose VPN for running on embedded interfaces and super computers alike, fit for many different circumstances. Initially released for the Linux kernel, it is now cross-platform (Windows, macOS, BSD, iOS, Android) and widely deployable. It is currently under heavy development, but already it might be regarded as the most secure, easiest to use, and simplest VPN solution in the industry.",
+                "org.opencontainers.image.documentation": "https://docs.linuxserver.io/images/docker-wireguard",
+                "org.opencontainers.image.licenses": "GPL-3.0-only",
+                "org.opencontainers.image.ref.name": "22d0b6e537185505defc5dd7351a2e8b6133c16b",
+                "org.opencontainers.image.revision": "22d0b6e537185505defc5dd7351a2e8b6133c16b",
+                "org.opencontainers.image.source": "https://github.com/linuxserver/docker-wireguard",
+                "org.opencontainers.image.title": "Wireguard",
+                "org.opencontainers.image.url": "https://github.com/linuxserver/docker-wireguard/packages",
+                "org.opencontainers.image.vendor": "linuxserver.io",
+                "org.opencontainers.image.version": "1.0.20210914-r4-ls79"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "fecf2d2f82347640843274f5342721ad9ef887e8b05c3983535b77ee35fdd516",
+            "SandboxKey": "/var/run/docker/netns/fecf2d2f8234",
+            "Ports": {
+                "51820/udp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "8010"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "8010"
+                    }
+                ]
+            },
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "lou-media-stack_mediastack": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "mediastack-wireguard",
+                        "wireguard"
+                    ],
+                    "MacAddress": "ca:0d:d6:a0:63:6d",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "b3fb64607c143030bcd11a51704e837e93e971335d48bfc90770116fa304af44",
+                    "EndpointID": "5b3dc8214babc7e9cf9d536b8c397edebf2efb5789b431b8f1bc96bb8134c21d",
+                    "Gateway": "172.21.0.1",
+                    "IPAddress": "172.21.0.27",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "mediastack-wireguard",
+                        "wireguard",
+                        "9769cc781d68"
+                    ]
+                }
+            }
+        }
+    }
+]

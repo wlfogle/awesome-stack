@@ -1,0 +1,27 @@
+# 🤖 AI-FIXED BINARY SENSORS
+# ==========================
+# Removed invalid device_class values based on AI analysis
+
+- platform: template
+  sensors:
+    plex_online:
+      friendly_name: "Plex Server Online"
+      value_template: "{{ states('sensor.plex_status') != 'Offline' }}"
+      # Removed invalid device_class: connectivity
+      
+    jellyfin_online:
+      friendly_name: "Jellyfin Server Online"
+      value_template: "{{ states('sensor.jellyfin_status') != 'Offline' }}"
+      # Removed invalid device_class: connectivity
+      
+    ai_services_online:
+      friendly_name: "AI Services Online"
+      value_template: "{{ states('sensor.ai_service_status') != 'Offline' }}"
+      # Removed invalid device_class: connectivity
+      
+    media_stack_healthy:
+      friendly_name: "Media Stack Healthy"
+      value_template: >
+        {% set healthy = states('sensor.media_stack_health') %}
+        {{ healthy.split('/')[0] | int >= 3 if '/' in healthy else false }}
+      # Removed invalid device_class: problem

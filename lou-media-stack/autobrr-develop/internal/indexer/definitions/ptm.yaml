@@ -1,0 +1,90 @@
+---
+#id: tracker69
+name: PreToMe
+identifier: pretome
+description: PreToMe (PTM) is 0Day/General ratioless tracker with very good speed & Pretime.
+language: en-us
+urls:
+  - https://pretome.info/
+privacy: private
+protocol: torrent
+supports:
+  - irc
+  - rss
+# source: custom
+settings:
+  - name: rsskey
+    type: secret
+    required: true
+    label: RSS key
+    help: "Copy your RSS key from the RSS feed"
+    regex: /([\da-fA-F]{32})
+
+irc:
+  network: PreToMe
+  server: irc.pretome.info
+  port: 6697
+  tls: true
+  channels:
+    - "#announce"
+  announcers:
+    - PTMbot
+  settings:
+    - name: nick
+      type: text
+      required: true
+      label: Nick
+      help: Bot nick. Eg. user_bot
+
+    - name: auth.account
+      type: text
+      required: true
+      label: NickServ Account
+      help: NickServ account. Make sure to group your user and bot.
+
+    - name: auth.password
+      type: secret
+      required: true
+      label: NickServ Password
+      help: NickServ password
+
+  parse:
+    type: single
+    lines:
+      - tests:
+        - line: 'tehFire: [Applications|Windows] Chen went to the Mall :: preGAP: 1m and 32s :: https://pretome.info/details.php?id=696969'
+          expect:
+            category: Applications|Windows
+            torrentName: Chen went to the Mall
+            baseUrl: https://pretome.info/
+            torrentId: "696969"
+        - line: '[Movies|x264] Orlando.Bloom.Had.A.Cow-GROUP :: preGAP: P2P source :: https://pretome.info/details.php?id=646321'
+          expect:
+            category: Movies|x264
+            torrentName: Orlando.Bloom.Had.A.Cow-GROUP
+            baseUrl: https://pretome.info/
+            torrentId: "646321"
+        - line: 'tehFIRE: [TV|XviD] Royal.Institution.Christmas.Lectures.2009.Part2.WS.PDTV.XviD-WATERS :: preGAP: 1m and 9s :: https://pretome.info/details.php?id=127107'
+          expect:
+            category: TV|XviD
+            torrentName: Royal.Institution.Christmas.Lectures.2009.Part2.WS.PDTV.XviD-WATERS
+            baseUrl: https://pretome.info/
+            torrentId: "127107"
+        - line: 'tehFIRE: [TV|x264] Newsreaders.S01E05.HDTV.x264-2HD https://pretome.info/details.php?id=333951'
+          expect:
+            category: TV|x264
+            torrentName: 'Newsreaders.S01E05.HDTV.x264-2HD '
+            baseUrl: https://pretome.info/
+            torrentId: "333951"
+        pattern: '\[([^\]]+)\] ([^:]+)(?: :: [^:]+:.* :: )?(https?\:\/\/.+\/).*id=(\d+)'
+        vars:
+          - category
+          - torrentName
+          - baseUrl
+          - torrentId
+
+    match:
+      infourl: "/details.php?id={{ .torrentId }}"
+      torrenturl: "/download.php/{{ .torrentId }}/{{ .rsskey }}/{{ .torrentName }}.torrent"
+      encode:
+        - torrentName

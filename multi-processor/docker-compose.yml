@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  # Main processing service
+  processor:
+    build: .
+    ports:
+      - "8095:8000"
+    volumes:
+      - /home/lou/awesome_stack:/app/workspace:rw
+      - ./output:/app/output
+      - ./archive:/app/archive
+      - ./config:/app/config
+    environment:
+      - WORKSPACE_PATH=/app/workspace
+      - OUTPUT_PATH=/app/output
+      - ARCHIVE_PATH=/app/archive
+      - OLLAMA_HOST=192.168.122.172:11434
+      - OLLAMA_MODEL=codellama:7b
+      - CODE_ANALYSIS=true
+      - DOCUMENT_ANALYSIS=true
+      - AUTO_ARCHIVE=true
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - redis
+
+  # Database for tracking changes and organizing
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: processor_db
+      POSTGRES_USER: processor
+      POSTGRES_PASSWORD: processor_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  # Cache for processing results
+  redis:
+    image: redis:alpine
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  # User interface
+  processor-ui:
+    build: ./ui
+    ports:
+      - "8096:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8095
+    depends_on:
+      - processor
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+
+# Add Dockerfile and source code for implementation specifics
+

@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+"""
+OriginPC Enhanced Professional Control Center - Main Launcher
+============================================================
+"""
+
+import sys
+import os
+
+# Add the source directory to path
+sys.path.insert(0, '/usr/share/originpc-control/src')
+
+# Import and run the main application
+from enhanced_professional_control_center import main
+
+if __name__ == "__main__":
+    main()
+

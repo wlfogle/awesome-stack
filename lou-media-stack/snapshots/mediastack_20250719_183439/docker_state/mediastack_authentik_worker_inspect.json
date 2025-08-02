@@ -1,0 +1,384 @@
+[
+    {
+        "Id": "1420fbe36cff47d3ce8800a5bd949b60bc386e25b3de97577a63e48277139c1e",
+        "Created": "2025-07-17T16:17:52.42308639Z",
+        "Path": "dumb-init",
+        "Args": [
+            "--",
+            "ak",
+            "worker"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 1055473,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2025-07-17T16:18:03.158721252Z",
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "Health": {
+                "Status": "healthy",
+                "FailingStreak": 0,
+                "Log": [
+                    {
+                        "Start": "2025-07-19T18:32:12.185657204-04:00",
+                        "End": "2025-07-19T18:32:12.308262229-04:00",
+                        "ExitCode": 0,
+                        "Output": "{\"event\":\"checking health\",\"level\":\"debug\",\"mode\":\"worker\",\"timestamp\":\"2025-07-19T18:32:12-04:00\"}\n"
+                    },
+                    {
+                        "Start": "2025-07-19T18:32:42.308702703-04:00",
+                        "End": "2025-07-19T18:32:42.444586574-04:00",
+                        "ExitCode": 0,
+                        "Output": "{\"event\":\"checking health\",\"level\":\"debug\",\"mode\":\"worker\",\"timestamp\":\"2025-07-19T18:32:42-04:00\"}\n"
+                    },
+                    {
+                        "Start": "2025-07-19T18:33:12.44580476-04:00",
+                        "End": "2025-07-19T18:33:12.587336602-04:00",
+                        "ExitCode": 0,
+                        "Output": "{\"event\":\"checking health\",\"level\":\"debug\",\"mode\":\"worker\",\"timestamp\":\"2025-07-19T18:33:12-04:00\"}\n"
+                    },
+                    {
+                        "Start": "2025-07-19T18:33:42.588594114-04:00",
+                        "End": "2025-07-19T18:33:42.724135472-04:00",
+                        "ExitCode": 0,
+                        "Output": "{\"event\":\"checking health\",\"level\":\"debug\",\"mode\":\"worker\",\"timestamp\":\"2025-07-19T18:33:42-04:00\"}\n"
+                    },
+                    {
+                        "Start": "2025-07-19T18:34:12.725490868-04:00",
+                        "End": "2025-07-19T18:34:12.853040073-04:00",
+                        "ExitCode": 0,
+                        "Output": "{\"event\":\"checking health\",\"level\":\"debug\",\"mode\":\"worker\",\"timestamp\":\"2025-07-19T18:34:12-04:00\"}\n"
+                    }
+                ]
+            }
+        },
+        "Image": "sha256:e3c993bbf4f6bb9b2bc28f8e81e04ded7fb2e01543ecf0a4777dd7021ce6cc30",
+        "ResolvConfPath": "/var/lib/docker/containers/1420fbe36cff47d3ce8800a5bd949b60bc386e25b3de97577a63e48277139c1e/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/1420fbe36cff47d3ce8800a5bd949b60bc386e25b3de97577a63e48277139c1e/hostname",
+        "HostsPath": "/var/lib/docker/containers/1420fbe36cff47d3ce8800a5bd949b60bc386e25b3de97577a63e48277139c1e/hosts",
+        "LogPath": "/var/lib/docker/containers/1420fbe36cff47d3ce8800a5bd949b60bc386e25b3de97577a63e48277139c1e/1420fbe36cff47d3ce8800a5bd949b60bc386e25b3de97577a63e48277139c1e-json.log",
+        "Name": "/mediastack_authentik_worker",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/mnt/sda1/config/authentik/custom:/custom:rw",
+                "/var/run/docker.sock:/var/run/docker.sock:rw",
+                "config_authentik_media:/media:rw",
+                "config_authentik_templates:/templates:rw",
+                "/mnt/sda1/config/authentik/certs:/certs:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "config_mediastack",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "unless-stopped",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap",
+                "/sys/devices/system/cpu/cpu0/thermal_throttle",
+                "/sys/devices/system/cpu/cpu1/thermal_throttle",
+                "/sys/devices/system/cpu/cpu2/thermal_throttle",
+                "/sys/devices/system/cpu/cpu3/thermal_throttle",
+                "/sys/devices/system/cpu/cpu4/thermal_throttle",
+                "/sys/devices/system/cpu/cpu5/thermal_throttle",
+                "/sys/devices/system/cpu/cpu6/thermal_throttle",
+                "/sys/devices/system/cpu/cpu7/thermal_throttle",
+                "/sys/devices/system/cpu/cpu8/thermal_throttle",
+                "/sys/devices/system/cpu/cpu9/thermal_throttle",
+                "/sys/devices/system/cpu/cpu10/thermal_throttle",
+                "/sys/devices/system/cpu/cpu11/thermal_throttle",
+                "/sys/devices/system/cpu/cpu12/thermal_throttle",
+                "/sys/devices/system/cpu/cpu13/thermal_throttle",
+                "/sys/devices/system/cpu/cpu14/thermal_throttle",
+                "/sys/devices/system/cpu/cpu15/thermal_throttle",
+                "/sys/devices/system/cpu/cpu16/thermal_throttle",
+                "/sys/devices/system/cpu/cpu17/thermal_throttle",
+                "/sys/devices/system/cpu/cpu18/thermal_throttle",
+                "/sys/devices/system/cpu/cpu19/thermal_throttle",
+                "/sys/devices/system/cpu/cpu20/thermal_throttle",
+                "/sys/devices/system/cpu/cpu21/thermal_throttle",
+                "/sys/devices/system/cpu/cpu22/thermal_throttle",
+                "/sys/devices/system/cpu/cpu23/thermal_throttle",
+                "/sys/devices/system/cpu/cpu24/thermal_throttle",
+                "/sys/devices/system/cpu/cpu25/thermal_throttle",
+                "/sys/devices/system/cpu/cpu26/thermal_throttle",
+                "/sys/devices/system/cpu/cpu27/thermal_throttle",
+                "/sys/devices/system/cpu/cpu28/thermal_throttle",
+                "/sys/devices/system/cpu/cpu29/thermal_throttle",
+                "/sys/devices/system/cpu/cpu30/thermal_throttle",
+                "/sys/devices/system/cpu/cpu31/thermal_throttle"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "1420fbe36cff47d3ce8800a5bd949b60bc386e25b3de97577a63e48277139c1e",
+                "LowerDir": "/var/lib/docker/overlay2/aebf4926165fe06837384adc6052bff1bd81dce0c8619af8dd2d8da9f79d5444-init/diff:/var/lib/docker/overlay2/f0242af71e4e63861c788c8f36c58b757ba3131af147e3163d91ee44e4484b78/diff:/var/lib/docker/overlay2/8dde589af1bb48448309886702960795414dc0261732023f4e3562836d64f0e3/diff:/var/lib/docker/overlay2/898ccdb13b53f2404fc34d889a68af42f789a240b40c3b87b2206a65e21d4805/diff:/var/lib/docker/overlay2/5e327a6f5ceedb97c0272c974f8ced87c4e0a6843fd9bd61f60e527dbb013637/diff:/var/lib/docker/overlay2/d8be055192af79f7fcf75b713b60aeb9392ca0c6926571e908921c77c269e116/diff:/var/lib/docker/overlay2/1ae531930096034b4cb84c155506807333534b5c6a520c8be88d551f3e976a25/diff:/var/lib/docker/overlay2/b185d464ee3861d43d152cfebfdd25be08913ce4e592a2f9767afc715ba0f4a9/diff:/var/lib/docker/overlay2/cac2b3d586bbc9d9f37e77cb6104cfd9767d85b45326a479ffe854691c0f82c0/diff:/var/lib/docker/overlay2/8a28e6ec69eb3dc179238602a77e7499da38787688291098d512c7ab27f38a3f/diff:/var/lib/docker/overlay2/b7973f232cadf4969165ea02950ced1a92f2781e41ab9a30c7339b1b6e3b4d55/diff:/var/lib/docker/overlay2/b9983540ed91ce33a6af48df37f1f1a8707a973ac2032dcb37326491a14e7277/diff:/var/lib/docker/overlay2/29d0d1ccc160c663831acdcb1a519d84554d771a70229f29eef1daebca3eccdd/diff:/var/lib/docker/overlay2/f5c3cb7b5e4f026e3bcc06f11bca33880ca23e70594103156b9572741815b4b1/diff:/var/lib/docker/overlay2/90b1df32525b4084e67cd602b77e50069605fe5dfed12f5496c0391e84810731/diff:/var/lib/docker/overlay2/3e6ea8869db23dcee1eeb908433183eef9e4cb69183e354a68c0a880b78bfb79/diff:/var/lib/docker/overlay2/798e1c977a76945c9c8f173dc2f5b6c260f969336d3c67737da67d30ea71e547/diff:/var/lib/docker/overlay2/90efcb60d851cef39d89488311398dccdefe968113d3f5a9ee15e3233e27c4c1/diff:/var/lib/docker/overlay2/bdcf6be134aad4ca65501eff981c2c7887e338f9f47ff1ffdb3ab88dbaca8125/diff:/var/lib/docker/overlay2/468e5aa1dd589dec184eab0329af7c19fbdc34980826aa9c431d17c8947611cc/diff:/var/lib/docker/overlay2/5bdf72d691108ce1ca2af5eb2eb67896db325f581fb614789c7fa68d200645df/diff:/var/lib/docker/overlay2/286c25dd7476b1d8a24324e926e99b8813be637415c92920c9308563fdf375d5/diff:/var/lib/docker/overlay2/ff15f71dc1da87f422e8227cc7fdf3e57aa96f5ad64f48247e7a5cd992e88d28/diff:/var/lib/docker/overlay2/520f6106f63cf39dff536500d8c2b97837d7a6596783ed8a940c6bd2c743519c/diff:/var/lib/docker/overlay2/b0b5647e9ac35b6ba747d6e9131b3c94f0a3e596af601a1dc782df2223904d79/diff:/var/lib/docker/overlay2/d40d67b1a9021eb519b3fce3faefb42208a5f3212c91d1e3c5c8f260a8ea4879/diff:/var/lib/docker/overlay2/f05ec6ec941dbcc1f1c4a09c1b30f407a7c0bea5da3d26a5fe78b5ab85b111a3/diff",
+                "MergedDir": "/var/lib/docker/overlay2/aebf4926165fe06837384adc6052bff1bd81dce0c8619af8dd2d8da9f79d5444/merged",
+                "UpperDir": "/var/lib/docker/overlay2/aebf4926165fe06837384adc6052bff1bd81dce0c8619af8dd2d8da9f79d5444/diff",
+                "WorkDir": "/var/lib/docker/overlay2/aebf4926165fe06837384adc6052bff1bd81dce0c8619af8dd2d8da9f79d5444/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/mnt/sda1/config/authentik/custom",
+                "Destination": "/custom",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/var/run/docker.sock",
+                "Destination": "/var/run/docker.sock",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "volume",
+                "Name": "config_authentik_media",
+                "Source": "/var/lib/docker/volumes/config_authentik_media/_data",
+                "Destination": "/media",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            },
+            {
+                "Type": "volume",
+                "Name": "config_authentik_templates",
+                "Source": "/var/lib/docker/volumes/config_authentik_templates/_data",
+                "Destination": "/templates",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            },
+            {
+                "Type": "bind",
+                "Source": "/mnt/sda1/config/authentik/certs",
+                "Destination": "/certs",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "1420fbe36cff",
+            "Domainname": "",
+            "User": "root",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "AUTHENTIK_POSTGRESQL__PASSWORD=mediastack_postgres_secure_2024!",
+                "AUTHENTIK_REDIS__HOST=valkey",
+                "AUTHENTIK_ERROR_REPORTING__ENABLED=false",
+                "AUTHENTIK_POSTGRESQL__USER=authentik",
+                "AUTHENTIK_DISABLE_UPDATE_CHECK=true",
+                "AUTHENTIK_DISABLE_STARTUP_ANALYTICS=true",
+                "AUTHENTIK_SECRET_KEY=mediastack_authentik_super_secret_key_2024_random_string_here_must_be_long",
+                "AUTHENTIK_POSTGRESQL__HOST=postgres",
+                "AUTHENTIK_POSTGRESQL__NAME=authentik",
+                "TZ=America/New_York",
+                "PATH=/ak-root/venv/bin:/lifecycle:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "build_root=/build",
+                "SSL_CERT_DIR=/etc/ssl/certs",
+                "LANG=C.UTF-8",
+                "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+                "PYTHON_PIP_VERSION=24.1.1",
+                "PYTHON_GET_PIP_URL=https://github.com/pypa/get-pip/raw/def4aec84b261b939137dd1c69eff0aabb4a7bf4/public/get-pip.py",
+                "PYTHON_GET_PIP_SHA256=bc37786ec99618416cc0a0ca32833da447f4d91ab51d2c138dd15b7af21e8e9a",
+                "GIT_BUILD_HASH=",
+                "TMPDIR=/dev/shm/",
+                "PYTHONDONTWRITEBYTECODE=1",
+                "PYTHONUNBUFFERED=1",
+                "VENV_PATH=/ak-root/venv",
+                "POETRY_VIRTUALENVS_CREATE=false",
+                "GOFIPS=1"
+            ],
+            "Cmd": [
+                "worker"
+            ],
+            "Healthcheck": {
+                "Test": [
+                    "CMD",
+                    "ak",
+                    "healthcheck"
+                ],
+                "Interval": 30000000000,
+                "Timeout": 30000000000,
+                "StartPeriod": 60000000000,
+                "Retries": 3
+            },
+            "Image": "ghcr.io/goauthentik/server:latest",
+            "Volumes": null,
+            "WorkingDir": "/",
+            "Entrypoint": [
+                "dumb-init",
+                "--",
+                "ak"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "f45cc298ae28771333fad5cec55c1496ebe22f993a9c76eb7894e622d5f780c5",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "valkey:service_healthy:false,postgres:service_healthy:false",
+                "com.docker.compose.image": "sha256:e3c993bbf4f6bb9b2bc28f8e81e04ded7fb2e01543ecf0a4777dd7021ce6cc30",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "config",
+                "com.docker.compose.project.config_files": "/home/lou/mediastack-new/config/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/home/lou/mediastack-new/config",
+                "com.docker.compose.service": "authentik-worker",
+                "com.docker.compose.version": "2.38.2",
+                "org.opencontainers.image.description": "goauthentik.io Main server image, see https://goauthentik.io for more info.",
+                "org.opencontainers.image.revision": "",
+                "org.opencontainers.image.source": "https://github.com/goauthentik/authentik",
+                "org.opencontainers.image.url": "https://goauthentik.io",
+                "org.opencontainers.image.version": "refs/tags/version/2025.2.4"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "d847b53e184c4db7acfc42c9d7928154007faad79af2f84bd1d089bc31a393c9",
+            "SandboxKey": "/var/run/docker/netns/d847b53e184c",
+            "Ports": {},
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "config_mediastack": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "mediastack_authentik_worker",
+                        "authentik-worker"
+                    ],
+                    "MacAddress": "e2:1b:f7:73:2a:22",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "475ece92575a4af78e9b3a51deb5b559680383eba9ad48dbd3530f2b9e52b2ce",
+                    "EndpointID": "60576835416d639bf0eb964c53453defb887f77a11ded763490f73b89b50cd43",
+                    "Gateway": "172.20.0.1",
+                    "IPAddress": "172.20.0.17",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "mediastack_authentik_worker",
+                        "authentik-worker",
+                        "1420fbe36cff"
+                    ]
+                }
+            }
+        }
+    }
+]

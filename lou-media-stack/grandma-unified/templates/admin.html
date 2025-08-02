@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Media Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f6fa;
+            color: #2f3640;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: #2f3542;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 1.8rem;
+        }
+        
+        .back-btn {
+            background: #3742fa;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-btn:hover {
+            background: #2f3542;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #e1e5e9;
+        }
+        
+        .card h3 {
+            color: #2f3542;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .service-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            background: #f1f2f6;
+        }
+        
+        .service-status.online {
+            border-left: 4px solid #2ed573;
+            background: #f1f9f4;
+        }
+        
+        .service-status.offline {
+            border-left: 4px solid #ff3838;
+            background: #fff5f5;
+        }
+        
+        .service-name {
+            font-weight: 500;
+        }
+        
+        .service-url {
+            font-size: 0.9rem;
+            color: #57606f;
+        }
+        
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .status-online {
+            background: #2ed573;
+            color: white;
+        }
+        
+        .status-offline {
+            background: #ff3838;
+            color: white;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-primary { background: #3742fa; color: white; }
+        .btn-success { background: #2ed573; color: white; }
+        .btn-warning { background: #ffa502; color: white; }
+        .btn-danger { background: #ff3838; color: white; }
+        .btn-info { background: #70a1ff; color: white; }
+        
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .logs-section {
+            background: #2f3542;
+            color: #a4b0be;
+            padding: 1rem;
+            border-radius: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .log-entry {
+            margin-bottom: 0.5rem;
+            padding: 0.25rem 0;
+        }
+        
+        .log-timestamp {
+            color: #70a1ff;
+        }
+        
+        .log-level-info { color: #2ed573; }
+        .log-level-warn { color: #ffa502; }
+        .log-level-error { color: #ff3838; }
+        
+        .config-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .config-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: #f1f2f6;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .config-key {
+            font-weight: 500;
+            color: #2f3542;
+        }
+        
+        .config-value {
+            color: #57606f;
+            font-family: monospace;
+            background: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            border: 1px solid #ddd;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #2ed573;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        .refresh-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #3742fa;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(55, 66, 250, 0.3);
+        }
+        
+        .refresh-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔧 Admin Dashboard</h1>
+        <a href="/" class="back-btn">← Back to Main</a>
+    </div>
+    
+    <div class="container">
+        <!-- Statistics Overview -->
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalMovies">-</div>
+                <div class="stat-label">Movies</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalShows">-</div>
+                <div class="stat-label">TV Shows</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalEpisodes">-</div>
+                <div class="stat-label">Episodes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="activeDownloads">-</div>
+                <div class="stat-label">Downloads</div>
+            </div>
+        </div>
+        
+        <div class="dashboard-grid">
+            <!-- Service Status -->
+            <div class="card">
+                <h3>⚡ Service Status</h3>
+                <div id="serviceStatus">Loading...</div>
+                <div class="action-buttons">
+                    <button class="btn btn-success" onclick="restartAllServices()">Restart All</button>
+                    <button class="btn btn-warning" onclick="refreshStatus()">Refresh</button>
+                </div>
+            </div>
+            
+            <!-- Download Management -->
+            <div class="card">
+                <h3>📥 Download Queue</h3>
+                <div id="downloadQueue">Loading...</div>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="pauseDownloads()">Pause All</button>
+                    <button class="btn btn-success" onclick="resumeDownloads()">Resume All</button>
+                    <button class="btn btn-danger" onclick="clearCompleted()">Clear Completed</button>
+                </div>
+            </div>
+            
+            <!-- System Resources -->
+            <div class="card">
+                <h3>💻 System Resources</h3>
+                <div id="systemResources">Loading...</div>
+            </div>
+            
+            <!-- Recent Activity -->
+            <div class="card">
+                <h3>📋 Recent Activity</h3>
+                <div id="recentActivity">Loading...</div>
+            </div>
+            
+            <!-- Configuration -->
+            <div class="card">
+                <h3>⚙️ Configuration</h3>
+                <div id="configSettings">
+                    <div class="config-item">
+                        <span class="config-key">Auto Download</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="autoDownload" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="config-item">
+                        <span class="config-key">Quality Profile</span>
+                        <select class="config-value" id="qualityProfile">
+                            <option>1080p</option>
+                            <option>720p</option>
+                            <option>4K</option>
+                        </select>
+                    </div>
+                    <div class="config-item">
+                        <span class="config-key">Download Path</span>
+                        <input type="text" class="config-value" id="downloadPath" value="/downloads">
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="saveConfig()">Save Config</button>
+                    <button class="btn btn-warning" onclick="resetConfig()">Reset</button>
+                </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="card">
+                <h3>🚀 Quick Actions</h3>
+                <div class="action-buttons">
+                    <a href="#" class="btn btn-primary" onclick="openService('radarr')">Radarr</a>
+                    <a href="#" class="btn btn-primary" onclick="openService('sonarr')">Sonarr</a>
+                    <a href="#" class="btn btn-primary" onclick="openService('jellyfin')">Jellyfin</a>
+                    <a href="#" class="btn btn-info" onclick="openService('jackett')">Jackett</a>
+                    <a href="#" class="btn btn-success" onclick="openService('deluge')">Deluge</a>
+                    <button class="btn btn-warning" onclick="scanLibrary()">Scan Library</button>
+                    <button class="btn btn-danger" onclick="clearCache()">Clear Cache</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- System Logs -->
+        <div class="card">
+            <h3>📊 System Logs</h3>
+            <div class="logs-section" id="systemLogs">
+                Loading logs...
+            </div>
+            <div class="action-buttons">
+                <button class="btn btn-info" onclick="refreshLogs()">Refresh</button>
+                <button class="btn btn-warning" onclick="downloadLogs()">Download</button>
+                <button class="btn btn-danger" onclick="clearLogs()">Clear</button>
+            </div>
+        </div>
+    </div>
+    
+    <button class="refresh-btn" onclick="refreshAll()" title="Refresh All Data">
+        🔄
+    </button>
+    
+    <script>
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            refreshAll();
+            
+            // Auto-refresh every 30 seconds
+            setInterval(refreshStatus, 30000);
+            setInterval(updateStats, 60000);
+        });
+        
+        // Refresh all data
+        async function refreshAll() {
+            await Promise.all([
+                refreshStatus(),
+                updateStats(),
+                loadDownloadQueue(),
+                loadSystemResources(),
+                loadRecentActivity(),
+                refreshLogs()
+            ]);
+        }
+        
+        // Refresh service status
+        async function refreshStatus() {
+            try {
+                const response = await fetch('/api/admin/status');
+                const data = await response.json();
+                const container = document.getElementById('serviceStatus');
+                
+                let html = '';
+                for (const [service, info] of Object.entries(data)) {
+                    const statusClass = info.status === 'online' ? 'online' : 'offline';
+                    const badgeClass = info.status === 'online' ? 'status-online' : 'status-offline';
+                    
+                    html += `
+                        <div class="service-status ${statusClass}">
+                            <div>
+                                <div class="service-name">${service}</div>
+                                <div class="service-url">${info.url || 'N/A'}</div>
+                            </div>
+                            <span class="status-badge ${badgeClass}">${info.status}</span>
+                        </div>
+                    `;
+                }
+                container.innerHTML = html;
+            } catch (error) {
+                document.getElementById('serviceStatus').innerHTML = '<div style="color: #ff3838;">Failed to load status</div>';
+            }
+        }
+        
+        // Update statistics
+        async function updateStats() {
+            try {
+                const response = await fetch('/api/admin/stats');
+                const data = await response.json();
+                
+                document.getElementById('totalMovies').textContent = data.movies || '-';
+                document.getElementById('totalShows').textContent = data.shows || '-';
+                document.getElementById('totalEpisodes').textContent = data.episodes || '-';
+                document.getElementById('activeDownloads').textContent = data.downloads || '-';
+            } catch (error) {
+                console.error('Failed to load stats:', error);
+            }
+        }
+        
+        // Load download queue
+        async function loadDownloadQueue() {
+            try {
+                const response = await fetch('/api/admin/downloads');
+                const data = await response.json();
+                const container = document.getElementById('downloadQueue');
+                
+                if (data.length === 0) {
+                    container.innerHTML = '<div>No active downloads</div>';
+                    return;
+                }
+                
+                let html = '';
+                data.forEach(item => {
+                    html += `
+                        <div class="service-status">
+                            <div>
+                                <div class="service-name">${item.title}</div>
+                                <div class="service-url">${item.progress}% - ${item.status}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            } catch (error) {
+                document.getElementById('downloadQueue').innerHTML = '<div>Failed to load downloads</div>';
+            }
+        }
+        
+        // Load system resources
+        async function loadSystemResources() {
+            try {
+                const response = await fetch('/api/admin/resources');
+                const data = await response.json();
+                const container = document.getElementById('systemResources');
+                
+                container.innerHTML = `
+                    <div class="config-item">
+                        <span class="config-key">CPU Usage</span>
+                        <span class="config-value">${data.cpu || 'N/A'}%</span>
+                    </div>
+                    <div class="config-item">
+                        <span class="config-key">Memory</span>
+                        <span class="config-value">${data.memory || 'N/A'}%</span>
+                    </div>
+                    <div class="config-item">
+                        <span class="config-key">Disk Usage</span>
+                        <span class="config-value">${data.disk || 'N/A'}%</span>
+                    </div>
+                    <div class="config-item">
+                        <span class="config-key">Network</span>
+                        <span class="config-value">${data.network || 'N/A'}</span>
+                    </div>
+                `;
+            } catch (error) {
+                document.getElementById('systemResources').innerHTML = '<div>Failed to load resources</div>';
+            }
+        }
+        
+        // Load recent activity
+        async function loadRecentActivity() {
+            try {
+                const response = await fetch('/api/admin/activity');
+                const data = await response.json();
+                const container = document.getElementById('recentActivity');
+                
+                if (data.length === 0) {
+                    container.innerHTML = '<div>No recent activity</div>';
+                    return;
+                }
+                
+                let html = '';
+                data.forEach(item => {
+                    html += `
+                        <div class="service-status">
+                            <div>
+                                <div class="service-name">${item.action}</div>
+                                <div class="service-url">${item.timestamp}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            } catch (error) {
+                document.getElementById('recentActivity').innerHTML = '<div>Failed to load activity</div>';
+            }
+        }
+        
+        // Refresh logs
+        async function refreshLogs() {
+            try {
+                const response = await fetch('/api/admin/logs');
+                const data = await response.json();
+                const container = document.getElementById('systemLogs');
+                
+                if (data.length === 0) {
+                    container.innerHTML = '<div>No logs available</div>';
+                    return;
+                }
+                
+                let html = '';
+                data.forEach(log => {
+                    html += `
+                        <div class="log-entry">
+                            <span class="log-timestamp">[${log.timestamp}]</span>
+                            <span class="log-level-${log.level}">[${log.level.toUpperCase()}]</span>
+                            ${log.message}
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+                container.scrollTop = container.scrollHeight;
+            } catch (error) {
+                document.getElementById('systemLogs').innerHTML = '<div>Failed to load logs</div>';
+            }
+        }
+        
+        // Service management functions
+        async function restartAllServices() {
+            if (!confirm('Are you sure you want to restart all services?')) return;
+            
+            try {
+                const response = await fetch('/api/admin/restart-all', { method: 'POST' });
+                const data = await response.json();
+                alert(data.message);
+                refreshStatus();
+            } catch (error) {
+                alert('Failed to restart services');
+            }
+        }
+        
+        async function pauseDownloads() {
+            try {
+                const response = await fetch('/api/admin/pause-downloads', { method: 'POST' });
+                const data = await response.json();
+                alert(data.message);
+                loadDownloadQueue();
+            } catch (error) {
+                alert('Failed to pause downloads');
+            }
+        }
+        
+        async function resumeDownloads() {
+            try {
+                const response = await fetch('/api/admin/resume-downloads', { method: 'POST' });
+                const data = await response.json();
+                alert(data.message);
+                loadDownloadQueue();
+            } catch (error) {
+                alert('Failed to resume downloads');
+            }
+        }
+        
+        async function clearCompleted() {
+            try {
+                const response = await fetch('/api/admin/clear-completed', { method: 'POST' });
+                const data = await response.json();
+                alert(data.message);
+                loadDownloadQueue();
+            } catch (error) {
+                alert('Failed to clear completed downloads');
+            }
+        }
+        
+        async function scanLibrary() {
+            try {
+                const response = await fetch('/api/admin/scan-library', { method: 'POST' });
+                const data = await response.json();
+                alert(data.message);
+            } catch (error) {
+                alert('Failed to scan library');
+            }
+        }
+        
+        async function clearCache() {
+            if (!confirm('Are you sure you want to clear all cache?')) return;
+            
+            try {
+                const response = await fetch('/api/admin/clear-cache', { method: 'POST' });
+                const data = await response.json();
+                alert(data.message);
+            } catch (error) {
+                alert('Failed to clear cache');
+            }
+        }
+        
+        async function saveConfig() {
+            const config = {
+                autoDownload: document.getElementById('autoDownload').checked,
+                qualityProfile: document.getElementById('qualityProfile').value,
+                downloadPath: document.getElementById('downloadPath').value
+            };
+            
+            try {
+                const response = await fetch('/api/admin/config', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(config)
+                });
+                const data = await response.json();
+                alert(data.message);
+            } catch (error) {
+                alert('Failed to save configuration');
+            }
+        }
+        
+        function openService(service) {
+            const urls = {
+                radarr: 'http://localhost:7878',
+                sonarr: 'http://localhost:8989',
+                jellyfin: 'http://localhost:8096',
+                jackett: 'http://localhost:9117',
+                deluge: 'http://localhost:8112'
+            };
+            
+            if (urls[service]) {
+                window.open(urls[service], '_blank');
+            }
+        }
+        
+        async function downloadLogs() {
+            try {
+                const response = await fetch('/api/admin/logs/download');
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'system-logs.txt';
+                a.click();
+                window.URL.revokeObjectURL(url);
+            } catch (error) {
+                alert('Failed to download logs');
+            }
+        }
+        
+        async function clearLogs() {
+            if (!confirm('Are you sure you want to clear all logs?')) return;
+            
+            try {
+                const response = await fetch('/api/admin/logs/clear', { method: 'POST' });
+                const data = await response.json();
+                alert(data.message);
+                refreshLogs();
+            } catch (error) {
+                alert('Failed to clear logs');
+            }
+        }
+    </script>
+</body>
+</html>

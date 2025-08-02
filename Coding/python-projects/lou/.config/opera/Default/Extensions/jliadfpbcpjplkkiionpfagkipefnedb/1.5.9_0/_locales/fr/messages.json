@@ -1,0 +1,83 @@
+{
+   "authorize": {
+      "message": "Autoriser mon compte"
+   },
+   "auto_debrid": {
+      "message": "Recherche automatique de liens"
+   },
+   "back": {
+      "message": "Retour"
+   },
+   "cancel": {
+      "message": "Annuler"
+   },
+   "check": {
+      "message": "Cocher/Décocher tous les liens"
+   },
+   "clipboard": {
+      "message": "Copier les liens dans le presse papier"
+   },
+   "day": {
+      "message": "Jour"
+   },
+   "days": {
+      "message": "Jours"
+   },
+   "debrid": {
+      "message": "Générer tous les liens cochés"
+   },
+   "debrid_now": {
+      "message": "Débrider et télécharger ce lien"
+   },
+   "debrid_one": {
+      "message": "Ajouter les liens de la sélection"
+   },
+   "description": {
+      "message": "Real-Debrid est un débrideur de qualité qui vous permettra de télécharger instantanément et rapidement vos fichiers sur Internet."
+   },
+   "download": {
+      "message": "Télécharger"
+   },
+   "email": {
+      "message": "Adresse email"
+   },
+   "expiration": {
+      "message": "Expiration"
+   },
+   "logout": {
+      "message": "Se déconnecter"
+   },
+   "no_link_found": {
+      "message": "Aucun lien supporté n'a été trouvé"
+   },
+   "not_streamable": {
+      "message": "Ce lien n'est pas regardable bien que supporté"
+   },
+   "not_supported_link": {
+      "message": "Ce lien n'est pas supporté"
+   },
+   "offline": {
+      "message": "Vous n'êtes pas connecté"
+   },
+   "points": {
+      "message": "Points fidélité"
+   },
+   "settings": {
+      "message": "Paramètres"
+   },
+   "stream_now": {
+      "message": "Regarder en streaming maintenant"
+   },
+   "type": {
+      "message": "Type de compte"
+   },
+   "username": {
+      "message": "Nom d'utilisateur"
+   },
+   "view": {
+      "message": "Visioner vidéo"
+   },
+   "waiting_authorize": {
+      "message": "En attente d'autorisation"
+   }
+}

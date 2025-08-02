@@ -1,0 +1,1222 @@
+my garuda linux system is clevo based, and uses hidraw1 to access keyboard lights, can you create a program written in rust to control them
+R I'll create a Rust program to control the keyboard lights on your Clevo-based Garuda Linux system using hidraw1. Let me start by creating a basic structure for the program.
+~/Scripts
+here is some reference code:/run/media/lou/Data/Coding/originpc-control and /run/media/lou/Data/Coding/Control Center, no matter what code says, its hidraw1, i want new program, use these as reference
+R I'll examine the reference code in those directories to understand how the keyboard lights are controlled, then create a new Rust program based on that information.
+Finding files that match * in /run/media/lou/Data/Coding/originpc-control
+Finding files that match * in /run/media/lou/Data/Coding/Control Center
+Let me examine the key source files to understand how the keyboard lighting is controlled:
+/run/media/lou/Data/Coding/Control Center/main.cpp
+/run/media/lou/Data/Coding/Control Center/enhanced_rgb_controller.cpp
+/run/media/lou/Data/Coding/originpc-control/src/originpc-rgb-fix.py
+Now let me look at more Python reference code to understand the exact protocol:
+/run/media/lou/Data/Coding/originpc-control/src/enhanced-professional-control-center.py
+Now I have a good understanding of the keyboard control protocol from the reference code. Let me create a comprehensive Rust program based on this information:
+~/Scripts
+don't forget the code at /run/media/lou/Data/Coding/Control Center
+R You're right! Let me look at the C++ code in the Control Center directory first to get the complete picture:
+/run/media/lou/Data/Coding/Control Center/enhanced_rgb_controller.h
+/run/media/lou/Data/Coding/Control Center/enhanced_main.cpp
+cd "/run/media/lou/Data/Coding/Rust RGB" && cargo build --release
+    Updating crates.io index
+     Locking 50 packages to latest compatible versions
+      Adding colored v2.2.0 (available: v3.0.0)
+      Adding rand v0.8.5 (available: v0.9.1)
+      Adding thiserror v1.0.69 (available: v2.0.12)
+   Compiling proc-macro2 v1.0.95
+   Compiling unicode-ident v1.0.18
+   Compiling libc v0.2.174
+   Compiling zerocopy v0.8.26
+   Compiling utf8parse v0.2.2
+   Compiling cfg-if v1.0.1
+   Compiling anstyle v1.0.11
+   Compiling is_terminal_polyfill v1.70.1
+   Compiling colorchoice v1.0.4
+   Compiling serde v1.0.219
+   Compiling anstyle-query v1.1.3
+   Compiling serde_json v1.0.140
+   Compiling anyhow v1.0.98
+   Compiling strsim v0.11.1
+   Compiling heck v0.5.0
+   Compiling thiserror v1.0.69
+   Compiling clap_lex v0.7.5
+   Compiling lazy_static v1.5.0
+   Compiling memchr v2.7.5
+   Compiling itoa v1.0.15
+   Compiling ryu v1.0.20
+   Compiling anstyle-parse v0.2.7
+   Compiling colored v2.2.0
+   Compiling anstream v0.6.19
+   Compiling clap_builder v4.5.40
+   Compiling quote v1.0.40
+   Compiling syn v2.0.104
+   Compiling getrandom v0.2.16
+   Compiling rand_core v0.6.4
+   Compiling ppv-lite86 v0.2.21
+   Compiling rand_chacha v0.3.1
+   Compiling rand v0.8.5
+   Compiling serde_derive v1.0.219
+   Compiling clap_derive v4.5.40
+   Compiling thiserror-impl v1.0.69
+   Compiling clap v4.5.40
+   Compiling clevo_rgb v0.1.0 (/run/media/lou/Data/Coding/Rust RGB)
+error[E0599]: no method named `takes_value` found for struct `Arg` in the current scope
+  --> src/main.rs:22:18
+   |
+17 | /             Arg::new("red")
+18 | |                 .short('r')
+19 | |                 .long("red")
+20 | |                 .value_name("RED")
+21 | |                 .help("Red color value (0-255)")
+22 | |                 .takes_value(true),
+   | |                 -^^^^^^^^^^^ method not found in `Arg`
+   | |_________________|
+   |
+
+error[E0599]: no method named `takes_value` found for struct `Arg` in the current scope
+  --> src/main.rs:30:18
+   |
+25 | /             Arg::new("green")
+26 | |                 .short('g')
+27 | |                 .long("green")
+28 | |                 .value_name("GREEN")
+29 | |                 .help("Green color value (0-255)")
+30 | |                 .takes_value(true),
+   | |                 -^^^^^^^^^^^ method not found in `Arg`
+   | |_________________|
+   |
+
+error[E0599]: no method named `takes_value` found for struct `Arg` in the current scope
+  --> src/main.rs:38:18
+   |
+33 | /             Arg::new("blue")
+34 | |                 .short('b')
+35 | |                 .long("blue")
+36 | |                 .value_name("BLUE")
+37 | |                 .help("Blue color value (0-255)")
+38 | |                 .takes_value(true),
+   | |                 -^^^^^^^^^^^ method not found in `Arg`
+   | |_________________|
+   |
+
+error[E0599]: no method named `takes_value` found for struct `Arg` in the current scope
+  --> src/main.rs:46:18
+   |
+41 | /             Arg::new("effect")
+42 | |                 .short('e')
+43 | |                 .long("effect")
+44 | |                 .value_name("EFFECT")
+45 | |                 .help("Choose an effect: static, rainbow, breathing")
+46 | |                 .takes_value(true),
+   | |                 -^^^^^^^^^^^ method not found in `Arg`
+   | |_________________|
+   |
+
+error[E0599]: no method named `value_of_t` found for struct `ArgMatches` in the current scope
+  --> src/main.rs:50:27
+   |
+50 |     let red: u8 = matches.value_of_t("red").unwrap_or(0);
+   |                           ^^^^^^^^^^ method not found in `ArgMatches`
+
+error[E0599]: no method named `value_of_t` found for struct `ArgMatches` in the current scope
+  --> src/main.rs:51:29
+   |
+51 |     let green: u8 = matches.value_of_t("green").unwrap_or(0);
+   |                             ^^^^^^^^^^ method not found in `ArgMatches`
+
+error[E0599]: no method named `value_of_t` found for struct `ArgMatches` in the current scope
+  --> src/main.rs:52:28
+   |
+52 |     let blue: u8 = matches.value_of_t("blue").unwrap_or(0);
+   |                            ^^^^^^^^^^ method not found in `ArgMatches`
+
+error[E0599]: no method named `value_of_t` found for struct `ArgMatches` in the current scope
+  --> src/main.rs:53:34
+   |
+53 |     let effect: String = matches.value_of_t("effect").unwrap_or_else(|_| "static".to_string());
+   |                                  ^^^^^^^^^^ method not found in `ArgMatches`
+
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `clevo_rgb` (bin "clevo_rgb") due to 8 previous errors
+cd "/run/media/lou/Data/Coding/Rust RGB" && sudo ./target/release/clevo_rgb --effect clear
+[sudo] password for lou:
+Clearing all keys...
+All keys cleared successfully!
+hidraw0 is touchpad
+find-the-command: "hidraw0" is not found locally, searching in repositories...
+find-the-command: /var/cache/pkgfile/*.files are out of date, update? [Y/n] n
+find-the-command: command not found: "hidraw0"
+cd "/run/media/lou/Data/Coding/Rust RGB" && sudo python3 test_hidraw0.py
+🔧 HIDraw0 Touchpad Monitor
+==============================
+🔍 Monitoring /dev/hidraw0 for touchpad activity...
+Move your finger on the touchpad and I'll show the data:
+============================================================
+^C
+🛑 Monitoring stopped by user
+
+✅ Monitoring completed. Captured 0 packets.
+cd "/run/media/lou/Data/Coding/Rust RGB" && sudo python3 test_hidraw2.py
+🔧 HIDraw2 Monitor
+==============================
+🔍 Monitoring /dev/hidraw2 for activity...
+Move your finger on the touchpad and I'll show the data:
+============================================================
+^C
+🛑 Monitoring stopped by user
+
+✅ Monitoring completed. Captured 0 packets.
+cd "/run/media/lou/Data/Coding/Rust RGB" && sudo ./target/release/clevo_rgb --device /dev/hidraw0 --red 255 --green 0 --blue 0 --effect static
+[sudo] password for lou:
+Using device: /dev/hidraw0
+Static color set successfully!
+cd "/run/media/lou/Data/Coding/Rust RGB" && sudo ./target/release/clevo_rgb --device /dev/hidraw0 --effect rainbow
+Using device: /dev/hidraw0
+Starting rainbow wave effect...
+Rainbow effect completed!
+cd "/run/media/lou/Data/Coding/Rust RGB" && sudo ./target/release/clevo_rgb --device /dev/hidraw0 --red 0 --green 0 --blue 255 --effect breathing
+Using device: /dev/hidraw0
+Starting breathing effect...
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+^C
+cd "/run/media/lou/Data/Coding/Rust RGB" && sudo ./target/release/clevo_rgb --device /dev/hidraw0 --red 0 --green 0 --blue 255 --effect breathing
+Using device: /dev/hidraw0
+Starting breathing effect...
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+Static color set successfully!
+^C
+names for tab 1 'Package Management' and tab 2 'RGB/Fan Control'
+find-the-command: "names" is not found locally, searching in repositories...
+find-the-command: /var/cache/pkgfile/*.files are out of date, update? [Y/n] n
+find-the-command: "names" may be found in package "blackarch/python-names"
+find "/run/media/lou/Data/Coding/Rust RGB" -type f -name "*.rs" -o -name "*.toml" -o -name "*.md" | head -20
+/run/media/lou/Data/Coding/Rust RGB/Cargo.toml
+find "/run/media/lou/Data/Coding/Rust RGB" -name "*.rs" -type f
+implement tab 1 reference /run/media/lou/Data/Coding/ArchBackupPro, /run/media/lou/Data/Coding/ArchForgePro/SESSION_LOG_tab1.md and /run/media/lou/Data/Coding/ArchForgePro
+find-the-command: "implement" is not found locally, searching in repositories...
+find-the-command: /var/cache/pkgfile/*.files are out of date, update? [Y/n] n
+find-the-command: command not found: "implement"
+cargo run -- --device /dev/hidraw0 --effect static --color 0,0,0
+    Updating crates.io index
+     Locking 103 packages to latest compatible versions
+      Adding addr2line v0.24.2
+      Adding adler2 v2.0.1
+      Adding allocator-api2 v0.2.21
+      Adding android-tzdata v0.1.1
+      Adding android_system_properties v0.1.5
+      Adding autocfg v1.5.0
+      Adding backtrace v0.3.75
+      Adding bitflags v2.9.1
+      Adding bumpalo v3.19.0
+      Adding bytes v1.10.1
+      Adding cassowary v0.3.0
+      Adding cc v1.2.27
+      Adding chrono v0.4.41
+      Adding core-foundation-sys v0.8.7
+      Adding crc32fast v1.4.2
+      Adding crossterm v0.27.0 (available: v0.29.0)
+      Adding crossterm_winapi v0.9.1
+      Adding dirs v5.0.1 (available: v6.0.0)
+      Adding dirs-sys v0.4.1
+      Adding either v1.15.0
+      Adding equivalent v1.0.2
+      Adding errno v0.3.13
+      Adding filetime v0.2.25
+      Adding flate2 v1.1.2
+      Adding foldhash v0.1.5
+      Adding getrandom v0.3.3
+      Adding gimli v0.31.1
+      Adding hashbrown v0.15.4
+      Adding heck v0.4.1
+      Adding iana-time-zone v0.1.63
+      Adding iana-time-zone-haiku v0.1.2
+      Adding indoc v2.0.6
+      Adding itertools v0.11.0
+      Adding js-sys v0.3.77
+      Adding libredox v0.1.4
+      Adding linux-raw-sys v0.9.4
+      Adding lock_api v0.4.13
+      Adding log v0.4.27
+      Adding lru v0.12.5
+      Adding miniz_oxide v0.8.9
+      Adding mio v0.8.11
+      Adding mio v1.0.4
+      Adding num-traits v0.2.19
+      Adding object v0.36.7
+      Adding once_cell v1.21.3
+      Adding option-ext v0.2.0
+      Adding parking_lot v0.12.4
+      Adding parking_lot_core v0.9.11
+      Adding paste v1.0.15
+      Adding pin-project-lite v0.2.16
+      Adding r-efi v5.3.0
+      Adding ratatui v0.24.0 (available: v0.29.0)
+      Adding redox_syscall v0.5.13
+      Adding redox_users v0.4.6
+      Adding rustc-demangle v0.1.25
+      Adding rustix v1.0.7
+      Adding rustversion v1.0.21
+      Adding same-file v1.0.6
+      Adding scopeguard v1.2.0
+      Adding shlex v1.3.0
+      Adding signal-hook v0.3.18
+      Adding signal-hook-mio v0.2.4
+      Adding signal-hook-registry v1.4.5
+      Adding smallvec v1.15.1
+      Adding socket2 v0.5.10
+      Adding strum v0.25.0
+      Adding strum_macros v0.25.3
+      Adding tar v0.4.44
+      Adding tokio v1.45.1
+      Adding tokio-macros v2.5.0
+      Adding tui-input v0.8.0 (available: v0.12.1)
+      Adding unicode-segmentation v1.12.0
+      Adding unicode-width v0.1.14
+      Adding uuid v1.17.0
+      Adding walkdir v2.5.0
+      Adding wasi v0.14.2+wasi-0.2.4
+      Adding wasm-bindgen v0.2.100
+      Adding wasm-bindgen-backend v0.2.100
+      Adding wasm-bindgen-macro v0.2.100
+      Adding wasm-bindgen-macro-support v0.2.100
+      Adding wasm-bindgen-shared v0.2.100
+      Adding winapi v0.3.9
+      Adding winapi-i686-pc-windows-gnu v0.4.0
+      Adding winapi-util v0.1.9
+      Adding winapi-x86_64-pc-windows-gnu v0.4.0
+      Adding windows-core v0.61.2
+      Adding windows-implement v0.60.0
+      Adding windows-interface v0.59.1
+      Adding windows-link v0.1.3
+      Adding windows-result v0.3.4
+      Adding windows-strings v0.4.2
+      Adding windows-sys v0.48.0
+      Adding windows-sys v0.52.0
+      Adding windows-targets v0.48.5
+      Adding windows_aarch64_gnullvm v0.48.5
+      Adding windows_aarch64_msvc v0.48.5
+      Adding windows_i686_gnu v0.48.5
+      Adding windows_i686_msvc v0.48.5
+      Adding windows_x86_64_gnu v0.48.5
+      Adding windows_x86_64_gnullvm v0.48.5
+      Adding windows_x86_64_msvc v0.48.5
+      Adding wit-bindgen-rt v0.39.0
+      Adding xattr v1.5.1
+  Downloaded strum v0.25.0
+  Downloaded strum_macros v0.25.3
+  Downloaded tui-input v0.8.0
+  Downloaded crossterm v0.27.0
+  Downloaded itertools v0.11.0
+  Downloaded mio v0.8.11
+  Downloaded ratatui v0.24.0
+  Downloaded 7 crates (680.6KiB) in 0.46s
+   Compiling libc v0.2.174
+   Compiling proc-macro2 v1.0.95
+   Compiling unicode-ident v1.0.18
+   Compiling cfg-if v1.0.1
+   Compiling autocfg v1.5.0
+   Compiling parking_lot_core v0.9.11
+   Compiling bitflags v2.9.1
+   Compiling signal-hook v0.3.18
+   Compiling scopeguard v1.2.0
+   Compiling smallvec v1.15.1
+   Compiling log v0.4.27
+   Compiling rustversion v1.0.21
+   Compiling zerocopy v0.8.26
+   Compiling rustix v1.0.7
+   Compiling utf8parse v0.2.2
+   Compiling serde v1.0.219
+   Compiling getrandom v0.3.3
+   Compiling heck v0.4.1
+   Compiling anstyle v1.0.11
+   Compiling linux-raw-sys v0.9.4
+   Compiling is_terminal_polyfill v1.70.1
+   Compiling foldhash v0.1.5
+   Compiling anstyle-query v1.1.3
+   Compiling paste v1.0.15
+   Compiling colorchoice v1.0.4
+   Compiling equivalent v1.0.2
+   Compiling allocator-api2 v0.2.21
+   Compiling either v1.15.0
+   Compiling anyhow v1.0.98
+   Compiling option-ext v0.2.0
+   Compiling serde_json v1.0.140
+   Compiling unicode-width v0.1.14
+   Compiling strsim v0.11.1
+   Compiling heck v0.5.0
+   Compiling clap_lex v0.7.5
+   Compiling adler2 v2.0.1
+   Compiling thiserror v1.0.69
+   Compiling crc32fast v1.4.2
+   Compiling anstyle-parse v0.2.7
+   Compiling ryu v1.0.20
+   Compiling pin-project-lite v0.2.16
+   Compiling miniz_oxide v0.8.9
+   Compiling lazy_static v1.5.0
+   Compiling itoa v1.0.15
+   Compiling same-file v1.0.6
+   Compiling cassowary v0.3.0
+   Compiling bytes v1.10.1
+   Compiling iana-time-zone v0.1.63
+   Compiling anstream v0.6.19
+   Compiling unicode-segmentation v1.12.0
+   Compiling indoc v2.0.6
+   Compiling memchr v2.7.5
+   Compiling colored v2.2.0
+   Compiling walkdir v2.5.0
+   Compiling itertools v0.11.0
+   Compiling lock_api v0.4.13
+   Compiling num-traits v0.2.19
+   Compiling clap_builder v4.5.40
+   Compiling hashbrown v0.15.4
+   Compiling flate2 v1.1.2
+   Compiling lru v0.12.5
+   Compiling quote v1.0.40
+   Compiling syn v2.0.104
+   Compiling signal-hook-registry v1.4.5
+   Compiling mio v0.8.11
+   Compiling getrandom v0.2.16
+   Compiling dirs-sys v0.4.1
+   Compiling filetime v0.2.25
+   Compiling socket2 v0.5.10
+   Compiling mio v1.0.4
+   Compiling dirs v5.0.1
+   Compiling uuid v1.17.0
+   Compiling rand_core v0.6.4
+   Compiling parking_lot v0.12.4
+   Compiling ppv-lite86 v0.2.21
+   Compiling signal-hook-mio v0.2.4
+   Compiling xattr v1.5.1
+   Compiling crossterm v0.27.0
+   Compiling tar v0.4.44
+   Compiling rand_chacha v0.3.1
+   Compiling rand v0.8.5
+   Compiling tui-input v0.8.0
+   Compiling serde_derive v1.0.219
+   Compiling strum_macros v0.25.3
+   Compiling tokio-macros v2.5.0
+   Compiling clap_derive v4.5.40
+   Compiling thiserror-impl v1.0.69
+   Compiling tokio v1.45.1
+   Compiling strum v0.25.0
+   Compiling ratatui v0.24.0
+   Compiling clap v4.5.40
+   Compiling chrono v0.4.41
+   Compiling archforge_control_center v0.1.0 (/run/media/lou/Data/Coding/Rust RGB)
+warning: unused import: `Duration`
+ --> src/main.rs:4:17
+  |
+4 | use std::time::{Duration, Instant};
+  |                 ^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `std::thread`
+ --> src/main.rs:5:5
+  |
+5 | use std::thread;
+  |     ^^^^^^^^^^^
+
+warning: unused imports: `Cell`, `Clear`, `Color`, `Frame`, `Gauge`, `Line`, `ListItem`, `ListState`, `List`, `Modifier`, `Paragraph`, `Rect`, `Row`, `Span`, `Style`, `Table`, `Tabs`, and `Text`
+  --> src/main.rs:8:45
+   |
+8  |     layout::{Constraint, Direction, Layout, Rect},
+   |                                             ^^^^
+9  |     style::{Color, Modifier, Style},
+   |             ^^^^^  ^^^^^^^^  ^^^^^
+10 |     text::{Line, Span, Text},
+   |            ^^^^  ^^^^  ^^^^
+11 |     widgets::{Block, Borders, Clear, Gauge, List, ListItem, ListState, Paragraph, Tabs, Table, Row, Cell},
+   |                               ^^^^^  ^^^^^  ^^^^  ^^^^^^^^  ^^^^^^^^^  ^^^^^^^^^  ^^^^  ^^^^^  ^^^  ^^^^
+12 |     Frame, Terminal,
+   |     ^^^^^
+
+warning: unused imports: `Event`, `KeyEventKind`, `disable_raw_mode`, and `enable_raw_mode`
+  --> src/main.rs:15:60
+   |
+15 |     event::{self, DisableMouseCapture, EnableMouseCapture, Event, KeyCode, KeyEventKind},
+   |                                                            ^^^^^           ^^^^^^^^^^^^
+16 |     execute,
+17 |     terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
+   |                ^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^
+
+warning: unused import: `std::collections::HashMap`
+  --> src/main.rs:19:5
+   |
+19 | use std::collections::HashMap;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0433]: failed to resolve: use of undeclared type `CEvent`
+   --> src/main.rs:183:16
+    |
+183 |         if let CEvent::Key(key) = event::read()? {
+    |                ^^^^^^
+    |                |
+    |                use of undeclared type `CEvent`
+    |                help: an enum with a similar name exists: `Event`
+
+For more information about this error, try `rustc --explain E0433`.
+warning: `archforge_control_center` (bin "archforge_control_center") generated 5 warnings
+error: could not compile `archforge_control_center` (bin "archforge_control_center") due to 1 previous error; 5 warnings emitted
+cargo run --manifest-path "/run/media/lou/Data/Coding/Rust RGB/Cargo.toml"
+warning: unused import: `Duration`
+ --> src/main.rs:4:17
+  |
+4 | use std::time::{Duration, Instant};
+  |                 ^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `std::thread`
+ --> src/main.rs:5:5
+  |
+5 | use std::thread;
+  |     ^^^^^^^^^^^
+
+warning: unused imports: `Alignment`, `Cell`, `Clear`, `Color`, `Frame`, `Gauge`, `Line`, `ListItem`, `ListState`, `List`, `Modifier`, `Paragraph`, `Rect`, `Row`, `ScrollbarOrientation`, `ScrollbarState`, `Scrollbar`, `Span`, `Style`, `Table`, `Tabs`, and `Text`
+  --> src/main.rs:8:45
+   |
+8  |     layout::{Constraint, Direction, Layout, Rect, Alignment},
+   |                                             ^^^^  ^^^^^^^^^
+9  |     style::{Color, Modifier, Style},
+   |             ^^^^^  ^^^^^^^^  ^^^^^
+10 |     text::{Line, Span, Text},
+   |            ^^^^  ^^^^  ^^^^
+11 |     widgets::{Block, Borders, Clear, Gauge, List, ListItem, ListState, Paragraph, Tabs, Table, Row, Cell, Scrollbar, ScrollbarOrientation, ScrollbarState},
+   |                               ^^^^^  ^^^^^  ^^^^  ^^^^^^^^  ^^^^^^^^^  ^^^^^^^^^  ^^^^  ^^^^^  ^^^  ^^^^  ^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^
+12 |     Frame, Terminal,
+   |     ^^^^^
+
+warning: unused imports: `KeyEventKind`, `disable_raw_mode`, and `enable_raw_mode`
+  --> src/main.rs:15:76
+   |
+15 |     event::{self, DisableMouseCapture, EnableMouseCapture, Event, KeyCode, KeyEventKind},
+   |                                                                            ^^^^^^^^^^^^
+16 |     execute,
+17 |     terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
+   |                ^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^
+
+warning: unused import: `std::collections::HashMap`
+  --> src/main.rs:19:5
+   |
+19 | use std::collections::HashMap;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: variants `Restore`, `CleanInstall`, and `Schedule` are never constructed
+  --> src/main.rs:37:5
+   |
+35 | enum BackupSubTab {
+   |      ------------ variants in this enum
+36 |     Backup,
+37 |     Restore,
+   |     ^^^^^^^
+38 |     CleanInstall,
+   |     ^^^^^^^^^^^^
+39 |     Schedule,
+   |     ^^^^^^^^
+   |
+   = note: `BackupSubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+
+warning: variants `Pacman`, `Flatpak`, and `AppImages` are never constructed
+  --> src/main.rs:46:5
+   |
+44 | enum SoftwareSubTab {
+   |      -------------- variants in this enum
+45 |     AUR,
+46 |     Pacman,
+   |     ^^^^^^
+47 |     Flatpak,
+   |     ^^^^^^^
+48 |     AppImages,
+   |     ^^^^^^^^^
+   |
+   = note: `SoftwareSubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: variant `Fans` is never constructed
+  --> src/main.rs:55:5
+   |
+53 | enum RGBFanSubTab {
+   |      ------------ variant in this enum
+54 |     Keyboard,
+55 |     Fans,
+   |     ^^^^
+   |
+   = note: `RGBFanSubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: variants `Configuration` and `Modules` are never constructed
+  --> src/main.rs:62:5
+   |
+60 | enum KernelSubTab {
+   |      ------------ variants in this enum
+61 |     Management,
+62 |     Configuration,
+   |     ^^^^^^^^^^^^^
+63 |     Modules,
+   |     ^^^^^^^
+   |
+   = note: `KernelSubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: variants `SystemAnalysis` and `Optimization` are never constructed
+  --> src/main.rs:70:5
+   |
+68 | enum AISubTab {
+   |      -------- variants in this enum
+69 |     Chat,
+70 |     SystemAnalysis,
+   |     ^^^^^^^^^^^^^^
+71 |     Optimization,
+   |     ^^^^^^^^^^^^
+   |
+   = note: `AISubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: variants `Appearance`, `Performance`, and `About` are never constructed
+  --> src/main.rs:78:5
+   |
+76 | enum SettingsSubTab {
+   |      -------------- variants in this enum
+77 |     General,
+78 |     Appearance,
+   |     ^^^^^^^^^^
+79 |     Performance,
+   |     ^^^^^^^^^^^
+80 |     About,
+   |     ^^^^^
+   |
+   = note: `SettingsSubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: variants `Static`, `RainbowWave`, and `Breathing` are never constructed
+  --> src/main.rs:86:5
+   |
+85 | enum RGBEffect {
+   |      --------- variants in this enum
+86 |     Static { r: u8, g: u8, b: u8 },
+   |     ^^^^^^
+87 |     RainbowWave { speed: u8 },
+   |     ^^^^^^^^^^^
+88 |     Breathing { r: u8, g: u8, b: u8, speed: u8 },
+   |     ^^^^^^^^^
+   |
+   = note: `RGBEffect` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: multiple fields are never read
+   --> src/main.rs:95:5
+    |
+93  | struct App {
+    |        --- fields in this struct
+94  |     current_tab: Tab,
+95  |     backup_subtab: BackupSubTab,
+    |     ^^^^^^^^^^^^^
+96  |     software_subtab: SoftwareSubTab,
+    |     ^^^^^^^^^^^^^^^
+97  |     rgb_fan_subtab: RGBFanSubTab,
+    |     ^^^^^^^^^^^^^^
+98  |     kernel_subtab: KernelSubTab,
+    |     ^^^^^^^^^^^^^
+99  |     ai_subtab: AISubTab,
+    |     ^^^^^^^^^
+100 |     settings_subtab: SettingsSubTab,
+    |     ^^^^^^^^^^^^^^^
+101 |     current_rgb_effect: RGBEffect,
+    |     ^^^^^^^^^^^^^^^^^^
+102 |     rgb_brightness: u8,
+    |     ^^^^^^^^^^^^^^
+103 |     fan_speed: u8,
+    |     ^^^^^^^^^
+104 |     cpu_temp: f32,
+    |     ^^^^^^^^
+105 |     gpu_temp: f32,
+    |     ^^^^^^^^
+106 |     should_quit: bool,
+    |     ^^^^^^^^^^^
+107 |     last_update: Instant,
+    |     ^^^^^^^^^^^
+108 |     rainbow_phase: u8,
+    |     ^^^^^^^^^^^^^
+109 |     log_messages: Vec<String>,
+    |     ^^^^^^^^^^^^
+110 |     scroll_offset: usize,
+    |     ^^^^^^^^^^^^^
+
+warning: methods `next_rgb_subtab`, `set_rgb_effect`, `apply_rgb_effect`, `write_rgb_command`, `update_temperatures`, and `update_rainbow` are never used
+   --> src/main.rs:160:8
+    |
+113 | impl App {
+    | -------- methods in this implementation
+...
+160 |     fn next_rgb_subtab(&mut self) {
+    |        ^^^^^^^^^^^^^^^
+...
+167 |     fn set_rgb_effect(&mut self, effect: RGBEffect) {
+    |        ^^^^^^^^^^^^^^
+...
+172 |     fn apply_rgb_effect(&self) {
+    |        ^^^^^^^^^^^^^^^^
+...
+189 |     fn write_rgb_command(&self, command: &[u8; 16]) {
+    |        ^^^^^^^^^^^^^^^^^
+...
+195 |     fn update_temperatures(&mut self) {
+    |        ^^^^^^^^^^^^^^^^^^^
+...
+202 |     fn update_rainbow(&mut self) {
+    |        ^^^^^^^^^^^^^^
+
+warning: `archforge_control_center` (bin "archforge_control_center") generated 14 warnings (run `cargo fix --bin "archforge_control_center"` to apply 5 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.04s
+     Running `target/debug/archforge_control_center`
+cd "/run/media/lou/Data/Coding/Rust RGB" && cargo run
+warning: unused import: `Duration`
+ --> src/main.rs:4:17
+  |
+4 | use std::time::{Duration, Instant};
+  |                 ^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `std::thread`
+ --> src/main.rs:5:5
+  |
+5 | use std::thread;
+  |     ^^^^^^^^^^^
+
+warning: unused imports: `Alignment`, `Cell`, `Clear`, `Color`, `Frame`, `Gauge`, `Line`, `ListItem`, `ListState`, `List`, `Modifier`, `Paragraph`, `Rect`, `Row`, `ScrollbarOrientation`, `ScrollbarState`, `Scrollbar`, `Span`, `Style`, `Table`, `Tabs`, and `Text`
+  --> src/main.rs:8:45
+   |
+8  |     layout::{Constraint, Direction, Layout, Rect, Alignment},
+   |                                             ^^^^  ^^^^^^^^^
+9  |     style::{Color, Modifier, Style},
+   |             ^^^^^  ^^^^^^^^  ^^^^^
+10 |     text::{Line, Span, Text},
+   |            ^^^^  ^^^^  ^^^^
+11 |     widgets::{Block, Borders, Clear, Gauge, List, ListItem, ListState, Paragraph, Tabs, Table, Row, Cell, Scrollbar, ScrollbarOrientation, ScrollbarState},
+   |                               ^^^^^  ^^^^^  ^^^^  ^^^^^^^^  ^^^^^^^^^  ^^^^^^^^^  ^^^^  ^^^^^  ^^^  ^^^^  ^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^
+12 |     Frame, Terminal,
+   |     ^^^^^
+
+warning: unused imports: `KeyEventKind`, `disable_raw_mode`, and `enable_raw_mode`
+  --> src/main.rs:15:76
+   |
+15 |     event::{self, DisableMouseCapture, EnableMouseCapture, Event, KeyCode, KeyEventKind},
+   |                                                                            ^^^^^^^^^^^^
+16 |     execute,
+17 |     terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
+   |                ^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^
+
+warning: unused import: `std::collections::HashMap`
+  --> src/main.rs:19:5
+   |
+19 | use std::collections::HashMap;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: variants `Restore`, `CleanInstall`, and `Schedule` are never constructed
+  --> src/main.rs:37:5
+   |
+35 | enum BackupSubTab {
+   |      ------------ variants in this enum
+36 |     Backup,
+37 |     Restore,
+   |     ^^^^^^^
+38 |     CleanInstall,
+   |     ^^^^^^^^^^^^
+39 |     Schedule,
+   |     ^^^^^^^^
+   |
+   = note: `BackupSubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+
+warning: variants `Pacman`, `Flatpak`, and `AppImages` are never constructed
+  --> src/main.rs:46:5
+   |
+44 | enum SoftwareSubTab {
+   |      -------------- variants in this enum
+45 |     AUR,
+46 |     Pacman,
+   |     ^^^^^^
+47 |     Flatpak,
+   |     ^^^^^^^
+48 |     AppImages,
+   |     ^^^^^^^^^
+   |
+   = note: `SoftwareSubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: variant `Fans` is never constructed
+  --> src/main.rs:55:5
+   |
+53 | enum RGBFanSubTab {
+   |      ------------ variant in this enum
+54 |     Keyboard,
+55 |     Fans,
+   |     ^^^^
+   |
+   = note: `RGBFanSubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: variants `Configuration` and `Modules` are never constructed
+  --> src/main.rs:62:5
+   |
+60 | enum KernelSubTab {
+   |      ------------ variants in this enum
+61 |     Management,
+62 |     Configuration,
+   |     ^^^^^^^^^^^^^
+63 |     Modules,
+   |     ^^^^^^^
+   |
+   = note: `KernelSubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: variants `SystemAnalysis` and `Optimization` are never constructed
+  --> src/main.rs:70:5
+   |
+68 | enum AISubTab {
+   |      -------- variants in this enum
+69 |     Chat,
+70 |     SystemAnalysis,
+   |     ^^^^^^^^^^^^^^
+71 |     Optimization,
+   |     ^^^^^^^^^^^^
+   |
+   = note: `AISubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: variants `Appearance`, `Performance`, and `About` are never constructed
+  --> src/main.rs:78:5
+   |
+76 | enum SettingsSubTab {
+   |      -------------- variants in this enum
+77 |     General,
+78 |     Appearance,
+   |     ^^^^^^^^^^
+79 |     Performance,
+   |     ^^^^^^^^^^^
+80 |     About,
+   |     ^^^^^
+   |
+   = note: `SettingsSubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: variants `Static`, `RainbowWave`, and `Breathing` are never constructed
+  --> src/main.rs:86:5
+   |
+85 | enum RGBEffect {
+   |      --------- variants in this enum
+86 |     Static { r: u8, g: u8, b: u8 },
+   |     ^^^^^^
+87 |     RainbowWave { speed: u8 },
+   |     ^^^^^^^^^^^
+88 |     Breathing { r: u8, g: u8, b: u8, speed: u8 },
+   |     ^^^^^^^^^
+   |
+   = note: `RGBEffect` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: multiple fields are never read
+   --> src/main.rs:95:5
+    |
+93  | struct App {
+    |        --- fields in this struct
+94  |     current_tab: Tab,
+95  |     backup_subtab: BackupSubTab,
+    |     ^^^^^^^^^^^^^
+96  |     software_subtab: SoftwareSubTab,
+    |     ^^^^^^^^^^^^^^^
+97  |     rgb_fan_subtab: RGBFanSubTab,
+    |     ^^^^^^^^^^^^^^
+98  |     kernel_subtab: KernelSubTab,
+    |     ^^^^^^^^^^^^^
+99  |     ai_subtab: AISubTab,
+    |     ^^^^^^^^^
+100 |     settings_subtab: SettingsSubTab,
+    |     ^^^^^^^^^^^^^^^
+101 |     current_rgb_effect: RGBEffect,
+    |     ^^^^^^^^^^^^^^^^^^
+102 |     rgb_brightness: u8,
+    |     ^^^^^^^^^^^^^^
+103 |     fan_speed: u8,
+    |     ^^^^^^^^^
+104 |     cpu_temp: f32,
+    |     ^^^^^^^^
+105 |     gpu_temp: f32,
+    |     ^^^^^^^^
+106 |     should_quit: bool,
+    |     ^^^^^^^^^^^
+107 |     last_update: Instant,
+    |     ^^^^^^^^^^^
+108 |     rainbow_phase: u8,
+    |     ^^^^^^^^^^^^^
+109 |     log_messages: Vec<String>,
+    |     ^^^^^^^^^^^^
+110 |     scroll_offset: usize,
+    |     ^^^^^^^^^^^^^
+
+warning: methods `next_rgb_subtab`, `set_rgb_effect`, `apply_rgb_effect`, `write_rgb_command`, `update_temperatures`, and `update_rainbow` are never used
+   --> src/main.rs:160:8
+    |
+113 | impl App {
+    | -------- methods in this implementation
+...
+160 |     fn next_rgb_subtab(&mut self) {
+    |        ^^^^^^^^^^^^^^^
+...
+167 |     fn set_rgb_effect(&mut self, effect: RGBEffect) {
+    |        ^^^^^^^^^^^^^^
+...
+172 |     fn apply_rgb_effect(&self) {
+    |        ^^^^^^^^^^^^^^^^
+...
+189 |     fn write_rgb_command(&self, command: &[u8; 16]) {
+    |        ^^^^^^^^^^^^^^^^^
+...
+195 |     fn update_temperatures(&mut self) {
+    |        ^^^^^^^^^^^^^^^^^^^
+...
+202 |     fn update_rainbow(&mut self) {
+    |        ^^^^^^^^^^^^^^
+
+warning: `archforge_control_center` (bin "archforge_control_center") generated 14 warnings (run `cargo fix --bin "archforge_control_center"` to apply 5 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.03s
+     Running `target/debug/archforge_control_center`
+cd "/run/media/lou/Data/Coding/Rust RGB" && cargo run
+   Compiling archforge_control_center v0.1.0 (/run/media/lou/Data/Coding/Rust RGB)
+warning: unused import: `std::thread`
+ --> src/main.rs:5:5
+  |
+5 | use std::thread;
+  |     ^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused imports: `Cell`, `Clear`, `Gauge`, `Line`, `ListItem`, `ListState`, `List`, `Row`, `ScrollbarOrientation`, `ScrollbarState`, `Scrollbar`, `Span`, `Table`, and `Text`
+  --> src/main.rs:10:12
+   |
+10 |     text::{Line, Span, Text},
+   |            ^^^^  ^^^^  ^^^^
+11 |     widgets::{Block, Borders, Clear, Gauge, List, ListItem, ListState, Paragraph, Tabs, Table, Row, Cell, Scrollbar, ScrollbarOrientation, ScrollbarState},
+   |                               ^^^^^  ^^^^^  ^^^^  ^^^^^^^^  ^^^^^^^^^                   ^^^^^  ^^^  ^^^^  ^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^
+
+warning: unused import: `enable_raw_mode`
+  --> src/main.rs:17:34
+   |
+17 |     terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
+   |                                  ^^^^^^^^^^^^^^^
+
+warning: unused import: `std::collections::HashMap`
+  --> src/main.rs:19:5
+   |
+19 | use std::collections::HashMap;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: variants `Restore`, `CleanInstall`, and `Schedule` are never constructed
+  --> src/main.rs:37:5
+   |
+35 | enum BackupSubTab {
+   |      ------------ variants in this enum
+36 |     Backup,
+37 |     Restore,
+   |     ^^^^^^^
+38 |     CleanInstall,
+   |     ^^^^^^^^^^^^
+39 |     Schedule,
+   |     ^^^^^^^^
+   |
+   = note: `BackupSubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+
+warning: variants `Pacman`, `Flatpak`, and `AppImages` are never constructed
+  --> src/main.rs:46:5
+   |
+44 | enum SoftwareSubTab {
+   |      -------------- variants in this enum
+45 |     AUR,
+46 |     Pacman,
+   |     ^^^^^^
+47 |     Flatpak,
+   |     ^^^^^^^
+48 |     AppImages,
+   |     ^^^^^^^^^
+   |
+   = note: `SoftwareSubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: variants `Configuration` and `Modules` are never constructed
+  --> src/main.rs:62:5
+   |
+60 | enum KernelSubTab {
+   |      ------------ variants in this enum
+61 |     Management,
+62 |     Configuration,
+   |     ^^^^^^^^^^^^^
+63 |     Modules,
+   |     ^^^^^^^
+   |
+   = note: `KernelSubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: variants `SystemAnalysis` and `Optimization` are never constructed
+  --> src/main.rs:70:5
+   |
+68 | enum AISubTab {
+   |      -------- variants in this enum
+69 |     Chat,
+70 |     SystemAnalysis,
+   |     ^^^^^^^^^^^^^^
+71 |     Optimization,
+   |     ^^^^^^^^^^^^
+   |
+   = note: `AISubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: variants `Appearance`, `Performance`, and `About` are never constructed
+  --> src/main.rs:78:5
+   |
+76 | enum SettingsSubTab {
+   |      -------------- variants in this enum
+77 |     General,
+78 |     Appearance,
+   |     ^^^^^^^^^^
+79 |     Performance,
+   |     ^^^^^^^^^^^
+80 |     About,
+   |     ^^^^^
+   |
+   = note: `SettingsSubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: multiple fields are never read
+   --> src/main.rs:95:5
+    |
+93  | struct App {
+    |        --- fields in this struct
+94  |     current_tab: Tab,
+95  |     backup_subtab: BackupSubTab,
+    |     ^^^^^^^^^^^^^
+96  |     software_subtab: SoftwareSubTab,
+    |     ^^^^^^^^^^^^^^^
+97  |     rgb_fan_subtab: RGBFanSubTab,
+98  |     kernel_subtab: KernelSubTab,
+    |     ^^^^^^^^^^^^^
+99  |     ai_subtab: AISubTab,
+    |     ^^^^^^^^^
+100 |     settings_subtab: SettingsSubTab,
+    |     ^^^^^^^^^^^^^^^
+...
+106 |     should_quit: bool,
+    |     ^^^^^^^^^^^
+...
+109 |     log_messages: Vec<String>,
+    |     ^^^^^^^^^^^^
+110 |     scroll_offset: usize,
+    |     ^^^^^^^^^^^^^
+
+warning: `archforge_control_center` (bin "archforge_control_center") generated 10 warnings (run `cargo fix --bin "archforge_control_center"` to apply 4 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.30s
+     Running `target/debug/archforge_control_center`
+cargo run
+warning: unused import: `std::thread`
+ --> src/main.rs:5:5
+  |
+5 | use std::thread;
+  |     ^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused imports: `Cell`, `Clear`, `Gauge`, `Line`, `ListItem`, `ListState`, `List`, `Row`, `ScrollbarOrientation`, `ScrollbarState`, `Scrollbar`, `Span`, `Table`, and `Text`
+  --> src/main.rs:10:12
+   |
+10 |     text::{Line, Span, Text},
+   |            ^^^^  ^^^^  ^^^^
+11 |     widgets::{Block, Borders, Clear, Gauge, List, ListItem, ListState, Paragraph, Tabs, Table, Row, Cell, Scrollbar, ScrollbarOrientation, ScrollbarState},
+   |                               ^^^^^  ^^^^^  ^^^^  ^^^^^^^^  ^^^^^^^^^                   ^^^^^  ^^^  ^^^^  ^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^
+
+warning: unused import: `enable_raw_mode`
+  --> src/main.rs:17:34
+   |
+17 |     terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
+   |                                  ^^^^^^^^^^^^^^^
+
+warning: unused import: `std::collections::HashMap`
+  --> src/main.rs:19:5
+   |
+19 | use std::collections::HashMap;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: variants `Restore`, `CleanInstall`, and `Schedule` are never constructed
+  --> src/main.rs:37:5
+   |
+35 | enum BackupSubTab {
+   |      ------------ variants in this enum
+36 |     Backup,
+37 |     Restore,
+   |     ^^^^^^^
+38 |     CleanInstall,
+   |     ^^^^^^^^^^^^
+39 |     Schedule,
+   |     ^^^^^^^^
+   |
+   = note: `BackupSubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+
+warning: variants `Pacman`, `Flatpak`, and `AppImages` are never constructed
+  --> src/main.rs:46:5
+   |
+44 | enum SoftwareSubTab {
+   |      -------------- variants in this enum
+45 |     AUR,
+46 |     Pacman,
+   |     ^^^^^^
+47 |     Flatpak,
+   |     ^^^^^^^
+48 |     AppImages,
+   |     ^^^^^^^^^
+   |
+   = note: `SoftwareSubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: variants `Configuration` and `Modules` are never constructed
+  --> src/main.rs:62:5
+   |
+60 | enum KernelSubTab {
+   |      ------------ variants in this enum
+61 |     Management,
+62 |     Configuration,
+   |     ^^^^^^^^^^^^^
+63 |     Modules,
+   |     ^^^^^^^
+   |
+   = note: `KernelSubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: variants `SystemAnalysis` and `Optimization` are never constructed
+  --> src/main.rs:70:5
+   |
+68 | enum AISubTab {
+   |      -------- variants in this enum
+69 |     Chat,
+70 |     SystemAnalysis,
+   |     ^^^^^^^^^^^^^^
+71 |     Optimization,
+   |     ^^^^^^^^^^^^
+   |
+   = note: `AISubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: variants `Appearance`, `Performance`, and `About` are never constructed
+  --> src/main.rs:78:5
+   |
+76 | enum SettingsSubTab {
+   |      -------------- variants in this enum
+77 |     General,
+78 |     Appearance,
+   |     ^^^^^^^^^^
+79 |     Performance,
+   |     ^^^^^^^^^^^
+80 |     About,
+   |     ^^^^^
+   |
+   = note: `SettingsSubTab` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: multiple fields are never read
+   --> src/main.rs:95:5
+    |
+93  | struct App {
+    |        --- fields in this struct
+94  |     current_tab: Tab,
+95  |     backup_subtab: BackupSubTab,
+    |     ^^^^^^^^^^^^^
+96  |     software_subtab: SoftwareSubTab,
+    |     ^^^^^^^^^^^^^^^
+97  |     rgb_fan_subtab: RGBFanSubTab,
+98  |     kernel_subtab: KernelSubTab,
+    |     ^^^^^^^^^^^^^
+99  |     ai_subtab: AISubTab,
+    |     ^^^^^^^^^
+100 |     settings_subtab: SettingsSubTab,
+    |     ^^^^^^^^^^^^^^^
+...
+106 |     should_quit: bool,
+    |     ^^^^^^^^^^^
+...
+109 |     log_messages: Vec<String>,
+    |     ^^^^^^^^^^^^
+110 |     scroll_offset: usize,
+    |     ^^^^^^^^^^^^^
+
+warning: `archforge_control_center` (bin "archforge_control_center") generated 10 warnings (run `cargo fix --bin "archforge_control_center"` to apply 4 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.04s
+     Running `target/debug/archforge_control_center`
+/run/media/lou/Data/Coding/Rust RGB
+at the top, under the tab bar, and before clean install backup/restore, it's generating 2 lines of text when i move mouse, also near CPU Temp, and the temperatures are fluctuating constantly, none of the control keys work, and the ui looks like a terminal app from 1991
+X I can see the issues you're describing with the TUI. The problems are likely due to:
+
+1. Mouse events generating unwanted text output
+2. Constantly updating temperature readings causing flickering
+3. Poor styling making it look dated
+4. Non-responsive controls
+
+Let me examine the current code and fix these issues:
+/run/media/lou/Data/Coding/Rust RGB/src/main.rs
+/run/media/lou/Data/Coding/Rust RGB
+it's not flickering, it's changing constantly,
+X I understand the issue - the temperature values are constantly changing (updating every 100ms with random fluctuations) rather than showing stable, realistic system temperatures. This makes the interface feel chaotic and unprofessional.
+
+Let me fix this by implementing proper system temperature reading and reducing the update frequency:
+Fix constantly changing temperatures with proper system readings
+Let me first read the current main.rs to see its exact structure:
+/run/media/lou/Data/Coding/Rust RGB/src/main.rs (1-200)
+Let me get the rest of the UI rendering functions to see the complete structure:
+/run/media/lou/Data/Coding/Rust RGB/src/main.rs (400-600)

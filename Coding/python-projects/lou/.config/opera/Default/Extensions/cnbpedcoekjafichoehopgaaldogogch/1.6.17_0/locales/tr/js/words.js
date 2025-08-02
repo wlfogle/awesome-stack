@@ -1,0 +1,126 @@
+// Turkish
+var EXT_LOCALE = "tr";
+
+var WORDS = {
+	// popup
+	btnTranslate:				"Çevirmek",
+	btnClear:					"Temizlemek",
+	txtUse:						"kullanın:",
+	txtBackTranslation:			"geri çeviri",
+	txtTranslateActivePage:		"Etkin sayfayı çevir",
+	optAutoDetect:				"Otomatik algılama",
+	optNone:					"hiçbir şey",
+	lnkSettingsPage:			"ayarlar",
+
+	txtRegistration:			"Kayıt",
+	txtUnregisteredMode:		"**Kayıtsız mod**",
+	txtUnregisteredModeDetails:	"**Kayıtsız mod temel işlevlerle sınırlıdır**\nKayıt olduktan sonra:\n- bu mesaj eksikliği ve arama motorları olası reklam;\n- metin-konuşma, geri çeviri, Japonca ve Korece IME testi;\n- gelecekteki yeni özellikler.\n\neğer listeden hiçbir şey gerekmiyorsa ve yazara teşekkür etmek istemiyorsanız, kayıt gerektirmez.",
+	txtVerify:					"Kayıt olmak için buraya tıklayın",
+
+	cmTranslateIt:				"Çevir",
+	cmTranslatePage:			"Sayfayı çevir",
+
+	// hints
+	hntFullExchange:			"Shifte basarak - tam değişim",
+	hntTranslate:				"Ctrl+Enter - çeviri",
+	hntReTranslate:				"Shift+değiştir - seçilen servis tarafından yeniden tercüme",
+	hntVocalize:				"seslendirmek",
+	hntPutInTheDictionary:		"sözlüğe koymak",
+	hntRemoveFromTheDictionary:	"sözlükten kaldır",
+	hntCopy:					"kopya",
+	hntPaste:					"kopyalanan metni yapıştır (Shift+Click = yapıştır ve çevir)",
+	hntMaximize:				"Alt+Click - yeni sekmede aç",
+
+	// services
+	byGoogle:					"Google Çeviri",
+	byBing:						"Microsoft Çeviricisi",
+	byYandex:					"Yandex Çeviri",
+	byPromt:					"Promt Çevirmen",
+	byPragma:					"Pragma Çevirmen",
+	byBaidu:					"Baidu Çevirmen",
+	byNaver:					"Naver Çevirmen",
+	bySogou:					"Sogou Çevirmen",
+	bySystran:					"Systran Çeviri",
+	byBabylon:					"Babylon Çevirmen",
+	byBabylonDictionaries:		"Babylon 'nun sözlükleri",
+	byLingvo:					"Lingvo Sözlük",
+	byGlosbe:					"Glosbe Çevirmen",
+	byUrban:					"Urban Sözlük",
+	byIbm:						"IBM Çeviricisi",
+	byApertium:					"Apertium Çeviricisi",
+	byDeepl:					"DeepL Çeviricisi",
+
+	tbByGoogle:					"Google Çevirmen tarafından",
+	tbByBing:					"Microsoft Çevirmen tarafından",
+	tbByYandex:					"Yandex Çevirmen tarafından",
+	tbByPromt:					"Promt Çevirmen tarafından",
+
+	// messages
+	msgError:					"hata",
+	msgErrorCode:				"hata kodu",
+	msgUnknownSourceLng:		"desteklenmeyen kaynak dil",
+	msgUnknownTargetLng:		"desteklenmeyen hedef dil",
+	msgUnknownLng:				"desteklenmeyen dil",
+	msgExample:					"örnek",
+	msgExamples:				"örnekler",
+	msgAlternatives:			"alternatifleri",
+
+	// dictionary
+	txtDictionary:				"sözlük",
+	linkRemove:					"kaldır",
+	txtUsePersonalDictionary:	"Kişisel sözlüğü kullan",
+	txtShow:					"göstermek",
+	txtHide:					"saklamak",
+
+	// options
+	txtOptionsTitle:			"Çevirmen ayarları",
+	txtMadeBy:					"Tarafından yapıldı",
+	linkFeedback:				"hata raporu / geribildirim",
+	hdrDefaultSourceLang:		"Varsayılan kaynak dil",
+	hdrDefaultTargetLang:		"Varsayılan hedef dil",
+	labelAlwaysUseDefTargetLang:"her zaman varsayılan hedef dili kullan",
+	labelDefTargetLang2:		"kaynak dil = ilk varsayılan hedef dil",
+	hdrMaxStoredLangPairs:		"Maksimum saklanan dil çiftleri",
+	hdrTranslateBtnPosition:	"\"Çevir\"-button pozisyonu",
+	txtAtRight:					"sağda",
+	txtAtLeft:					"solda",
+	txtInvertButons:			"düğmeler",
+	hdrTextareaFont:			"Textarea yazı tipi",
+	hdrUITheme:					"Aydınlık veya karanlık bir tema kullanın",
+	optLight:					"ışık",
+	optDark:					"Karanlık",
+	optDefault:					"Varsayılan",
+	hdrIconTheme:				"Simge teması",
+	wrnTextareaFont:			"Tarayıcı <a href='javascript:;'>ayarlarında</a> beton yazı tipleri ayarlayabilirsiniz.",
+	hdrSetupPopupHotkey:		"Açılır pencere kısayolunu ayarla",
+	btnSetupPopupHotkey:		"Hotkeys yapılandırıcısını aç",
+	hdrUseTranslateToolbar:		"Her sayfada Çevir Araç Çubuğu'nu kullanın",
+	hdrAdditKnownLangs:			"Diller için Çevir Araç Çubuğunu gösterme (varsayılan hedef dil hariç)",
+	hdrUseContextMenuForPages:	"Sayfalar için içerik menüsünü kullan",
+	hdrBingPrivateKey:			"Bing Tercüman Özel Erişim",
+	txtBingClientId:			"Müşteri Kimliği:",
+	txtBingClientSecret:		"Müşteri sırrı:",
+	hintBingPrivateKey:			"Engellenen genel anahtarlardan bağımsız olmak istiyorsanız, kendi özel anahtarlarını ayarlayabilirsiniz.<br /> Buradan alınabilirler:",
+	optDisabled:				"Engelli",
+	wrnUseTranslateToolbar:		"<b>Uyarı!</ b> Hemen hemen her sayfanın kaynağı (parçası), sayfa dilini algılamak için çevirmen sağlayıcısına gönderilecektir!<br /> İstisna: kendi dillerinin tanımlandığı sayfalar.",
+	hdrAllowedProviders:		"İzin verilen çeviri sağlayıcıları",
+	hdrOtherOptions:			"Diğer seçenekler",
+	txtOpenNewTabsNextToActive:	"Etkinliğin yanındaki yeni sekmeleri aç",
+	txtRememberLastTranslation:	"Son çeviriyi hatırla",
+	txtUseTextToSpeech:			"Metin-konuşma kullan",
+	txtUseYellowMarker:			"Seçmeli metin hakkında uyarı olarak sarı işaretçiyi kullan",
+	txtOutputExtensionButton:	"Adres çubuğunda çıkış uzantısı düğmesi",
+	txtUseEnterToTranslate:		"Çevirmek için \"Enter\" tuşunu kullanın",
+	txtUseSelectionContextMenu:	"Metin seçimi bağlam menüsünü kullan",
+	txtUseOldSkin:				"Eski görsel stili kullan",
+	txtUseBgProcess:			"Arka plan işlemini kullan (tarayıcının yeniden başlatılmasını gerektir)",
+
+	txtUseGoogleCn:				"google.com.hk adresini kullanın (güvenlik duvarınızın google.com adresini engellediği durumlar için)",
+
+	txtYouCanUseMyOtherProducts:"Diğer ürünlerimi de deneyebilirsiniz:",
+	txtMyCalendarExensionDescr:	"Opera için takvim uzantısı",
+	txtMyWebanketaServiceDescr:	"anketlerin, anketlerin, testlerin ve anketlerin ücretsiz oluşturulması!",
+
+	txtPoweredByOpera:			"Opera Tarayıcı tarafından desteklenmektedir"
+};
+//	translated by Erhan Kültür
