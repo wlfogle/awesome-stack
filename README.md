@@ -21,11 +21,11 @@ This repository contains a **complete self-hosting infrastructure** that include
 
 ### 🎬 **Media & Entertainment**
 ```
-lou-media-stack/           # Complete media server ecosystem
-├── docker-compose.yml     # 26+ media services
-├── ai-services/          # AI-powered recommendations
-├── monitoring/           # Grafana, Prometheus monitoring
-└── unified-dashboard/    # Custom management interface
+proxmox-infrastructure/   # Proxmox VM/LXC configurations
+├── vm-500/              # Home Assistant OS VM
+├── lxc-100-279/         # Media stack LXC containers
+├── vm-612/              # BlissOS Android (Alexa media-bridge)
+└── ct-900/              # AI services container
 ```
 
 ### 🏠 **Home Automation**
@@ -85,15 +85,14 @@ sudo usermod -aG docker $USER
 git clone https://github.com/wlfogle/awesome-stack.git
 cd awesome-stack
 
-# Deploy core media stack
-cd lou-media-stack
-cp .env.example .env
-# Edit .env with your configuration
+# Deploy media stack in Proxmox LXC containers
+# Access Proxmox host and deploy to containers 100-279
+ssh proxmox
+pct enter 104  # Example: Vaultwarden container
 docker-compose up -d
 
-# Deploy Home Assistant integration
-cd ../homeassistant-configs
-# Copy configs to your HA installation
+# Deploy Home Assistant to VM-500
+# Copy configs to HAOS VM-500
 ```
 
 ### Run Infrastructure Scripts
@@ -144,18 +143,19 @@ sudo ./scripts/hardware_optimization.sh
 ┌─────────────────────────────────────────────────────────────┐
 │                    Awesome Stack Architecture               │
 ├─────────────────────────────────────────────────────────────┤
-│  Reverse Proxy (Traefik) │  SSL Certs  │  DNS Management   │
+│                      Garuda Linux Host                     │
 ├─────────────────────────────────────────────────────────────┤
-│                    Docker Compose Services                  │
+│                    Proxmox Virtualization                  │
 │  ┌─────────────┐ ┌─────────────┐ ┌─────────────────────┐   │
-│  │ Media Stack │ │ Home Auto   │ │  Development Tools  │   │
-│  │ 15+ Services│ │ 5+ Services │ │   10+ Applications  │   │
+│  │   VM-500    │ │   VM-612    │ │    LXC 100-279     │   │
+│  │  HAOS/HA    │ │ BlissOS/    │ │  Media Stack       │   │
+│  │             │ │ Alexa       │ │  + CT-900 (AI)     │   │
 │  └─────────────┘ └─────────────┘ └─────────────────────┘   │
 ├─────────────────────────────────────────────────────────────┤
-│               Proxmox Virtualization Layer                 │
+│                    Container Services                       │
 │  ┌─────────────┐ ┌─────────────┐ ┌─────────────────────┐   │
-│  │Gaming VMs   │ │Development  │ │  Infrastructure     │   │
-│  │Windows/Linux│ │ Environments│ │     Services        │   │
+│  │ Plex/Jellyfin│ │Sonarr/Radarr│ │ Monitoring/Utils   │   │
+│  │ CT-108/109  │ │ CT-110-130  │ │   CT-140-279       │   │
 │  └─────────────┘ └─────────────┘ └─────────────────────┘   │
 ├─────────────────────────────────────────────────────────────┤
 │                     Hardware Layer                         │
@@ -228,15 +228,17 @@ cd awesome-stack
 
 ### Method 2: Selective Deployment
 ```bash
-# Deploy only media stack
-cd lou-media-stack
-docker-compose up -d
+# Deploy media stack in Proxmox LXC containers
+ssh proxmox
+# Enter specific containers (100-279)
+pct enter 104  # Vaultwarden
+pct enter 108  # Plex
+# etc.
 
-# Deploy only Home Assistant configs
-cd homeassistant-configs
-# Copy to your HA installation
+# Deploy Home Assistant configs to VM-500
+# Access HAOS VM directly
 
-# Run specific automation scripts
+# Run automation scripts from Garuda host
 cd scripts
 ./fix-all-containers.sh
 ```
@@ -255,10 +257,12 @@ cd web-projects/     # Tauri/React apps
 ## 🔧 **Configuration**
 
 ### Environment Variables
-Create `.env` files in appropriate directories:
+Create `.env` files in appropriate Proxmox containers:
 ```bash
-# Media stack configuration
-cp lou-media-stack/.env.example lou-media-stack/.env
+# Media stack configuration (inside LXC containers)
+ssh proxmox
+pct enter 104  # Enter specific container
+cp .env.example .env
 
 # Edit with your settings:
 # - Domain names and SSL

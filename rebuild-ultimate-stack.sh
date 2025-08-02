@@ -37,11 +37,9 @@ print_error() {
     echo -e "${RED}[ERROR]${NC} $1"
 }
 
-# Check if full compose file exists
-FULL_COMPOSE="/home/lou/lou-media-stack/extracted-configs/docker-configs/mediastack-new_docker-compose-full.yml"
-if [ ! -f "$FULL_COMPOSE" ]; then
-    print_error "Full compose file not found: $FULL_COMPOSE"
-    exit 1
+# Check if current directory has docker-compose.yml or create one
+if [ ! -f "docker-compose.yml" ] && [ ! -f "docker-compose.yaml" ]; then
+    print_warning "No existing docker-compose file found - will create new ultimate stack"
 fi
 
 print_status "Found full compose file with 85 services"
@@ -1240,13 +1238,27 @@ EOF
 
 print_success "Ultimate Stack docker-compose.yml created with 65+ services!"
 
-# Copy environment file from extracted configs
-print_status "Setting up enhanced environment file..."
-if [ -f "/home/lou/lou-media-stack/extracted-configs/env-files/mediastack-new_.env" ]; then
-    cp "/home/lou/lou-media-stack/extracted-configs/env-files/mediastack-new_.env" .env
-    print_success "Environment file copied from extracted configs"
+# Setup environment file
+print_status "Setting up environment file..."
+if [ ! -f ".env" ]; then
+    print_status "Creating default .env file..."
+    cat > .env << 'ENVEOF'
+# Media Stack Configuration
+POSTGRES_DB=mediastack
+POSTGRES_USER=mediastack
+POSTGRES_PASSWORD=changeme123
+AUTHENTIK_SECRET_KEY=changeme-authentik-secret-key
+ACME_EMAIL=admin@example.com
+VPN_PROVIDER=protonvpn
+VPN_TYPE=wireguard
+VPN_PRIVATE_KEY=your-wireguard-private-key
+VPN_ADDRESSES=10.2.0.2/32
+VPN_COUNTRIES=Netherlands
+TAILSCALE_AUTH_KEY=your-tailscale-auth-key
+ENVEOF
+    print_success "Default .env file created - please customize it"
 else
-    print_warning "Using current .env file - you may need to add additional variables"
+    print_success "Using existing .env file"
 fi
 
 print_status "Starting the Ultimate Stack (this may take several minutes)..."

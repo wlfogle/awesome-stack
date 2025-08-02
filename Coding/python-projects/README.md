@@ -42,4 +42,4 @@ Most scripts are standalone and can be executed directly. Some require specific 
 
 - `/home/lou/awesome_stack/scripts/` - Shell scripts for infrastructure management
 - `/home/lou/awesome_stack/Coding/rust-projects/` - Rust implementations
-- `/home/lou/awesome_stack/lou-media-stack/` - Main media stack configuration
+- **Proxmox LXC containers 100-279** - Media stack running in containers

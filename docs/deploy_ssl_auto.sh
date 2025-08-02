@@ -2,7 +2,7 @@
 
 # Auto-deploy SSL certificates to all running LXC containers
 CERT_DIR="/home/lou/ssl_certificates"
-CA_CERT="/home/lou/lou-media-stack/Vaultwarden_Self_Host/data/ssl/myCA.crt"
+CA_CERT="/home/lou/ssl_certificates/myCA.crt"
 
 # Function to deploy certificate to a container
 deploy_cert() {
