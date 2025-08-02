@@ -1,7 +1,0 @@
-flask==2.3.3
-requests==2.31.0
-xmltodict==0.13.0
-python-dateutil==2.8.2
-lxml==4.9.3
-schedule==1.2.0
-pytz==2023.3

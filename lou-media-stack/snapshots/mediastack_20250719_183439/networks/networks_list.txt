@@ -1,8 +1,0 @@
-NAME                         DRIVER    SCOPE
-bridge                       bridge    local
-config_mediastack            bridge    local
-config_vpn_network           bridge    local
-host                         host      local
-lou-media-stack_mediastack   bridge    local
-mediastack                   bridge    local
-none                         null      local

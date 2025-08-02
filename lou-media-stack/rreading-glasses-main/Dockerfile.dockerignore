@@ -1,9 +1,0 @@
-*.md
-*_test.go
-.git
-.github
-.gitignore
-.golangci.yml
-Dockerfile
-Dockerfile.dockerignore
-Makefile
