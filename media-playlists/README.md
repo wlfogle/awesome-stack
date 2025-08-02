@@ -4,15 +4,45 @@ This directory contains IPTV M3U playlists extracted from various sources for us
 
 ## Files
 
+### Core Playlists
+
 ### `wuffylist3.m3u` (177 KB)
 - **Source**: Extracted from 1Pix Media app (via Wuffy Player integration)
-- **Content**: 764+ premium US TV channels including:
+- **Content**: 764 premium US TV channels including:
   - Major networks (ABC, CBS, NBC, FOX)
   - Premium channels (HBO, Showtime, Starz)
   - Cable networks (CNN, ESPN, Discovery, A&E, AMC)
   - Specialty channels (Adult Swim, Animal Planet, BBC America)
 - **Format**: Standard M3U8 with EPG metadata
 - **Stream URLs**: `http://63.141.251.250/jamzone/isg.php?id=XXXXX&type=stream.m3u8`
+
+### `daddy_live.m3u` (671 channels)
+- **Source**: Wuffy list extraction
+- **Content**: Various international channels and expansions
+
+### `ng_channels.m3u` (636 channels)
+- **Source**: National Geographic list
+- **Content**: Focus on documentary and geography channels
+
+### `raton.m3u` (2509 channels)
+- **Source**: Raton TV channel list
+- **Content**: Huge variety of broadcast channels
+
+### `wuffylist5.m3u` (48503 channels)
+- **Source**: Extensive channel list from Wuffy
+- **Content**: Comprehensive US and international lineup
+
+### `wuffylist6.m3u` (390 channels)
+- **Source**: Additional extensive list from Wuffy
+- **Content**: Various niche channels from around the world
+
+## Integration
+
+All playlists can be incorporated into your Media Stack using compatible players and server software.
+
+### For More Advanced Use Cases:
+- Docker setup, local players, EPG integration
+- Also see the Media Stack README for extended configurations
 
 ### `Custom Playlist.m3u` (101 KB)  
 - **Source**: Fire TV (bedroom) - Custom curated channels
