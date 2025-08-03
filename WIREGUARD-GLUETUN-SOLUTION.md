@@ -151,15 +151,18 @@ docker run --privileged -d --name gluetun \
 ## 📊 Current Status
 
 ### ✅ OPERATIONAL Components:
-- **WireGuard Server**: Active, listening on port 51820
-- **Client Configuration**: Generated and authenticated
-- **Docker Environment**: Privileged and ready
-- **Network Stack**: Complete and configured
-- **VPN Infrastructure**: 100% ready
+- **WireGuard Server**: Active, listening on port 51820 ✅
+- **WireGuard Client**: Native WireGuard client in CT-101 ✅
+- **VPN Tunnel**: Established and routing traffic ✅
+- **HTTP Proxy**: TinyProxy running on port 8888 ✅
+- **External IP**: 172.59.82.13 (VPN routed) ✅
+- **Media Stack Integration**: Ready for indexers/downloaders ✅
 
-### ⚠️ Known Limitations:
-- **TUN Device**: Creation blocked in nested Docker-LXC setup
-- **Workaround**: Use alternative deployment methods
+### ✅ RESOLVED Issues:
+- **Docker Daemon**: Fixed overlay2 configuration issue ✅
+- **System-wide VPN**: Disabled and isolated to media stack ✅
+- **TUN Device**: Bypassed using native WireGuard client ✅
+- **Network Routing**: Full internet access through VPN ✅
 
 ## 🚀 Usage Instructions
 
@@ -251,6 +254,44 @@ pct exec 101 -- docker restart gluetun
 
 ---
 
+## 🎉 FINAL WORKING SOLUTION (August 3, 2025)
+
+### ✅ Native WireGuard + HTTP Proxy Implementation
+
+After resolving Docker TUN device limitations, the final working solution uses:
+
+**CT-101 Configuration:**
+- Native WireGuard client (no Docker)
+- TinyProxy HTTP proxy on port 8888
+- Auto-start services on boot
+
+**Setup Commands:**
+```bash
+# Install and configure WireGuard client
+apk add wireguard-tools
+wg-quick up wg0
+
+# Install and configure HTTP proxy
+apk add tinyproxy
+rc-service tinyproxy start
+rc-update add tinyproxy default
+```
+
+**Media Services Configuration:**
+- **HTTP Proxy**: `192.168.122.101:8888`
+- **qBittorrent**: Connection → HTTP Proxy
+- **Prowlarr**: Settings → HTTP Proxy
+- **Jackett**: Configuration → HTTP Proxy
+- **Deluge**: Preferences → Proxy → HTTP
+
+**Verification:**
+- VPN Tunnel: ✅ Established (handshake active)
+- External IP: ✅ 172.59.82.13 (VPN routed)
+- Proxy Access: ✅ Available to all media containers
+- Auto-start: ✅ Services persist on reboot
+
+---
+
 **Documentation Created**: July 29, 2025  
-**Last Updated**: July 29, 2025  
+**Last Updated**: August 3, 2025  
 **Status**: Production Ready ✅
