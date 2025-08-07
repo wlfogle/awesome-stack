@@ -23,6 +23,8 @@ anyhow = "1.0"
 rand = "0.8"
 ssh2 = "0.9"
 base64 = "0.21"
+chrono = { version = "0.4", features = ["serde"] }
+lazy_static = "1.4"
 
 [features]
 custom-protocol = ["tauri/custom-protocol"]
