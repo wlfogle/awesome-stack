@@ -45,8 +45,10 @@ iptables -A FORWARD -i virbr0 -j ACCEPT
 echo "✅ iptables port forwarding configured successfully!"
 echo ""
 echo "🎯 Test your setup:"
-echo "   HTTP:  curl -I http://$(hostname -I | awk '{print $1}')"
-echo "   HTTPS: curl -k -I https://$(hostname -I | awk '{print $1}')"
+# Get the primary IP address more reliably
+HOST_IP=$(ip route get 1.1.1.1 | grep -oP 'src \K\S+' 2>/dev/null || ip addr show | grep 'inet ' | grep -v '127.0.0.1' | head -1 | awk '{print $2}' | cut -d'/' -f1)
+echo "   HTTP:  curl -I http://${HOST_IP}"
+echo "   HTTPS: curl -k -I https://${HOST_IP}"
 echo ""
 echo "📝 Current NAT rules:"
 iptables -t nat -L -n --line-numbers | grep -E "(DNAT|REDIRECT)"
