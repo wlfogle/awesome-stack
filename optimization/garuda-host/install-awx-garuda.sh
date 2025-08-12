@@ -18,8 +18,8 @@ fi
 # Configuration
 AWX_PROJECT_DIR="/opt/awx"
 ANSIBLE_DIR="/opt/ansible"
-VM_800_IP="192.168.122.86"  # Adjust if different
-PROXMOX_VM_IP="192.168.122.103"  # ProxMox-Stack VM
+VM_800_IP="192.168.122.3"  # Adjust if different
+PROXMOX_VM_IP="192.168.122.9"  # ProxMox-Stack VM
 AWX_ADMIN_USER="admin"
 AWX_ADMIN_PASSWORD="awx_admin_$(openssl rand -hex 8)"
 
