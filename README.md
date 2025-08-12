@@ -24,8 +24,8 @@ This repository contains a **complete self-hosting infrastructure** that include
 proxmox-infrastructure/   # Proxmox VM/LXC configurations
 ├── vm-500/              # Home Assistant OS VM
 ├── lxc-100-279/         # Media stack LXC containers
-├── vm-612/              # BlissOS Android (Alexa media-bridge)
-└── ct-900/              # AI services container
+├── ct - 200/              # Alexa/HA Bridge (Alexa media-bridge)
+└── ct-900/ (Ziggy)             # AI services container
 ```
 
 ### 🏠 **Home Automation**
