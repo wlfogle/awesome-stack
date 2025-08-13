@@ -23,10 +23,10 @@ mkdir -p "$SYSTEMD_USER_DIR"
 echo "📦 Installing dependencies..."
 if command -v pamac >/dev/null 2>&1; then
     # Garuda Linux with pamac
-    pamac install --no-confirm python python-requests plasma-framework
-elif command -v pacman >/dev/null 2>&1; then
+    pamac install --no-confirm python python-requests plasma-framework5
+elif command -v pacman > /dev/null 2>&1; then
     # Arch-based system
-    sudo pacman -S --noconfirm python python-requests plasma-framework
+    sudo pacman -S --noconfirm python python-requests plasma-framework5
 elif command -v apt >/dev/null 2>&1; then
     # Debian-based system
     sudo apt update && sudo apt install -y python3 python3-requests plasma-framework
