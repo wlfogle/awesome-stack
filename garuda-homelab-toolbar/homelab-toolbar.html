@@ -297,21 +297,46 @@
                 </div>
             </div>
 
-            <!-- Media Stack -->
+            <!-- Media Servers -->
             <div class="dropdown">
                 <div class="toolbar-item" id="media-status">
                     <div class="status-dot" id="media-dot"></div>
                     <span>Media</span>
                 </div>
                 <div class="dropdown-content">
+                    <a class="dropdown-item" onclick="openPlex()">
+                        <span>📺</span> Plex
+                    </a>
                     <a class="dropdown-item" onclick="openJellyfin()">
                         <span>🎬</span> Jellyfin
                     </a>
+                    <a class="dropdown-item" onclick="openAudiobookshelf()">
+                        <span>📚</span> Audiobookshelf
+                    </a>
+                    <a class="dropdown-item" onclick="openTautulli()">
+                        <span>📊</span> Tautulli
+                    </a>
+                </div>
+            </div>
+
+            <!-- Download Stack -->
+            <div class="dropdown">
+                <div class="toolbar-item" id="download-status">
+                    <div class="status-dot" id="download-dot"></div>
+                    <span>Downloads</span>
+                </div>
+                <div class="dropdown-content">
                     <a class="dropdown-item" onclick="openSonarr()">
                         <span>📺</span> Sonarr
                     </a>
                     <a class="dropdown-item" onclick="openRadarr()">
-                        <span>🎭</span> Radarr
+                        <span>🎬</span> Radarr
+                    </a>
+                    <a class="dropdown-item" onclick="openReadarr()">
+                        <span>📖</span> Readarr
+                    </a>
+                    <a class="dropdown-item" onclick="openBazarr()">
+                        <span>💬</span> Bazarr
                     </a>
                     <a class="dropdown-item" onclick="openProwlarr()">
                         <span>🔍</span> Prowlarr
@@ -319,33 +344,93 @@
                     <a class="dropdown-item" onclick="openQBittorrent()">
                         <span>⬇️</span> qBittorrent
                     </a>
-                    <a class="dropdown-item" onclick="openTautulli()">
-                        <span>📈</span> Tautulli
+                    <a class="dropdown-item" onclick="openDeluge()">
+                        <span>🌊</span> Deluge
                     </a>
                 </div>
             </div>
 
-            <!-- Network Services -->
+            <!-- Request Management -->
+            <div class="dropdown">
+                <div class="toolbar-item" id="request-status">
+                    <div class="status-dot" id="request-dot"></div>
+                    <span>Requests</span>
+                </div>
+                <div class="dropdown-content">
+                    <a class="dropdown-item" onclick="openOverseerr()">
+                        <span>👁️</span> Overseerr
+                    </a>
+                    <a class="dropdown-item" onclick="openJellyseerr()">
+                        <span>🍇</span> Jellyseerr
+                    </a>
+                    <a class="dropdown-item" onclick="openOmbi()">
+                        <span>🎭</span> Ombi
+                    </a>
+                </div>
+            </div>
+
+            <!-- Dashboards -->
+            <div class="dropdown">
+                <div class="toolbar-item" id="dashboard-status">
+                    <div class="status-dot" id="dashboard-dot"></div>
+                    <span>Dashboards</span>
+                </div>
+                <div class="dropdown-content">
+                    <a class="dropdown-item" onclick="openOrganizr()">
+                        <span>🏢</span> Organizr
+                    </a>
+                    <a class="dropdown-item" onclick="openHomarr()">
+                        <span>🏠</span> Homarr
+                    </a>
+                    <a class="dropdown-item" onclick="openHomepage()">
+                        <span>🌐</span> Homepage
+                    </a>
+                </div>
+            </div>
+
+            <!-- Network & Auth -->
             <div class="dropdown">
                 <div class="toolbar-item" id="network-status">
                     <div class="status-dot" id="network-dot"></div>
                     <span>Network</span>
                 </div>
                 <div class="dropdown-content">
-                    <a class="dropdown-item" onclick="openPihole()">
-                        <span>🛡️</span> Pi-hole
+                    <a class="dropdown-item" onclick="openTraefik()">
+                        <span>🔀</span> Traefik
                     </a>
                     <a class="dropdown-item" onclick="openWireGuard()">
                         <span>🔐</span> WireGuard
                     </a>
-                    <a class="dropdown-item" onclick="openUnifi()">
-                        <span>📶</span> UniFi
+                    <a class="dropdown-item" onclick="openAuthentik()">
+                        <span>🔑</span> Authentik
                     </a>
-                    <a class="dropdown-item" onclick="openPfSense()">
-                        <span>🔥</span> pfSense
+                    <a class="dropdown-item" onclick="openVaultwarden()">
+                        <span>🔒</span> Vaultwarden
                     </a>
                     <a class="dropdown-item" onclick="networkDiag()">
                         <span>🔧</span> Diagnostics
+                    </a>
+                </div>
+            </div>
+
+            <!-- System Services -->
+            <div class="dropdown">
+                <div class="toolbar-item" id="system-status">
+                    <div class="status-dot" id="system-dot"></div>
+                    <span>System</span>
+                </div>
+                <div class="dropdown-content">
+                    <a class="dropdown-item" onclick="openXVFB()">
+                        <span>🖥️</span> XVFB Display
+                    </a>
+                    <a class="dropdown-item" onclick="viewContainers()">
+                        <span>📦</span> Containers
+                    </a>
+                    <a class="dropdown-item" onclick="viewVMs()">
+                        <span>⚙️</span> VMs
+                    </a>
+                    <a class="dropdown-item" onclick="systemLogs()">
+                        <span>📋</span> System Logs
                     </a>
                 </div>
             </div>
@@ -424,20 +509,47 @@
                 user: 'root'
             },
             services: {
-                jellyfin: 'http://192.168.122.9:8096',
-                sonarr: 'http://192.168.122.9:8989',
-                radarr: 'http://192.168.122.9:7878',
-                prowlarr: 'http://192.168.122.9:9696',
-                qbittorrent: 'http://192.168.122.9:8080',
-                tautulli: 'http://192.168.122.9:8181',
-                pihole: 'http://192.168.122.9:80/admin',
-                grafana: 'http://192.168.122.9:3000',
-                prometheus: 'http://192.168.122.9:9090',
-                uptime: 'http://192.168.122.9:3001',
-                portainer: 'http://192.168.122.9:9000',
-                netdata: 'http://192.168.122.9:19999',
-                unifi: 'http://192.168.122.9:8443',
-                pfsense: 'http://192.168.1.1'
+                // Media Servers
+                plex: 'http://192.168.122.230:32400/web',
+                jellyfin: 'http://192.168.122.231:8096',
+                
+                // Media Management
+                sonarr: 'http://192.168.122.214:8989',
+                radarr: 'http://192.168.122.215:7878',
+                prowlarr: 'http://192.168.122.210:9696',
+                bazarr: 'http://192.168.122.240:6767',
+                readarr: 'http://192.168.122.217:8787',
+                whisparr: 'http://192.168.122.219:6969',
+                
+                // Download Clients
+                qbittorrent: 'http://192.168.122.212:8080',
+                deluge: 'http://192.168.122.224:8112',
+                
+                // Request Management
+                overseerr: 'http://192.168.122.241:5055',
+                jellyseerr: 'http://192.168.122.242:5055',
+                ombi: 'http://192.168.122.243:3579',
+                
+                // Dashboards
+                organizr: 'http://192.168.122.274:80',
+                homarr: 'http://192.168.122.275:7575',
+                homepage: 'http://192.168.122.276:3000',
+                
+                // Monitoring
+                grafana: 'http://192.168.122.261:3000',
+                prometheus: 'http://192.168.122.260:9090',
+                tautulli: 'http://192.168.122.244:8181',
+                
+                // Authentication
+                authentik: 'http://192.168.122.107:9000',
+                vaultwarden: 'http://192.168.122.104:80',
+                
+                // Network
+                traefik: 'http://192.168.122.103:8080',
+                wireguard: 'http://192.168.122.100:51820',
+                
+                // XVFB Management
+                xvfb: 'http://192.168.122.9:6080'
             }
         };
 
@@ -477,18 +589,48 @@
             const proxmoxOnline = await checkService(`https://${CONFIG.proxmox.ip}:${CONFIG.proxmox.port}`);
             updateStatusDot('proxmox-dot', proxmoxOnline);
             
-            // Check Media Services
-            const mediaServices = ['jellyfin', 'sonarr', 'radarr'];
+            // Check Media Servers
+            const mediaServices = ['plex', 'jellyfin'];
             let mediaOnline = 0;
             for (const service of mediaServices) {
                 if (await checkService(CONFIG.services[service])) {
                     mediaOnline++;
                 }
             }
-            updateStatusDot('media-dot', mediaOnline === mediaServices.length);
+            updateStatusDot('media-dot', mediaOnline > 0);
+
+            // Check Download Stack
+            const downloadServices = ['sonarr', 'radarr', 'prowlarr', 'qbittorrent'];
+            let downloadOnline = 0;
+            for (const service of downloadServices) {
+                if (await checkService(CONFIG.services[service])) {
+                    downloadOnline++;
+                }
+            }
+            updateStatusDot('download-dot', downloadOnline > downloadServices.length / 2);
+
+            // Check Request Services
+            const requestServices = ['overseerr', 'jellyseerr'];
+            let requestOnline = 0;
+            for (const service of requestServices) {
+                if (await checkService(CONFIG.services[service])) {
+                    requestOnline++;
+                }
+            }
+            updateStatusDot('request-dot', requestOnline > 0);
+
+            // Check Dashboards
+            const dashboardServices = ['organizr', 'homarr', 'homepage'];
+            let dashboardOnline = 0;
+            for (const service of dashboardServices) {
+                if (await checkService(CONFIG.services[service])) {
+                    dashboardOnline++;
+                }
+            }
+            updateStatusDot('dashboard-dot', dashboardOnline > 0);
 
             // Check Network Services
-            const networkServices = ['pihole', 'unifi'];
+            const networkServices = ['traefik', 'authentik'];
             let networkOnline = 0;
             for (const service of networkServices) {
                 if (await checkService(CONFIG.services[service])) {
@@ -496,6 +638,10 @@
                 }
             }
             updateStatusDot('network-dot', networkOnline > 0);
+
+            // Check System Services (XVFB, etc)
+            const systemOnline = await checkService(CONFIG.services.xvfb);
+            updateStatusDot('system-dot', systemOnline);
 
             // Check Monitoring Services
             const monitorServices = ['grafana', 'prometheus'];
@@ -530,16 +676,38 @@
             window.open(`https://${CONFIG.proxmox.ip}:${CONFIG.proxmox.port}`, '_blank');
         }
 
+        // Media Servers
+        function openPlex() {
+            window.open(CONFIG.services.plex, '_blank');
+        }
+
         function openJellyfin() {
             window.open(CONFIG.services.jellyfin, '_blank');
         }
 
+        function openAudiobookshelf() {
+            window.open(CONFIG.services.audiobookshelf || 'http://192.168.122.232:13378', '_blank');
+        }
+
+        function openTautulli() {
+            window.open(CONFIG.services.tautulli, '_blank');
+        }
+
+        // Download Stack
         function openSonarr() {
             window.open(CONFIG.services.sonarr, '_blank');
         }
 
         function openRadarr() {
             window.open(CONFIG.services.radarr, '_blank');
+        }
+
+        function openReadarr() {
+            window.open(CONFIG.services.readarr, '_blank');
+        }
+
+        function openBazarr() {
+            window.open(CONFIG.services.bazarr, '_blank');
         }
 
         function openProwlarr() {
@@ -550,24 +718,68 @@
             window.open(CONFIG.services.qbittorrent, '_blank');
         }
 
-        function openTautulli() {
-            window.open(CONFIG.services.tautulli, '_blank');
+        function openDeluge() {
+            window.open(CONFIG.services.deluge, '_blank');
         }
 
-        function openPihole() {
-            window.open(CONFIG.services.pihole, '_blank');
+        // Request Management
+        function openOverseerr() {
+            window.open(CONFIG.services.overseerr, '_blank');
+        }
+
+        function openJellyseerr() {
+            window.open(CONFIG.services.jellyseerr, '_blank');
+        }
+
+        function openOmbi() {
+            window.open(CONFIG.services.ombi, '_blank');
+        }
+
+        // Dashboards
+        function openOrganizr() {
+            window.open(CONFIG.services.organizr, '_blank');
+        }
+
+        function openHomarr() {
+            window.open(CONFIG.services.homarr, '_blank');
+        }
+
+        function openHomepage() {
+            window.open(CONFIG.services.homepage, '_blank');
+        }
+
+        // Network & Auth
+        function openTraefik() {
+            window.open(CONFIG.services.traefik, '_blank');
+        }
+
+        function openAuthentik() {
+            window.open(CONFIG.services.authentik, '_blank');
+        }
+
+        function openVaultwarden() {
+            window.open(CONFIG.services.vaultwarden, '_blank');
+        }
+
+        // System Services
+        function openXVFB() {
+            window.open(CONFIG.services.xvfb, '_blank');
         }
 
         function openWireGuard() {
             window.open('http://localhost:10086', '_blank'); // Local WireGuard dashboard
         }
 
-        function openUnifi() {
-            window.open(CONFIG.services.unifi, '_blank');
+        function viewContainers() {
+            executeCommand('pct list');
         }
 
-        function openPfSense() {
-            window.open(CONFIG.services.pfsense, '_blank');
+        function viewVMs() {
+            executeCommand('qm list');
+        }
+
+        function systemLogs() {
+            executeCommand('journalctl -f');
         }
 
         function openGrafana() {

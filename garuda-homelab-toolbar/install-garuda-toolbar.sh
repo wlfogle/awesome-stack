@@ -142,23 +142,47 @@ cat > "$TOOLBAR_DIR/config.json" << EOF
         "user": "root"
     },
     "services": {
-        "jellyfin": "http://192.168.122.9:8096",
-        "sonarr": "http://192.168.122.9:8989",
-        "radarr": "http://192.168.122.9:7878",
-        "prowlarr": "http://192.168.122.9:9696",
-        "qbittorrent": "http://192.168.122.9:8080",
-        "tautulli": "http://192.168.122.9:8181",
-        "pihole": "http://192.168.122.9:80/admin",
-        "grafana": "http://192.168.122.9:3000",
-        "prometheus": "http://192.168.122.9:9090",
-        "uptime": "http://192.168.122.9:3001",
-        "portainer": "http://192.168.122.9:9000",
-        "netdata": "http://192.168.122.9:19999",
-        "unifi": "http://192.168.122.9:8443",
-        "pfsense": "http://192.168.1.1"
+        "plex": "http://192.168.122.230:32400/web",
+        "jellyfin": "http://192.168.122.231:8096",
+        "audiobookshelf": "http://192.168.122.232:13378",
+        "sonarr": "http://192.168.122.214:8989",
+        "radarr": "http://192.168.122.215:7878",
+        "readarr": "http://192.168.122.217:8787",
+        "bazarr": "http://192.168.122.240:6767",
+        "prowlarr": "http://192.168.122.210:9696",
+        "qbittorrent": "http://192.168.122.212:8080",
+        "deluge": "http://192.168.122.224:8112",
+        "overseerr": "http://192.168.122.241:5055",
+        "jellyseerr": "http://192.168.122.242:5055",
+        "ombi": "http://192.168.122.243:3579",
+        "organizr": "http://192.168.122.274:80",
+        "homarr": "http://192.168.122.275:7575",
+        "homepage": "http://192.168.122.276:3000",
+        "tautulli": "http://192.168.122.244:8181",
+        "grafana": "http://192.168.122.261:3000",
+        "prometheus": "http://192.168.122.260:9090",
+        "authentik": "http://192.168.122.107:9000",
+        "vaultwarden": "http://192.168.122.104:80",
+        "traefik": "http://192.168.122.103:8080",
+        "wireguard": "http://192.168.122.100:51820",
+        "xvfb": "http://192.168.122.9:6080"
     },
     "refresh_interval": 30,
-    "auto_minimize": false
+    "auto_minimize": false,
+    "containers": {
+        "100": "wireguard",
+        "230": "plex",
+        "231": "jellyfin",
+        "214": "sonarr",
+        "215": "radarr",
+        "210": "prowlarr",
+        "212": "qbittorrent",
+        "241": "overseerr",
+        "261": "grafana",
+        "103": "traefik",
+        "107": "authentik",
+        "104": "vaultwarden"
+    }
 }
 EOF
 
