@@ -1,15 +1,16 @@
 # 🛡️ WireGuard Advanced VPN & Anti-Tracking Suite
 
-**Complete WireGuard VPN solution with automated rotation, API masking, and GUI management**
+**Complete WireGuard VPN solution with automated rotation, API masking, and GUI management for Garuda Linux**
 
 ## 🎯 Overview
 
 This comprehensive WireGuard suite provides:
-- **🔄 Automated IP/Key Rotation** - Defeat long-term tracking
-- **🛡️ API Request Masking** - Hide AI service usage patterns  
-- **🖥️ System Tray Widget** - GUI control from Garuda Linux
-- **🌐 Web Dashboard** - Browser-based management
-- **🥷 Stealth Mode** - Rapid rotation for maximum privacy
+- **🔄 Automated IP/Key Rotation** - Defeat long-term tracking with 6-hour rotation
+- **🛡️ API Request Masking** - Hide AI service usage patterns (OpenAI, Claude, etc.)
+- **🖥️ System Tray Widget** - GUI control with real-time status monitoring
+- **🌐 Host-Based VPN Server** - Run VPN server directly on Garuda Linux
+- **🥷 Stealth Mode** - Rapid rotation for maximum privacy (30-minute intervals)
+- **🎛️ Complete GUI Management** - Full control panel with status monitoring
 
 ## 📁 Directory Structure
 
@@ -24,39 +25,38 @@ wireguard-tools/
 
 ## 🚀 Quick Start
 
-### Server Setup (Proxmox Host)
+### Host-Based Setup (Garuda Linux)
 
-1. **Install rotation system:**
+1. **Install dependencies:**
    ```bash
-   cp server/wireguard-rotate.sh /root/
-   chmod +x /root/wireguard-rotate.sh
-   crontab server/wg-rotation-cron
+   sudo pacman -S --needed wireguard-tools python-pyqt5 python-requests python-aiohttp cronie
    ```
 
-2. **Setup API masking proxy:**
+2. **Initialize VPN server:**
    ```bash
-   cp api-masking/api-mask-proxy.py /root/
-   cp api-masking/api-mask-proxy.service /etc/systemd/system/
-   systemctl enable --now api-mask-proxy
+   sudo cp server/wireguard-rotate.sh /root/
+   sudo chmod +x /root/wireguard-rotate.sh
+   sudo /root/wireguard-rotate.sh init
    ```
 
-### Client Setup (Garuda Linux)
-
-1. **Run automated installer:**
+3. **Setup API masking proxy:**
    ```bash
-   chmod +x client/install-garuda-widget.sh
-   ./client/install-garuda-widget.sh [PROXMOX_IP] [USERNAME]
+   sudo cp api-masking/api-mask-proxy.py /root/
+   sudo cp api-masking/api-mask-proxy.service /etc/systemd/system/
+   sudo systemctl enable --now api-mask-proxy
    ```
 
-2. **Manual setup:**
+4. **Install tray widget:**
    ```bash
-   # Install tray widget
+   mkdir -p ~/.local/bin ~/.config/autostart
    cp tray-widget/wireguard-tray-widget.py ~/.local/bin/
    cp tray-widget/wireguard-manager.desktop ~/.config/autostart/
-   
-   # Install CLI manager
-   cp client/garuda-wg-manager.sh ~/.local/bin/wg-manager
-   chmod +x ~/.local/bin/*
+   python3 ~/.local/bin/wireguard-tray-widget.py &
+   ```
+
+5. **Enable automated rotation:**
+   ```bash
+   sudo crontab server/wg-rotation-cron
    ```
 
 ## 🔧 Components

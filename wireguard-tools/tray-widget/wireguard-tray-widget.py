@@ -25,8 +25,8 @@ class StatusChecker(QThread):
     def __init__(self):
         super().__init__()
         self.running = True
-        self.proxmox_host = "192.168.122.9"
-        self.dashboard_port = "10086"
+        self.garuda_host = "127.0.0.1"
+        self.dashboard_port = "8081"
         self.api_proxy_port = "8080"
         
     def run(self):
