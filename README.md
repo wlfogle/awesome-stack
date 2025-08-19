@@ -56,6 +56,29 @@ scripts/                # Production automation scripts
 └── monitoring/        # System health checks
 ```
 
+### 🥷 **Ghost Mode - Ultimate Online Invisibility**
+```
+ghost-mode/             # Complete digital anonymity suite
+├── README.md           # User guide and setup
+├── scripts/           # All anonymity tools
+│   ├── ghost-mode      # Main controller
+│   ├── ghost-toggle    # Simple on/off toggle
+│   ├── ghost-tray-widget # System tray interface
+│   ├── ghost-browser   # Anonymous browser launcher
+│   └── protection modules # DNS, hardware, time spoofing
+├── ARCHITECTURE.md    # Technical documentation
+├── API.md            # Developer reference
+└── install-ghost-mode.sh # One-click installer
+```
+
+**🎯 One-Click Complete Invisibility:**
+- 🌐 **Browser fingerprinting blocked** (WebRTC, Canvas, WebGL, Audio)
+- 🔧 **Hardware fingerprinting spoofed** (CPU, GPU, RAM, System info)
+- 🕐 **Time fingerprinting masked** (Timezone, timing attacks)
+- 📡 **Network anonymization** (IPv6 disabled, DNS leak prevention)
+- 👁️ **Continuous monitoring** with auto-repair and visual feedback
+- 🎛️ **System tray widget** with status indicators (🟢🟡🔴)
+
 ### 📚 **Documentation & Guides**
 ```
 docs/                   # Comprehensive documentation
