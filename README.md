@@ -89,7 +89,9 @@ docs/                   # Comprehensive documentation
 
 ## 🚀 **Quick Start**
 
-### Prerequisites
+### Traditional Installation (Arch/Garuda Linux)
+
+#### Prerequisites
 ```bash
 # Docker and Docker Compose
 sudo pacman -S docker docker-compose
@@ -102,7 +104,7 @@ sudo systemctl enable --now docker
 sudo usermod -aG docker $USER
 ```
 
-### Deploy Media Stack
+#### Deploy Media Stack
 ```bash
 # Clone the repository
 git clone https://github.com/wlfogle/awesome-stack.git
@@ -118,7 +120,7 @@ docker-compose up -d
 # Copy configs to HAOS VM-500
 ```
 
-### Run Infrastructure Scripts
+#### Run Infrastructure Scripts
 ```bash
 # Fix all container issues
 sudo ./scripts/fix-all-containers.sh
@@ -129,6 +131,55 @@ sudo ./scripts/hardware_optimization.sh
 # Setup Alexa integration
 ./scripts/setup_alexa_bridge.sh
 ```
+
+### 🪨 Fedora Kinoite Installation
+
+Awesome Stack now supports immutable Fedora Kinoite! This native containerized approach provides better security, reliability, and atomic updates.
+
+#### Prerequisites
+```bash
+# Install required packages (one-time operation)
+sudo rpm-ostree install podman podman-compose qemu-img libvirt git
+
+# Reboot to apply changes
+sudo systemctl reboot
+```
+
+#### One-Click Setup
+```bash
+# Clone the repository
+git clone https://github.com/wlfogle/awesome-stack.git
+cd awesome-stack
+
+# Run the Kinoite setup script
+./setup-kinoite-awesome-stack.sh
+
+# Extract services from existing Proxmox VM (if migrating)
+./extract-proxmox-services.sh
+```
+
+#### Managing Your Kinoite Stack
+```bash
+# Start all services
+awesome-stack start
+
+# Check service status
+awesome-stack status
+
+# View available web interfaces
+awesome-stack urls
+
+# Update container images
+awesome-stack update
+```
+
+#### Key Features of Kinoite Implementation
+- **Immutable OS**: System files protected from changes
+- **Atomic Updates**: Reliable system updates with rollback
+- **Podman Containers**: Native containers without Docker daemon
+- **Flatpak Integration**: GUI applications as sandboxed Flatpaks
+- **User Services**: No system service modifications required
+- **Persistent Storage**: All data survives OS updates
 
 ## 🎯 **Key Features**
 
